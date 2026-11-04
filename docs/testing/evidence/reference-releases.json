@@ -1,0 +1,138 @@
+{
+  "snapmaker": {
+    "release": "v2.4.1",
+    "asset": "Snapmaker_Orca_Linux_AppImage_Ubuntu2404_V2.4.1.AppImage",
+    "url": "https://github.com/Snapmaker/OrcaSlicer/releases/download/v2.4.1/Snapmaker_Orca_Linux_AppImage_Ubuntu2404_V2.4.1.AppImage",
+    "sha256": "2b5117e22d04a3a27bcdfc5a873c55d28ff3b7ce9721946de1f134fa97d2cc06",
+    "publisher_digest_verified": true,
+    "installed": false,
+    "executed": true,
+    "execution_scope": "CLI help, single-material slicing and 3MF export passed",
+    "hardware_access": false,
+    "slice_export_exit_code": 0,
+    "fixture_manifest": {
+      "source_profile_root": "/home/aaramini/snapmaker3d-projects/ultimate-u1-audit/reference-runs/snapmaker/squashfs-root/resources/profiles",
+      "source_presets": {
+        "machine": "Snapmaker U1 (0.4 nozzle)",
+        "process": "0.20mm Standard @Snapmaker U1 (0.4 nozzle)",
+        "filament": "Snapmaker PLA SnapSpeed @U1"
+      },
+      "fixture_hashes": {
+        "machine.json": "5325538f89ccad8061541c2b5310be818c254c652608540b8aee0b61a40024d9",
+        "process.json": "e0abeb8967a94173f8957d852f9074e8a6fdf2ef187727c683d013519455f574",
+        "filament.json": "1c0bdf47cc95764e204ad3a46fa29b419e973dc72a8af4e25d573d8d5aa3ef99",
+        "cube.stl": "2ede4d8ab394e13043a5f901e4be8d8e385632f6215d671236010742c9690f01"
+      },
+      "profile_installation": false,
+      "calibration_verified": false,
+      "purpose": "offline reference slicing only",
+      "cli_compatibility_adapter": "flattened system identity retained; machine nozzle context supplied to legacy per-preset normalize_fdm"
+    },
+    "outputs": {
+      "plate_1.gcode": {
+        "size": 81745,
+        "sha256": "a436f46eea296ddb924889b21d07ade8793e1c36c0e17f23eaa5e872aa9c4ef9"
+      },
+      "reference.3mf": {
+        "size": 23906,
+        "sha256": "550b8bbf6d7fe822bbf4ad88a4dcede84993fd197106daf3364fb58121750119"
+      },
+      "result.json": {
+        "size": 334,
+        "sha256": "16da67effc52d2cbebfa84c3041a8661e3fcdcbfc5b3f2e6ed4fcc082097472b"
+      }
+    },
+    "log_sha256": "f01c18bb11c5844ea3117c8816b3a6a9e9a33a9ead7ad0205e5f0b1c32fe691c",
+    "project_zip_valid": true,
+    "limitations": [
+      "5 mm single-material cube only",
+      "Temporary flattened CLI inputs; not installed or calibrated",
+      "No printer or physical validation"
+    ],
+    "four_material_run": {
+      "exit_code": 0,
+      "project_zip_valid": true,
+      "tool_commands": [
+        "T0",
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "outputs": {
+        "plate_1.gcode": {
+          "size": 706448,
+          "sha256": "ca80f99b159dc9ea4f63c6022bc8c1ce86ffedc818d5baea6c113606d700213d"
+        },
+        "reference-four.3mf": {
+          "size": 108430,
+          "sha256": "7f2f66de04887447f5a975535a109a5b22daecb26e70a4686e554ee92b5af41c"
+        },
+        "result.json": {
+          "size": 334,
+          "sha256": "e1a78c38b66b6a6a914d3271665c3aecbcf0d50854abbf88e023710691d4e2ee"
+        }
+      },
+      "fixture_manifest": {
+        "source": "../fixture-system/fixture-manifest.json",
+        "changes": "Four separate cubes with object filament IDs 1..4; four copies of source PLA with distinct display names/colors. Source filament identifier retained. Offline only.",
+        "files": {
+          "cube3.stl": "2ede4d8ab394e13043a5f901e4be8d8e385632f6215d671236010742c9690f01",
+          "filament3.json": "0248023bd806d0f095cd9eed30b9e431b04d4ef58ff6b9853b92dbe648d6ef92",
+          "process.json": "e0abeb8967a94173f8957d852f9074e8a6fdf2ef187727c683d013519455f574",
+          "filament1.json": "2ddcb31007afe429bbeca43b2028ec0be7095e71a828de16001515ccbd95633c",
+          "cube4.stl": "2ede4d8ab394e13043a5f901e4be8d8e385632f6215d671236010742c9690f01",
+          "cube1.stl": "2ede4d8ab394e13043a5f901e4be8d8e385632f6215d671236010742c9690f01",
+          "cube2.stl": "2ede4d8ab394e13043a5f901e4be8d8e385632f6215d671236010742c9690f01",
+          "filament2.json": "db52ee7c6d336e7416fac5b6d654707cf30b60a38cf236cbdba068089fd8d86b",
+          "machine.json": "5325538f89ccad8061541c2b5310be818c254c652608540b8aee0b61a40024d9",
+          "filament4.json": "41f76150dcd810e7e23f0f82ee8adbfb31fcde8bfe194a5afff459fd50b82238"
+        },
+        "hardware_verified": false
+      },
+      "log_sha256": "f62d93cd75ad372fd18d9ac1adef8e42c8d8a51054523790118451f8b11f230e",
+      "hardware_verified": false
+    }
+  },
+  "forca": {
+    "release": "v2.3.2-fos.8.6.8",
+    "asset": "FOrcaSlicer_Linux_V2.3.2-fos.8.6.8.AppImage",
+    "url": "https://github.com/jiyang1018/FOrcaSlicer/releases/download/v2.3.2-fos.8.6.8/FOrcaSlicer_Linux_V2.3.2-fos.8.6.8.AppImage",
+    "sha256": "713686b0b9b9101a9cbdb39dd3f57d99b09fde9eafc0da394b5482e7d2471477",
+    "publisher_digest_verified": true,
+    "installed": false,
+    "executed": true,
+    "execution_scope": "CLI help and G-code generation passed; 3MF export SIGSEGV (exit 139)",
+    "hardware_access": false,
+    "slice_export_exit_code": 139,
+    "fixture_manifest": {
+      "source_profile_root": "/home/aaramini/snapmaker3d-projects/ultimate-u1-audit/reference-runs/forca/squashfs-root/resources/profiles",
+      "source_presets": {
+        "machine": "Snapmaker U1 (0.4 nozzle)",
+        "process": "0.20 Standard @Snapmaker U1 (0.4 nozzle)",
+        "filament": "Snapmaker PLA SnapSpeed @U1"
+      },
+      "fixture_hashes": {
+        "machine.json": "c22aba172aa5c48f4c84dc3599acba59133e700703aa20a85496e6849c840212",
+        "process.json": "ce9432415ba8c1ff81b143f690ae8fe37ee3ec4f943774cbe09db20725a30b13",
+        "filament.json": "9ca06dbd0097e7ae3cee5368f220a32692e96937690c5de9cb7f41d17109fa39",
+        "cube.stl": "2ede4d8ab394e13043a5f901e4be8d8e385632f6215d671236010742c9690f01"
+      },
+      "profile_installation": false,
+      "calibration_verified": false,
+      "purpose": "offline reference slicing only",
+      "cli_compatibility_adapter": "flattened system identity retained; machine nozzle context supplied to legacy per-preset normalize_fdm"
+    },
+    "outputs": {
+      "plate_1.gcode": {
+        "size": 79162,
+        "sha256": "a7e9a4b5307143a9e55072868b7818e626df38fe4f226bc42594367a97458e07"
+      }
+    },
+    "log_sha256": "5bbea55c293264b778c93df230a3768ad0b0a7406a4b0158cb304dfec3400104",
+    "limitations": [
+      "5 mm single-material cube only",
+      "Temporary flattened CLI inputs; not installed or calibrated",
+      "No printer or physical validation"
+    ]
+  }
+}
