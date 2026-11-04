@@ -1,0 +1,70 @@
+{
+  "shipped": {
+    "command": [
+      "python3",
+      "scripts/orca_profile_tool.py",
+      "check",
+      "--vendor",
+      "Snapmaker",
+      "--vendor",
+      "OrcaFilamentLibrary"
+    ],
+    "exit_code": 0,
+    "summary": [
+      "[SUCCESS] Files with errors   : 0",
+      "[SUCCESS] Files with warnings : 0"
+    ],
+    "error_examples": [],
+    "calibration_verified": false
+  },
+  "forca": {
+    "command": [
+      "python3",
+      "scripts/orca_profile_tool.py",
+      "check",
+      "--profiles",
+      "profile-catalog/sources/forca-0b1f80cd22793785d8ae5c4296d2fe4a9248bd21/profiles",
+      "--vendor",
+      "Snapmaker",
+      "--vendor",
+      "OrcaFilamentLibrary"
+    ],
+    "exit_code": 1,
+    "summary": [
+      "[ERROR] Files with errors   : 1568",
+      "[WARNING] Files with warnings : 74"
+    ],
+    "error_examples": [
+      "[ERROR] OrcaFilamentLibrary/filament/Generic ABS @System.json: no OrcaFilamentLibrary.json list references it, so it never loads",
+      "[ERROR] OrcaFilamentLibrary/filament/Generic ASA @System.json: no OrcaFilamentLibrary.json list references it, so it never loads",
+      "[ERROR] OrcaFilamentLibrary/filament/Generic BVOH @System.json: no OrcaFilamentLibrary.json list references it, so it never loads",
+      "[ERROR] OrcaFilamentLibrary/filament/Generic EVA @System.json: no OrcaFilamentLibrary.json list references it, so it never loads",
+      "[ERROR] OrcaFilamentLibrary/filament/Generic HIPS @System.json: no OrcaFilamentLibrary.json list references it, so it never loads"
+    ],
+    "calibration_verified": false
+  },
+  "snapmaker": {
+    "command": [
+      "python3",
+      "scripts/orca_profile_tool.py",
+      "check",
+      "--profiles",
+      "profile-catalog/sources/snapmaker-profiles-1e201f6aa8920b4878daa02a21d43073ba92c06c/profiles",
+      "--vendor",
+      "Snapmaker"
+    ],
+    "exit_code": 1,
+    "summary": [
+      "[ERROR] Files with errors   : 1409",
+      "[WARNING] Files with warnings : 244"
+    ],
+    "error_examples": [
+      "[ERROR] 'name' missing in Snapmaker/filament/filament_allow_list.json",
+      "[ERROR] 'name' missing in Snapmaker/filament/filament_compatibility.json",
+      "[ERROR] 'name' missing in Snapmaker/filament/filament_hot_bed_nozzles.json",
+      "[ERROR] 'name' missing in Snapmaker/filament/filaments_colours.json",
+      "[ERROR] Missing filament profile: 'Snapmaker J1 PLA' referenced in Snapmaker/machine/fdm_idex.json"
+    ],
+    "calibration_verified": false
+  }
+}

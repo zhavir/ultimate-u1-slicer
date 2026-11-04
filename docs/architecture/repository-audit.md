@@ -30,6 +30,8 @@ The complete discovered branch lists and five-release samples are in [evidence](
 
 These are graph counts, not counts of useful independent patches. Changed paths include packaging, assets and localization. Rename detection reached Git's limit, so `.numstat` files must not be interpreted as exact semantic churn. Raw output is preserved in `evidence/ancestry.json` and `snapmaker-vs-*.numstat`.
 
+FOrca versus official main has the same common ancestor 737948be1f5b108b191420d4c670b511f8118604, with 682 FOrca-only and 7452 official-only commits.
+
 The MCP branch is based on current official development. Its merge-base diff against audited main spans 325 paths, 71,978 insertions and 2,652 deletions. It touches CAD, UI action registration, modal/worker lifecycle, plugin APIs, tests and packaging. A small detached “MCP server file” port would not preserve its behavior.
 
 ## Implementations inspected
@@ -65,4 +67,8 @@ Established CMake/deps systems remain intact. Dependencies include Boost, TBB, w
 
 All slicers use C++17/CMake and platform build scripts. FOrca has macOS ARM64/x86 and Linux workflows; official Orca includes mature platform build, profile and test workflows. Existing workflows are source evidence only; none was dispatched here. Native Windows and macOS compilers are unavailable on this Linux x86_64 host.
 
-A project-local environment pins CMake 3.31.10 and Ninja 1.13.0. Full Release configuration initially failed while downloading pinned uv in the network sandbox; the authorized retry downloaded it, then failed at missing Boost >=1.83. No full app build is claimed. A small CMake component target reuses actual production protocol/planner/policy sources and bundled Catch2; its results are recorded in `docs/testing/local-validation.md`. Passing it does not prove wxWidgets linkage, project compatibility, slicing or hardware behavior.
+A project-local environment pins CMake 3.31.10 and Ninja 1.13.0. Full Release configuration initially failed while downloading pinned uv in the network sandbox; the authorized retry downloaded it, then failed at missing Boost >=1.83. The subsequent inherited Ubuntu dependency/application build and focused production-engine tests succeeded; full broad-suite and platform coverage remain incomplete. A small CMake component target reuses actual production protocol/planner/policy sources and bundled Catch2; its results are recorded in `docs/testing/local-validation.md`. Passing it does not prove wxWidgets linkage, project compatibility, slicing or hardware behavior.
+
+The separate Snapmaker profiles default-branch tip observed during cloning was 8f7ca15192d8c14bd6d932ca7171bd5792d5ff29; the integration review catalog deliberately uses the older exact gitlink 1e201f6aa8920b4878daa02a21d43073ba92c06c recorded by Snapmaker main.
+
+Additional stock firmware repositories were subsequently cloned and inspected. Exact commits, default branches and license-file names are recorded in evidence/stock-firmware-sources.json; their API contracts and physical/logical indexing distinctions are documented in ../firmware/compatibility.md. No firmware code was flashed, executed on hardware or linked into this application.

@@ -8,7 +8,7 @@ Current milestone: experimental source integration and component validation. No 
 - Selected official MCP development as an integration baseline, retained original server/lifecycle/tests and recorded U1 parity gaps in ADR-001.
 - Created isolated application data identity, a native advisory FOrca partition-planner import, MCP protocol validation fixes, file-root policy and a tested slicer-only tool gate.
 - Implemented immutable, attributed cross-source profile review catalog generation. It detects inheritance errors, repeated identities, collisions and source/snapshot tampering without touching user presets.
-- Added native component tests using production C++ and existing Catch2. Full application configure reached missing Boost; macOS build/hardware remain unavailable.
+- Added native component tests using production C++ and existing Catch2. The full Linux application and inherited dependencies now build. Native MCP HTTP/component tests, live GUI MCP inspection and STL slicing plus synthetic one/four/mixed-nozzle engine slicing pass; macOS build/hardware remain unavailable.
 
 ## Next executable work and release gates
 
@@ -17,12 +17,16 @@ Current milestone: experimental source integration and component validation. No 
 3. Validate selected profile catalogs against actual ConfigDef and compiled preset loader. Resolve the separate Snapmaker profiles license. Promote compatible presets with versioned bundle changes; implement read-only user preset import and explicit overrides.
 4. Port FOrca per-nozzle schema, feature assignment, import/remapping, safety preflight, material rules and Color Patch together as reviewed patches. The advisory optimizer is not a substitute. Add project migration fixtures and golden semantic G-code comparisons.
 5. Port or adapt current Snapmaker gateway/pairing/feeding behavior; exercise stock and optional Extended Firmware fixtures through read-only capability detection. Keep generic Moonraker behavior separately reported.
-6. Run real single-material, four-tool, mixed-nozzle and Color Patch slicing tests, existing U1 3MF import/export, unsafe configuration rejection and MCP-driven slicing. No representative outputs have been generated yet.
+6. Run real single-material, four-tool, mixed-nozzle and Color Patch slicing tests, existing U1 3MF import/export, unsafe configuration rejection and MCP-driven slicing. Reference Snapmaker single/four-material outputs were generated. The local shipped-profile single cube slices/exports successfully, but original Snapmaker project import fails validation and remains a release blocker.
 7. Run macOS ARM64, macOS x86_64 if supported, Windows x64 and Linux x64 application CI, package under a unique application identity, generate SHA-256/version/release notes, preserve a tested stable release and exercise update-review automation.
 8. Complete the separate supervised hardware checklist before a production release. Initial stable software release may keep physical compatibility provisional only when all offline definition-of-done gates pass.
 
 ## Known external blockers
 
-This host is Linux x86_64 with no native macOS/Windows toolchains or U1 hardware. No GitHub destination/runner credentials were supplied, so workflows are authored but not dispatched or remotely verified. Missing application dependencies may be built locally; the current dependency-build outcome is recorded in local-validation.md. Unknown profile redistribution rights block shipping those profiles even though local review is possible.
+This host is Linux x86_64 with no native macOS/Windows toolchains or U1 hardware. The user requested local-only work. All commits, builds and review reports remain local; no push, publication, PR creation or remote workflow dispatch is authorized. The GitHub workflows are source deliverables, not remotely verified runs. A local container build is being used to supply the absent host development libraries; the current application/test-build outcome is recorded in local-validation.md. Unknown profile redistribution rights block shipping those profiles even though local review is possible.
 
 The architecture audit is substantial but not exhaustive: third-party license/SBOM review, all issue/PR history, project migrations and every slicing path still need work. Do not call Phase 1 complete in the sense of a full release audit. Continue through feasible implementation work; each release gate requires its own evidence.
+
+## Current compatibility findings
+
+Snapmaker v2.4.1 uses raft_first_layer_expansion=-1 with automatic semantics different from the selected official engine. Do not clamp it silently: port and test those semantics before claiming existing-project compatibility. An initial four-material reference export retained one filament color and was rejected by the stricter current CLI. Regenerating it with explicit four-color metadata removed that fixture defect; the corrected project reaches the same -1 schema rejection. FOrca reference G-code generation succeeded, but its 3MF export crashed in the isolated environment.

@@ -2,6 +2,8 @@
 
 Status: accepted for an experimental integration branch; stable-release acceptance remains blocked by U1 regression gates.
 
+Executed checkpoint: the Linux application links, shipped-profile cube slicing and native GUI MCP slicing pass, and synthetic mixed 0.4/0.6 mm paths preserve per-head widths. Original Snapmaker v2.4.1 projects are rejected on automatic raft/support expansion -1. That semantic migration is a release blocker, not a reason to clamp the value. These results support retaining the experimental baseline while measuring the remaining support/gateway/FOrca port burden; they do not establish U1 parity or make this a stable architecture acceptance.
+
 ## Decision
 
 Use official OrcaSlicer `feature/mcp` at 17a745e30c248cf3acb4c429b650b22d106fd19a, based on the audited official main, as the starting integration source. Keep upstream's native server, GUI lifecycle, tests, transport and dependency management together. Track official main and Snapmaker independently. Import isolated, attributed FOrca code where compatible; do not merge whole forks to resolve a feature request.
