@@ -1,71 +1,34 @@
-name: U1 upstream review reports
+name: U1 upstream notifications
 on:
   workflow_dispatch:
   schedule:
-    - cron: "19 7 * * 1"
+    - cron: '19 */6 * * *'
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
+  issues: write
 concurrency:
-  group: u1-upstream-review
+  group: u1-upstream-notifications
   cancel-in-progress: false
 jobs:
-  review:
+  notify:
+    if: github.repository == 'zhavir/ultimate-u1-slicer'
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v7
-        with:
-          fetch-depth: 0
       - uses: actions/setup-python@v6
         with:
-          python-version: "3.12"
-      - name: Avoid duplicate pending review reports
-        id: pending
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          count=$(gh pr list --state open --json headRefName --jq '[.[] | select(.headRefName | startswith("integration/upstream-review-"))] | length')
-          if [ "$count" -gt 0 ]; then
-            echo "pending=true" >> "$GITHUB_OUTPUT"
-            echo "An upstream review PR is already pending; no duplicate will be opened."
-          else
-            echo "pending=false" >> "$GITHUB_OUTPUT"
-          fi
-      - name: Fetch and classify source updates
-        if: steps.pending.outputs.pending != 'true'
-        run: python3 tools/u1/upstream_review.py --fetch --probe-merges
-      - name: Check review tooling
-        if: steps.pending.outputs.pending != 'true'
+          python-version: '3.12'
+      - name: Test monitoring and integration tooling
         run: python3 -m unittest discover -s tools/u1/tests -v
-      - name: Create report-only integration review branch
-        if: steps.pending.outputs.pending != 'true'
-        id: report
-        shell: bash
-        run: |
-          set -euo pipefail
-          git add -- docs/architecture/upstream-review.json
-          if git diff --cached --quiet; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          branch="integration/upstream-review-${GITHUB_RUN_ID}"
-          git switch -c "$branch"
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Record upstream change candidates for U1 review"
-          git push origin "$branch"
-          echo "branch=$branch" >> "$GITHUB_OUTPUT"
-          echo "changed=true" >> "$GITHUB_OUTPUT"
-      - name: Open a draft review PR
-        if: steps.report.outputs.changed == 'true'
+      - name: Detect branch, release and tag changes and notify the maintainer
         env:
           GH_TOKEN: ${{ github.token }}
-          REPORT_BRANCH: ${{ steps.report.outputs.branch }}
-          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
-        run: |
-          cat > "$RUNNER_TEMP/u1-review-body.md" <<'BODY'
-          Records public upstream commit candidates, subsystem changes and potential path conflicts.
-
-          This PR contains a report only. No upstream application changes were integrated, and no application compatibility tests were run. Tooling tests passed in this workflow. Maintainers must review the candidates, integrate selected commits separately and run their relevant application/U1 regression gates before updating source pins. No automatic merge is configured.
-          BODY
-          gh pr create --draft --base "$DEFAULT_BRANCH" --head "$REPORT_BRANCH" --title "Review upstream candidates for Ultimate U1" --body-file "$RUNNER_TEMP/u1-review-body.md"
+        run: python3 tools/u1/upstream_watch.py --notify
+      - name: Preserve exact observations and issue links
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: upstream-observations-${{ github.run_id }}
+          path: build/upstream-watch.json
+          if-no-files-found: warn
+          retention-days: 30

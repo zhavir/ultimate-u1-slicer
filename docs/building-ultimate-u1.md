@@ -45,3 +45,11 @@ Optional HTTP tests use the locally built Boost prefix: add `-DU1_ENABLE_HTTP_TE
 ## Focused production-engine regression
 
 After the inherited full dependency/configure steps, enable `cmake -S . -B build -DU1_BUILD_FOCUSED_REGRESSIONS=ON` and build `cmake --build build --config Release --target u1_fff_tests --parallel 2`. Run `build/tests/fff_print/Release/u1_fff_tests "[U1ToolGcode]"` on Linux. This uses the existing FFF helpers and actual libslic3r engine; the same fixture remains in the broad fff_print_tests target. It verifies one/four-tool selection and mixed-nozzle path widths, not firmware macros or hardware. The broad test suite has not completed locally.
+
+## GitHub Windows x64 portable
+
+The authorized project is https://github.com/zhavir/ultimate-u1-slicer, branch main. `u1-windows-portable.yml` reuses the inherited build/dependency scripts with portable-only enabled, skips NSIS, and packages `Ultimate-U1-Slicer-Windows-x64-portable.zip`. Extract into a writable folder, keep `ultimate_u1_data_dir` beside `orca-slicer.exe`, and launch that executable; no installer is needed. Do not rename the data folder to upstream `data_dir`.
+
+The verification job extracts a private copy on a clean native Windows runner, checks executable help, starts only the local MCP endpoint, confirms a bearer token is required and initialization identifies Ultimate U1, and proves discovery/settings are created beside the executable without a roaming UltimateU1Slicer directory. It does not contact a printer. The tested extraction and generated credentials are removed; the published archive remains the clean build payload plus a portable marker. SHA256SUMS and verification.json accompany the verified artifact.
+
+Pushes build artifacts. For an experimental prerelease, explicitly dispatch `gh workflow run u1-windows-portable.yml --repo zhavir/ultimate-u1-slicer --ref main -f publish=true`; publication depends on successful native verification. Check the exact run/commit with gh and link its artifacts/release. No stable release claim follows from portable startup verification. Native slicing, project migration and hardware remain their own gates.

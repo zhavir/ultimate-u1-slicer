@@ -1,0 +1,7 @@
+{
+  "repository": "zhavir/ultimate-u1-slicer",
+  "notification_assignee": "zhavir",
+  "default_branch": "main",
+  "release_status": "experimental",
+  "upstream_policy": "notify-and-review; no automatic source merges"
+}

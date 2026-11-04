@@ -1,0 +1,1077 @@
+{
+  "schema": 1,
+  "sources": {
+    "snapmaker": {
+      "repository": "Snapmaker/OrcaSlicer",
+      "branch": "main",
+      "head": "f5fd7289ea067997181ee6c2cf15a98f58faba43",
+      "releases": {
+        "425155272": {
+          "tag": "v2.4.1",
+          "updated_at": "2026-10-28T03:07:37Z",
+          "url": "https://github.com/Snapmaker/OrcaSlicer/releases/tag/v2.4.1",
+          "prerelease": false
+        },
+        "421547161": {
+          "tag": "v2.4.1-beta",
+          "updated_at": "2026-10-23T08:12:17Z",
+          "url": "https://github.com/Snapmaker/OrcaSlicer/releases/tag/v2.4.1-beta",
+          "prerelease": true
+        },
+        "413479952": {
+          "tag": "v2.4.1-alpha",
+          "updated_at": "2026-10-16T14:18:09Z",
+          "url": "https://github.com/Snapmaker/OrcaSlicer/releases/tag/v2.4.1-alpha",
+          "prerelease": true
+        },
+        "392414664": {
+          "tag": "v2.4.0",
+          "updated_at": "2026-09-21T03:05:59Z",
+          "url": "https://github.com/Snapmaker/OrcaSlicer/releases/tag/v2.4.0",
+          "prerelease": false
+        },
+        "390566846": {
+          "tag": "v2.4.0-beta",
+          "updated_at": "2026-09-17T10:14:33Z",
+          "url": "https://github.com/Snapmaker/OrcaSlicer/releases/tag/v2.4.0-beta",
+          "prerelease": true
+        },
+        "386086445": {
+          "tag": "v2.4.0-alpha",
+          "updated_at": "2026-09-10T10:04:44Z",
+          "url": "https://github.com/Snapmaker/OrcaSlicer/releases/tag/v2.4.0-alpha",
+          "prerelease": true
+        },
+        "378418841": {
+          "tag": "V2.3.6",
+          "updated_at": "2026-08-31T04:19:06Z",
+          "url": "https://github.com/Snapmaker/OrcaSlicer/releases/tag/V2.3.6",
+          "prerelease": false
+        },
+        "337172986": {
+          "tag": "v2.3.6",
+          "updated_at": "2026-08-26T11:30:46Z",
+          "url": "https://github.com/Snapmaker/OrcaSlicer/releases/tag/v2.3.6",
+          "prerelease": true
+        },
+        "350107630": {
+          "tag": "v2.3.5",
+          "updated_at": "2026-07-15T03:28:44Z",
+          "url": "https://github.com/Snapmaker/OrcaSlicer/releases/tag/v2.3.5",
+          "prerelease": false
+        },
+        "337174715": {
+          "tag": "v2.3.4",
+          "updated_at": "2026-07-01T08:57:09Z",
+          "url": "https://github.com/Snapmaker/OrcaSlicer/releases/tag/v2.3.4",
+          "prerelease": false
+        },
+        "332269910": {
+          "tag": "v2.3.3",
+          "updated_at": "2026-06-01T11:41:26Z",
+          "url": "https://github.com/Snapmaker/OrcaSlicer/releases/tag/v2.3.3",
+          "prerelease": false
+        },
+        "308624883": {
+          "tag": "v2.3.1",
+          "updated_at": "2026-05-17T06:58:32Z",
+          "url": "https://github.com/Snapmaker/OrcaSlicer/releases/tag/v2.3.1",
+          "prerelease": false
+        },
+        "300527796": {
+          "tag": "v2.3.0",
+          "updated_at": "2026-03-24T12:34:30Z",
+          "url": "https://github.com/Snapmaker/OrcaSlicer/releases/tag/v2.3.0",
+          "prerelease": false
+        },
+        "284348986": {
+          "tag": "v2.2.4",
+          "updated_at": "2026-02-10T05:48:31Z",
+          "url": "https://github.com/Snapmaker/OrcaSlicer/releases/tag/v2.2.4",
+          "prerelease": false
+        },
+        "280998013": {
+          "tag": "v2.2.3",
+          "updated_at": "2026-01-29T14:33:56Z",
+          "url": "https://github.com/Snapmaker/OrcaSlicer/releases/tag/v2.2.3",
+          "prerelease": true
+        },
+        "273326305": {
+          "tag": "v2.2.1",
+          "updated_at": "2025-12-31T03:02:43Z",
+          "url": "https://github.com/Snapmaker/OrcaSlicer/releases/tag/v2.2.1",
+          "prerelease": false
+        },
+        "270348444": {
+          "tag": "v2.1.5",
+          "updated_at": "2025-12-16T11:00:22Z",
+          "url": "https://github.com/Snapmaker/OrcaSlicer/releases/tag/v2.1.5",
+          "prerelease": false
+        },
+        "263578804": {
+          "tag": "v2.1.2",
+          "updated_at": "2025-11-24T06:00:44Z",
+          "url": "https://github.com/Snapmaker/OrcaSlicer/releases/tag/v2.1.2",
+          "prerelease": false
+        },
+        "258407194": {
+          "tag": "v2.1.1",
+          "updated_at": "2025-11-06T10:02:45Z",
+          "url": "https://github.com/Snapmaker/OrcaSlicer/releases/tag/v2.1.1",
+          "prerelease": false
+        },
+        "249879054": {
+          "tag": "v2.1.0",
+          "updated_at": "2025-09-25T06:35:38Z",
+          "url": "https://github.com/Snapmaker/OrcaSlicer/releases/tag/v2.1.0",
+          "prerelease": true
+        },
+        "221992467": {
+          "tag": "v1.2.2",
+          "updated_at": "2025-06-20T11:20:30Z",
+          "url": "https://github.com/Snapmaker/OrcaSlicer/releases/tag/v1.2.2",
+          "prerelease": true
+        },
+        "207068260": {
+          "tag": "v1.2.1",
+          "updated_at": "2025-04-14T10:01:10Z",
+          "url": "https://github.com/Snapmaker/OrcaSlicer/releases/tag/v1.2.1",
+          "prerelease": false
+        },
+        "203256068": {
+          "tag": "v1.2.0",
+          "updated_at": "2025-03-14T02:07:18Z",
+          "url": "https://github.com/Snapmaker/OrcaSlicer/releases/tag/v1.2.0",
+          "prerelease": true
+        },
+        "187192356": {
+          "tag": "v1.1.0",
+          "updated_at": "2025-01-21T06:19:12Z",
+          "url": "https://github.com/Snapmaker/OrcaSlicer/releases/tag/v1.1.0",
+          "prerelease": false
+        },
+        "184112787": {
+          "tag": "v1.0.1-Beta",
+          "updated_at": "2024-11-25T09:26:26Z",
+          "url": "https://github.com/Snapmaker/OrcaSlicer/releases/tag/v1.0.1-Beta",
+          "prerelease": false
+        },
+        "184075012": {
+          "tag": "v1.0.0-Beta",
+          "updated_at": "2024-11-26T07:31:12Z",
+          "url": "https://github.com/Snapmaker/OrcaSlicer/releases/tag/v1.0.0-Beta",
+          "prerelease": false
+        },
+        "185850609": {
+          "tag": "v1.0.2",
+          "updated_at": "2024-11-21T04:28:38Z",
+          "url": "https://github.com/Snapmaker/OrcaSlicer/releases/tag/v1.0.2",
+          "prerelease": true
+        },
+        "182373577": {
+          "tag": "v0.4.0",
+          "updated_at": "2024-10-29T02:15:11Z",
+          "url": "https://github.com/Snapmaker/OrcaSlicer/releases/tag/v0.4.0",
+          "prerelease": false
+        },
+        "181232895": {
+          "tag": "v0.3.1",
+          "updated_at": "2024-10-23T09:22:13Z",
+          "url": "https://github.com/Snapmaker/OrcaSlicer/releases/tag/v0.3.1",
+          "prerelease": false
+        },
+        "180965729": {
+          "tag": "v0.3.0",
+          "updated_at": "2024-10-21T11:52:57Z",
+          "url": "https://github.com/Snapmaker/OrcaSlicer/releases/tag/v0.3.0",
+          "prerelease": false
+        }
+      },
+      "tags": {
+        "v2.4.1": "bac6fd5c1e1c23ddf057cf6471ba4ed7ed621c4c",
+        "v2.4.1-beta": "1723314b022fba7fa24b81a83d93a76a9443d686",
+        "v2.4.1-alpha": "2ec75e838f638e9ca17ee8d63fc2d5cd72e055f8",
+        "v2.4.0": "b1831e5dcb464172de33783142425aafda834fbc",
+        "v2.4.0-beta": "b1831e5dcb464172de33783142425aafda834fbc",
+        "v2.4.0-alpha": "ded5297bc7349d6a398a06943ee3bc5dfab52ae3",
+        "v2.3.6": "5417538a1c47d64d57b0401c095f40d1bcd7c9da",
+        "v2.3.5": "761718a5eaf6f52b818af236653f3807d091a613",
+        "v2.3.4": "9fd12ffb2b1b80c9fb4c14564754d2ec1573a626",
+        "v2.3.3": "9921461fc99745ac22ef331c7720383aabc04987",
+        "v2.3.1": "e5696f222b3eb0e01283cb53c99756ae5b94536a",
+        "v2.3.0": "0542a77cc97c2c84ae2b29bb11ac23fbbe82e009",
+        "v2.2.4": "706508c79218f3ef4d61cde9573b274aba654409",
+        "v2.2.3": "a42d9162abc66502f8b3be64234ee16f1dffd8be",
+        "v2.2.1": "85859e7c1298bf9e2e1c7f2ad1ed3a6d76e45d62",
+        "v2.1.5": "3434f9d8dd390a82a333dac328e29a3a1e678f9e",
+        "v2.1.2": "e51d4ad563f4335027939019f56c384c60ae6440",
+        "v2.1.1": "12f5bb7a2993e73489e9f29df74a87c18f78d689",
+        "v2.1.0": "6cc4932b69bcf6cf80083e61c1c58e3b1dc2baa4",
+        "v1.2.2": "8b387dd5b59fbfff41c797143c146d133d38aba1",
+        "v1.2.1": "8f6d933ead1ab3d9fdd695f4f6fa1905c4476e66",
+        "v1.2.0": "f351073cb8efede7ba16b925a7893b93b4be0aa4",
+        "v1.1.0": "12537e8030271b711ed83fff086142d79e868cc7",
+        "v1.1.0-test": "896a34baeb4fc93df6119f83fdbe37aaa4bca359",
+        "v1.0.2": "a1844037458db9793482614e682e944a7d081adc",
+        "v1.0.1": "fcd1f09bbd9801c6cc31f08a315b05f548e48596",
+        "v1.0.1-Beta": "896a34baeb4fc93df6119f83fdbe37aaa4bca359",
+        "v1.0.0": "8de2388ca0413e73b81d27829813b0478c3273d0",
+        "v1.0.0-Beta": "88f07b91dd597e6444ccb46e87ae13751fae6d3c",
+        "v0.4.0": "0e4bcc1f5dabfd87a6d0af81dd87a1480121ff72"
+      }
+    },
+    "forca": {
+      "repository": "jiyang1018/FOrcaSlicer",
+      "branch": "main",
+      "head": "0b1f80cd22793785d8ae5c4296d2fe4a9248bd21",
+      "releases": {
+        "415196433": {
+          "tag": "v2.3.2-fos.8.6.8",
+          "updated_at": "2026-10-16T17:53:36Z",
+          "url": "https://github.com/jiyang1018/FOrcaSlicer/releases/tag/v2.3.2-fos.8.6.8",
+          "prerelease": false
+        },
+        "398824726": {
+          "tag": "v2.3.2-fos.8.6.7",
+          "updated_at": "2026-10-16T17:53:22Z",
+          "url": "https://github.com/jiyang1018/FOrcaSlicer/releases/tag/v2.3.2-fos.8.6.7",
+          "prerelease": false
+        },
+        "395311539": {
+          "tag": "v2.3.2-fos.8.6.6",
+          "updated_at": "2026-09-24T04:12:05Z",
+          "url": "https://github.com/jiyang1018/FOrcaSlicer/releases/tag/v2.3.2-fos.8.6.6",
+          "prerelease": false
+        },
+        "382592172": {
+          "tag": "v2.3.2-fos.8.6.4",
+          "updated_at": "2026-09-10T20:52:19Z",
+          "url": "https://github.com/jiyang1018/FOrcaSlicer/releases/tag/v2.3.2-fos.8.6.4",
+          "prerelease": false
+        },
+        "381670261": {
+          "tag": "v2.3.2-fos.8.6.3",
+          "updated_at": "2026-09-10T20:52:07Z",
+          "url": "https://github.com/jiyang1018/FOrcaSlicer/releases/tag/v2.3.2-fos.8.6.3",
+          "prerelease": false
+        },
+        "386757498": {
+          "tag": "v2.3.2-fos.8.6.5",
+          "updated_at": "2026-09-11T03:04:32Z",
+          "url": "https://github.com/jiyang1018/FOrcaSlicer/releases/tag/v2.3.2-fos.8.6.5",
+          "prerelease": false
+        },
+        "380976507": {
+          "tag": "v2.3.2-fos.8.6.2",
+          "updated_at": "2026-09-10T20:51:49Z",
+          "url": "https://github.com/jiyang1018/FOrcaSlicer/releases/tag/v2.3.2-fos.8.6.2",
+          "prerelease": false
+        },
+        "380882191": {
+          "tag": "v2.3.2-fos.8.6.1",
+          "updated_at": "2026-09-10T20:51:32Z",
+          "url": "https://github.com/jiyang1018/FOrcaSlicer/releases/tag/v2.3.2-fos.8.6.1",
+          "prerelease": true
+        },
+        "376676385": {
+          "tag": "v2.3.2-fos.8.6.0",
+          "updated_at": "2026-09-10T20:42:53Z",
+          "url": "https://github.com/jiyang1018/FOrcaSlicer/releases/tag/v2.3.2-fos.8.6.0",
+          "prerelease": false
+        },
+        "370270985": {
+          "tag": "v2.3.2-fos.8.5.7-beta.2",
+          "updated_at": "2026-09-10T20:42:29Z",
+          "url": "https://github.com/jiyang1018/FOrcaSlicer/releases/tag/v2.3.2-fos.8.5.7-beta.2",
+          "prerelease": true
+        },
+        "362200936": {
+          "tag": "v2.3.2-fos.8.5.7-beta.1",
+          "updated_at": "2026-09-10T20:42:06Z",
+          "url": "https://github.com/jiyang1018/FOrcaSlicer/releases/tag/v2.3.2-fos.8.5.7-beta.1",
+          "prerelease": true
+        },
+        "360838035": {
+          "tag": "v2.3.2-fos.8.5.6",
+          "updated_at": "2026-09-10T20:41:50Z",
+          "url": "https://github.com/jiyang1018/FOrcaSlicer/releases/tag/v2.3.2-fos.8.5.6",
+          "prerelease": false
+        },
+        "358455449": {
+          "tag": "v2.3.2-fos.8.5.5",
+          "updated_at": "2026-09-10T20:41:26Z",
+          "url": "https://github.com/jiyang1018/FOrcaSlicer/releases/tag/v2.3.2-fos.8.5.5",
+          "prerelease": false
+        },
+        "357647468": {
+          "tag": "v2.3.2-fos.8.5.4",
+          "updated_at": "2026-09-10T20:41:07Z",
+          "url": "https://github.com/jiyang1018/FOrcaSlicer/releases/tag/v2.3.2-fos.8.5.4",
+          "prerelease": false
+        },
+        "356814297": {
+          "tag": "v2.3.2-fos.8.5.3",
+          "updated_at": "2026-09-10T17:33:09Z",
+          "url": "https://github.com/jiyang1018/FOrcaSlicer/releases/tag/v2.3.2-fos.8.5.3",
+          "prerelease": false
+        },
+        "356368649": {
+          "tag": "v2.3.2-fos.8.5.2",
+          "updated_at": "2026-09-10T17:32:34Z",
+          "url": "https://github.com/jiyang1018/FOrcaSlicer/releases/tag/v2.3.2-fos.8.5.2",
+          "prerelease": false
+        },
+        "355781025": {
+          "tag": "v2.3.2-fos.8.5.1",
+          "updated_at": "2026-09-10T17:32:12Z",
+          "url": "https://github.com/jiyang1018/FOrcaSlicer/releases/tag/v2.3.2-fos.8.5.1",
+          "prerelease": false
+        },
+        "354175758": {
+          "tag": "v2.3.2-fos.8.5",
+          "updated_at": "2026-09-10T17:30:20Z",
+          "url": "https://github.com/jiyang1018/FOrcaSlicer/releases/tag/v2.3.2-fos.8.5",
+          "prerelease": false
+        },
+        "353978172": {
+          "tag": "v2.3.2-fos.8.4",
+          "updated_at": "2026-09-10T17:29:51Z",
+          "url": "https://github.com/jiyang1018/FOrcaSlicer/releases/tag/v2.3.2-fos.8.4",
+          "prerelease": false
+        },
+        "353421718": {
+          "tag": "v2.3.2-fos.8.3",
+          "updated_at": "2026-09-10T17:29:38Z",
+          "url": "https://github.com/jiyang1018/FOrcaSlicer/releases/tag/v2.3.2-fos.8.3",
+          "prerelease": false
+        },
+        "352778886": {
+          "tag": "v2.3.2-fos.8.2",
+          "updated_at": "2026-09-10T17:28:42Z",
+          "url": "https://github.com/jiyang1018/FOrcaSlicer/releases/tag/v2.3.2-fos.8.2",
+          "prerelease": false
+        },
+        "336278254": {
+          "tag": "v2.3.2-fos.8.1",
+          "updated_at": "2026-09-10T17:28:28Z",
+          "url": "https://github.com/jiyang1018/FOrcaSlicer/releases/tag/v2.3.2-fos.8.1",
+          "prerelease": false
+        },
+        "335548207": {
+          "tag": "v2.3.2-fos.8",
+          "updated_at": "2026-09-10T17:28:07Z",
+          "url": "https://github.com/jiyang1018/FOrcaSlicer/releases/tag/v2.3.2-fos.8",
+          "prerelease": false
+        },
+        "335257350": {
+          "tag": "v2.3.2-fos.7",
+          "updated_at": "2026-09-10T17:22:35Z",
+          "url": "https://github.com/jiyang1018/FOrcaSlicer/releases/tag/v2.3.2-fos.7",
+          "prerelease": false
+        },
+        "334684671": {
+          "tag": "v2.3.2-fos.6",
+          "updated_at": "2026-09-10T17:22:10Z",
+          "url": "https://github.com/jiyang1018/FOrcaSlicer/releases/tag/v2.3.2-fos.6",
+          "prerelease": false
+        },
+        "334176434": {
+          "tag": "v2.3.2-fos.5",
+          "updated_at": "2026-09-10T17:21:37Z",
+          "url": "https://github.com/jiyang1018/FOrcaSlicer/releases/tag/v2.3.2-fos.5",
+          "prerelease": false
+        },
+        "334064782": {
+          "tag": "v2.3.2-fos.4",
+          "updated_at": "2026-09-10T17:21:15Z",
+          "url": "https://github.com/jiyang1018/FOrcaSlicer/releases/tag/v2.3.2-fos.4",
+          "prerelease": false
+        },
+        "332902020": {
+          "tag": "v2.3.2-fos.3",
+          "updated_at": "2026-09-10T17:20:57Z",
+          "url": "https://github.com/jiyang1018/FOrcaSlicer/releases/tag/v2.3.2-fos.3",
+          "prerelease": false
+        },
+        "332823062": {
+          "tag": "v2.3.2-fos.2",
+          "updated_at": "2026-09-10T17:13:50Z",
+          "url": "https://github.com/jiyang1018/FOrcaSlicer/releases/tag/v2.3.2-fos.2",
+          "prerelease": false
+        },
+        "332679718": {
+          "tag": "v2.3.2-fos.1",
+          "updated_at": "2026-09-10T17:20:31Z",
+          "url": "https://github.com/jiyang1018/FOrcaSlicer/releases/tag/v2.3.2-fos.1",
+          "prerelease": false
+        }
+      },
+      "tags": {
+        "v2.3.2-fos.8.6.8": "0b1f80cd22793785d8ae5c4296d2fe4a9248bd21",
+        "v2.3.2-fos.8.6.7": "385d02ff4278c66f4e69617ecb1762f3d2907b3c",
+        "v2.3.2-fos.8.6.6": "05a121c5d88ca563fa1d743340dfdc53b87b182f",
+        "v2.3.2-fos.8.6.5": "8e8c67f621a2719afb8b4632683a071b71880e6b",
+        "v2.3.2-fos.8.6.4": "a4eb989562b8d4cdf6dc27f162c38f05c56970f0",
+        "v2.3.2-fos.8.6.3": "4e3e46f44fda9f9b4dbe5288525054890c98dbd1",
+        "v2.3.2-fos.8.6.2": "8e8c67f621a2719afb8b4632683a071b71880e6b",
+        "v2.3.2-fos.8.6.1": "f0fde5179e6c19e74a1e21038557c32782814067",
+        "v2.3.2-fos.8.6.0": "c78d173427eb0127fd5ceac236fab6af44ede9eb",
+        "v2.3.2-fos.8.5.7-beta.2": "eacc7e7ff7fcaa428803246e7009950089021787",
+        "v2.3.2-fos.8.5.7-beta.1": "7dd94ad4b143d67efdafc6f709e2ded07e6bdb8b",
+        "v2.3.2-fos.8.5.6": "ab9547da7b5f4ee9bf0ae2a4df9c5cf8622d0b60",
+        "v2.3.2-fos.8.5.5": "603f493f1c44bf85890bfd45cd27a4f756e994a9",
+        "v2.3.2-fos.8.5.4": "4155dba333c4ac198209a6ac684c5f3e061285a6",
+        "v2.3.2-fos.8.5.3": "7998ff809b1171b9dfe1e865cd135d04805a1efa",
+        "v2.3.2-fos.8.5.2": "82878ee35844befd062df77581ac9557d8cae17b",
+        "v2.3.2-fos.8.5.1": "ebc2589bd83a5cfd27374e0c5b5a358587176756",
+        "v2.3.2-fos.8.5": "6a335b2912c39abd558424d494944ee8b4c22583",
+        "v2.3.2-fos.8.4": "6026a48f5241cc98502733edce2668f40f4f1b77",
+        "v2.3.2-fos.8.3": "387b0b5eb7b7f2e13a3a81ab6f6ec04411339696",
+        "v2.3.2-fos.8.2": "39551f6baad380a786c239d1e2c161d771791d52",
+        "v2.3.2-fos.8.1": "7f2a3dd07f8ce0d5f416039dbcfe18df16699893",
+        "v2.3.2-fos.8": "aed090da06bb3cd652c1ff8aa74b82e8bb79cd06",
+        "v2.3.2-fos.7": "d64fa4e151007d647c5305fe2c9555a53c0e7aa5",
+        "v2.3.2-fos.6": "a1a43086b5361cc408605e034bc917c70e17db2a",
+        "v2.3.2-fos.5": "5bd9bae834a6837bef69943f4c81be26f0a6ac1e",
+        "v2.3.2-fos.4": "bcd89631cd5f8e016d27e42e8615f6d2aced79c9",
+        "v2.3.2-fos.3": "9b677f85eef9bcae6cb0b30d3cb0011db2b5a065",
+        "v2.3.2-fos.2": "b16f8225ad58eead9c81cb9d671ed144ef87f989",
+        "v2.3.2-fos.1": "5f4d17b062e2c33b8b8c766f88b7a9a7c3aa6332"
+      }
+    },
+    "orca": {
+      "repository": "OrcaSlicer/OrcaSlicer",
+      "branch": "main",
+      "head": "1a61ffd32ed215eb724ae706a20c9b139754b48e",
+      "releases": {
+        "137995723": {
+          "tag": "nightly-builds",
+          "updated_at": "2026-11-04T21:12:46Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/nightly-builds",
+          "prerelease": true
+        },
+        "430386734": {
+          "tag": "v2.5.0-rc",
+          "updated_at": "2026-11-01T10:36:26Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.5.0-rc",
+          "prerelease": true
+        },
+        "424505886": {
+          "tag": "v2.5.0-beta",
+          "updated_at": "2026-10-27T18:59:56Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.5.0-beta",
+          "prerelease": true
+        },
+        "410256856": {
+          "tag": "v2.5.0-alpha",
+          "updated_at": "2026-10-16T14:28:11Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.5.0-alpha",
+          "prerelease": true
+        },
+        "349166280": {
+          "tag": "v2.4.2",
+          "updated_at": "2026-07-07T03:33:49Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.4.2",
+          "prerelease": false
+        },
+        "345092924": {
+          "tag": "v2.4.1",
+          "updated_at": "2026-06-28T15:26:25Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.4.1",
+          "prerelease": false
+        },
+        "341368665": {
+          "tag": "v2.4.0",
+          "updated_at": "2026-06-20T09:46:59Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.4.0",
+          "prerelease": false
+        },
+        "335636341": {
+          "tag": "v2.4.0-beta",
+          "updated_at": "2026-06-09T06:49:28Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.4.0-beta",
+          "prerelease": true
+        },
+        "328626303": {
+          "tag": "v2.4.0-alpha",
+          "updated_at": "2026-05-25T13:35:55Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.4.0-alpha",
+          "prerelease": true
+        },
+        "300184004": {
+          "tag": "v2.3.2",
+          "updated_at": "2026-03-30T17:32:21Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.3.2",
+          "prerelease": false
+        },
+        "293787278": {
+          "tag": "v2.3.2-rc2",
+          "updated_at": "2026-03-09T03:35:02Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.3.2-rc2",
+          "prerelease": true
+        },
+        "291798009": {
+          "tag": "v2.3.2-rc",
+          "updated_at": "2026-03-01T14:17:33Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.3.2-rc",
+          "prerelease": true
+        },
+        "286544446": {
+          "tag": "v2.3.2-beta2",
+          "updated_at": "2026-02-15T17:54:20Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.3.2-beta2",
+          "prerelease": true
+        },
+        "284876452": {
+          "tag": "v2.3.2-beta",
+          "updated_at": "2026-02-15T02:21:34Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.3.2-beta",
+          "prerelease": true
+        },
+        "250480929": {
+          "tag": "v2.3.1",
+          "updated_at": "2026-03-04T18:46:09Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.3.1",
+          "prerelease": false
+        },
+        "247078348": {
+          "tag": "v2.3.1-beta",
+          "updated_at": "2025-09-27T05:33:39Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.3.1-beta",
+          "prerelease": true
+        },
+        "240455047": {
+          "tag": "v2.3.1-alpha",
+          "updated_at": "2025-08-19T15:36:55Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.3.1-alpha",
+          "prerelease": true
+        },
+        "206259209": {
+          "tag": "v2.3.0",
+          "updated_at": "2025-03-20T14:45:14Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.3.0",
+          "prerelease": false
+        },
+        "204596674": {
+          "tag": "v2.3.0-rc",
+          "updated_at": "2025-03-11T13:06:00Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.3.0-rc",
+          "prerelease": true
+        },
+        "203195792": {
+          "tag": "v2.3.0-beta2",
+          "updated_at": "2025-03-02T07:15:57Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.3.0-beta2",
+          "prerelease": true
+        },
+        "201844732": {
+          "tag": "v2.3.0-beta",
+          "updated_at": "2025-02-22T14:40:45Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.3.0-beta",
+          "prerelease": true
+        },
+        "182233858": {
+          "tag": "v2.2.0",
+          "updated_at": "2026-01-29T14:01:52Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.2.0",
+          "prerelease": false
+        },
+        "179129542": {
+          "tag": "v2.2.0-rc",
+          "updated_at": "2024-10-09T14:53:33Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.2.0-rc",
+          "prerelease": true
+        },
+        "176401926": {
+          "tag": "v2.2.0-beta2",
+          "updated_at": "2024-09-27T12:23:24Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.2.0-beta2",
+          "prerelease": true
+        },
+        "174870264": {
+          "tag": "v2.2.0-beta",
+          "updated_at": "2024-09-14T06:05:40Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.2.0-beta",
+          "prerelease": true
+        },
+        "162558651": {
+          "tag": "v2.1.1",
+          "updated_at": "2024-06-26T16:13:26Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.1.1",
+          "prerelease": false
+        },
+        "161678924": {
+          "tag": "v2.1.0",
+          "updated_at": "2024-06-21T14:55:51Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.1.0",
+          "prerelease": false
+        },
+        "160749180": {
+          "tag": "v2.1.0-rc",
+          "updated_at": "2024-06-17T08:31:38Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.1.0-rc",
+          "prerelease": true
+        },
+        "158200321": {
+          "tag": "v2.1.0-beta",
+          "updated_at": "2024-05-31T12:29:28Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.1.0-beta",
+          "prerelease": true
+        },
+        "149081735": {
+          "tag": "v2.0.0",
+          "updated_at": "2024-03-30T07:33:51Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.0.0",
+          "prerelease": false
+        }
+      },
+      "tags": {
+        "v2.5.0-rc": "af2ffb8cddd2f3c0bdadc56d9cc3945fb23577ea",
+        "v2.5.0-beta": "345efec64c7b95a05ce5cf96df0dde66a158835c",
+        "v2.5.0-alpha": "3880f2c58ec392ed2bd5938ab31c9c7c496c0eb2",
+        "v2.4.2": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+        "v2.4.1": "19db9aa9c3f6720bceaff2d4c9c377362c440f4f",
+        "v2.4.0": "6d9eb1792f50d11ea12d60526b6ace58666354fd",
+        "v2.4.0-beta": "fc9a8aa93f7d341c3028d275781d77d2f385023e",
+        "v2.4.0-alpha": "42cce5399cd9cee7c4b559d6947b0c6bf8455d29",
+        "v2.3.2": "c724a3f5f51c52336624b689e846c8fbc943a912",
+        "v2.3.2-rc2": "618706319093b000896e48cc013ce7da8d4c1f97",
+        "v2.3.2-rc": "ca1f360b83f989b85c18a63230dec6e19e3063db",
+        "v2.3.2-beta2": "7e63fce706a5fabb5763bea804e7e81b71876c0f",
+        "v2.3.2-beta": "cd5c8f2ad07d7d92c2627cd234c71535cb322846",
+        "v2.3.1": "f2d10a0b5760c142e532e09f26fabd485579234c",
+        "v2.3.1-beta": "1e87666487a11de4fe142eaeff88819eff055a8e",
+        "v2.3.1-alpha": "6ae89f7d9b66e915f97d5771d1a718d7848d607f",
+        "v2.3.0": "70931e5321fa66966a5bfb251efca0e82307d427",
+        "v2.3.0-rc": "79a5a9b5f85895ae24fad8b5070c64b495e1f522",
+        "v2.3.0-beta2": "ddf8eca96e5072d7f7f5996cf5fd29c991c6ee92",
+        "v2.3.0-beta": "dc491166a8a8dcf44118431113f20f428c34554f",
+        "v2.2.0": "1088d0a6c713250ee3d14da791e27b76b4339363",
+        "v2.2.0-rc": "fb032cd85f2dc7ffb1b32d478192a63ef53688cf",
+        "v2.2.0-beta2": "17492c1e5b70a3f3ca6e9e85412d08e322a16439",
+        "v2.2.0-beta": "603e3e76b096269fa776550b4846775674e4fdae",
+        "v2.1.1": "a4357d1e95bc603a7bf2d18f14a44e44d1ad4878",
+        "v2.1.0": "5c9b82d6ec3fe974d36dbf15fcdc8f63340b1a0b",
+        "v2.1.0-rc": "df2674e19ded9dec66d33a1fd8aee4db852e2ad5",
+        "v2.1.0-beta": "9b7b11e066196d513225416f171f676c2eb96e2c",
+        "v2.0.0": "a187356b931ce3218cfd84d5bf46797bda6f8660",
+        "v2.0.0-rc": "2841476e8604a6d8118c21a44ccdfe227e72e3bf"
+      }
+    },
+    "extended-firmware": {
+      "repository": "paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware",
+      "branch": "develop",
+      "head": "601e196e63d0be8a379d0ef3e871025e53a0050d",
+      "releases": {
+        "385691310": {
+          "tag": "rolling",
+          "updated_at": "2026-11-04T18:13:38Z",
+          "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/releases/tag/rolling",
+          "prerelease": true
+        },
+        "423456142": {
+          "tag": "v2.0.0-paxx12-24",
+          "updated_at": "2026-10-25T14:47:44Z",
+          "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/releases/tag/v2.0.0-paxx12-24",
+          "prerelease": false
+        },
+        "417094152": {
+          "tag": "v2.0.0-paxx12-23",
+          "updated_at": "2026-10-19T09:24:51Z",
+          "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/releases/tag/v2.0.0-paxx12-23",
+          "prerelease": true
+        },
+        "384282143": {
+          "tag": "v1.6.0-paxx12-22",
+          "updated_at": "2026-09-13T20:24:39Z",
+          "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/releases/tag/v1.6.0-paxx12-22",
+          "prerelease": false
+        },
+        "363730597": {
+          "tag": "v1.5.2-paxx12-21",
+          "updated_at": "2026-09-07T20:09:40Z",
+          "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/releases/tag/v1.5.2-paxx12-21",
+          "prerelease": false
+        },
+        "342972029": {
+          "tag": "v1.4.1-paxx12-20",
+          "updated_at": "2026-06-29T02:40:10Z",
+          "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/releases/tag/v1.4.1-paxx12-20",
+          "prerelease": false
+        },
+        "337976713": {
+          "tag": "v1.4.1-paxx12-19",
+          "updated_at": "2026-06-14T20:24:59Z",
+          "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/releases/tag/v1.4.1-paxx12-19",
+          "prerelease": false
+        },
+        "332957586": {
+          "tag": "v1.4.0-paxx12-18",
+          "updated_at": "2026-06-02T08:47:37Z",
+          "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/releases/tag/v1.4.0-paxx12-18",
+          "prerelease": true
+        },
+        "323849413": {
+          "tag": "v1.3.0-paxx12-17",
+          "updated_at": "2026-05-22T13:08:31Z",
+          "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/releases/tag/v1.3.0-paxx12-17",
+          "prerelease": false
+        },
+        "315162631": {
+          "tag": "v1.3.0-paxx12-16",
+          "updated_at": "2026-05-17T07:26:25Z",
+          "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/releases/tag/v1.3.0-paxx12-16",
+          "prerelease": true
+        },
+        "313557552": {
+          "tag": "v1.3.0-paxx12-15",
+          "updated_at": "2026-04-25T10:20:28Z",
+          "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/releases/tag/v1.3.0-paxx12-15",
+          "prerelease": true
+        },
+        "303407451": {
+          "tag": "v1.2.0-paxx12-14",
+          "updated_at": "2026-04-10T13:20:25Z",
+          "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/releases/tag/v1.2.0-paxx12-14",
+          "prerelease": false
+        },
+        "286412012": {
+          "tag": "v1.1.1-paxx12-13",
+          "updated_at": "2026-02-19T14:29:32Z",
+          "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/releases/tag/v1.1.1-paxx12-13",
+          "prerelease": false
+        },
+        "281778665": {
+          "tag": "v1.1.0-paxx12-12",
+          "updated_at": "2026-02-19T14:29:50Z",
+          "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/releases/tag/v1.1.0-paxx12-12",
+          "prerelease": false
+        },
+        "277309527": {
+          "tag": "v1.0.0-paxx12-11",
+          "updated_at": "2026-02-19T14:29:57Z",
+          "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/releases/tag/v1.0.0-paxx12-11",
+          "prerelease": false
+        },
+        "275424002": {
+          "tag": "v1.0.0-paxx12-10",
+          "updated_at": "2026-01-11T18:39:39Z",
+          "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/releases/tag/v1.0.0-paxx12-10",
+          "prerelease": false
+        },
+        "273179885": {
+          "tag": "v0.9.4-paxx12-2",
+          "updated_at": "2026-01-09T11:35:50Z",
+          "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/releases/tag/v0.9.4-paxx12-2",
+          "prerelease": false
+        },
+        "270666110": {
+          "tag": "v0.9.4-paxx12-1",
+          "updated_at": "2025-12-16T15:15:44Z",
+          "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/releases/tag/v0.9.4-paxx12-1",
+          "prerelease": false
+        },
+        "267534377": {
+          "tag": "v0.9.0-paxx12-7",
+          "updated_at": "2025-12-05T17:17:32Z",
+          "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/releases/tag/v0.9.0-paxx12-7",
+          "prerelease": false
+        },
+        "266122486": {
+          "tag": "v0.9.0-paxx12-6",
+          "updated_at": "2025-12-04T18:04:28Z",
+          "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/releases/tag/v0.9.0-paxx12-6",
+          "prerelease": false
+        },
+        "265975165": {
+          "tag": "v0.9.0-paxx12-5",
+          "updated_at": "2025-11-28T13:07:51Z",
+          "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/releases/tag/v0.9.0-paxx12-5",
+          "prerelease": false
+        },
+        "265590092": {
+          "tag": "v0.9.0-paxx12-4",
+          "updated_at": "2025-11-28T10:46:35Z",
+          "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/releases/tag/v0.9.0-paxx12-4",
+          "prerelease": false
+        }
+      },
+      "tags": {
+        "v2.0.0-paxx12-24": "417e6394f62366e010a3f76f8e567f67db770165",
+        "v2.0.0-paxx12-23": "d28b04ed57b42f6bc911875b12c5ddc5d0979e2e",
+        "v1.6.0-paxx12-22": "b25503a842a413e02ab43678b31df5c48030b2cd",
+        "v1.5.2-paxx12-21": "8d97e83f0329b72c512563a8e98305cfbdef7a18",
+        "v1.4.1-paxx12-20": "4cb3a6da84aaa4e7b4f77e60f1b16a1d47020a99",
+        "v1.4.1-paxx12-19": "f5941719c4597ce592ea72e8e8404799b97a661a",
+        "v1.4.0-paxx12-18": "fb8cea0357d69abe770007c7f37883e860104035",
+        "v1.3.0-paxx12-17": "b9bb5828c39972abfcee556ef008915fd2071706",
+        "v1.3.0-paxx12-16": "0ae3ff3791a0d341a7d013eb707df2c49424b2ac",
+        "v1.3.0-paxx12-15": "c71e869ba576b5385f4a0bcd318b4055530d72fb",
+        "v1.2.0-paxx12-14": "2655795384dff83b6b50bd247446a50ed1136c41",
+        "v1.1.1-paxx12-13": "660cc9c4b25982b1f665c70d9e839ad030ce7a3d",
+        "v1.1.0-paxx12-12": "54cbc68c1a1e88c5052ea3fa4367ed698c50d285",
+        "v1.0.0-paxx12-11": "aa8380edb811d290bfbdec9aceec330383be8c05",
+        "v1.0.0-paxx12-10": "1ceac62d9a0d2d2b84a3a77b37332b8c9dea95d1",
+        "v0.9.4-paxx12-2": "1b6e7f99947903d262e36e7b5ef0c7e7b6d9ecf2",
+        "v0.9.4-paxx12-1": "28b6b6a1c56318cde95021c515b683fd50eb0f41",
+        "v0.9.0-paxx12-7": "0ebc472b736eb84fbbb570577926b1102edcd776",
+        "v0.9.0-paxx12-6": "3c409bf5d6ea67a29a770193bd21089f6d7f82c7",
+        "v0.9.0-paxx12-5": "d36601025e1b191b740e3e75881a4f1618f14bd4",
+        "v0.9.0-paxx12-4": "88af51b21e48c26d76ba7143a7fa60f7b95cf634",
+        "v0.9.0-paxx12-3": "c11f20d4e4000fe06a5ca5de14b7fc28f98582ed",
+        "v0.9.0-paxx12-2": "4f79db105c94a60826adc60ad532c2f9c717f524",
+        "v0.9.0-paxx12-1": "2fdcf5a7b4d543048002fc38060d1ae19b9ddb2f",
+        "rolling": "601e196e63d0be8a379d0ef3e871025e53a0050d"
+      }
+    },
+    "orca-mcp": {
+      "repository": "OrcaSlicer/OrcaSlicer",
+      "branch": "feature/mcp",
+      "head": "17a745e30c248cf3acb4c429b650b22d106fd19a",
+      "releases": {
+        "137995723": {
+          "tag": "nightly-builds",
+          "updated_at": "2026-11-04T21:12:46Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/nightly-builds",
+          "prerelease": true
+        },
+        "430386734": {
+          "tag": "v2.5.0-rc",
+          "updated_at": "2026-11-01T10:36:26Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.5.0-rc",
+          "prerelease": true
+        },
+        "424505886": {
+          "tag": "v2.5.0-beta",
+          "updated_at": "2026-10-27T18:59:56Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.5.0-beta",
+          "prerelease": true
+        },
+        "410256856": {
+          "tag": "v2.5.0-alpha",
+          "updated_at": "2026-10-16T14:28:11Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.5.0-alpha",
+          "prerelease": true
+        },
+        "349166280": {
+          "tag": "v2.4.2",
+          "updated_at": "2026-07-07T03:33:49Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.4.2",
+          "prerelease": false
+        },
+        "345092924": {
+          "tag": "v2.4.1",
+          "updated_at": "2026-06-28T15:26:25Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.4.1",
+          "prerelease": false
+        },
+        "341368665": {
+          "tag": "v2.4.0",
+          "updated_at": "2026-06-20T09:46:59Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.4.0",
+          "prerelease": false
+        },
+        "335636341": {
+          "tag": "v2.4.0-beta",
+          "updated_at": "2026-06-09T06:49:28Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.4.0-beta",
+          "prerelease": true
+        },
+        "328626303": {
+          "tag": "v2.4.0-alpha",
+          "updated_at": "2026-05-25T13:35:55Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.4.0-alpha",
+          "prerelease": true
+        },
+        "300184004": {
+          "tag": "v2.3.2",
+          "updated_at": "2026-03-30T17:32:21Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.3.2",
+          "prerelease": false
+        },
+        "293787278": {
+          "tag": "v2.3.2-rc2",
+          "updated_at": "2026-03-09T03:35:02Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.3.2-rc2",
+          "prerelease": true
+        },
+        "291798009": {
+          "tag": "v2.3.2-rc",
+          "updated_at": "2026-03-01T14:17:33Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.3.2-rc",
+          "prerelease": true
+        },
+        "286544446": {
+          "tag": "v2.3.2-beta2",
+          "updated_at": "2026-02-15T17:54:20Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.3.2-beta2",
+          "prerelease": true
+        },
+        "284876452": {
+          "tag": "v2.3.2-beta",
+          "updated_at": "2026-02-15T02:21:34Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.3.2-beta",
+          "prerelease": true
+        },
+        "250480929": {
+          "tag": "v2.3.1",
+          "updated_at": "2026-03-04T18:46:09Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.3.1",
+          "prerelease": false
+        },
+        "247078348": {
+          "tag": "v2.3.1-beta",
+          "updated_at": "2025-09-27T05:33:39Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.3.1-beta",
+          "prerelease": true
+        },
+        "240455047": {
+          "tag": "v2.3.1-alpha",
+          "updated_at": "2025-08-19T15:36:55Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.3.1-alpha",
+          "prerelease": true
+        },
+        "206259209": {
+          "tag": "v2.3.0",
+          "updated_at": "2025-03-20T14:45:14Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.3.0",
+          "prerelease": false
+        },
+        "204596674": {
+          "tag": "v2.3.0-rc",
+          "updated_at": "2025-03-11T13:06:00Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.3.0-rc",
+          "prerelease": true
+        },
+        "203195792": {
+          "tag": "v2.3.0-beta2",
+          "updated_at": "2025-03-02T07:15:57Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.3.0-beta2",
+          "prerelease": true
+        },
+        "201844732": {
+          "tag": "v2.3.0-beta",
+          "updated_at": "2025-02-22T14:40:45Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.3.0-beta",
+          "prerelease": true
+        },
+        "182233858": {
+          "tag": "v2.2.0",
+          "updated_at": "2026-01-29T14:01:52Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.2.0",
+          "prerelease": false
+        },
+        "179129542": {
+          "tag": "v2.2.0-rc",
+          "updated_at": "2024-10-09T14:53:33Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.2.0-rc",
+          "prerelease": true
+        },
+        "176401926": {
+          "tag": "v2.2.0-beta2",
+          "updated_at": "2024-09-27T12:23:24Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.2.0-beta2",
+          "prerelease": true
+        },
+        "174870264": {
+          "tag": "v2.2.0-beta",
+          "updated_at": "2024-09-14T06:05:40Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.2.0-beta",
+          "prerelease": true
+        },
+        "162558651": {
+          "tag": "v2.1.1",
+          "updated_at": "2024-06-26T16:13:26Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.1.1",
+          "prerelease": false
+        },
+        "161678924": {
+          "tag": "v2.1.0",
+          "updated_at": "2024-06-21T14:55:51Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.1.0",
+          "prerelease": false
+        },
+        "160749180": {
+          "tag": "v2.1.0-rc",
+          "updated_at": "2024-06-17T08:31:38Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.1.0-rc",
+          "prerelease": true
+        },
+        "158200321": {
+          "tag": "v2.1.0-beta",
+          "updated_at": "2024-05-31T12:29:28Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.1.0-beta",
+          "prerelease": true
+        },
+        "149081735": {
+          "tag": "v2.0.0",
+          "updated_at": "2024-03-30T07:33:51Z",
+          "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.0.0",
+          "prerelease": false
+        }
+      },
+      "tags": {
+        "v2.5.0-rc": "af2ffb8cddd2f3c0bdadc56d9cc3945fb23577ea",
+        "v2.5.0-beta": "345efec64c7b95a05ce5cf96df0dde66a158835c",
+        "v2.5.0-alpha": "3880f2c58ec392ed2bd5938ab31c9c7c496c0eb2",
+        "v2.4.2": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+        "v2.4.1": "19db9aa9c3f6720bceaff2d4c9c377362c440f4f",
+        "v2.4.0": "6d9eb1792f50d11ea12d60526b6ace58666354fd",
+        "v2.4.0-beta": "fc9a8aa93f7d341c3028d275781d77d2f385023e",
+        "v2.4.0-alpha": "42cce5399cd9cee7c4b559d6947b0c6bf8455d29",
+        "v2.3.2": "c724a3f5f51c52336624b689e846c8fbc943a912",
+        "v2.3.2-rc2": "618706319093b000896e48cc013ce7da8d4c1f97",
+        "v2.3.2-rc": "ca1f360b83f989b85c18a63230dec6e19e3063db",
+        "v2.3.2-beta2": "7e63fce706a5fabb5763bea804e7e81b71876c0f",
+        "v2.3.2-beta": "cd5c8f2ad07d7d92c2627cd234c71535cb322846",
+        "v2.3.1": "f2d10a0b5760c142e532e09f26fabd485579234c",
+        "v2.3.1-beta": "1e87666487a11de4fe142eaeff88819eff055a8e",
+        "v2.3.1-alpha": "6ae89f7d9b66e915f97d5771d1a718d7848d607f",
+        "v2.3.0": "70931e5321fa66966a5bfb251efca0e82307d427",
+        "v2.3.0-rc": "79a5a9b5f85895ae24fad8b5070c64b495e1f522",
+        "v2.3.0-beta2": "ddf8eca96e5072d7f7f5996cf5fd29c991c6ee92",
+        "v2.3.0-beta": "dc491166a8a8dcf44118431113f20f428c34554f",
+        "v2.2.0": "1088d0a6c713250ee3d14da791e27b76b4339363",
+        "v2.2.0-rc": "fb032cd85f2dc7ffb1b32d478192a63ef53688cf",
+        "v2.2.0-beta2": "17492c1e5b70a3f3ca6e9e85412d08e322a16439",
+        "v2.2.0-beta": "603e3e76b096269fa776550b4846775674e4fdae",
+        "v2.1.1": "a4357d1e95bc603a7bf2d18f14a44e44d1ad4878",
+        "v2.1.0": "5c9b82d6ec3fe974d36dbf15fcdc8f63340b1a0b",
+        "v2.1.0-rc": "df2674e19ded9dec66d33a1fd8aee4db852e2ad5",
+        "v2.1.0-beta": "9b7b11e066196d513225416f171f676c2eb96e2c",
+        "v2.0.0": "a187356b931ce3218cfd84d5bf46797bda6f8660",
+        "v2.0.0-rc": "2841476e8604a6d8118c21a44ccdfe227e72e3bf"
+      }
+    },
+    "snapmaker-profiles": {
+      "repository": "Snapmaker/snapmaker-profiles",
+      "branch": "main",
+      "head": "8f7ca15192d8c14bd6d932ca7171bd5792d5ff29",
+      "releases": {},
+      "tags": {
+        "02.03.06.00": "8f7ca15192d8c14bd6d932ca7171bd5792d5ff29"
+      }
+    },
+    "u1-moonraker": {
+      "repository": "Snapmaker/u1-moonraker",
+      "branch": "main",
+      "head": "ed7b3752a9a938c87ee086f3b7b21a9352a2a0c9",
+      "releases": {},
+      "tags": {}
+    },
+    "u1-klipper": {
+      "repository": "Snapmaker/u1-klipper",
+      "branch": "main",
+      "head": "7ac453b50fe6779b2ec0b759038a17da5e6d671d",
+      "releases": {},
+      "tags": {}
+    },
+    "u1-fluidd": {
+      "repository": "Snapmaker/u1-fluidd",
+      "branch": "main",
+      "head": "727005d55885dedddb67e69cb7881b0a8dfd0544",
+      "releases": {},
+      "tags": {}
+    }
+  }
+}
