@@ -2,6 +2,8 @@
 
 Current milestone: experimental source integration and component validation. No stable or production release exists.
 
+Feature scope is the whole application: every U1-compatible beneficial Orca/FOrca feature is in scope, including engine, modeling/painting, calibration, project workflows, UI, diagnostics, connectivity and native MCP. See architecture/u1-feature-backlog.md. FOrca is already a tracked upstream; unchanged branch metadata is not a full-integration claim.
+
 ## Completed investigation and initial implementation
 
 - Cloned and inspected three distinct slicer sources, verified SnOrca alias, recorded full pins/branches/release and issue samples, computed common ancestry and source diffs.

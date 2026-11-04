@@ -1,0 +1,38 @@
+# Whole-application U1 feature integration
+
+The scope is the complete slicer. Preserve and integrate every compatible Orca/FOrca capability that benefits U1: slicing algorithms, process controls, modeling/painting, calibration, project formats, UI, diagnostics, connectivity and native AI automation. Profiles are one subsystem. Reuse the full official implementation already in this application; do not rewrite a feature merely because a fork uses different names.
+
+Sources: [official Orca](https://github.com/OrcaSlicer/OrcaSlicer), [Snapmaker Orca / SnOrca](https://github.com/Snapmaker/OrcaSlicer), and [FOrcaSlicer](https://github.com/jiyang1018/FOrcaSlicer). FOrca is the `forca` remote and a watched `main` branch in `tools/u1/sources.lock.json`. Its unchanged branch does not imply its fork-specific features have all been integrated. Pins record audited source snapshots, not blanket feature-parity claims.
+
+## Source-backed inventory
+
+These implementation locations were inspected in the selected full Orca base. “Implemented but untested” here means source exists; it does not imply all U1 presets, GUI paths or physical behavior have passed. Use the narrower executed evidence in feature-matrix.md and docs/testing/.
+
+| Capability | Implementation retained in this application | Current U1 evidence or gap |
+|---|---|---|
+| Four-tool and mixed-nozzle slicing | `src/libslic3r/Print.cpp`, `PrintConfig.cpp`, `PrintRegion.cpp`, `GCode.cpp` | Synthetic one/four-tool and 0.4/0.6 mm path widths verified; vendor project migration remains incompatible |
+| Independent wall/infill/surface tool assignments | `PrintConfig.cpp` defines outer_wall_filament_id, inner_wall_filament_id, sparse_infill_filament_id, internal_solid_filament_id, top_surface_filament_id and bottom_surface_filament_id; `PrintRegion.cpp` resolves roles; `GUI/Plater.cpp` registers role selectors and `GUI/ConfigManipulation.cpp` controls their availability | Implemented but untested as a complete U1 role-assignment workflow; inherited `test_multifilament.cpp` covers these behaviors |
+| Per-object/part overrides and multimaterial painting | `Model.cpp`, `MultiMaterialSegmentation.cpp`, `GUI/Gizmos/GLGizmoPainterBase.cpp` | Implemented but untested across imported U1 projects and FOrca metadata |
+| Arachne walls and thin-feature generation | `src/libslic3r/Arachne/WallToolPaths.cpp` | Implemented but untested for complete U1-specific nozzle/material combinations; inherited perimeter tests retained |
+| Precise seams/scarf seams | `GCode/SeamPlacer.cpp`, `GCode/PreciseSeam.cpp`, `PrintConfig.cpp` and scarf emission in `GCode.cpp` | Implemented but untested for U1 output parity; preserve seam/perimeter regression coverage |
+| Adaptive layers and advanced infill | `SlicingAdaptive.cpp`, `Fill/FillAdaptive.cpp`, `Fill/FillGyroid.cpp`, `Fill/FillLightning.cpp` | Implemented but untested as a complete U1 workflow; slicing/flow tests retained |
+| Normal/tree supports and support painting | `Support/TreeSupport.cpp`, `Support/SupportCommon.cpp`, `GUI/Gizmos/GLGizmoFdmSupports.cpp` | Implemented but untested; Snapmaker automatic expansion -1 has different semantics and is a known import blocker |
+| Ironing, fuzzy skin and surface processing | `PrintConfig.cpp`, `Feature/FuzzySkin/FuzzySkin.cpp`, `GUI/Gizmos/GLGizmoFuzzySkin.cpp` | Implemented but untested for U1 calibration; not profile-only features |
+| Bridges, overhangs, cooling and pressure advance | `BridgeDetector.cpp`, G-code cooling/FanMover/pressure-advance paths and their inherited tests | Implemented but untested against actual U1 firmware commands and tool-specific thermal behavior |
+| Calibration workflows | `GUI/Calibration.cpp`, `CalibrationPanel.cpp`, `ExtrusionCalibration.cpp` | Implemented but untested for U1-safe emitted G-code; retain generic calibration, adapt printer-specific commands before promotion |
+| Arrangement, plates, STL/STEP/3MF workflows | `Arrange.cpp`, `ModelArrange.cpp`, `GUI/Jobs/ArrangeJob.cpp`, `Format/STEP.cpp`, `Format/bbs_3mf.cpp` | Implemented but untested comprehensively; own-profile cube export passes, original Snapmaker 3MF validation fails |
+| Native MCP and extensible UI/CAD workflows | `GUI/Mcp/`, `GUI/CAD/` | Native inspection/planning/STL slicing verified in isolated Linux GUI; file/settings/printer authorization adapters remain incomplete |
+| Mixed-filament/full-spectrum processing | Existing mixed-filament config, tool-ordering and slicing implementations; `test_mixed_filament.cpp` | Implemented but untested as a U1 workflow; distinct from FOrca Color Patch shell/core semantics |
+| FOrca per-nozzle width/speed arrays | Audited FOrca `PrintConfig.cpp` fos_nozzle_* definitions and downstream PrintObject/GCode consumers | Partially implemented: generic percentage widths are verified; FOrca arrays, full migration and assignment UI not ported |
+| FOrca Color Patch, mapping and MultiACE integration | Audited FOrca color_patch_enabled/color_patch_loops definitions, slicing and connectivity paths | Missing full integration; inspect implementation and material/firmware prerequisites; do not equate this with ordinary painting or mixed-layer color |
+
+## Integration order and acceptance
+
+1. Preserve reliable U1 project loading and four-head G-code. Port Snapmaker's automatic support semantics with reference geometry and configuration migration; never silently clamp -1. Preserve current connectivity while implementing current gateway/pairing/feeding parity.
+2. Exercise retained upstream role assignment, supports, modifiers, seams, infill, calibration and multimaterial regressions through the actual engine and U1 fixtures. Add new tests only for untested U1 invariants, rather than copying tests already upstream. The full inherited FFF suite is being built/executed in addition to the focused U1 fixture.
+3. Map FOrca feature settings to native equivalents where semantics match. Port coupled schema/geometry/G-code/UI changes where they do not. Preserve per-head widths, speeds, material assignments, nozzle verification and project round trips together. Keep original attribution and reference-output comparisons.
+4. Integrate Color Patch and MultiACE only with explicit geometry/material/firmware capability contracts, offline regressions and supervised hardware gates. Keep generic Moonraker separate from Snapmaker APIs.
+5. Expand native MCP to the retained application features using typed handlers, authorized file roots and operator-bound approvals. Do not bypass the restricted catalog through generic UI clicks, scripts or macros.
+6. For every upstream release/feature/fix, classify the whole repository diff and record Adopt / Already present / Needs adapter / Deferred / Incompatible / Unknown with source/test evidence. Unknown is not Missing. Preserve useful unrelated-printer functionality when it does not compromise U1.
+
+The scheduled watcher reports branch/release/tag changes for all sources, with full-slicer subsystem summaries for unseen branch events. It does not automatically integrate code. A source-present feature becomes “verified” only for the actual tests that pass; hardware compatibility remains provisional until physical printing tests.

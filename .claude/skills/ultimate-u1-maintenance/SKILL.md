@@ -9,6 +9,8 @@ Read root `AGENTS.md`, then the references for the current task. The authoritati
 
 ## Source and architecture
 
+The default scope is every compatible U1-beneficial feature in the complete Orca and FOrca applications, not profile synchronization alone. Read `docs/architecture/u1-feature-backlog.md` for retained implementations, source-backed evidence and the remaining migration order. Audited source pins do not imply every feature at that revision has been ported or tested.
+
 `tools/u1/sources.lock.json` owns reviewed source revisions. The experimental base is official Orca's native MCP branch, with a small U1 patch queue; retain its server, GUI and existing CMake/dependency scripts. SnOrca is the verified nickname for Snapmaker Orca, not a separate source. Read `docs/architecture/architecture-decision.md`, `repository-audit.md` and `feature-matrix.md` before changing the base or claiming parity. Inspect implementation and tests, not just READMEs or version numbers.
 
 The original local checkout is a linked worktree backed by neighboring `ultimate-u1-audit/orca/.git`; do not delete that store. GitHub checkouts are standalone. `origin` is this project's writable remote; `orca-upstream`, `snapmaker`, `forca` and the firmware/profile remotes are source references. Preserve AGPL notices and attribution. The separate Snapmaker profile repository has unresolved redistribution licensing: local review does not authorize shipping it.
