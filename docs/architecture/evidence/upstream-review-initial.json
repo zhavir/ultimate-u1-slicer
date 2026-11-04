@@ -1,0 +1,150 @@
+{
+  "source_integration_performed": false,
+  "application_tests_run": false,
+  "sources": {
+    "snapmaker": {
+      "baseline": "f5fd7289ea067997181ee6c2cf15a98f58faba43",
+      "tip": "f5fd7289ea067997181ee6c2cf15a98f58faba43",
+      "subsystems": {},
+      "potential_conflict_paths": [],
+      "commits": [],
+      "changed_paths": [],
+      "source_integrated": false,
+      "compatibility": "unverified"
+    },
+    "forca": {
+      "baseline": "0b1f80cd22793785d8ae5c4296d2fe4a9248bd21",
+      "tip": "0b1f80cd22793785d8ae5c4296d2fe4a9248bd21",
+      "subsystems": {},
+      "potential_conflict_paths": [],
+      "commits": [],
+      "changed_paths": [],
+      "source_integrated": false,
+      "compatibility": "unverified"
+    },
+    "orca": {
+      "baseline": "9281032fdc3925474e2afb0af8ba4cca79fc626f",
+      "tip": "78134d24c6ea4442b2e318accb8b1952ae691cda",
+      "subsystems": {
+        "ui-build-other": 4
+      },
+      "potential_conflict_paths": [
+        "tests/slic3rutils/CMakeLists.txt"
+      ],
+      "commits": [
+        "78134d24c6ea4442b2e318accb8b1952ae691cda Keep the Speed Dial anchored to the main window (#17242)"
+      ],
+      "changed_paths": [
+        "src/slic3r/GUI/SpeedDialDialog.cpp",
+        "src/slic3r/GUI/SpeedDialDialog.hpp",
+        "tests/slic3rutils/CMakeLists.txt",
+        "tests/slic3rutils/test_speed_dial_position.cpp"
+      ],
+      "source_integrated": false,
+      "compatibility": "unverified",
+      "textual_merge_probe": {
+        "status": "clean",
+        "exit_code": 0,
+        "output_excerpt": "b2976eec1a5f8a0009bd921c17011133aeaccac1\n\nAuto-merging src/slic3r/GUI/GUI_App.cpp\nAuto-merging src/slic3r/GUI/NotificationManager.hpp\nAuto-merging src/slic3r/GUI/SpeedDialDialog.cpp\nAuto-merging src/slic3r/plugin/PluginManager.cpp\nAuto-merging tests/slic3rutils/CMakeLists.txt\n",
+        "semantic_compatibility_verified": false
+      }
+    },
+    "extended-firmware": {
+      "baseline": "e086afa5068e3f724aa6ff9ca193dc742213c3c3",
+      "tip": "e086afa5068e3f724aa6ff9ca193dc742213c3c3",
+      "subsystems": {},
+      "potential_conflict_paths": [],
+      "commits": [],
+      "changed_paths": [],
+      "source_integrated": false,
+      "compatibility": "unverified"
+    },
+    "orca-mcp": {
+      "baseline": "17a745e30c248cf3acb4c429b650b22d106fd19a",
+      "tip": "17a745e30c248cf3acb4c429b650b22d106fd19a",
+      "subsystems": {},
+      "potential_conflict_paths": [],
+      "commits": [],
+      "changed_paths": [],
+      "source_integrated": false,
+      "compatibility": "unverified"
+    },
+    "snapmaker-profiles": {
+      "baseline": "1e201f6aa8920b4878daa02a21d43073ba92c06c",
+      "tip": "8f7ca15192d8c14bd6d932ca7171bd5792d5ff29",
+      "subsystems": {
+        "ui-build-other": 58
+      },
+      "potential_conflict_paths": [],
+      "commits": [
+        "8f7ca15192d8c14bd6d932ca7171bd5792d5ff29 Release 02.03.06.00",
+        "cae522974db1314418b5c6d86aa410274e0f0097 Author: admin <admin@profiles.cms>",
+        "559781c9aceb49ab877e0a8975cd7276d7892ce5 Author: admin <admin@profiles.cms>",
+        "d8b55eca6068836f58c29e5dc8559726ac1268ab Author: admin <admin@profiles.cms> Note: Presets clean up",
+        "d104c88535125c16b280003db6dab972b3eaad34 Switch to 02.03.05.00"
+      ],
+      "changed_paths": [
+        "Snapmaker.json",
+        "Snapmaker/filament/Generic ABS @U1 0.4 nozzle.json",
+        "Snapmaker/filament/Generic ABS.json",
+        "Snapmaker/filament/Generic BVOH @U1 0.4 nozzle.json",
+        "Snapmaker/filament/Generic BVOH.json",
+        "Snapmaker/filament/Generic PA @U1 0.4 nozzle.json",
+        "Snapmaker/filament/Generic PA-CF @U1 0.4 nozzle.json",
+        "Snapmaker/filament/Generic PA-CF.json",
+        "Snapmaker/filament/Generic PA.json",
+        "Snapmaker/filament/Generic PC @U1 0.4 nozzle.json",
+        "Snapmaker/filament/Generic PC.json",
+        "Snapmaker/filament/Generic PCTG @U1 0.4 nozzle.json",
+        "Snapmaker/filament/Generic PCTG.json",
+        "Snapmaker/filament/Generic PETG @U1 0.4 nozzle.json",
+        "Snapmaker/filament/Generic PETG HF @U1 0.4 nozzle.json",
+        "Snapmaker/filament/Generic PETG HF.json",
+        "Snapmaker/filament/Generic PETG-CF @U1 0.4 nozzle.json",
+        "Snapmaker/filament/Generic PETG-CF.json",
+        "Snapmaker/filament/Generic PETG-GF @U1 0.4 nozzle.json",
+        "Snapmaker/filament/Generic PETG-GF.json",
+        "Snapmaker/filament/Generic PETG.json",
+        "Snapmaker/filament/Generic PLA @U1 0.4 nozzle.json",
+        "Snapmaker/filament/Generic PLA High Speed @U1 0.4 nozzle.json",
+        "Snapmaker/filament/Generic PLA High Speed.json",
+        "Snapmaker/filament/Generic PLA Silk @U1 0.4 nozzle.json",
+        "Snapmaker/filament/Generic PLA Silk.json",
+        "Snapmaker/filament/Generic PLA-CF @U1 0.4 nozzle.json",
+        "Snapmaker/filament/Generic PLA-CF.json",
+        "Snapmaker/filament/Generic PLA.json",
+        "Snapmaker/filament/Generic PVA @U1 0.4 nozzle.json",
+        "Snapmaker/filament/Generic PVA.json",
+        "Snapmaker/filament/Generic Support For PLA @U1 0.4 nozzle.json",
+        "Snapmaker/filament/Generic Support For PLA.json",
+        "Snapmaker/filament/Generic TPU 95A HF @U1 0.4 nozzle.json",
+        "Snapmaker/filament/Generic TPU 95A HF.json",
+        "Snapmaker/filament/Generic TPU @U1 0.4 nozzle.json",
+        "Snapmaker/filament/Generic TPU.json",
+        "Snapmaker/filament/Polymaker General PLA Family @U1 0.4 nozzle.json",
+        "Snapmaker/filament/Polymaker General PLA Family @U1.json",
+        "Snapmaker/filament/Polymaker Silk PLA Family @U1 0.4 nozzle.json",
+        "Snapmaker/filament/Polymaker Silk PLA Family @U1.json",
+        "Snapmaker/filament/Polymaker Tough PLA Family @U1 0.4 nozzle.json",
+        "Snapmaker/filament/Polymaker Tough PLA Family @U1.json",
+        "Snapmaker/filament/Snapmaker PETG HF @U1 0.4 nozzle.json",
+        "Snapmaker/filament/Snapmaker PETG HF.json",
+        "Snapmaker/filament/Snapmaker PLA Basic @U1 0.4 nozzle.json",
+        "Snapmaker/filament/Snapmaker PLA Basic @U1.json",
+        "Snapmaker/filament/Snapmaker PLA Matte @U1 0.4 nozzle.json",
+        "Snapmaker/filament/Snapmaker PLA Matte @U1.json",
+        "Snapmaker/filament/Snapmaker PLA Silk @U1 0.4 nozzle.json",
+        "Snapmaker/filament/Snapmaker PLA Silk @U1.json",
+        "Snapmaker/filament/Snapmaker PLA SnapSpeed @U1 0.4 nozzle.json",
+        "Snapmaker/filament/Snapmaker PLA SnapSpeed @U1 base.json",
+        "Snapmaker/filament/Snapmaker PLA SnapSpeed @U1.json",
+        "Snapmaker/filament/Snapmaker PVA @U1 0.4 nozzle.json",
+        "Snapmaker/filament/Snapmaker PVA @U1.json",
+        "Snapmaker/filament/Snapmaker TPU 90A @U1 0.4 nozzle.json",
+        "Snapmaker/filament/Snapmaker TPU 90A @U1.json"
+      ],
+      "source_integrated": false,
+      "compatibility": "unverified"
+    }
+  }
+}

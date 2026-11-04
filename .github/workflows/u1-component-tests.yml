@@ -1,0 +1,51 @@
+name: U1 component tests
+on:
+  push:
+    branches: ["ultimate-u1/**", "main"]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  components:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-latest, macos-15]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Install pinned component build tools
+        run: python -m pip install cmake==3.31.10 ninja==1.13.0 ruff==0.14.3 clang-format==19.1.7
+      - name: Static checks for project tooling
+        run: ruff check tools/u1
+      - name: Check formatting of new C++ integration files
+        run: >
+          clang-format --dry-run --Werror
+          src/libslic3r/U1FilamentPlan.hpp src/libslic3r/U1FilamentPlan.cpp
+          src/slic3r/GUI/Mcp/McpFilePolicy.hpp src/slic3r/GUI/Mcp/McpU1Policy.hpp
+          src/slic3r/GUI/Mcp/McpToolsU1.cpp
+          tests/libslic3r/test_u1_filament_plan.cpp
+          tests/slic3rutils/test_mcp_file_policy.cpp tests/slic3rutils/test_u1_mcp_protocol.cpp
+          tests/fff_print/test_u1_four_tool_gcode.cpp
+      - name: Configure actual native source components
+        run: cmake -S tools/u1/native-tests -B build/u1-native -G Ninja -DCMAKE_BUILD_TYPE=Release
+      - name: Build
+        run: cmake --build build/u1-native --parallel 4
+      - name: Native component tests
+        run: ctest --test-dir build/u1-native --output-on-failure
+      - name: Profile, G-code and maintenance tooling tests
+        run: python -m unittest discover -s tools/u1/tests -v
+      - name: Validate shipped U1 profile bundles
+        if: runner.os == 'Linux'
+        run: python scripts/orca_profile_tool.py check --vendor Snapmaker --vendor OrcaFilamentLibrary
+      - name: Preserve component test evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: u1-component-results-${{ matrix.os }}
+          path: build/u1-native/Testing/Temporary/LastTest.log
+          if-no-files-found: error

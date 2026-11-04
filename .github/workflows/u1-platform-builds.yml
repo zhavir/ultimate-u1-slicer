@@ -1,0 +1,52 @@
+name: U1 application build candidates
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: write
+jobs:
+  application:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {os: macos-15, arch: arm64, compiler: msvc}
+          - {os: macos-15, arch: x86_64, compiler: msvc}
+          - {os: windows-latest, arch: x64, compiler: clang}
+          - {os: ubuntu-24.04, arch: "", compiler: msvc}
+    uses: ./.github/workflows/build_check_cache.yml
+    with:
+      os: ${{ matrix.os }}
+      arch: ${{ matrix.arch }}
+      compiler: ${{ matrix.compiler }}
+      force-build: true
+    secrets: inherit
+  application-tests:
+    needs: application
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {os: macos-15, artifact: tests-macos-arm64, test-dir: build/arm64/tests}
+          - {os: windows-latest, artifact: tests-windows-x64, test-dir: build/tests}
+          - {os: ubuntu-24.04, artifact: tests-linux-x86_64, test-dir: build/tests}
+    uses: ./.github/workflows/unit_tests.yml
+    with:
+      os: ${{ matrix.os }}
+      artifact: ${{ github.sha }}-${{ matrix.artifact }}
+      test-dir: ${{ matrix.test-dir }}
+  candidate-checksums:
+    needs: [application, application-tests]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with:
+          path: candidate-artifacts
+      - name: Generate checksums and truthful candidate metadata
+        run: python3 tools/u1/release_manifest.py candidate-artifacts --output release-candidate
+      - uses: actions/upload-artifact@v7
+        with:
+          name: ultimate-u1-candidate-metadata-${{ github.sha }}
+          path: release-candidate
+          if-no-files-found: error
