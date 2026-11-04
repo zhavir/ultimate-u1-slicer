@@ -18,6 +18,8 @@ concurrency:
 jobs:
   checks:
     uses: ./.github/workflows/u1-component-tests.yml
+    with:
+      operating-systems: '["windows-latest"]'
   preflight:
     runs-on: windows-latest
     steps:

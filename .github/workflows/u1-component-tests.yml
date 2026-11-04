@@ -5,6 +5,11 @@ on:
   pull_request:
   workflow_dispatch:
   workflow_call:
+    inputs:
+      operating-systems:
+        description: JSON runner list for a platform-specific build gate
+        type: string
+        default: '["ubuntu-24.04", "windows-latest", "macos-15"]'
 permissions:
   contents: read
 jobs:
@@ -12,7 +17,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-24.04, windows-latest, macos-15]
+        os: ${{ fromJSON(inputs.operating-systems || '["ubuntu-24.04", "windows-latest", "macos-15"]') }}
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v7
