@@ -13,3 +13,6 @@
 
 # OCCT BRep fixtures, kept byte for byte as OCCT wrote them.
 *.brep -text
+
+# Preserve the archived upstream README's intentional Markdown hard line breaks.
+docs/architecture/upstream-readme.md whitespace=-blank-at-eol
