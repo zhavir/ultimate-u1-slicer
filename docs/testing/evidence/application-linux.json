@@ -1,0 +1,152 @@
+{
+  "platform": "Linux x86_64",
+  "build": "Release; inherited Ubuntu 24.04 dependency/build recipe",
+  "source_production_checkpoint": "06c4703d4",
+  "embedded_build_version": "ab747a903-dirty",
+  "binary": {
+    "path": "build/src/Release/orca-slicer",
+    "size": 184924752,
+    "sha256": "e59d20a421e0a9b12e94936c81bcca5e784fed9e1b2471ec6895057fe7750406"
+  },
+  "broad_suite_complete": false,
+  "cli_help_exit": 0,
+  "shipped_profile_cube": {
+    "exit_code": 0,
+    "result": {
+      "error_string": "Success.",
+      "export_time": 1,
+      "layer_height": 0.20000000298023224,
+      "plate_index": 0,
+      "prepare_time": 0,
+      "return_code": 0,
+      "sliced_plates": [
+        {
+          "id": 1,
+          "sliced_time": 0,
+          "sliced_time_with_cache": 0,
+          "triangle_count": 12,
+          "warning_message": ""
+        }
+      ],
+      "sparse_infill_density": 15.0,
+      "strict_mode": false,
+      "wall_loops": 2,
+      "warnings": []
+    },
+    "fixture": {
+      "source_profile_root": "resources/profiles",
+      "source_presets": {
+        "machine": "Snapmaker U1 (0.4 nozzle)",
+        "process": "0.20 Standard @Snapmaker U1 (0.4 nozzle)",
+        "filament": "Snapmaker PLA SnapSpeed @U1"
+      },
+      "fixture_hashes": {
+        "machine.json": "00ae64189edfeb0f8e693ebd618215b90ce4ab829c2cf7bccbf8df09a1a61a80",
+        "process.json": "9720be8ed1a45f606d70bea81c91aad8444fe247a2833dad9a79e280a2dff032",
+        "filament.json": "ad48ec7a4986fa2eb33c9d1ee4f8c5f3445e284307eaaac210085653e33de254",
+        "cube.stl": "2ede4d8ab394e13043a5f901e4be8d8e385632f6215d671236010742c9690f01"
+      },
+      "profile_installation": false,
+      "calibration_verified": false,
+      "purpose": "offline reference slicing only",
+      "tools": 1,
+      "object_filament_ids": [
+        1
+      ],
+      "cli_compatibility_adapter": "flattened system identity retained; machine nozzle context supplied to legacy per-preset normalize_fdm"
+    },
+    "outputs": {
+      "plate_1.gcode": {
+        "size": 87808,
+        "sha256": "674d93460fe916a6173cda8a4f307db5dc6c1f86c8a9cbcedbfca262a49339c3"
+      },
+      "ultimate-shipped.3mf": {
+        "size": 38666,
+        "sha256": "9cedae92ab1273e9205edbe468350b962a32d438f875baf5a20364c0a59cc849"
+      },
+      "result.json": {
+        "size": 384,
+        "sha256": "aa08106699035ec482fda15506aeb08f5b36a60eb8fd19183d044865acae4911"
+      }
+    },
+    "selected_tools": [
+      "T0"
+    ],
+    "commands": [
+      "BED_MESH_CALIBRATE",
+      "DEFECT_DETECTION_DETECT",
+      "DEFECT_DETECTION_DETECT_BED",
+      "DEFECT_DETECTION_START",
+      "DEFECT_DETECT_NOODLE_FIRST",
+      "DETECT_BED_PLATE",
+      "EXCLUDE_OBJECT_DEFINE",
+      "EXCLUDE_OBJECT_END",
+      "EXCLUDE_OBJECT_START",
+      "FINELY_CLEAN_NOZZLE_STAGE_1",
+      "FINELY_CLEAN_NOZZLE_STAGE_2",
+      "G0",
+      "G1",
+      "G21",
+      "G28",
+      "G90",
+      "G92",
+      "M104",
+      "M106",
+      "M107",
+      "M109",
+      "M140",
+      "M190",
+      "M204",
+      "M73",
+      "M83",
+      "MOVE_TO_DISCARD_FILAMENT_POSITION",
+      "MOVE_TO_XY_IDLE_POSITION_EXTRUDER",
+      "PRINT_END",
+      "PRINT_START",
+      "ROUGHLY_CLEAN_NOZZLE",
+      "ROUGHLY_CLEAN_NOZZLE_WITH_DISCARD",
+      "SET_PRINT_AUTO_BED_LEVELING",
+      "SET_PRINT_STATS_INFO",
+      "SET_PURIFIER_MODE",
+      "SET_TIME_LAPSE_CAMERA",
+      "SET_VELOCITY_LIMIT",
+      "SM_PRINT_AUTO_FEED",
+      "SM_PRINT_CHECK_SWITCH_EXTRUDER",
+      "SM_PRINT_EXTRUDER_PREHEAT",
+      "SM_PRINT_FLOW_CALIBRATE",
+      "SM_PRINT_PREEXTRUDE_FILAMENT",
+      "T0",
+      "TIMELAPSE_START",
+      "TIMELAPSE_STOP",
+      "TIMELAPSE_TAKE_FRAME",
+      "WAIT_CHAMBER_TEMP"
+    ]
+  },
+  "snapmaker_3mf_import": {
+    "single_exit_code": 238,
+    "four_color_exit_code": 238,
+    "cli_return_code": -18,
+    "reason": "raft_first_layer_expansion -1 outside engine minimum 0",
+    "automatic_value_substituted": false
+  },
+  "macos_build_verified": false,
+  "windows_build_verified": false,
+  "physical_print_verified": false,
+  "installed": false,
+  "runtime_build_notes": {
+    "initial_cli_build": "d2873b32e-dirty",
+    "guarded_MCP_build": "ab747a903-dirty",
+    "same_production_source_as_checkpoint": "06c4703d4; subsequent changes are tests, documentation and build metadata"
+  },
+  "latest_committed_build": {
+    "source_commit": "3a607f0a4fffbf834a5e33135a48af099c7a13d6",
+    "embedded_build_version": "3a607f0a4",
+    "tracked_source_clean": true,
+    "executable": "build/src/Release/orca-slicer",
+    "size": 184924752,
+    "sha256": "f739419d7ca197e9b07d53f3e3e286eecf2607aca0e380e882c8bac2ed0dc306",
+    "help_exit_code": 0,
+    "change_since_guarded_runtime_tests": "BuildCommit metadata only",
+    "build_log_sha256": "8fc674f93a4cb3bc9eb569d92f72ef7f647657798fbc96b3fbb84fa4d50238aa"
+  }
+}
