@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="u1_fff_tests" errors="0" failures="0" skipped="0" tests="6" hostname="tbd" time="0.290" timestamp="2026-11-04T14:50:39Z">
+    <properties>
+      <property name="random-seed" value="1682950189"/>
+      <property name="filters" value="[U1ToolGcode]"/>
+    </properties>
+    <testcase classname="u1_fff_tests.global" name="Four-head Klipper slicing emits only the assigned tools" time="0.219" status="run"/>
+    <system-out/>
+    <system-err/>
+  </testsuite>
+</testsuites>
