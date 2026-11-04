@@ -38,7 +38,7 @@ Use `.github/workflows/u1-windows-portable.yml`: it reuses the established depen
 
 Push reviewed commits to main, then use `gh workflow run u1-windows-portable.yml --repo zhavir/ultimate-u1-slicer --ref main -f publish=true` when an experimental prerelease is intended. Track the exact source SHA with `gh run list/view`; inspect failed logs, fix concrete failures and rerun only affected work. Do not assume a dispatched run succeeded. The verification job launches the actual Windows executable, checks bearer authentication and confirms the roaming profile and automatic URL registration stay untouched after GUI readiness. Only verified archives reach the prerelease job. Download/check the SHA-256 and report the run/release links. Native launch verification does not prove slicing or physical printing.
 
-The other application platforms use `u1-platform-builds.yml`; component CI uses `u1-component-tests.yml`. Inherited upstream administrative bots and duplicate build entrypoints are disabled in this GitHub repository, while reusable build workflows remain enabled. Keep that ownership boundary when syncing workflows. Read `docs/building-ultimate-u1.md` for local builds.
+The other application platforms use `u1-platform-builds.yml`; component CI uses `u1-component-tests.yml`. Inherited workflows remain enabled: automatic approval review rejected broad workflow disabling. This project uses dedicated U1 entrypoints; do not assume inherited administrative or duplicate build automation has been disabled. Keep source-integration and notification behavior separate when syncing workflows. Read `docs/building-ultimate-u1.md` for local builds.
 
 ## Current release gates
 
