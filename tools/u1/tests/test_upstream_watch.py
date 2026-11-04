@@ -1,8 +1,10 @@
 import copy
 import importlib.util
 from pathlib import Path
+import sys
 import unittest
 
+sys.path.insert(0, str(Path(__file__).parents[1]))
 SPEC = importlib.util.spec_from_file_location("upstream_watch", Path(__file__).parents[1] / "upstream_watch.py")
 watch = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(watch)
@@ -86,6 +88,42 @@ class UpstreamWatchTests(unittest.TestCase):
             watch.changes(self.lock, {"sources": {}}, self.baseline)
         with self.assertRaisesRegex(ValueError, "GitHub HTTPS"):
             watch.repository({"url": "https://token@example.invalid/project.git"})
+
+    def test_new_branch_issues_classify_full_slicer_changes_without_changing_deduplication(self):
+        change = watch.event("main", "branch", "main", "b" * 40, "a" * 40, "https://example.invalid/compare")
+        original = change["fingerprint"]
+        mutations = []
+
+        def api(endpoint, payload=None):
+            if payload:
+                mutations.append(payload)
+                return {"html_url": "https://example.invalid/1"}
+            if "/compare/" in endpoint:
+                return {"status": "ahead", "files": [{"filename": path} for path in [
+                    "src/libslic3r/Print.cpp", "src/slic3r/GUI/Calibration.cpp",
+                    "src/libslic3r/Format/STEP.cpp", "src/slic3r/GUI/Gizmos/GLGizmoFuzzySkin.cpp",
+                    "resources/profiles/Snapmaker.json"]]}
+            return []
+        watch.notify("example/ultimate-u1", [change], api=api, lock=self.lock)
+        self.assertEqual(change["fingerprint"], original)
+        self.assertEqual(change["analysis"]["subsystems"], {"engine-schema-gcode": 1, "calibration": 1,
+                         "project-import-export": 1, "model-painting-supports": 1, "profiles": 1})
+        self.assertFalse(change["analysis"]["source_integrated"])
+        self.assertIn("requires-source-review-and-tests", mutations[0]["body"])
+
+    def test_compare_failure_preserves_the_notification_and_large_diffs_are_bounded(self):
+        change = watch.event("main", "branch", "main", "b" * 40, "a" * 40, "https://example.invalid")
+
+        def unavailable(endpoint, payload=None):
+            raise RuntimeError("comparison unavailable")
+        self.assertEqual(watch.describe_branch_change(change, self.lock, unavailable)["status"], "unknown")
+
+        def large(endpoint, payload=None):
+            return {"files": [{"filename": f"src/libslic3r/feature{i}.cpp"} for i in range(300)]}
+        result = watch.describe_branch_change(change, self.lock, large)
+        self.assertTrue(result["files_may_be_truncated"])
+        self.assertEqual(result["files_examined"], 300)
+        self.assertEqual(len(result["changed_path_sample"]), 50)
 
 
 if __name__ == "__main__":

@@ -8,6 +8,8 @@ import re
 import subprocess
 from urllib.parse import quote
 
+from upstream_review import subsystem
+
 
 def gh_api(endpoint, payload=None):
     command = ["gh", "api", endpoint]
@@ -106,13 +108,35 @@ def existing_fingerprints(target, api=gh_api):
         page += 1
 
 
-def notify(target, events, assignee=None, api=gh_api, limit=25):
+def describe_branch_change(item, lock, api=gh_api):
+    source = lock["sources"][item["source"]]
+    repo = repository(source)
+    try:
+        comparison = api(f"repos/{repo}/compare/{item['previous']}...{item['current']}")
+    except RuntimeError as error:
+        return {"status": "unknown", "error": str(error), "source_integrated": False}
+    files = comparison.get("files", [])
+    counts = {}
+    for entry in files:
+        key = subsystem(entry["filename"])
+        counts[key] = counts.get(key, 0) + 1
+    return {"comparison_status": comparison.get("status", "unknown"), "subsystems": counts,
+            "files_examined": len(files), "files_may_be_truncated": len(files) >= 300,
+            "changed_path_sample": [entry["filename"] for entry in files[:50]],
+            "source_integrated": False, "u1_compatibility": "requires-source-review-and-tests"}
+
+
+def notify(target, events, assignee=None, api=gh_api, limit=25, lock=None):
     if not re.fullmatch(r"[\w.-]+/[\w.-]+", target):
         raise ValueError("invalid notification repository")
     known = existing_fingerprints(target, api)
     pending = [item for item in events if item["fingerprint"] not in known]
     created = []
     for item in pending[:limit]:
+        if item["kind"] == "branch" and lock is not None:
+            # Enrich only unseen events. Analysis is not part of the event fingerprint, so
+            # improving this report cannot recreate already-acknowledged notifications.
+            item["analysis"] = describe_branch_change(item, lock, api)
         identity = str(item["identity"]).replace("@", "＠").replace("\n", " ")
         title = f"Upstream {item['kind']}: {item['source']} / {identity}"[:240]
         body = (f"<!-- u1-upstream-event:{item['fingerprint']} -->\n"
@@ -121,7 +145,8 @@ def notify(target, events, assignee=None, api=gh_api, limit=25):
                 "```json\n" + json.dumps({k: v for k, v in item.items() if k != "fingerprint"}, indent=2) + "\n```\n\n"
                 "This is a notification, not an integration or compatibility claim. No upstream code was executed or merged.\n\n"
                 "Use `.claude/skills/ultimate-u1-maintenance/SKILL.md` and `AGENTS.md`: inspect the source diff and license, "
-                "classify engine/schema/MCP/profiles/connectivity/build changes, choose isolated patches, run the relevant "
+                "review all U1-relevant engine, schema, G-code, calibration, modeling/painting, project, UI, MCP, "
+                "connectivity, profile and build changes (not profiles alone), choose isolated patches, run the relevant "
                 "U1 regressions, update source pins and feature evidence, then close this issue with the integration commit "
                 "or an explicit deferral. Preserve the known-good build; never automatically print or merge upstream code.")
         payload = {"title": title, "body": body, "labels": ["upstream-update"]}
@@ -155,7 +180,7 @@ def main():
     events = changes(lock, baseline, current)
     result = {"source_integration_performed": False, "observed": current, "events": events}
     if args.notify:
-        result["notifications"] = notify(configuration["repository"], events, configuration.get("notification_assignee"))
+        result["notifications"] = notify(configuration["repository"], events, configuration.get("notification_assignee"), lock=lock)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, indent=2) + "\n")
     print(f"Observed {len(current['sources'])} sources; {len(events)} candidate events; report: {args.output}")

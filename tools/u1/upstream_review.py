@@ -12,9 +12,18 @@ def git(root, *args):
 
 
 def subsystem(path):
-    for prefix, category in [("src/libslic3r/", "engine-schema-gcode"),
-                             ("src/slic3r/GUI/Mcp/", "mcp"),
+    for prefix, category in [("src/slic3r/GUI/Mcp/", "mcp"),
+                             ("src/slic3r/GUI/Calibration", "calibration"),
+                             ("src/slic3r/GUI/ExtrusionCalibration", "calibration"),
+                             ("src/slic3r/GUI/Gizmos/", "model-painting-supports"),
+                             ("src/slic3r/GUI/CAD/", "cad-modeling"),
+                             ("src/libslic3r/Format/", "project-import-export"),
+                             ("src/libslic3r/Arrange", "arrangement"),
+                             ("src/libslic3r/ModelArrange", "arrangement"),
+                             ("src/libslic3r/", "engine-schema-gcode"),
                              ("src/slic3r/Utils/", "connectivity"),
+                             ("src/slic3r/GUI/", "ui-workflows"),
+                             ("tests/", "regression-tests"),
                              ("resources/profiles", "profiles"), ("submodules/Profiles", "profiles"),
                              ("deps", "dependencies"), (".github/", "ci-release")]:
         if path.startswith(prefix):
