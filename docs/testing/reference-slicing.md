@@ -20,10 +20,12 @@ python3 tools/u1/reference_fixture.py \
 
 FOrca's corresponding process name is `0.20 Standard @Snapmaker U1 (0.4 nozzle)`. The tool resolves indexed inheritance into temporary inputs, preserves system identity, supplies machine nozzle context to partial presets and clears post-processing commands. Original presets remain unchanged. Four-tool mode creates distinct material display names/colors and four cube files; it retains source material identifiers and does not fabricate NFC/RFID data. The fixture manifest records hashes and unvalidated calibration status.
 
-Invoke the extracted CLI using its own AppRun environment wrapper in an isolated container with Xvfb. For one tool, load `machine.json;process.json`, `filament.json` and `cube.stl`. For four tools, load `filament1.json;...;filament4.json`, pass `--load-filament-ids '1,2,3,4' --arrange 1`, and load the four cube files. Use `--slice 0 --outputdir /task/output --export-3mf reference.3mf`. The export name must be relative: the legacy CLI prepends outputdir itself.
+Invoke the extracted CLI using its own AppRun environment wrapper in an isolated container with Xvfb. For one tool, load `machine.json;process.json`, `filament.json` and `cube.stl`. For four tools, load `filament1.json;...;filament4.json`, pass `--filament-colour "#FF0000;#00FF00;#0000FF;#FFFFFF"`, `--load-filament-ids '1,2,3,4' --arrange 1`, and load the four cube files. Use `--slice 0 --outputdir /task/output --export-3mf reference.3mf`. The export name must be relative: the legacy CLI prepends outputdir itself.
 
 ## Diagnosed input failures
 
 Both audited legacy forks normalize each partial preset separately. Their `DynamicPrintConfig::normalize_fdm` dereferences `nozzle_diameter` when processing `wipe_tower_filament`, causing SIGSEGV for a flattened process preset without machine context. A GDB backtrace confirmed this path. Supplying the selected machine's nozzle array avoids that failure. Changing flattened inputs to `from: User` without `inherits` also makes the legacy CLI compare compatibility against an empty system printer name; preserving `from: system` retains the selected machine identity. These adapters are confined to test inputs and do not constitute production profile migration.
 
 No mixed-nozzle, Color Patch, material-adhesion, printer-connectivity or physical-print validation is implied.
+
+The initial four-material export without explicit CLI filament colors retained a single color entry. A corrected run with the above four colors exported all four entries and T0/T1/T2/T3 selections. Ultimate U1 rejects both the single and corrected four-color vendor projects on raft_first_layer_expansion=-1, not on that corrected color metadata. This is an executed compatibility failure.

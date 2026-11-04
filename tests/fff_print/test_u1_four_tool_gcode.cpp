@@ -1,8 +1,11 @@
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/generators/catch_generators.hpp>
+#include <catch2/matchers/catch_matchers_floating_point.hpp>
 
 #include "libslic3r/Config.hpp"
 #include "libslic3r/GCodeReader.hpp"
+#include "libslic3r/ExtrusionEntityCollection.hpp"
+#include "libslic3r/Layer.hpp"
 #include "libslic3r/Model.hpp"
 #include "libslic3r/Point.hpp"
 #include "libslic3r/Print.hpp"
@@ -16,15 +19,18 @@
 
 using namespace Slic3r;
 
-TEST_CASE("Four-head Klipper slicing emits only the assigned tools", "[U1ToolGcode][Regression]")
+TEST_CASE("Four-head Klipper slicing uses assigned tools and nozzle widths", "[U1ToolGcode][Regression]")
 {
     // A synthetic four-independent-head fixture, not a claim of calibrated U1 presets,
     // vendor docking macros, material compatibility or physical printer verification.
-    const int materials       = GENERATE(1, 4);
+    // Single material, four equal nozzles, and four materials with 0.4/0.6 mm nozzles.
+    const int scenario        = GENERATE(0, 1, 2);
+    const int materials       = scenario == 0 ? 1 : 4;
+    const bool mixed          = scenario == 2;
     DynamicPrintConfig config = Test::multifilament_config(materials);
     config.set_num_extruders(4);
     config.set_deserialize_strict({
-        {"nozzle_diameter", "0.4,0.4,0.4,0.4"},
+        {"nozzle_diameter", mixed ? "0.4,0.4,0.6,0.6" : "0.4,0.4,0.4,0.4"},
         {"extruder_offset", "0x0,0x0,0x0,0x0"},
         {"printer_extruder_id", "1,2,3,4"},
         {"printer_extruder_variant", "Direct Drive Standard,Direct Drive Standard,Direct Drive Standard,Direct Drive Standard"},
@@ -37,6 +43,10 @@ TEST_CASE("Four-head Klipper slicing emits only the assigned tools", "[U1ToolGco
         {"skirt_loops", 0},
         {"brim_type", "no_brim"},
         {"layer_height", 0.2},
+        {"wall_generator", "classic"},
+        {"line_width", "105%"},
+        {"outer_wall_line_width", "105%"},
+        {"initial_layer_line_width", "105%"},
         {"printable_area", "0x0,270x0,270x270,0x270"},
         {"machine_start_gcode", "G90\nM83\nT[initial_extruder]\n"},
         {"change_filament_gcode", "T[next_extruder]\n"},
@@ -78,4 +88,26 @@ TEST_CASE("Four-head Klipper slicing emits only the assigned tools", "[U1ToolGco
     for (int index = 0; index < materials; ++index)
         expected.insert(index);
     CHECK(extruding_tools == expected);
+
+    // Inspect generated extrusion paths, rather than a restated config comment in the G-code.
+    for (const PrintObject* object : print.objects()) {
+        const int tool        = object->model_object()->config.opt_int("extruder") - 1;
+        const double diameter = mixed && tool >= 2 ? 0.6 : 0.4;
+        bool found_wall       = false;
+        REQUIRE_FALSE(object->layers().empty());
+        for (const LayerRegion* region : object->layers().front()->regions()) {
+            const auto perimeters = region->perimeters.flatten();
+            for (const ExtrusionEntity* entity : perimeters.entities) {
+                if (!entity->is_loop())
+                    continue;
+                for (const ExtrusionPath& path : static_cast<const ExtrusionLoop*>(entity)->paths) {
+                    if (path.role() != erExternalPerimeter)
+                        continue;
+                    found_wall = true;
+                    CHECK_THAT(path.width, Catch::Matchers::WithinAbs(1.05 * diameter, 0.0001));
+                }
+            }
+        }
+        CHECK(found_wall);
+    }
 }

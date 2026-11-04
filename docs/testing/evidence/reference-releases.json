@@ -91,6 +91,31 @@
       },
       "log_sha256": "f62d93cd75ad372fd18d9ac1adef8e42c8d8a51054523790118451f8b11f230e",
       "hardware_verified": false
+    },
+    "four_color_run": {
+      "exit_code": 0,
+      "explicit_filament_colors": [
+        "#FF0000",
+        "#00FF00",
+        "#0000FF",
+        "#FFFFFF"
+      ],
+      "outputs": {
+        "plate_1.gcode": {
+          "size": 706494,
+          "sha256": "b6026e2814aefc492c5944be04591940593f99e9f993089c327474d3d77a6952"
+        },
+        "result.json": {
+          "size": 334,
+          "sha256": "8ac2409728e9276ba957429c1d3ffe48ac482393557d9a3d61e67e5afc1b2df9"
+        },
+        "reference-four-colors.3mf": {
+          "size": 108521,
+          "sha256": "c61f71284612b782e47c876e55e75ca911629b594b6fc2b068c265b529912372"
+        }
+      },
+      "log_sha256": "30d8da7e5e39aa6f79ec48b96a246b9d8adf2a4dfefccae636c49efe57a0213e",
+      "hardware_verified": false
     }
   },
   "forca": {
