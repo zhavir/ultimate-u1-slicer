@@ -39,11 +39,34 @@ class GcodeCheckTests(unittest.TestCase):
         self.assertIn("motion collisions", result["not_checked"])
 
     def test_refuses_ambiguous_temperature_arguments_and_malformed_capability_fixtures(self):
-        for line in ["M104 T0 S210 S300", "M109 T0 S210 R300", "M104 T0 S210 X99"]:
+        for line in ["M104 T0 S210 S300", "M109 T0 S210 R300", "M104 T0 S210 X99", "M104 T0 R210"]:
             self.assertFalse(self.check_gcode(line)["passed_subset"])
         for fixture in [None, [], {"tools": [1, 2, 3, 4]}]:
             with self.assertRaises(ValueError):
                 checker.validate("T0", fixture)
+
+    def test_snapmaker_logical_map_and_a0_bypass_address_the_correct_physical_heater(self):
+        self.capabilities.update({"snapmaker_a_parameter": True, "logical_to_physical": [3, 2, 1, 0, 1]})
+        self.capabilities["tools"][3]["maximum_temperature"] = 205
+        self.assertFalse(self.check_gcode("T0\nM104 T0 S210")["passed_subset"])
+        result = self.check_gcode("T0 A0\nM104 T0 S210 A0")
+        self.assertTrue(result["passed_subset"])
+        self.assertEqual(result["physical_tools_selected"], [0])
+
+    def test_extended_logical_selection_requires_a_declared_command_and_mapping(self):
+        self.capabilities.update({"snapmaker_a_parameter": True, "logical_to_physical": [3, 2, 1, 0, 1]})
+        self.assertFalse(self.check_gcode("SWITCH_OF_EXTENDED_EXTRUDER INDEX=4")["passed_subset"])
+        self.capabilities["allowed_commands"].append("SWITCH_OF_EXTENDED_EXTRUDER")
+        result = self.check_gcode("SWITCH_OF_EXTENDED_EXTRUDER INDEX=4\nM104 S210")
+        self.assertTrue(result["passed_subset"])
+        self.assertEqual(result["tools_selected"], [4])
+        self.assertEqual(result["physical_tools_selected"], [1])
+        self.assertFalse(self.check_gcode("SWITCH_OF_EXTENDED_EXTRUDER INDEX=5")["passed_subset"])
+
+    def test_snapmaker_mapping_is_never_invented_from_a_version_or_flag(self):
+        self.capabilities["snapmaker_a_parameter"] = True
+        with self.assertRaisesRegex(ValueError, "actual job"):
+            self.check_gcode("T0")
 
 
 if __name__ == "__main__":

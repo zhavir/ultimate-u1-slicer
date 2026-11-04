@@ -89,6 +89,16 @@ class ProfileSyncTests(unittest.TestCase):
         self.assertEqual(len(result["duplicates"]), 2)
         self.assertEqual(len(result["sources"]), 2)
 
+    def test_missing_requested_vendors_are_reported(self):
+        result = sync.synchronize({"fixture": self.repo}, self.destination, self.lock, ["Test", "Missing"])
+        self.assertEqual(result["sources"]["fixture"]["missing_vendors"], ["Missing"])
+
+    def test_nested_profile_revision_is_checked_separately_from_parent(self):
+        self.lock["sources"]["fixture"]["profiles_sha"] = "0" * 40
+        with self.assertRaisesRegex(ValueError, "pinned profiles submodule"):
+            self.synchronize()
+        self.assertFalse(self.destination.exists())
+
     def test_cycles_and_missing_parents_are_refused(self):
         self.base["inherits"] = "Child"
         self.write_bundle()

@@ -157,6 +157,11 @@ def synchronize(checkouts: dict[str, Path], destination: Path, lock: dict,
         profiles = repo / profiles_relative
         if not profiles.resolve().is_relative_to(repo.resolve()):
             raise ValueError("profile root escapes checkout")
+        if expected.get("profiles_sha"):
+            if not profiles.is_dir() or git(profiles, "rev-parse", "HEAD") != expected["profiles_sha"]:
+                raise ValueError(f"{alias}: initialize the pinned profiles submodule or use the snapmaker-profiles source")
+            if git(profiles, "status", "--porcelain", "--untracked-files=all"):
+                raise ValueError(f"{alias}: profile submodule contains local changes")
         if git(repo, "status", "--porcelain", "--untracked-files=all", "--", profiles_relative):
             raise ValueError(f"{alias}: profile tree contains local changes")
         selected = [v for v in vendors if (profiles / (v + ".json")).is_file()]
@@ -177,8 +182,11 @@ def synchronize(checkouts: dict[str, Path], destination: Path, lock: dict,
         snapshot_name = alias + "-" + sha
         target = snapshots / snapshot_name
         manifest = {"source": alias, "url": expected["url"], "sha": sha,
-                    "license": expected["license"], "profiles": records,
+                    "license": expected.get("profile_license", expected["license"]), "profiles": records,
                     "files": {p: hashlib.sha256(b).hexdigest() for p, b in sorted(files.items())}}
+        if expected.get("profiles_sha"):
+            manifest["profile_revision"] = expected["profiles_sha"]
+            manifest["profile_url"] = expected.get("profiles_url", expected["url"])
         if target.exists() or target.is_symlink():
             if target.is_symlink() or read_json(target / "manifest.json") != manifest:
                 raise ValueError(f"existing immutable snapshot differs: {target}")
@@ -195,7 +203,8 @@ def synchronize(checkouts: dict[str, Path], destination: Path, lock: dict,
                 (temp / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
                 os.replace(temp, target)
         current["sources"][alias] = {"snapshot": "sources/" + snapshot_name, "sha": sha,
-                                      "profile_count": len(records)}
+                                      "profile_count": len(records),
+                                      "missing_vendors": [v for v in vendors if v + ".json" not in files]}
         for record in records:
             name = tuple(record["identity"])
             qualified = alias + "/" + "/".join(name)

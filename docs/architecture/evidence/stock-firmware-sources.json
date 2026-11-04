@@ -1,0 +1,26 @@
+{
+  "u1-moonraker": {
+    "sha": "ed7b3752a9a938c87ee086f3b7b21a9352a2a0c9",
+    "default_branch": "main",
+    "license_files": [
+      "LICENSE"
+    ],
+    "url": "https://github.com/Snapmaker/u1-moonraker.git"
+  },
+  "u1-klipper": {
+    "sha": "7ac453b50fe6779b2ec0b759038a17da5e6d671d",
+    "default_branch": "main",
+    "license_files": [
+      "COPYING"
+    ],
+    "url": "https://github.com/Snapmaker/u1-klipper.git"
+  },
+  "u1-fluidd": {
+    "sha": "727005d55885dedddb67e69cb7881b0a8dfd0544",
+    "default_branch": "main",
+    "license_files": [
+      "LICENSE"
+    ],
+    "url": "https://github.com/Snapmaker/u1-fluidd.git"
+  }
+}
