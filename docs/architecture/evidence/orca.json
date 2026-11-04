@@ -1,0 +1,739 @@
+{
+  "repository": "OrcaSlicer/OrcaSlicer",
+  "default_branch": "main",
+  "sha": "9281032fdc3925474e2afb0af8ba4cca79fc626f",
+  "branches": [
+    {
+      "name": "FullSpectrum_integration",
+      "commit": {
+        "sha": "daa75b3fa064f7858d0350f804d74daea271e6a5",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/daa75b3fa064f7858d0350f804d74daea271e6a5"
+      },
+      "protected": false
+    },
+    {
+      "name": "agent/profiles-ota-2.4",
+      "commit": {
+        "sha": "33be3c71bd1b4dae79355ca6f01ad7cbdbc40d30",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/33be3c71bd1b4dae79355ca6f01ad7cbdbc40d30"
+      },
+      "protected": false
+    },
+    {
+      "name": "dependabot/github_actions/actions/setup-python-7",
+      "commit": {
+        "sha": "0f947c8a99a0bccfd8e55c6c11e22635a63a64d0",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/0f947c8a99a0bccfd8e55c6c11e22635a63a64d0"
+      },
+      "protected": false
+    },
+    {
+      "name": "feat/ams-parsing",
+      "commit": {
+        "sha": "38f649fc00759ca59491d7bf5ff67bc0c36839cf",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/38f649fc00759ca59491d7bf5ff67bc0c36839cf"
+      },
+      "protected": false
+    },
+    {
+      "name": "feat/bridge-algorithm",
+      "commit": {
+        "sha": "ffc0903d9560d6b1cdacb6398f1c74a1cfbd23ec",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/ffc0903d9560d6b1cdacb6398f1c74a1cfbd23ec"
+      },
+      "protected": false
+    },
+    {
+      "name": "feat/deps-mold-flag",
+      "commit": {
+        "sha": "caf74b1e395c66ab1451417bd1dff5818ce420cc",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/caf74b1e395c66ab1451417bd1dff5818ce420cc"
+      },
+      "protected": false
+    },
+    {
+      "name": "feat/generic-extruders-and-ams",
+      "commit": {
+        "sha": "3684948150daf768603d4ba01128969b10e1c6bb",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/3684948150daf768603d4ba01128969b10e1c6bb"
+      },
+      "protected": false
+    },
+    {
+      "name": "feat/generic-n-extruder",
+      "commit": {
+        "sha": "9e2b4d63bbe854fdfbf2eb75bcc0881be7cf1bbc",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/9e2b4d63bbe854fdfbf2eb75bcc0881be7cf1bbc"
+      },
+      "protected": false
+    },
+    {
+      "name": "feat/generic-n-extruders",
+      "commit": {
+        "sha": "46096416cdc5b0cfe8128b8d30d5b8a47fe0b2df",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/46096416cdc5b0cfe8128b8d30d5b8a47fe0b2df"
+      },
+      "protected": false
+    },
+    {
+      "name": "feat/headless-plugin-probe",
+      "commit": {
+        "sha": "51fcc4940f9b4bf2928481d35548b64348d94f2e",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/51fcc4940f9b4bf2928481d35548b64348d94f2e"
+      },
+      "protected": false
+    },
+    {
+      "name": "feat/infill-plugin",
+      "commit": {
+        "sha": "2633ed26e3a0d7a347f93848a9b0e5b7ff68bdd8",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/2633ed26e3a0d7a347f93848a9b0e5b7ff68bdd8"
+      },
+      "protected": false
+    },
+    {
+      "name": "feat/plugin-permission-qol",
+      "commit": {
+        "sha": "d663c97a00858eb1d6b7fda4337c766e6cfe0ac7",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/d663c97a00858eb1d6b7fda4337c766e6cfe0ac7"
+      },
+      "protected": false
+    },
+    {
+      "name": "feat/printer-agent-filament-mapping",
+      "commit": {
+        "sha": "b6a5ca88f4843cd9be572ffdccf75aeec22059c3",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/b6a5ca88f4843cd9be572ffdccf75aeec22059c3"
+      },
+      "protected": false
+    },
+    {
+      "name": "feat/printer-agent-impl",
+      "commit": {
+        "sha": "809bc3d825615df7cab3a5c2d721ceb953ba2daa",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/809bc3d825615df7cab3a5c2d721ceb953ba2daa"
+      },
+      "protected": false
+    },
+    {
+      "name": "feat/snap-store-packaging",
+      "commit": {
+        "sha": "b205a8559e32b0be5d2562d16af3ec34dfd00c90",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/b205a8559e32b0be5d2562d16af3ec34dfd00c90"
+      },
+      "protected": false
+    },
+    {
+      "name": "feature/OrcaSonar",
+      "commit": {
+        "sha": "67eee11e2540ecb4230a61ba92dcb0830a71d233",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/67eee11e2540ecb4230a61ba92dcb0830a71d233"
+      },
+      "protected": false
+    },
+    {
+      "name": "feature/auto-update",
+      "commit": {
+        "sha": "f5ca14ebb5468c30359b16471fc87faccdfb725b",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/f5ca14ebb5468c30359b16471fc87faccdfb725b"
+      },
+      "protected": false
+    },
+    {
+      "name": "feature/automation",
+      "commit": {
+        "sha": "8d37abae541c25125764d7fe58ac962f96b777a7",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/8d37abae541c25125764d7fe58ac962f96b777a7"
+      },
+      "protected": false
+    },
+    {
+      "name": "feature/chromastack",
+      "commit": {
+        "sha": "b83a878ec88d9aeb1bc26a868e4e57bf3bf82071",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/b83a878ec88d9aeb1bc26a868e4e57bf3bf82071"
+      },
+      "protected": false
+    },
+    {
+      "name": "feature/infinite_pan_in_main_viewport",
+      "commit": {
+        "sha": "8baefa4bdcbde2632f9976f2f38f15d872facbda",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/8baefa4bdcbde2632f9976f2f38f15d872facbda"
+      },
+      "protected": false
+    },
+    {
+      "name": "feature/mcp",
+      "commit": {
+        "sha": "17a745e30c248cf3acb4c429b650b22d106fd19a",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/17a745e30c248cf3acb4c429b650b22d106fd19a"
+      },
+      "protected": false
+    },
+    {
+      "name": "feature/preset_cache",
+      "commit": {
+        "sha": "ba5ecdfea9e81857fc539fe5edced52af8e1749d",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/ba5ecdfea9e81857fc539fe5edced52af8e1749d"
+      },
+      "protected": false
+    },
+    {
+      "name": "feature/protobuf_config_and_dynamic_ui",
+      "commit": {
+        "sha": "2f67e460473fcd304a9faf68ed8f4c8f99f81e1b",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/2f67e460473fcd304a9faf68ed8f4c8f99f81e1b"
+      },
+      "protected": false
+    },
+    {
+      "name": "feature/texdisp-3mf-persistence",
+      "commit": {
+        "sha": "682814878d9271a5cce75a12aad828d7f1362616",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/682814878d9271a5cce75a12aad828d7f1362616"
+      },
+      "protected": false
+    },
+    {
+      "name": "feature/update_wipetower",
+      "commit": {
+        "sha": "32ead05bdd61a951f58056cf349064c3e73f1b1c",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/32ead05bdd61a951f58056cf349064c3e73f1b1c"
+      },
+      "protected": false
+    },
+    {
+      "name": "feature/wipetower2_travel_path",
+      "commit": {
+        "sha": "77a64c300a86431e323151940b97b6e9d342e926",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/77a64c300a86431e323151940b97b6e9d342e926"
+      },
+      "protected": false
+    },
+    {
+      "name": "felix-printers-profile-fixes",
+      "commit": {
+        "sha": "7a5c53abec5acacec59cb6b1232a91287dc94d4d",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/7a5c53abec5acacec59cb6b1232a91287dc94d4d"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/ams-inventory-grouping-invalidation",
+      "commit": {
+        "sha": "bd765d294661bc79bf6cb490e5bc74992b467ab5",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/bd765d294661bc79bf6cb490e5bc74992b467ab5"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/ams-popup",
+      "commit": {
+        "sha": "94bbf196857552e2f56f2ad1a0c93a64977b4c55",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/94bbf196857552e2f56f2ad1a0c93a64977b4c55"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/ams-type-combo",
+      "commit": {
+        "sha": "529907bc7543075b924fe2354e645b3b4aa19949",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/529907bc7543075b924fe2354e645b3b4aa19949"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/bbl-ca-cert",
+      "commit": {
+        "sha": "eab067080f37bd887706899a7139a370e5ae319a",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/eab067080f37bd887706899a7139a370e5ae319a"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/bylayer-as-object-list-order",
+      "commit": {
+        "sha": "2746a458c3b5b156fef86635d240c5e82257e4fa",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/2746a458c3b5b156fef86635d240c5e82257e4fa"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/config-model-leaks",
+      "commit": {
+        "sha": "d7b86a106d94222a013299a6c947ef3f3ac7366d",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/d7b86a106d94222a013299a6c947ef3f3ac7366d"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/default_materials",
+      "commit": {
+        "sha": "ab00de4c5b2880bf2e6a50737242a5c276e52802",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/ab00de4c5b2880bf2e6a50737242a5c276e52802"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/filament-array-sync-mm-slice-crash",
+      "commit": {
+        "sha": "08dcc0adfcaaca102efae067addcdbc26185d882",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/08dcc0adfcaaca102efae067addcdbc26185d882"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/gui-resource-leaks",
+      "commit": {
+        "sha": "aaab2d6d8bc4c6cb09ba80cd8bfbb9a9a9c7f50d",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/aaab2d6d8bc4c6cb09ba80cd8bfbb9a9a9c7f50d"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/incorrect_filament_type_in_bbl_ams",
+      "commit": {
+        "sha": "1fa357750a3b18282637568a76c749345ec6aa7e",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/1fa357750a3b18282637568a76c749345ec6aa7e"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/island-ordering-stall",
+      "commit": {
+        "sha": "6a231be4d66f54e7f797ab6b275f571b5ef88b72",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/6a231be4d66f54e7f797ab6b275f571b5ef88b72"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/isolate-plugin-browser-session",
+      "commit": {
+        "sha": "e740246f7e9405e2cabd9c9ab5d15cd369f5f1ab",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/e740246f7e9405e2cabd9c9ab5d15cd369f5f1ab"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/local-wheel-stale-extraction",
+      "commit": {
+        "sha": "d7ec1ef13c9b80ccb63c1e3fc425c6a2ba48cdfe",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/d7ec1ef13c9b80ccb63c1e3fc425c6a2ba48cdfe"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/macos-dev-mode-switch-text",
+      "commit": {
+        "sha": "a6d199bac44399d07e6c03032ea600dfb0841fe7",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/a6d199bac44399d07e6c03032ea600dfb0841fe7"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/mouse-ear-orientation",
+      "commit": {
+        "sha": "e587e1be1ec688687ca684593c1041e48335b8be",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/e587e1be1ec688687ca684593c1041e48335b8be"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/optimize_window_event_handler_for_mouse_events",
+      "commit": {
+        "sha": "74b34beeca5212297a6e4cee6e922e2b48d0bde5",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/74b34beeca5212297a6e4cee6e922e2b48d0bde5"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/overlapping-permission-dialogs",
+      "commit": {
+        "sha": "1c032c1a4d4207963e8296dfbb2f248f000209a4",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/1c032c1a4d4207963e8296dfbb2f248f000209a4"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/parallel-races",
+      "commit": {
+        "sha": "dbe342c9780b69f9ebc8fc35cdc7b3c1278ec231",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/dbe342c9780b69f9ebc8fc35cdc7b3c1278ec231"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/pep723-dependency-commas",
+      "commit": {
+        "sha": "894399495a6df4ac3941841affcf110dfc8e15fb",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/894399495a6df4ac3941841affcf110dfc8e15fb"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/reconnect_lan_printer_after_agent_switch",
+      "commit": {
+        "sha": "49c305e814af7db1e15fe7083bf2de4d134089f5",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/49c305e814af7db1e15fe7083bf2de4d134089f5"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/revert-native_device_tab-flag",
+      "commit": {
+        "sha": "d17ac8c74a0cf02b226a9a5d447939a104a50bc9",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/d17ac8c74a0cf02b226a9a5d447939a104a50bc9"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/slicing-lifecycle-uaf",
+      "commit": {
+        "sha": "19b8d2138eb2c8357866fae4b3606afb173249fc",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/19b8d2138eb2c8357866fae4b3606afb173249fc"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/speed-dial-position",
+      "commit": {
+        "sha": "a73e2d589acc29dfd337824e042591ef5ffc8c83",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/a73e2d589acc29dfd337824e042591ef5ffc8c83"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/texdisp-more-gradient-colors",
+      "commit": {
+        "sha": "4662bc67bb39b978d110bba86477527522d93a5d",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/4662bc67bb39b978d110bba86477527522d93a5d"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/webkitgtk-crash",
+      "commit": {
+        "sha": "0bf0901a959e4c8c0ba1013d2fbf318d55598dcc",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/0bf0901a959e4c8c0ba1013d2fbf318d55598dcc"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/wxwidgets-3.3.4",
+      "commit": {
+        "sha": "2c9734381174a34b15850576ad6bc627dc1e7ce7",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/2c9734381174a34b15850576ad6bc627dc1e7ce7"
+      },
+      "protected": false
+    },
+    {
+      "name": "hanif/bambu-3mf-key-mapping",
+      "commit": {
+        "sha": "5ecb596b1c8ce4f05665b81ceff7914e629fc2c4",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/5ecb596b1c8ce4f05665b81ceff7914e629fc2c4"
+      },
+      "protected": false
+    },
+    {
+      "name": "hanif/ci-label-gated-builds",
+      "commit": {
+        "sha": "47ab5f1cf91c57615cf79d51fcf2eb62acf62a19",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/47ab5f1cf91c57615cf79d51fcf2eb62acf62a19"
+      },
+      "protected": false
+    },
+    {
+      "name": "hanif/ci-windows-msvc",
+      "commit": {
+        "sha": "49dc47aaacf09fe2a6f87de273dc8375dc792e47",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/49dc47aaacf09fe2a6f87de273dc8375dc792e47"
+      },
+      "protected": false
+    },
+    {
+      "name": "hanif/flatpak-runtime-volume",
+      "commit": {
+        "sha": "54e318983711d0759e04c88ed0e79b17b351c9be",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/54e318983711d0759e04c88ed0e79b17b351c9be"
+      },
+      "protected": false
+    },
+    {
+      "name": "hanif/issue-17070",
+      "commit": {
+        "sha": "ee672eba81f4612c82d68d564a0ee0b0b607a743",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/ee672eba81f4612c82d68d564a0ee0b0b607a743"
+      },
+      "protected": false
+    },
+    {
+      "name": "hanif/issue-17151",
+      "commit": {
+        "sha": "8532ab87e8c5e016ad76a7879dc4cd75624ec96e",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/8532ab87e8c5e016ad76a7879dc4cd75624ec96e"
+      },
+      "protected": false
+    },
+    {
+      "name": "hanif/moonraker-close-frame-count",
+      "commit": {
+        "sha": "0d9f3bc88325c32bece71c07b36d3e7758046a5b",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/0d9f3bc88325c32bece71c07b36d3e7758046a5b"
+      },
+      "protected": false
+    },
+    {
+      "name": "hanif/preview-drag-detail",
+      "commit": {
+        "sha": "31fee157bc85e64ce15b99a03a63f9d2ed3cd1e4",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/31fee157bc85e64ce15b99a03a63f9d2ed3cd1e4"
+      },
+      "protected": false
+    },
+    {
+      "name": "hanif/tree-support-tip-order",
+      "commit": {
+        "sha": "e9fbe672bfd8440fbcc28779d911bb807a00bc7b",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/e9fbe672bfd8440fbcc28779d911bb807a00bc7b"
+      },
+      "protected": false
+    },
+    {
+      "name": "hanif/user-preset-inherits-pass",
+      "commit": {
+        "sha": "af314cc5c3c988ac4e8cdbcdd0098d6f298b9346",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/af314cc5c3c988ac4e8cdbcdd0098d6f298b9346"
+      },
+      "protected": false
+    },
+    {
+      "name": "hanif/wipe-tower-thin-layer-join",
+      "commit": {
+        "sha": "aa3c0205bdad3102110946e4444cb12c0c9e9f57",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/aa3c0205bdad3102110946e4444cb12c0c9e9f57"
+      },
+      "protected": false
+    },
+    {
+      "name": "main",
+      "commit": {
+        "sha": "9281032fdc3925474e2afb0af8ba4cca79fc626f",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/9281032fdc3925474e2afb0af8ba4cca79fc626f"
+      },
+      "protected": true
+    },
+    {
+      "name": "publish-3mf-dialog",
+      "commit": {
+        "sha": "552362289141d6895bd6fd407f4b0153d542b20f",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/552362289141d6895bd6fd407f4b0153d542b20f"
+      },
+      "protected": false
+    },
+    {
+      "name": "rc/v2.5.0-final",
+      "commit": {
+        "sha": "5e2b6b9e97355ceb20e1f97fb6bcaeb1b30121f0",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/5e2b6b9e97355ceb20e1f97fb6bcaeb1b30121f0"
+      },
+      "protected": false
+    },
+    {
+      "name": "release/signpath-test",
+      "commit": {
+        "sha": "4c74ab393bc8598a02dc6ea378218a25e36d8452",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/4c74ab393bc8598a02dc6ea378218a25e36d8452"
+      },
+      "protected": true
+    },
+    {
+      "name": "release/v1.8",
+      "commit": {
+        "sha": "7c0a061fb7bff892e7bb3ed276dc5d401fac9477",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/7c0a061fb7bff892e7bb3ed276dc5d401fac9477"
+      },
+      "protected": true
+    },
+    {
+      "name": "release/v1.9",
+      "commit": {
+        "sha": "8a42aed683d02ca40aa0802b2bfbd8b43e5850d4",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/8a42aed683d02ca40aa0802b2bfbd8b43e5850d4"
+      },
+      "protected": true
+    },
+    {
+      "name": "release/v2.3",
+      "commit": {
+        "sha": "468993d5deb547b01bece5d2810fb3a8e966d9fa",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/468993d5deb547b01bece5d2810fb3a8e966d9fa"
+      },
+      "protected": true
+    },
+    {
+      "name": "release/v2.3.1",
+      "commit": {
+        "sha": "f2d10a0b5760c142e532e09f26fabd485579234c",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/f2d10a0b5760c142e532e09f26fabd485579234c"
+      },
+      "protected": true
+    },
+    {
+      "name": "release/v2.4",
+      "commit": {
+        "sha": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/8500fcdccaa10b5099ac20d252af3a7c560046f1"
+      },
+      "protected": true
+    },
+    {
+      "name": "release/v2.5.0",
+      "commit": {
+        "sha": "af2ffb8cddd2f3c0bdadc56d9cc3945fb23577ea",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/af2ffb8cddd2f3c0bdadc56d9cc3945fb23577ea"
+      },
+      "protected": true
+    },
+    {
+      "name": "texture-displacement-typed-sliders",
+      "commit": {
+        "sha": "016b1f6a325120fbb89d9d67a9f180acff542ecd",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/016b1f6a325120fbb89d9d67a9f180acff542ecd"
+      },
+      "protected": false
+    },
+    {
+      "name": "texture-placement-gizmo",
+      "commit": {
+        "sha": "0e639f890e19975dc00c1f1b7646f4e27645ea91",
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/commits/0e639f890e19975dc00c1f1b7646f4e27645ea91"
+      },
+      "protected": false
+    }
+  ],
+  "releases": [
+    {
+      "tag": "nightly-builds",
+      "published_at": "2024-11-21T14:01:41Z",
+      "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/nightly-builds",
+      "prerelease": true
+    },
+    {
+      "tag": "v2.5.0-rc",
+      "published_at": "2026-11-01T10:36:26Z",
+      "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.5.0-rc",
+      "prerelease": true
+    },
+    {
+      "tag": "v2.5.0-beta",
+      "published_at": "2026-10-27T17:22:32Z",
+      "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.5.0-beta",
+      "prerelease": true
+    },
+    {
+      "tag": "v2.5.0-alpha",
+      "published_at": "2026-10-16T14:28:11Z",
+      "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.5.0-alpha",
+      "prerelease": true
+    },
+    {
+      "tag": "v2.4.2",
+      "published_at": "2026-07-07T03:33:49Z",
+      "url": "https://github.com/OrcaSlicer/OrcaSlicer/releases/tag/v2.4.2",
+      "prerelease": false
+    }
+  ],
+  "open_issue_sample": [
+    {
+      "number": 17241,
+      "title": "Printer Model Preview",
+      "url": "https://github.com/OrcaSlicer/OrcaSlicer/issues/17241",
+      "pull_request": false
+    },
+    {
+      "number": 17240,
+      "title": "Warn When an Object Overrides Settings Spiral Vase Mode Needs",
+      "url": "https://github.com/OrcaSlicer/OrcaSlicer/pull/17240",
+      "pull_request": true
+    },
+    {
+      "number": 17239,
+      "title": "New Vendor Filament profiles are not showing up in 2.5.0 RC",
+      "url": "https://github.com/OrcaSlicer/OrcaSlicer/issues/17239",
+      "pull_request": false
+    },
+    {
+      "number": 17237,
+      "title": "Flashforge: add Flow Calibration option for Creator 5 / 5 Pro",
+      "url": "https://github.com/OrcaSlicer/OrcaSlicer/pull/17237",
+      "pull_request": true
+    },
+    {
+      "number": 17236,
+      "title": "Optimize RSS RAM during idle and slicing pipelines, eliminate memory retention",
+      "url": "https://github.com/OrcaSlicer/OrcaSlicer/pull/17236",
+      "pull_request": true
+    },
+    {
+      "number": 17235,
+      "title": "By object: check each object's top above the bed, raft included",
+      "url": "https://github.com/OrcaSlicer/OrcaSlicer/pull/17235",
+      "pull_request": true
+    },
+    {
+      "number": 17234,
+      "title": "feat: Add Fin support type",
+      "url": "https://github.com/OrcaSlicer/OrcaSlicer/pull/17234",
+      "pull_request": true
+    },
+    {
+      "number": 17233,
+      "title": "Map BambuStudio's ensure_vertical_shell_thickness values on load",
+      "url": "https://github.com/OrcaSlicer/OrcaSlicer/pull/17233",
+      "pull_request": true
+    },
+    {
+      "number": 17232,
+      "title": "By layer: keep As object list copies in their list order",
+      "url": "https://github.com/OrcaSlicer/OrcaSlicer/pull/17232",
+      "pull_request": true
+    },
+    {
+      "number": 17231,
+      "title": "Remove settings OrcaSlicer ignores from the Prusa process profiles",
+      "url": "https://github.com/OrcaSlicer/OrcaSlicer/pull/17231",
+      "pull_request": true
+    },
+    {
+      "number": 17230,
+      "title": "Estimate Moonraker remaining time from print progress instead of paused time",
+      "url": "https://github.com/OrcaSlicer/OrcaSlicer/pull/17230",
+      "pull_request": true
+    },
+    {
+      "number": 17229,
+      "title": "Fix gap infill printing with the outer wall filament with classic walls",
+      "url": "https://github.com/OrcaSlicer/OrcaSlicer/pull/17229",
+      "pull_request": true
+    },
+    {
+      "number": 17228,
+      "title": "Move Mixed color sublayer to Multimaterial and hide that tab on single-filament printers",
+      "url": "https://github.com/OrcaSlicer/OrcaSlicer/pull/17228",
+      "pull_request": true
+    },
+    {
+      "number": 17227,
+      "title": "QiDi MAX4 - Errors when using a filament spool outside the QiDi Box",
+      "url": "https://github.com/OrcaSlicer/OrcaSlicer/issues/17227",
+      "pull_request": false
+    },
+    {
+      "number": 17225,
+      "title": "Update OrcaSlicer_ru.po",
+      "url": "https://github.com/OrcaSlicer/OrcaSlicer/pull/17225",
+      "pull_request": true
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+# Upstream maintenance
+
+`origin` tracks official OrcaSlicer; `snapmaker`, `forca`, `snapmaker-profiles` and `extended-firmware` point to the verified public sources. SnOrca is an alias of `snapmaker`, not a second remote with independent changes. Official MCP is tracked through origin/feature/mcp. Exact audit baselines live in tools/u1/sources.lock.json and must not move implicitly during a build.
+
+Run `python3 tools/u1/upstream_review.py --fetch` to fetch source branches and generate a review report. Without `--fetch`, unavailable refs are reported as unavailable. The tool classifies changed paths, records commits and flags paths that overlap local patches. A path overlap is a potential conflict, not a proof that a merge conflicts. A non-overlap does not prove API or behavioral compatibility. Commit lists are unfiltered candidates, not reviewed recommendations.
+
+The scheduled workflow creates a dedicated review branch and draft report PR when new evidence differs. It runs component/tooling checks and never merges. **It does not integrate upstream source changes.** A report-only PR passing component tests does not validate the candidate upstream commits. The JSON records both limitations explicitly.
+
+Actual integration must use a separate integration branch based on a known passing release or integration checkpoint. Review relevant changes by engine/schema/G-code, MCP, connectivity, profiles, dependencies, UI and CI. Prefer isolated cherry-picks; keep upstream commit attribution, resolve semantic conflicts explicitly and add compatibility adapters where schemas differ. Update source pins only after the affected features pass their relevant tests. Never resolve a merge by deleting a U1 feature.
+
+Required gates depend on subsystem: native protocol/core tests for MCP; compiled profile loader and inheritance/array checks for presets; actual model-to-G-code comparisons for slicing; captured-response and permission tests for networking; all platform builds after dependency changes. Existing U1 3MF projects and configuration migrations are mandatory release tests. Hardware tests stay manual and separately authorized.
+
+At present there is no Ultimate U1 known-good stable release. Keep the audited published Snapmaker release as an external reference and do not label the experimental branch stable. Once a release passes all offline gates, preserve it with an immutable tag/artifact/checksum and keep integration ahead of that tag. Physical compatibility remains provisional until the separate hardware checklist passes.
+
+The initial workflow provides change detection and review automation only. Automatic source integration, full compatibility gating and release artifact retention are not complete until their application-level tests and runners are available.

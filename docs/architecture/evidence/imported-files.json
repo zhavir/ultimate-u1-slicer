@@ -1,0 +1,14 @@
+{
+  "src/libslic3r/FosFilamentArrangement.cpp": {
+    "source": "jiyang1018/FOrcaSlicer",
+    "sha": "0b1f80cd22793785d8ae5c4296d2fe4a9248bd21",
+    "sha256": "0f8a508c069de7ab5e0e376036a50961d0fec076d6899dd314d8c3cde059bdb9",
+    "modified": false
+  },
+  "src/libslic3r/FosFilamentArrangement.hpp": {
+    "source": "jiyang1018/FOrcaSlicer",
+    "sha": "0b1f80cd22793785d8ae5c4296d2fe4a9248bd21",
+    "sha256": "80427aaf75ad677fdf8d80796a3591281e53eed30fbaf243beda6acc4058536f",
+    "modified": false
+  }
+}

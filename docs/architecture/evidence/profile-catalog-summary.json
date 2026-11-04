@@ -1,0 +1,23 @@
+{
+  "sources": {
+    "forca": {
+      "snapshot": "sources/forca-0b1f80cd22793785d8ae5c4296d2fe4a9248bd21",
+      "sha": "0b1f80cd22793785d8ae5c4296d2fe4a9248bd21",
+      "profile_count": 568
+    },
+    "orca": {
+      "snapshot": "sources/orca-9281032fdc3925474e2afb0af8ba4cca79fc626f",
+      "sha": "9281032fdc3925474e2afb0af8ba4cca79fc626f",
+      "profile_count": 2015
+    },
+    "snapmaker-profiles": {
+      "snapshot": "sources/snapmaker-profiles-1e201f6aa8920b4878daa02a21d43073ba92c06c",
+      "sha": "1e201f6aa8920b4878daa02a21d43073ba92c06c",
+      "profile_count": 542
+    }
+  },
+  "collisions": 821,
+  "duplicates": 0,
+  "installed": false,
+  "calibrated_for_u1": false
+}

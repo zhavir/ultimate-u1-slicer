@@ -1,0 +1,219 @@
+{
+  "repository": "paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware",
+  "default_branch": "develop",
+  "sha": "e086afa5068e3f724aa6ff9ca193dc742213c3c3",
+  "branches": [
+    {
+      "name": "add-chroot-script",
+      "commit": {
+        "sha": "615da348087a11800a8af2e599ea11f61e9a11ab",
+        "url": "https://api.github.com/repos/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/commits/615da348087a11800a8af2e599ea11f61e9a11ab"
+      },
+      "protected": false
+    },
+    {
+      "name": "develop",
+      "commit": {
+        "sha": "e086afa5068e3f724aa6ff9ca193dc742213c3c3",
+        "url": "https://api.github.com/repos/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/commits/e086afa5068e3f724aa6ff9ca193dc742213c3c3"
+      },
+      "protected": true
+    },
+    {
+      "name": "feature/klipper-internal-remove",
+      "commit": {
+        "sha": "269b139ab0307378a6776abc9c0c1f6d0caa0ba8",
+        "url": "https://api.github.com/repos/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/commits/269b139ab0307378a6776abc9c0c1f6d0caa0ba8"
+      },
+      "protected": false
+    },
+    {
+      "name": "firmware-debian-rebased",
+      "commit": {
+        "sha": "4fe28179849bb85a0cc410292254997d2d9016f0",
+        "url": "https://api.github.com/repos/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/commits/4fe28179849bb85a0cc410292254997d2d9016f0"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/moonraker-metadata-filament-arrays",
+      "commit": {
+        "sha": "b2966576d9e27ab89d2d9a995b0412b612dca434",
+        "url": "https://api.github.com/repos/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/commits/b2966576d9e27ab89d2d9a995b0412b612dca434"
+      },
+      "protected": false
+    },
+    {
+      "name": "main",
+      "commit": {
+        "sha": "0de1a77da137d8a7af3ed1af36ae7c6fb70c3a5a",
+        "url": "https://api.github.com/repos/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/commits/0de1a77da137d8a7af3ed1af36ae7c6fb70c3a5a"
+      },
+      "protected": true
+    },
+    {
+      "name": "octoeverywhere-auth",
+      "commit": {
+        "sha": "fd04a6e356cb0a43674b7a326c94c89cea98adf3",
+        "url": "https://api.github.com/repos/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/commits/fd04a6e356cb0a43674b7a326c94c89cea98adf3"
+      },
+      "protected": false
+    },
+    {
+      "name": "patch-wifi-persist",
+      "commit": {
+        "sha": "45a9588158e9bb359f61698184ed8055a186292c",
+        "url": "https://api.github.com/repos/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/commits/45a9588158e9bb359f61698184ed8055a186292c"
+      },
+      "protected": false
+    },
+    {
+      "name": "revert-826-claude/cool-knuth-v3r8gd",
+      "commit": {
+        "sha": "c86111e668cd816454e763699cf44df454d6c257",
+        "url": "https://api.github.com/repos/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/commits/c86111e668cd816454e763699cf44df454d6c257"
+      },
+      "protected": false
+    },
+    {
+      "name": "selective-overlayfs",
+      "commit": {
+        "sha": "7faa9ef1dc89ddfb44aaecc05f6cd92164a8c473",
+        "url": "https://api.github.com/repos/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/commits/7faa9ef1dc89ddfb44aaecc05f6cd92164a8c473"
+      },
+      "protected": false
+    },
+    {
+      "name": "track-all-deps",
+      "commit": {
+        "sha": "92d9ec5d0a4e9c241bc56e2f83f4c4358e10ce4c",
+        "url": "https://api.github.com/repos/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/commits/92d9ec5d0a4e9c241bc56e2f83f4c4358e10ce4c"
+      },
+      "protected": false
+    }
+  ],
+  "releases": [
+    {
+      "tag": "rolling",
+      "published_at": "2026-09-09T16:46:25Z",
+      "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/releases/tag/rolling",
+      "prerelease": true
+    },
+    {
+      "tag": "v2.0.0-paxx12-24",
+      "published_at": "2026-10-25T14:47:44Z",
+      "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/releases/tag/v2.0.0-paxx12-24",
+      "prerelease": false
+    },
+    {
+      "tag": "v2.0.0-paxx12-23",
+      "published_at": "2026-10-19T09:16:47Z",
+      "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/releases/tag/v2.0.0-paxx12-23",
+      "prerelease": true
+    },
+    {
+      "tag": "v1.6.0-paxx12-22",
+      "published_at": "2026-09-07T19:31:04Z",
+      "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/releases/tag/v1.6.0-paxx12-22",
+      "prerelease": false
+    },
+    {
+      "tag": "v1.5.2-paxx12-21",
+      "published_at": "2026-08-02T08:27:20Z",
+      "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/releases/tag/v1.5.2-paxx12-21",
+      "prerelease": false
+    }
+  ],
+  "open_issue_sample": [
+    {
+      "number": 864,
+      "title": "S49mqtt-broker fails to regenerate MQTT certs on extended firmware (BUILD_DATE parsed as \"2.0.0-pa\") \u2192 mosquitto never starts \u2192 Klipper halts",
+      "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/issues/864",
+      "pull_request": false
+    },
+    {
+      "number": 863,
+      "title": "Skip Object on multi-toolhead print causes cold extrusion and automatic cancellation (0003-0523-0000-0001)",
+      "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/issues/863",
+      "pull_request": false
+    },
+    {
+      "number": 862,
+      "title": "Add an Internal Camera Exposure setting (auto/manual)",
+      "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/pull/862",
+      "pull_request": true
+    },
+    {
+      "number": 861,
+      "title": "After U1_extended_2.1.0-paxx12-develop-e086afa upgrade: case camera doesn't show anything",
+      "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/issues/861",
+      "pull_request": false
+    },
+    {
+      "number": 860,
+      "title": "After U1_extended_2.1.0-paxx12-develop-e086afa upgrade:  Failed to scan inotify root node 'config'.",
+      "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/issues/860",
+      "pull_request": false
+    },
+    {
+      "number": 858,
+      "title": "Add Konnect as a cloud provider",
+      "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/pull/858",
+      "pull_request": true
+    },
+    {
+      "number": 857,
+      "title": "Remote screen touch stops working when a USB HID device claims /dev/input/event0",
+      "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/issues/857",
+      "pull_request": false
+    },
+    {
+      "number": 853,
+      "title": "fix: do not copy stray Python caches into the image",
+      "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/pull/853",
+      "pull_request": true
+    },
+    {
+      "number": 852,
+      "title": "fix(spoollink): assign a client-set active spool to the toolhead in use",
+      "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/pull/852",
+      "pull_request": true
+    },
+    {
+      "number": 851,
+      "title": "Option to manually set exhaust fan to 0%",
+      "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/issues/851",
+      "pull_request": false
+    },
+    {
+      "number": 850,
+      "title": "Filament Jam (Only Pauses no details on printer screen)",
+      "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/issues/850",
+      "pull_request": false
+    },
+    {
+      "number": 849,
+      "title": "camera: export the internal camera from stock 2.1.0 unisrv",
+      "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/pull/849",
+      "pull_request": true
+    },
+    {
+      "number": 848,
+      "title": "Add HTTPS with self-signed, ACME and mTLS; reduce firmware-config memory",
+      "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/pull/848",
+      "pull_request": true
+    },
+    {
+      "number": 847,
+      "title": "OpenRFID: failed re-scan on toolhead insert wipes the filament info that was read at preload",
+      "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/issues/847",
+      "pull_request": false
+    },
+    {
+      "number": 845,
+      "title": "Serve last-known-good release data when GitHub rate-limits the upgrade check",
+      "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware/pull/845",
+      "pull_request": true
+    }
+  ]
+}

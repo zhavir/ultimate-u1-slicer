@@ -1,0 +1,48 @@
+{
+  "audit_date": "2026-11-04",
+  "sources": {
+    "snapmaker": {
+      "url": "https://github.com/Snapmaker/OrcaSlicer.git",
+      "default_branch": "main",
+      "sha": "f5fd7289ea067997181ee6c2cf15a98f58faba43",
+      "license": "AGPL-3.0",
+      "aliases": [
+        "SnOrca"
+      ]
+    },
+    "forca": {
+      "url": "https://github.com/jiyang1018/FOrcaSlicer.git",
+      "default_branch": "main",
+      "sha": "0b1f80cd22793785d8ae5c4296d2fe4a9248bd21",
+      "license": "AGPL-3.0",
+      "aliases": []
+    },
+    "orca": {
+      "url": "https://github.com/OrcaSlicer/OrcaSlicer.git",
+      "default_branch": "main",
+      "sha": "9281032fdc3925474e2afb0af8ba4cca79fc626f",
+      "license": "AGPL-3.0",
+      "aliases": []
+    },
+    "extended-firmware": {
+      "url": "https://github.com/paxx12-snapmaker-u1/SnapmakerU1-Extended-Firmware.git",
+      "default_branch": "develop",
+      "sha": "e086afa5068e3f724aa6ff9ca193dc742213c3c3",
+      "license": "GPL-3.0",
+      "aliases": []
+    },
+    "orca-mcp": {
+      "url": "https://github.com/OrcaSlicer/OrcaSlicer.git",
+      "branch": "feature/mcp",
+      "sha": "17a745e30c248cf3acb4c429b650b22d106fd19a",
+      "license": "AGPL-3.0"
+    },
+    "snapmaker-profiles": {
+      "url": "https://github.com/Snapmaker/snapmaker-profiles.git",
+      "sha": "1e201f6aa8920b4878daa02a21d43073ba92c06c",
+      "default_branch": "main",
+      "profiles_path": ".",
+      "license": "Unknown - no LICENSE in audited tree; import for review only"
+    }
+  }
+}

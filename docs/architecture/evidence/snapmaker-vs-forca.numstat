@@ -1,0 +1,1551 @@
+0	11	.github/connect-bundle.lock.json
+0	25	.github/workflows/assign.yml
+0	159	.github/workflows/build_all.yml
+0	59	.github/workflows/build_check_cache.yml
+0	187	.github/workflows/build_deps.yml
+138	0	.github/workflows/build_linux.yml
+274	0	.github/workflows/build_macos.yml
+133	0	.github/workflows/build_macos_x86.yml
+0	552	.github/workflows/build_orca.yml
+0	44	.github/workflows/check_locale.yml
+0	58	.github/workflows/check_profiles.yml
+0	71	.github/workflows/claude-code-review.yml
+0	64	.github/workflows/claude.yml
+0	178	.github/workflows/coverage.yml
+0	73	.github/workflows/orca_bot.yml
+0	46	.github/workflows/publish_docs_to_wiki.yml
+0	254	.github/workflows/sanitizer-tests.yml
+0	167	.github/workflows/sentry_cli.yml
+0	44	.github/workflows/shellcheck.yml
+41	0	.github/workflows/sync-to-gitea.yml
+0	213	.github/workflows/test-linux.yml
+0	38	.github/workflows/update-translation.yml
+0	335	.github/workflows/validate-documentation.yml
+11	19	.gitignore
+0	509	.gitlab-ci.yml
+0	4	.gitmodules
+0	1	CLAUDE.md
+140	395	CMakeLists.txt
+0	16	CTestConfig.cmake
+367	103	README.md
+369	0	README.zh_CN.md
+7084	0	Tab.cpp
+14	46	build_flatpak.sh
+158	0	build_installer.ps1
+7	56	build_linux.sh
+129	46	build_release_macos.sh
+1	15	build_release_vs2022.bat
+0	32	cmake/RunCoverageTests.cmake
+0	97	cmake/SyncSnapmakerProfiles.cmake
+0	63	cmake/catch2.cmake
+0	129	cmake/coverage.cmake
+175	0	cmake/modules/Catch2/Catch.cmake
+106	0	cmake/modules/Catch2/CatchAddTests.cmake
+225	0	cmake/modules/Catch2/ParseAndAddCatchTests.cmake
+11	35	cmake/modules/FindOpenVDB.cmake
+3	34	cmake/modules/MacOSXBundleInfo.plist.in
+0	17	cmake/nsis/SnapmakerConnectFirewall_install.nsh
+0	6	cmake/nsis/SnapmakerConnectFirewall_uninstall.nsh
+0	33	cmake/nsis/SnapmakerConnect_uninstall.nsh
+0	38	cmake/nsis/SnapmakerDirPre.nsh
+0	212	cmake/nsis/SnapmakerPreinstall.nsh.in
+0	2	cmake/nsis/SnapmakerURLProtocols_uninstall.nsh
+0	14	cmake/nsis/SnapmakerUninstallConfirm.nsh.in
+0	229	cmake/nsis/SnapmakerUninstallFinish.nsh.in
+0	94	cmake/nsis/SnapmakerUpgradeCleanup.nsh.in
+0	91	cmake/sanitizers.cmake
+0	9	deps/Blosc/Blosc.cmake
+6	12	deps/CMakeLists.txt
+2	12	deps/CURL/CURL.cmake
+0	4	deps/EXPAT/expat/CMakeLists.txt
+1	1	deps/GMP/GMP.cmake
+5	39	deps/MPFR/MPFR.cmake
+0	1	deps/OpenCV/OpenCV.cmake
+12	16	deps/OpenSSL/OpenSSL.cmake
+0	20	deps/OpenSSL/build_windows.bat.in
+0	37	deps/OpenSSL/build_windows_clean.bat.in
+67	0	deps/OpenSSL/openssl/openssl-config-version.cmake
+3	0	deps/OpenSSL/openssl/openssl-config.cmake
+29	0	deps/OpenSSL/openssl/openssl-targets-debug.cmake
+29	0	deps/OpenSSL/openssl/openssl-targets-release.cmake
+29	0	deps/OpenSSL/openssl/openssl-targets-relwithdebinfo.cmake
+104	0	deps/OpenSSL/openssl/openssl-targets.cmake
+29	0	deps/OpenVDB/0001-clang19-template-kw.patch
+4	15	deps/OpenVDB/OpenVDB.cmake
+1	1	deps/Sentry/Sentry.cmake
+0	2	deps/deps-macos.cmake
+0	37	deps/mesa/README.md
+-	-	deps/mesa/x64/opengl32.dll
+0	4	deps_src/expat/CMakeLists.txt
+1	1	deps_src/nanosvg/CMakeLists.txt
+0	223	docs/U1_Local_Z_Dithering_Design_Draft.md
+0	174	docs/Widget_Inspector_Usage.md
+-	-	docs/images/4x_to_1x_CL.jpg
+-	-	docs/images/axe_sliced_color_patch.jpg
+-	-	docs/images/axe_sliced_original.jpg
+-	-	docs/images/character_painted.jpg
+-	-	docs/images/character_painted_color_patch.jpg
+-	-	docs/images/character_painted_original.jpg
+-	-	docs/images/gear-0.2-stock.jpg
+-	-	docs/images/gear-0.4-stock.jpg
+-	-	docs/images/gear-fos-2-4-4.jpg
+-	-	docs/images/gear-fos-2-4-6.jpg
+-	-	docs/images/launch-demo-en.jpg
+-	-	docs/images/launch-demo-zh.jpg
+-	-	docs/images/m1 gear group.STL
+-	-	docs/images/per_nozzle_settings.jpg
+-	-	docs/images/per_nozzle_settings_zh_CN.jpg
+-	-	docs/wiki-images/1M_gear_group.STL
+-	-	docs/wiki-images/4x_to_1x_CL.jpg
+-	-	docs/wiki-images/CL_side_top_demo.gif
+-	-	docs/wiki-images/FOS_install_path.jpg
+-	-	docs/wiki-images/Star_Orbit_Judgment_Axe.jpg
+-	-	docs/wiki-images/add_printer.jpg
+-	-	docs/wiki-images/add_printer_zh_CN.jpg
+-	-	docs/wiki-images/all_object_settings.jpg
+-	-	docs/wiki-images/all_object_settings_zh_CN.jpg
+-	-	docs/wiki-images/auto_adjusted_layer_height.jpg
+-	-	docs/wiki-images/axe_sliced_color_patch.jpg
+-	-	docs/wiki-images/axe_sliced_original.jpg
+-	-	docs/wiki-images/change_default_filament.jpg
+-	-	docs/wiki-images/change_default_filament_zh_CN.jpg
+-	-	docs/wiki-images/character_painted.jpg
+-	-	docs/wiki-images/character_painted_color_patch.jpg
+-	-	docs/wiki-images/character_painted_original.jpg
+-	-	docs/wiki-images/choose_U1.jpg
+-	-	docs/wiki-images/choose_U1_zh_CN.jpg
+-	-	docs/wiki-images/choose_region.jpg
+-	-	docs/wiki-images/choose_region_zh_CN.jpg
+-	-	docs/wiki-images/do_not_sync.jpg
+-	-	docs/wiki-images/empty_support_base_interface_error.jpg
+-	-	docs/wiki-images/empty_wipe_tower_filament_error.jpg
+-	-	docs/wiki-images/exceed_nozzle_diameter.jpg
+-	-	docs/wiki-images/export_gcode_gate.jpg
+-	-	docs/wiki-images/export_gcode_gate_zh_CN.jpg
+-	-	docs/wiki-images/features_with_mixed_nozzle.jpg
+-	-	docs/wiki-images/features_with_mixed_nozzle_zh_CN.jpg
+-	-	docs/wiki-images/filament_m1_gear_group_0.2_SOS.jpg
+-	-	docs/wiki-images/filament_m1_gear_group_0.4_SOS.jpg
+-	-	docs/wiki-images/filament_m1_gear_group_FOS_2-4-4.jpg
+-	-	docs/wiki-images/filament_m1_gear_group_FOS_2-4-6.jpg
+-	-	docs/wiki-images/input_layer_height.jpg
+-	-	docs/wiki-images/label_toolhead.jpg
+-	-	docs/wiki-images/mac_privacy_security.jpg
+-	-	docs/wiki-images/matched_nozzles.jpg
+-	-	docs/wiki-images/menu_preferences.jpg
+-	-	docs/wiki-images/microsoft_defendder_FOS_warning.jpg
+-	-	docs/wiki-images/microsoft_defendder_SOS_warning.jpg
+-	-	docs/wiki-images/new_SOS.jpg
+-	-	docs/wiki-images/per_nozzle_settings.jpg
+-	-	docs/wiki-images/per_nozzle_settings_zh_CN.jpg
+-	-	docs/wiki-images/print_button.jpg
+-	-	docs/wiki-images/print_button_zh_CN.jpg
+-	-	docs/wiki-images/send_to_print.jpg
+-	-	docs/wiki-images/setup_PTP.jpg
+-	-	docs/wiki-images/setup_PTP_zh_CN.jpg
+-	-	docs/wiki-images/slice_and_verify.jpg
+-	-	docs/wiki-images/slice_and_verify_zh_CN.jpg
+-	-	docs/wiki-images/time_usage_m1_gear_group_0.2_SOS.jpg
+-	-	docs/wiki-images/time_usage_m1_gear_group_0.4_SOS.jpg
+-	-	docs/wiki-images/time_usage_m1_gear_group_FOS_2-4-4.jpg
+-	-	docs/wiki-images/time_usage_m1_gear_group_FOS_2-4-6.jpg
+-	-	docs/wiki-images/unmatched_nozzles.jpg
+-	-	docs/wiki-images/zoomed_in_m1_gear_group_0.2_SOS.jpg
+-	-	docs/wiki-images/zoomed_in_m1_gear_group_0.4_SOS.jpg
+-	-	docs/wiki-images/zoomed_in_m1_gear_group_FOS_2-4-4.jpg
+-	-	docs/wiki-images/zoomed_in_m1_gear_group_FOS_2-4-6.jpg
+0	641	gitlab_build_linux.sh
+0	691	gitlab_build_release_macos.sh
+0	462	gitlab_build_release_vs2022.bat
+0	854	gitlab_installer.nsi
+0	860	gitlab_pack_linux.sh
+0	51	gitlab_patch_cmake.ps1
+61	179	installer.nsi
+8	83	localization/i18n/Snapmaker_Orca.pot
+7	0	localization/i18n/ca/Snapmaker_Orca_ca.po
+8	0	localization/i18n/cs/Snapmaker_Orca_cs.po
+8	0	localization/i18n/de/Snapmaker_Orca_de.po
+16	120	localization/i18n/en/Snapmaker_Orca_en.po
+8	0	localization/i18n/es/Snapmaker_Orca_es.po
+8	0	localization/i18n/fr/Snapmaker_Orca_fr.po
+8	0	localization/i18n/hu/Snapmaker_Orca_hu.po
+8	0	localization/i18n/it/Snapmaker_Orca_it.po
+7	0	localization/i18n/ja/Snapmaker_Orca_ja.po
+7	0	localization/i18n/ko/Snapmaker_Orca_ko.po
+0	2	localization/i18n/list.txt
+8	0	localization/i18n/lt/Snapmaker_Orca_lt.po
+8	0	localization/i18n/nl/Snapmaker_Orca_nl.po
+8	0	localization/i18n/pl/Snapmaker_Orca_pl.po
+7	0	localization/i18n/pt_BR/Snapmaker_Orca_pt_BR.po
+8	0	localization/i18n/ru/Snapmaker_Orca_ru.po
+7	0	localization/i18n/sv/Snapmaker_Orca_sv.po
+8	0	localization/i18n/tr/Snapmaker_Orca_tr.po
+8	0	localization/i18n/uk/Snapmaker_Orca_uk.po
+1103	847	localization/i18n/zh_CN/Snapmaker_Orca_zh_CN.po
+8	61	localization/i18n/zh_TW/Snapmaker_Orca_zh_TW.po
+0	785	pack_linux.sh
+0	1	resources/AppIcon.icon/Assets/glyph.svg
+0	28	resources/AppIcon.icon/icon.json
+-	-	resources/Assets.car
+-	-	resources/Icon.icns
+-	-	resources/images/FOrcaSlicer-mac_256px.ico
+-	-	resources/images/FOrcaSlicer_192px.png
+-	-	resources/images/Snapmaker_Orca-mac_128px.png
+-	-	resources/images/Snapmaker_Orca-mac_256px.ico
+-	-	resources/images/Snapmaker_Orca.icns
+-	-	resources/images/Snapmaker_Orca.ico
+-	-	resources/images/Snapmaker_Orca.png
+-	-	resources/images/Snapmaker_OrcaTitle.ico
+-	-	resources/images/Snapmaker_OrcaTitle.png
+-	-	resources/images/Snapmaker_Orca_128px.png
+-	-	resources/images/Snapmaker_Orca_154.png
+-	-	resources/images/Snapmaker_Orca_154_title.png
+-	-	resources/images/Snapmaker_Orca_192px.png
+-	-	resources/images/Snapmaker_Orca_192px_grayscale.png
+-	-	resources/images/Snapmaker_Orca_192px_transparent.png
+-	-	resources/images/Snapmaker_Orca_32px.png
+-	-	resources/images/Snapmaker_Orca_64.png
+-	-	resources/images/Snapmaker_Orca_gradient.png
+-	-	resources/images/Snapmaker_Orca_gradient_circle.png
+-	-	resources/images/Snapmaker_Orca_gradient_narrow.png
+-	-	resources/images/Snapmaker_Orca_gray.png
+0	5	resources/images/color_delta_e_label.svg
+0	5	resources/images/color_delta_e_label_dark.svg
+0	14	resources/images/color_palette.svg
+0	4	resources/images/error_icon_red_exclamation.svg
+0	4	resources/images/filament_color_more.svg
+0	3	resources/images/filament_dropdown_arrow.svg
+0	11	resources/images/filament_group.svg
+0	4	resources/images/filament_picker_left_arrow.svg
+0	4	resources/images/filament_picker_left_arrow_light.svg
+0	4	resources/images/filament_picker_right_arrow.svg
+0	4	resources/images/filament_picker_right_arrow_light.svg
+0	5	resources/images/fit_camera.svg
+0	5	resources/images/fit_camera_dark.svg
+0	5	resources/images/fit_camera_dark_hover.svg
+0	5	resources/images/fit_camera_hover.svg
+0	10	resources/images/flow_variant.svg
+0	5	resources/images/icon_add_circle.svg
+0	3	resources/images/icon_minus.svg
+0	3	resources/images/icon_minus_light.svg
+0	4	resources/images/icon_plus.svg
+0	4	resources/images/icon_plus_light.svg
+0	4	resources/images/icon_swap_groups.svg
+0	4	resources/images/icon_warning_triangle.svg
+-	-	resources/images/info.png
+1	5	resources/images/info.svg
+0	4	resources/images/mixed_filament_mapping_right_arrow.svg
+0	4	resources/images/mixed_filament_mapping_right_arrow_dark.svg
+0	19	resources/images/mixed_filament_preview_placeholder.svg
+1	0	resources/images/multi_material_supply.svg
+9	0	resources/images/nozzle_diameter.svg
+1	0	resources/images/nozzle_filament_mapping.svg
+0	5	resources/images/param_mixed_color.svg
+-	-	resources/images/question.png
+0	4	resources/images/reverse_arrow.svg
+0	4	resources/images/splash_app_icon.svg
+0	15	resources/images/sync_filament.svg
+0	5	resources/images/timelapse_cancel_active.svg
+0	5	resources/images/timelapse_cancel_disabled.svg
+0	5	resources/images/timelapse_cancel_disabled_dark.svg
+0	4	resources/images/timelapse_collapse_down.svg
+0	4	resources/images/timelapse_collapse_down_dark.svg
+0	4	resources/images/timelapse_collapse_up.svg
+0	4	resources/images/timelapse_collapse_up_dark.svg
+0	11	resources/images/timelapse_error.svg
+0	10	resources/images/timelapse_success.svg
+0	4	resources/images/warning_icon_orange_exclamation.svg
+2290	0	resources/profiles/Snapmaker.json
+42	0	resources/profiles/Snapmaker/filament/Generic ABS @U1 0.2 nozzle.json
+42	0	resources/profiles/Snapmaker/filament/Generic ABS @U1 0.6 nozzle.json
+42	0	resources/profiles/Snapmaker/filament/Generic ABS @U1 0.8 nozzle.json
+14	0	resources/profiles/Snapmaker/filament/Generic ABS @base.json
+42	0	resources/profiles/Snapmaker/filament/Generic ABS.json
+36	0	resources/profiles/Snapmaker/filament/Generic ASA @U1 0.2 nozzle.json
+36	0	resources/profiles/Snapmaker/filament/Generic ASA @U1 0.4 nozzle.json
+36	0	resources/profiles/Snapmaker/filament/Generic ASA @U1 0.6 nozzle.json
+36	0	resources/profiles/Snapmaker/filament/Generic ASA @U1 0.8 nozzle.json
+14	0	resources/profiles/Snapmaker/filament/Generic ASA @base.json
+35	0	resources/profiles/Snapmaker/filament/Generic ASA.json
+8	0	resources/profiles/Snapmaker/filament/Generic BVOH @base.json
+74	0	resources/profiles/Snapmaker/filament/Generic BVOH.json
+61	0	resources/profiles/Snapmaker/filament/Generic PA-CF.json
+79	0	resources/profiles/Snapmaker/filament/Generic PA.json
+57	0	resources/profiles/Snapmaker/filament/Generic PC @U1 0.6 nozzle.json
+57	0	resources/profiles/Snapmaker/filament/Generic PC @U1 0.8 nozzle.json
+14	0	resources/profiles/Snapmaker/filament/Generic PC @base.json
+57	0	resources/profiles/Snapmaker/filament/Generic PC.json
+74	0	resources/profiles/Snapmaker/filament/Generic PCTG @base.json
+60	0	resources/profiles/Snapmaker/filament/Generic PCTG.json
+52	0	resources/profiles/Snapmaker/filament/Generic PETG @U1 0.2 nozzle.json
+46	0	resources/profiles/Snapmaker/filament/Generic PETG @U1 0.6 nozzle.json
+47	0	resources/profiles/Snapmaker/filament/Generic PETG @U1 0.8 nozzle.json
+74	0	resources/profiles/Snapmaker/filament/Generic PETG @base.json
+65	0	resources/profiles/Snapmaker/filament/Generic PETG @base2.json
+73	0	resources/profiles/Snapmaker/filament/Generic PETG HF @U1 0.2 nozzle.json
+76	0	resources/profiles/Snapmaker/filament/Generic PETG HF @U1 0.6 nozzle.json
+81	0	resources/profiles/Snapmaker/filament/Generic PETG HF @U1 0.8 nozzle.json
+83	0	resources/profiles/Snapmaker/filament/Generic PETG HF @base.json
+74	0	resources/profiles/Snapmaker/filament/Generic PETG HF @base2.json
+83	0	resources/profiles/Snapmaker/filament/Generic PETG HF.json
+84	0	resources/profiles/Snapmaker/filament/Generic PETG-CF @U1 0.6 nozzle.json
+83	0	resources/profiles/Snapmaker/filament/Generic PETG-CF @U1 0.8 nozzle.json
+80	0	resources/profiles/Snapmaker/filament/Generic PETG-CF @base.json
+74	0	resources/profiles/Snapmaker/filament/Generic PETG-CF @base2.json
+74	0	resources/profiles/Snapmaker/filament/Generic PETG-CF.json
+84	0	resources/profiles/Snapmaker/filament/Generic PETG-GF @U1 0.6 nozzle.json
+86	0	resources/profiles/Snapmaker/filament/Generic PETG-GF @U1 0.8 nozzle.json
+80	0	resources/profiles/Snapmaker/filament/Generic PETG-GF @base.json
+74	0	resources/profiles/Snapmaker/filament/Generic PETG-GF @base2.json
+68	0	resources/profiles/Snapmaker/filament/Generic PETG-GF.json
+78	0	resources/profiles/Snapmaker/filament/Generic PETG.json
+56	0	resources/profiles/Snapmaker/filament/Generic PLA @U1 0.2 nozzle.json
+50	0	resources/profiles/Snapmaker/filament/Generic PLA @U1 0.6 nozzle.json
+50	0	resources/profiles/Snapmaker/filament/Generic PLA @U1 0.8 nozzle.json
+17	0	resources/profiles/Snapmaker/filament/Generic PLA @base.json
+18	0	resources/profiles/Snapmaker/filament/Generic PLA @base2.json
+80	0	resources/profiles/Snapmaker/filament/Generic PLA High Speed @U1 0.2 nozzle.json
+78	0	resources/profiles/Snapmaker/filament/Generic PLA High Speed @U1 0.6 nozzle.json
+81	0	resources/profiles/Snapmaker/filament/Generic PLA High Speed @U1 0.8 nozzle.json
+17	0	resources/profiles/Snapmaker/filament/Generic PLA High Speed @base.json
+17	0	resources/profiles/Snapmaker/filament/Generic PLA High Speed @base2.json
+59	0	resources/profiles/Snapmaker/filament/Generic PLA High Speed.json
+64	0	resources/profiles/Snapmaker/filament/Generic PLA Silk @U1 0.2 nozzle.json
+56	0	resources/profiles/Snapmaker/filament/Generic PLA Silk @U1 0.6 nozzle.json
+56	0	resources/profiles/Snapmaker/filament/Generic PLA Silk @U1 0.8 nozzle.json
+17	0	resources/profiles/Snapmaker/filament/Generic PLA Silk @base.json
+24	0	resources/profiles/Snapmaker/filament/Generic PLA Silk @base2.json
+53	0	resources/profiles/Snapmaker/filament/Generic PLA Silk.json
+50	0	resources/profiles/Snapmaker/filament/Generic PLA-CF @U1 0.6 nozzle.json
+50	0	resources/profiles/Snapmaker/filament/Generic PLA-CF @U1 0.8 nozzle.json
+32	0	resources/profiles/Snapmaker/filament/Generic PLA-CF @base.json
+38	0	resources/profiles/Snapmaker/filament/Generic PLA-CF @base2.json
+56	0	resources/profiles/Snapmaker/filament/Generic PLA-CF.json
+56	0	resources/profiles/Snapmaker/filament/Generic PLA.json
+20	0	resources/profiles/Snapmaker/filament/Generic PVA @base.json
+59	0	resources/profiles/Snapmaker/filament/Generic PVA.json
+62	0	resources/profiles/Snapmaker/filament/Generic Support For PLA @U1 0.2 nozzle.json
+62	0	resources/profiles/Snapmaker/filament/Generic Support For PLA @U1 0.6 nozzle.json
+62	0	resources/profiles/Snapmaker/filament/Generic Support For PLA @U1 0.8 nozzle.json
+32	0	resources/profiles/Snapmaker/filament/Generic Support For PLA @base.json
+64	0	resources/profiles/Snapmaker/filament/Generic Support For PLA.json
+39	0	resources/profiles/Snapmaker/filament/Generic TPU 95A HF @U1 0.6 nozzle.json
+42	0	resources/profiles/Snapmaker/filament/Generic TPU 95A HF @U1 0.8 nozzle.json
+29	0	resources/profiles/Snapmaker/filament/Generic TPU 95A HF @base.json
+15	0	resources/profiles/Snapmaker/filament/Generic TPU 95A HF @base2.json
+83	0	resources/profiles/Snapmaker/filament/Generic TPU 95A HF.json
+46	0	resources/profiles/Snapmaker/filament/Generic TPU @U1 0.6 nozzle.json
+45	0	resources/profiles/Snapmaker/filament/Generic TPU @U1 0.8 nozzle.json
+15	0	resources/profiles/Snapmaker/filament/Generic TPU @base2.json
+57	0	resources/profiles/Snapmaker/filament/Generic TPU.json
+21	0	resources/profiles/Snapmaker/filament/PolyLite PLA @0.2 nozzle.json
+19	0	resources/profiles/Snapmaker/filament/PolyLite PLA @Dual 0.2 nozzle.json
+37	0	resources/profiles/Snapmaker/filament/PolyLite PLA @Dual.json
+11	0	resources/profiles/Snapmaker/filament/PolyLite PLA @J1 0.2 nozzle.json
+13	0	resources/profiles/Snapmaker/filament/PolyLite PLA @J1.json
+17	0	resources/profiles/Snapmaker/filament/PolyLite PLA @U1 base.json
+14	0	resources/profiles/Snapmaker/filament/PolyLite PLA @U1.json
+17	0	resources/profiles/Snapmaker/filament/PolyLite PLA @base.json
+34	0	resources/profiles/Snapmaker/filament/PolyLite PLA.json
+21	0	resources/profiles/Snapmaker/filament/PolyTerra PLA @0.2 nozzle.json
+19	0	resources/profiles/Snapmaker/filament/PolyTerra PLA @Dual 0.2 nozzle.json
+37	0	resources/profiles/Snapmaker/filament/PolyTerra PLA @Dual.json
+11	0	resources/profiles/Snapmaker/filament/PolyTerra PLA @J1 0.2 nozzle.json
+13	0	resources/profiles/Snapmaker/filament/PolyTerra PLA @J1.json
+17	0	resources/profiles/Snapmaker/filament/PolyTerra PLA @U1 base.json
+14	0	resources/profiles/Snapmaker/filament/PolyTerra PLA @U1.json
+17	0	resources/profiles/Snapmaker/filament/PolyTerra PLA @base.json
+34	0	resources/profiles/Snapmaker/filament/PolyTerra PLA.json
+35	0	resources/profiles/Snapmaker/filament/Polymaker General PLA Family @U1.json
+11	0	resources/profiles/Snapmaker/filament/Polymaker PLA @U1 base.json
+35	0	resources/profiles/Snapmaker/filament/Polymaker Silk PLA Family @U1.json
+35	0	resources/profiles/Snapmaker/filament/Polymaker Tough PLA Family @U1.json
+21	0	resources/profiles/Snapmaker/filament/Snapmaker ABS @0.2 nozzle.json
+70	0	resources/profiles/Snapmaker/filament/Snapmaker ABS @Dual 0.2 nozzle.json
+25	0	resources/profiles/Snapmaker/filament/Snapmaker ABS @Dual 0.8 nozzle.json
+59	0	resources/profiles/Snapmaker/filament/Snapmaker ABS @Dual base.json
+28	0	resources/profiles/Snapmaker/filament/Snapmaker ABS @Dual.json
+38	0	resources/profiles/Snapmaker/filament/Snapmaker ABS @J1 0.2 nozzle.json
+17	0	resources/profiles/Snapmaker/filament/Snapmaker ABS @J1 0.8 nozzle.json
+35	0	resources/profiles/Snapmaker/filament/Snapmaker ABS @J1 base.json
+12	0	resources/profiles/Snapmaker/filament/Snapmaker ABS @J1.json
+46	0	resources/profiles/Snapmaker/filament/Snapmaker ABS @U1 0.2 nozzle.json
+47	0	resources/profiles/Snapmaker/filament/Snapmaker ABS @U1 0.4 nozzle.json
+43	0	resources/profiles/Snapmaker/filament/Snapmaker ABS @U1 0.6 nozzle.json
+43	0	resources/profiles/Snapmaker/filament/Snapmaker ABS @U1 0.8 nozzle.json
+59	0	resources/profiles/Snapmaker/filament/Snapmaker ABS @U1 base.json
+8	0	resources/profiles/Snapmaker/filament/Snapmaker ABS @base.json
+59	0	resources/profiles/Snapmaker/filament/Snapmaker ABS Benchy @Dual.json
+86	0	resources/profiles/Snapmaker/filament/Snapmaker ABS Benchy @J1.json
+62	0	resources/profiles/Snapmaker/filament/Snapmaker ABS Benchy @U1.json
+34	0	resources/profiles/Snapmaker/filament/Snapmaker ABS.json
+21	0	resources/profiles/Snapmaker/filament/Snapmaker ASA @0.2 nozzle.json
+67	0	resources/profiles/Snapmaker/filament/Snapmaker ASA @Dual 0.2 nozzle.json
+56	0	resources/profiles/Snapmaker/filament/Snapmaker ASA @Dual base.json
+37	0	resources/profiles/Snapmaker/filament/Snapmaker ASA @Dual.json
+29	0	resources/profiles/Snapmaker/filament/Snapmaker ASA @J1 0.2 nozzle.json
+26	0	resources/profiles/Snapmaker/filament/Snapmaker ASA @J1 base.json
+13	0	resources/profiles/Snapmaker/filament/Snapmaker ASA @J1.json
+45	0	resources/profiles/Snapmaker/filament/Snapmaker ASA @U1 0.2 nozzle.json
+50	0	resources/profiles/Snapmaker/filament/Snapmaker ASA @U1 0.4 nozzle.json
+47	0	resources/profiles/Snapmaker/filament/Snapmaker ASA @U1 0.6 nozzle.json
+44	0	resources/profiles/Snapmaker/filament/Snapmaker ASA @U1 0.8 nozzle.json
+56	0	resources/profiles/Snapmaker/filament/Snapmaker ASA @U1 base.json
+8	0	resources/profiles/Snapmaker/filament/Snapmaker ASA @base.json
+34	0	resources/profiles/Snapmaker/filament/Snapmaker ASA.json
+19	0	resources/profiles/Snapmaker/filament/Snapmaker Breakaway Support @J1.json
+50	0	resources/profiles/Snapmaker/filament/Snapmaker Breakaway Support @base.json
+37	0	resources/profiles/Snapmaker/filament/Snapmaker Breakaway Support.json
+56	0	resources/profiles/Snapmaker/filament/Snapmaker PA-CF @Dual base.json
+37	0	resources/profiles/Snapmaker/filament/Snapmaker PA-CF @Dual.json
+23	0	resources/profiles/Snapmaker/filament/Snapmaker PA-CF @J1 base.json
+13	0	resources/profiles/Snapmaker/filament/Snapmaker PA-CF @J1.json
+56	0	resources/profiles/Snapmaker/filament/Snapmaker PA-CF @U1 base.json
+16	0	resources/profiles/Snapmaker/filament/Snapmaker PA-CF @U1.json
+8	0	resources/profiles/Snapmaker/filament/Snapmaker PA-CF @base.json
+34	0	resources/profiles/Snapmaker/filament/Snapmaker PA-CF.json
+11	0	resources/profiles/Snapmaker/filament/Snapmaker PET @Dual 0.8 nozzle.json
+53	0	resources/profiles/Snapmaker/filament/Snapmaker PET @Dual base.json
+37	0	resources/profiles/Snapmaker/filament/Snapmaker PET @Dual.json
+26	0	resources/profiles/Snapmaker/filament/Snapmaker PET @J1 base.json
+13	0	resources/profiles/Snapmaker/filament/Snapmaker PET @J1.json
+53	0	resources/profiles/Snapmaker/filament/Snapmaker PET @U1 base.json
+14	0	resources/profiles/Snapmaker/filament/Snapmaker PET @U1.json
+8	0	resources/profiles/Snapmaker/filament/Snapmaker PET @base.json
+34	0	resources/profiles/Snapmaker/filament/Snapmaker PET.json
+21	0	resources/profiles/Snapmaker/filament/Snapmaker PETG @0.2 nozzle.json
+22	0	resources/profiles/Snapmaker/filament/Snapmaker PETG @Dual 0.2 nozzle.json
+25	0	resources/profiles/Snapmaker/filament/Snapmaker PETG @Dual 0.8 nozzle.json
+65	0	resources/profiles/Snapmaker/filament/Snapmaker PETG @Dual base.json
+28	0	resources/profiles/Snapmaker/filament/Snapmaker PETG @Dual.json
+14	0	resources/profiles/Snapmaker/filament/Snapmaker PETG @J1 0.2 nozzle.json
+17	0	resources/profiles/Snapmaker/filament/Snapmaker PETG @J1 0.8 nozzle.json
+38	0	resources/profiles/Snapmaker/filament/Snapmaker PETG @J1 base.json
+12	0	resources/profiles/Snapmaker/filament/Snapmaker PETG @J1.json
+65	0	resources/profiles/Snapmaker/filament/Snapmaker PETG @U1 base.json
+14	0	resources/profiles/Snapmaker/filament/Snapmaker PETG @U1.json
+8	0	resources/profiles/Snapmaker/filament/Snapmaker PETG @base.json
+111	0	resources/profiles/Snapmaker/filament/Snapmaker PETG HF @U1 0.2 nozzle.json
+112	0	resources/profiles/Snapmaker/filament/Snapmaker PETG HF @U1 0.6 nozzle.json
+107	0	resources/profiles/Snapmaker/filament/Snapmaker PETG HF @U1 0.8 nozzle.json
+74	0	resources/profiles/Snapmaker/filament/Snapmaker PETG HF @U1 base2.json
+80	0	resources/profiles/Snapmaker/filament/Snapmaker PETG HF @base.json
+87	0	resources/profiles/Snapmaker/filament/Snapmaker PETG HF.json
+45	0	resources/profiles/Snapmaker/filament/Snapmaker PETG Translucent @U1 0.2 nozzle.json
+43	0	resources/profiles/Snapmaker/filament/Snapmaker PETG Translucent @U1 0.4 nozzle.json
+44	0	resources/profiles/Snapmaker/filament/Snapmaker PETG Translucent @U1 0.6 nozzle.json
+43	0	resources/profiles/Snapmaker/filament/Snapmaker PETG Translucent @U1 0.8 nozzle.json
+8	0	resources/profiles/Snapmaker/filament/Snapmaker PETG Translucent @U1 base.json
+92	0	resources/profiles/Snapmaker/filament/Snapmaker PETG-CF @Dual base.json
+37	0	resources/profiles/Snapmaker/filament/Snapmaker PETG-CF @Dual.json
+65	0	resources/profiles/Snapmaker/filament/Snapmaker PETG-CF @J1 base.json
+13	0	resources/profiles/Snapmaker/filament/Snapmaker PETG-CF @J1.json
+45	0	resources/profiles/Snapmaker/filament/Snapmaker PETG-CF @U1 0.4 nozzle.json
+92	0	resources/profiles/Snapmaker/filament/Snapmaker PETG-CF @U1 base.json
+62	0	resources/profiles/Snapmaker/filament/Snapmaker PETG-CF @base.json
+34	0	resources/profiles/Snapmaker/filament/Snapmaker PETG-CF.json
+34	0	resources/profiles/Snapmaker/filament/Snapmaker PETG.json
+44	0	resources/profiles/Snapmaker/filament/Snapmaker PLA @Dual base.json
+46	0	resources/profiles/Snapmaker/filament/Snapmaker PLA @Dual.json
+17	0	resources/profiles/Snapmaker/filament/Snapmaker PLA @J1 base.json
+14	0	resources/profiles/Snapmaker/filament/Snapmaker PLA @J1.json
+44	0	resources/profiles/Snapmaker/filament/Snapmaker PLA @U1 base.json
+20	0	resources/profiles/Snapmaker/filament/Snapmaker PLA @U1.json
+8	0	resources/profiles/Snapmaker/filament/Snapmaker PLA @base.json
+127	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Basic @U1 base.json
+293	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Basic @U1.json
+22	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Eco @Dual 0.2 nozzle.json
+22	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Eco @Dual 0.8 nozzle.json
+44	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Eco @Dual base.json
+28	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Eco @Dual.json
+14	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Eco @J1 0.2 nozzle.json
+14	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Eco @J1 0.8 nozzle.json
+17	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Eco @J1 base.json
+12	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Eco @J1.json
+44	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Eco @U1 base.json
+14	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Eco @U1.json
+8	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Eco @base.json
+42	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Eco.json
+291	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Full Spectrum @U1 0.4 nozzle.json
+42	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Glow @U1 0.4 nozzle.json
+44	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Glow @U1 base.json
+44	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Marble @U1 base.json
+55	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Matte @Dual.json
+26	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Matte @J1.json
+298	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Matte @U1 0.2 nozzle.json
+290	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Matte @U1 0.6 nozzle.json
+290	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Matte @U1 0.8 nozzle.json
+127	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Matte @U1 base.json
+127	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Matte @U1 base2.json
+293	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Matte @U1.json
+17	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Matte @base.json
+51	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Matte.json
+22	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Metal @Dual 0.2 nozzle.json
+50	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Metal @Dual base.json
+37	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Metal @Dual.json
+14	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Metal @J1 0.2 nozzle.json
+23	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Metal @J1 base.json
+13	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Metal @J1.json
+50	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Metal @U1 base.json
+14	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Metal @U1.json
+21	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Silk @0.2 nozzle.json
+22	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Silk @Dual 0.2 nozzle.json
+59	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Silk @Dual base.json
+37	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Silk @Dual.json
+14	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Silk @J1 0.2 nozzle.json
+32	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Silk @J1 base.json
+13	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Silk @J1.json
+277	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Silk @U1 0.2 nozzle.json
+267	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Silk @U1 0.6 nozzle.json
+269	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Silk @U1 0.8 nozzle.json
+59	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Silk @U1 base.json
+293	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Silk @U1.json
+20	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Silk @base.json
+34	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Silk.json
+313	0	resources/profiles/Snapmaker/filament/Snapmaker PLA SnapSpeed @Dual.json
+281	0	resources/profiles/Snapmaker/filament/Snapmaker PLA SnapSpeed @J1.json
+58	0	resources/profiles/Snapmaker/filament/Snapmaker PLA SnapSpeed @U1 0.2 nozzle.json
+49	0	resources/profiles/Snapmaker/filament/Snapmaker PLA SnapSpeed @U1 0.6 nozzle.json
+49	0	resources/profiles/Snapmaker/filament/Snapmaker PLA SnapSpeed @U1 0.8 nozzle.json
+127	0	resources/profiles/Snapmaker/filament/Snapmaker PLA SnapSpeed @U1 base.json
+299	0	resources/profiles/Snapmaker/filament/Snapmaker PLA SnapSpeed @U1 base2.json
+292	0	resources/profiles/Snapmaker/filament/Snapmaker PLA SnapSpeed @U1.json
+274	0	resources/profiles/Snapmaker/filament/Snapmaker PLA SnapSpeed @base.json
+310	0	resources/profiles/Snapmaker/filament/Snapmaker PLA SnapSpeed.json
+242	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Translucent @U1 0.2 nozzle.json
+252	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Translucent @U1 0.4 nozzle.json
+242	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Translucent @U1 0.6 nozzle.json
+244	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Translucent @U1 0.8 nozzle.json
+44	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Translucent @U1 base.json
+74	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Wood @U1 0.4 nozzle.json
+64	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Wood @U1 0.6 nozzle.json
+62	0	resources/profiles/Snapmaker/filament/Snapmaker PLA Wood @U1 0.8 nozzle.json
+22	0	resources/profiles/Snapmaker/filament/Snapmaker PLA-CF @Dual 0.8 nozzle.json
+74	0	resources/profiles/Snapmaker/filament/Snapmaker PLA-CF @Dual base.json
+28	0	resources/profiles/Snapmaker/filament/Snapmaker PLA-CF @Dual.json
+14	0	resources/profiles/Snapmaker/filament/Snapmaker PLA-CF @J1 0.8 nozzle.json
+47	0	resources/profiles/Snapmaker/filament/Snapmaker PLA-CF @J1 base.json
+12	0	resources/profiles/Snapmaker/filament/Snapmaker PLA-CF @J1.json
+91	0	resources/profiles/Snapmaker/filament/Snapmaker PLA-CF @U1 0.4 nozzle.json
+73	0	resources/profiles/Snapmaker/filament/Snapmaker PLA-CF @U1 0.6 nozzle.json
+72	0	resources/profiles/Snapmaker/filament/Snapmaker PLA-CF @U1 0.8 nozzle.json
+74	0	resources/profiles/Snapmaker/filament/Snapmaker PLA-CF @U1 base.json
+29	0	resources/profiles/Snapmaker/filament/Snapmaker PLA-CF @base.json
+34	0	resources/profiles/Snapmaker/filament/Snapmaker PLA-CF.json
+42	0	resources/profiles/Snapmaker/filament/Snapmaker PLA.json
+11	0	resources/profiles/Snapmaker/filament/Snapmaker PVA @0.2 nozzle.json
+28	0	resources/profiles/Snapmaker/filament/Snapmaker PVA @Dual 0.2 nozzle.json
+41	0	resources/profiles/Snapmaker/filament/Snapmaker PVA @Dual base.json
+37	0	resources/profiles/Snapmaker/filament/Snapmaker PVA @Dual.json
+20	0	resources/profiles/Snapmaker/filament/Snapmaker PVA @J1 0.2 nozzle.json
+14	0	resources/profiles/Snapmaker/filament/Snapmaker PVA @J1 base.json
+13	0	resources/profiles/Snapmaker/filament/Snapmaker PVA @J1.json
+47	0	resources/profiles/Snapmaker/filament/Snapmaker PVA @U1 0.6 nozzle.json
+45	0	resources/profiles/Snapmaker/filament/Snapmaker PVA @U1 0.8 nozzle.json
+41	0	resources/profiles/Snapmaker/filament/Snapmaker PVA @U1 base.json
+43	0	resources/profiles/Snapmaker/filament/Snapmaker PVA @U1.json
+8	0	resources/profiles/Snapmaker/filament/Snapmaker PVA @base.json
+34	0	resources/profiles/Snapmaker/filament/Snapmaker PVA.json
+50	0	resources/profiles/Snapmaker/filament/Snapmaker Support @base.json
+46	0	resources/profiles/Snapmaker/filament/Snapmaker Support For PLA @U1 0.2 nozzle.json
+44	0	resources/profiles/Snapmaker/filament/Snapmaker Support For PLA @U1 0.4 nozzle.json
+46	0	resources/profiles/Snapmaker/filament/Snapmaker Support For PLA @U1 0.6 nozzle.json
+44	0	resources/profiles/Snapmaker/filament/Snapmaker Support For PLA @U1 0.8 nozzle.json
+64	0	resources/profiles/Snapmaker/filament/Snapmaker TPE @Dual.json
+40	0	resources/profiles/Snapmaker/filament/Snapmaker TPE @J1.json
+41	0	resources/profiles/Snapmaker/filament/Snapmaker TPE @U1.json
+58	0	resources/profiles/Snapmaker/filament/Snapmaker TPE.json
+63	0	resources/profiles/Snapmaker/filament/Snapmaker TPU 90A @U1 0.6 nozzle.json
+61	0	resources/profiles/Snapmaker/filament/Snapmaker TPU 90A @U1 0.8 nozzle.json
+77	0	resources/profiles/Snapmaker/filament/Snapmaker TPU 90A @U1.json
+159	0	resources/profiles/Snapmaker/filament/Snapmaker TPU 95A @U1 base.json
+284	0	resources/profiles/Snapmaker/filament/Snapmaker TPU 95A @U1.json
+75	0	resources/profiles/Snapmaker/filament/Snapmaker TPU 95A HF @U1 0.4 nozzle.json
+62	0	resources/profiles/Snapmaker/filament/Snapmaker TPU 95A HF @U1 0.6 nozzle.json
+60	0	resources/profiles/Snapmaker/filament/Snapmaker TPU 95A HF @U1 0.8 nozzle.json
+38	0	resources/profiles/Snapmaker/filament/Snapmaker TPU @Dual base.json
+37	0	resources/profiles/Snapmaker/filament/Snapmaker TPU @Dual.json
+11	0	resources/profiles/Snapmaker/filament/Snapmaker TPU @J1 base.json
+13	0	resources/profiles/Snapmaker/filament/Snapmaker TPU @J1.json
+38	0	resources/profiles/Snapmaker/filament/Snapmaker TPU @U1 base.json
+16	0	resources/profiles/Snapmaker/filament/Snapmaker TPU @U1.json
+8	0	resources/profiles/Snapmaker/filament/Snapmaker TPU @base.json
+55	0	resources/profiles/Snapmaker/filament/Snapmaker TPU High-Flow @Dual.json
+31	0	resources/profiles/Snapmaker/filament/Snapmaker TPU High-Flow @J1.json
+34	0	resources/profiles/Snapmaker/filament/Snapmaker TPU High-Flow @U1.json
+34	0	resources/profiles/Snapmaker/filament/Snapmaker TPU.json
+41	0	resources/profiles/Snapmaker/filament/fdm_filament_abs.json
+82	0	resources/profiles/Snapmaker/filament/fdm_filament_abs_generic.json
+79	0	resources/profiles/Snapmaker/filament/fdm_filament_asa.json
+172	0	resources/profiles/Snapmaker/filament/fdm_filament_asa_generic.json
+85	0	resources/profiles/Snapmaker/filament/fdm_filament_bvoh_generic.json
+189	0	resources/profiles/Snapmaker/filament/fdm_filament_common.json
+328	0	resources/profiles/Snapmaker/filament/fdm_filament_common2.json
+166	0	resources/profiles/Snapmaker/filament/fdm_filament_common_generic.json
+187	0	resources/profiles/Snapmaker/filament/fdm_filament_common_poly.json
+85	0	resources/profiles/Snapmaker/filament/fdm_filament_pa.json
+82	0	resources/profiles/Snapmaker/filament/fdm_filament_pa_generic.json
+82	0	resources/profiles/Snapmaker/filament/fdm_filament_pc_generic.json
+64	0	resources/profiles/Snapmaker/filament/fdm_filament_pctg_generic.json
+70	0	resources/profiles/Snapmaker/filament/fdm_filament_pet.json
+76	0	resources/profiles/Snapmaker/filament/fdm_filament_pet2.json
+64	0	resources/profiles/Snapmaker/filament/fdm_filament_pet_generic.json
+37	0	resources/profiles/Snapmaker/filament/fdm_filament_petg.json
+40	0	resources/profiles/Snapmaker/filament/fdm_filament_pla.json
+91	0	resources/profiles/Snapmaker/filament/fdm_filament_pla2.json
+13	0	resources/profiles/Snapmaker/filament/fdm_filament_pla_eco.json
+82	0	resources/profiles/Snapmaker/filament/fdm_filament_pla_generic.json
+89	0	resources/profiles/Snapmaker/filament/fdm_filament_pla_poly.json
+38	0	resources/profiles/Snapmaker/filament/fdm_filament_pva.json
+91	0	resources/profiles/Snapmaker/filament/fdm_filament_pva_generic.json
+48	0	resources/profiles/Snapmaker/filament/fdm_filament_tpu.json
+91	0	resources/profiles/Snapmaker/filament/fdm_filament_tpu2.json
+79	0	resources/profiles/Snapmaker/filament/fdm_filament_tpu_generic.json
+9	0	resources/profiles/Snapmaker/filament/filament_hot_bed_nozzles.json
+20	0	resources/profiles/Snapmaker/machine/Snapmaker A250 (0.2 nozzle).json
+20	0	resources/profiles/Snapmaker/machine/Snapmaker A250 (0.4 nozzle).json
+20	0	resources/profiles/Snapmaker/machine/Snapmaker A250 (0.6 nozzle).json
+20	0	resources/profiles/Snapmaker/machine/Snapmaker A250 (0.8 nozzle).json
+20	0	resources/profiles/Snapmaker/machine/Snapmaker A250 BKit (0.2 nozzle).json
+20	0	resources/profiles/Snapmaker/machine/Snapmaker A250 BKit (0.4 nozzle).json
+20	0	resources/profiles/Snapmaker/machine/Snapmaker A250 BKit (0.6 nozzle).json
+20	0	resources/profiles/Snapmaker/machine/Snapmaker A250 BKit (0.8 nozzle).json
+11	0	resources/profiles/Snapmaker/machine/Snapmaker A250 BKit.json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker A250 Dual (0.2 nozzle).json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker A250 Dual (0.4 nozzle).json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker A250 Dual (0.6 nozzle).json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker A250 Dual (0.8 nozzle).json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker A250 Dual BKit (0.2 nozzle).json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker A250 Dual BKit (0.4 nozzle).json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker A250 Dual BKit (0.6 nozzle).json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker A250 Dual BKit (0.8 nozzle).json
+11	0	resources/profiles/Snapmaker/machine/Snapmaker A250 Dual BKit.json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker A250 Dual QS+B Kit (0.2 nozzle).json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker A250 Dual QS+B Kit (0.4 nozzle).json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker A250 Dual QS+B Kit (0.6 nozzle).json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker A250 Dual QS+B Kit (0.8 nozzle).json
+11	0	resources/profiles/Snapmaker/machine/Snapmaker A250 Dual QS+B Kit.json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker A250 Dual QSKit (0.2 nozzle).json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker A250 Dual QSKit (0.4 nozzle).json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker A250 Dual QSKit (0.6 nozzle).json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker A250 Dual QSKit (0.8 nozzle).json
+11	0	resources/profiles/Snapmaker/machine/Snapmaker A250 Dual QSKit.json
+11	0	resources/profiles/Snapmaker/machine/Snapmaker A250 Dual.json
+20	0	resources/profiles/Snapmaker/machine/Snapmaker A250 QS+B Kit (0.2 nozzle).json
+20	0	resources/profiles/Snapmaker/machine/Snapmaker A250 QS+B Kit (0.4 nozzle).json
+20	0	resources/profiles/Snapmaker/machine/Snapmaker A250 QS+B Kit (0.6 nozzle).json
+20	0	resources/profiles/Snapmaker/machine/Snapmaker A250 QS+B Kit (0.8 nozzle).json
+11	0	resources/profiles/Snapmaker/machine/Snapmaker A250 QS+B Kit.json
+20	0	resources/profiles/Snapmaker/machine/Snapmaker A250 QSKit (0.2 nozzle).json
+20	0	resources/profiles/Snapmaker/machine/Snapmaker A250 QSKit (0.4 nozzle).json
+20	0	resources/profiles/Snapmaker/machine/Snapmaker A250 QSKit (0.6 nozzle).json
+20	0	resources/profiles/Snapmaker/machine/Snapmaker A250 QSKit (0.8 nozzle).json
+11	0	resources/profiles/Snapmaker/machine/Snapmaker A250 QSKit.json
+11	0	resources/profiles/Snapmaker/machine/Snapmaker A250.json
+20	0	resources/profiles/Snapmaker/machine/Snapmaker A350 (0.2 nozzle).json
+20	0	resources/profiles/Snapmaker/machine/Snapmaker A350 (0.4 nozzle).json
+20	0	resources/profiles/Snapmaker/machine/Snapmaker A350 (0.6 nozzle).json
+20	0	resources/profiles/Snapmaker/machine/Snapmaker A350 (0.8 nozzle).json
+20	0	resources/profiles/Snapmaker/machine/Snapmaker A350 BKit (0.2 nozzle).json
+20	0	resources/profiles/Snapmaker/machine/Snapmaker A350 BKit (0.4 nozzle).json
+20	0	resources/profiles/Snapmaker/machine/Snapmaker A350 BKit (0.6 nozzle).json
+20	0	resources/profiles/Snapmaker/machine/Snapmaker A350 BKit (0.8 nozzle).json
+11	0	resources/profiles/Snapmaker/machine/Snapmaker A350 BKit.json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker A350 Dual (0.2 nozzle).json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker A350 Dual (0.4 nozzle).json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker A350 Dual (0.6 nozzle).json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker A350 Dual (0.8 nozzle).json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker A350 Dual BKit (0.2 nozzle).json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker A350 Dual BKit (0.4 nozzle).json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker A350 Dual BKit (0.6 nozzle).json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker A350 Dual BKit (0.8 nozzle).json
+11	0	resources/profiles/Snapmaker/machine/Snapmaker A350 Dual BKit.json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker A350 Dual QS+B Kit (0.2 nozzle).json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker A350 Dual QS+B Kit (0.4 nozzle).json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker A350 Dual QS+B Kit (0.6 nozzle).json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker A350 Dual QS+B Kit (0.8 nozzle).json
+11	0	resources/profiles/Snapmaker/machine/Snapmaker A350 Dual QS+B Kit.json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker A350 Dual QSKit (0.2 nozzle).json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker A350 Dual QSKit (0.4 nozzle).json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker A350 Dual QSKit (0.6 nozzle).json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker A350 Dual QSKit (0.8 nozzle).json
+11	0	resources/profiles/Snapmaker/machine/Snapmaker A350 Dual QSKit.json
+11	0	resources/profiles/Snapmaker/machine/Snapmaker A350 Dual.json
+20	0	resources/profiles/Snapmaker/machine/Snapmaker A350 QS+B Kit (0.2 nozzle).json
+20	0	resources/profiles/Snapmaker/machine/Snapmaker A350 QS+B Kit (0.4 nozzle).json
+20	0	resources/profiles/Snapmaker/machine/Snapmaker A350 QS+B Kit (0.6 nozzle).json
+20	0	resources/profiles/Snapmaker/machine/Snapmaker A350 QS+B Kit (0.8 nozzle).json
+11	0	resources/profiles/Snapmaker/machine/Snapmaker A350 QS+B Kit.json
+20	0	resources/profiles/Snapmaker/machine/Snapmaker A350 QSKit (0.2 nozzle).json
+20	0	resources/profiles/Snapmaker/machine/Snapmaker A350 QSKit (0.4 nozzle).json
+20	0	resources/profiles/Snapmaker/machine/Snapmaker A350 QSKit (0.6 nozzle).json
+20	0	resources/profiles/Snapmaker/machine/Snapmaker A350 QSKit (0.8 nozzle).json
+11	0	resources/profiles/Snapmaker/machine/Snapmaker A350 QSKit.json
+11	0	resources/profiles/Snapmaker/machine/Snapmaker A350.json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker Artisan (0.2 nozzle).json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker Artisan (0.4 nozzle).json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker Artisan (0.6 nozzle).json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker Artisan (0.8 nozzle).json
+11	0	resources/profiles/Snapmaker/machine/Snapmaker Artisan.json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker J1 (0.2 nozzle).json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker J1 (0.4 nozzle).json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker J1 (0.6 nozzle).json
+21	0	resources/profiles/Snapmaker/machine/Snapmaker J1 (0.8 nozzle).json
+11	0	resources/profiles/Snapmaker/machine/Snapmaker J1.json
+204	0	resources/profiles/Snapmaker/machine/Snapmaker U1 (0.2 nozzle).json
+204	0	resources/profiles/Snapmaker/machine/Snapmaker U1 (0.4 nozzle).json
+204	0	resources/profiles/Snapmaker/machine/Snapmaker U1 (0.6 nozzle).json
+204	0	resources/profiles/Snapmaker/machine/Snapmaker U1 (0.8 nozzle).json
+15	0	resources/profiles/Snapmaker/machine/Snapmaker U1.json
+188	0	resources/profiles/Snapmaker/machine/fdm_U1.json
+15	0	resources/profiles/Snapmaker/machine/fdm_a250.json
+39	0	resources/profiles/Snapmaker/machine/fdm_a250_bk.json
+27	0	resources/profiles/Snapmaker/machine/fdm_a250_dual.json
+39	0	resources/profiles/Snapmaker/machine/fdm_a250_dual_bk.json
+15	0	resources/profiles/Snapmaker/machine/fdm_a250_dual_qs.json
+39	0	resources/profiles/Snapmaker/machine/fdm_a250_dual_qs_bk.json
+15	0	resources/profiles/Snapmaker/machine/fdm_a250_qs.json
+39	0	resources/profiles/Snapmaker/machine/fdm_a250_qs_bk.json
+15	0	resources/profiles/Snapmaker/machine/fdm_a350.json
+39	0	resources/profiles/Snapmaker/machine/fdm_a350_bk.json
+27	0	resources/profiles/Snapmaker/machine/fdm_a350_dual.json
+39	0	resources/profiles/Snapmaker/machine/fdm_a350_dual_bk.json
+15	0	resources/profiles/Snapmaker/machine/fdm_a350_dual_qs.json
+39	0	resources/profiles/Snapmaker/machine/fdm_a350_dual_qs_bk.json
+15	0	resources/profiles/Snapmaker/machine/fdm_a350_qs.json
+39	0	resources/profiles/Snapmaker/machine/fdm_a350_qs_bk.json
+34	0	resources/profiles/Snapmaker/machine/fdm_a400.json
+34	0	resources/profiles/Snapmaker/machine/fdm_common.json
+107	0	resources/profiles/Snapmaker/machine/fdm_idex.json
+119	0	resources/profiles/Snapmaker/machine/fdm_klipper.json
+73	0	resources/profiles/Snapmaker/machine/fdm_linear2.json
+25	0	resources/profiles/Snapmaker/machine/fdm_linear2_dual.json
+63	0	resources/profiles/Snapmaker/machine/fdm_toolchanger.json
+31	0	resources/profiles/Snapmaker/process/0.06 High Quality @Snapmaker U1 (0.2 nozzle).json
+52	0	resources/profiles/Snapmaker/process/0.06 Standard @Snapmaker (0.2 nozzle).json
+27	0	resources/profiles/Snapmaker/process/0.06 Standard @Snapmaker Artisan (0.2 nozzle).json
+27	0	resources/profiles/Snapmaker/process/0.06 Standard @Snapmaker J1 (0.2 nozzle).json
+27	0	resources/profiles/Snapmaker/process/0.06 Standard @Snapmaker U1 (0.2 nozzle).json
+46	0	resources/profiles/Snapmaker/process/0.08 Extra Fine @Snapmaker (0.4 nozzle).json
+22	0	resources/profiles/Snapmaker/process/0.08 Extra Fine @Snapmaker Artisan (0.4 nozzle).json
+22	0	resources/profiles/Snapmaker/process/0.08 Extra Fine @Snapmaker J1 (0.4 nozzle).json
+30	0	resources/profiles/Snapmaker/process/0.08 Extra Fine @Snapmaker U1 (0.4 nozzle).json
+31	0	resources/profiles/Snapmaker/process/0.08 High Quality @Snapmaker U1 (0.2 nozzle).json
+38	0	resources/profiles/Snapmaker/process/0.08 High Quality @Snapmaker U1 (0.4 nozzle).json
+27	0	resources/profiles/Snapmaker/process/0.08 Standard @Snapmaker U1 (0.2 nozzle).json
+42	0	resources/profiles/Snapmaker/process/0.10 Color Mixing @Snapmaker U1 (0.4 Nozzle).json
+31	0	resources/profiles/Snapmaker/process/0.10 High Quality @Snapmaker U1 (0.2 nozzle).json
+54	0	resources/profiles/Snapmaker/process/0.10 Standard @Snapmaker (0.2 nozzle).json
+25	0	resources/profiles/Snapmaker/process/0.10 Standard @Snapmaker Artisan (0.2 nozzle).json
+27	0	resources/profiles/Snapmaker/process/0.10 Standard @Snapmaker J1 (0.2 nozzle).json
+29	0	resources/profiles/Snapmaker/process/0.10 Standard @Snapmaker U1 (0.2 nozzle).json
+46	0	resources/profiles/Snapmaker/process/0.12 Fine @Snapmaker (0.4 nozzle).json
+21	0	resources/profiles/Snapmaker/process/0.12 Fine @Snapmaker Artisan (0.4 nozzle).json
+21	0	resources/profiles/Snapmaker/process/0.12 Fine @Snapmaker J1 (0.4 nozzle).json
+30	0	resources/profiles/Snapmaker/process/0.12 Fine @Snapmaker U1 (0.4 nozzle).json
+39	0	resources/profiles/Snapmaker/process/0.12 High Quality @Snapmaker U1 (0.4 nozzle).json
+27	0	resources/profiles/Snapmaker/process/0.12 Standard @Snapmaker U1 (0.2 nozzle).json
+53	0	resources/profiles/Snapmaker/process/0.14 Standard @Snapmaker (0.2 nozzle).json
+25	0	resources/profiles/Snapmaker/process/0.14 Standard @Snapmaker Artisan (0.2 nozzle).json
+25	0	resources/profiles/Snapmaker/process/0.14 Standard @Snapmaker J1 (0.2 nozzle).json
+27	0	resources/profiles/Snapmaker/process/0.14 Standard @Snapmaker U1 (0.2 nozzle).json
+39	0	resources/profiles/Snapmaker/process/0.16 High Quality @Snapmaker U1 (0.4 nozzle).json
+45	0	resources/profiles/Snapmaker/process/0.16 Optimal @Snapmaker (0.4 nozzle).json
+20	0	resources/profiles/Snapmaker/process/0.16 Optimal @Snapmaker Artisan (0.4 nozzle).json
+20	0	resources/profiles/Snapmaker/process/0.16 Optimal @Snapmaker J1 (0.4 nozzle).json
+29	0	resources/profiles/Snapmaker/process/0.16 Optimal @Snapmaker U1 (0.4 nozzle).json
+50	0	resources/profiles/Snapmaker/process/0.18 Standard @Snapmaker (0.6 nozzle).json
+22	0	resources/profiles/Snapmaker/process/0.18 Standard @Snapmaker Artisan (0.6 nozzle).json
+24	0	resources/profiles/Snapmaker/process/0.18 Standard @Snapmaker J1 (0.6 nozzle).json
+32	0	resources/profiles/Snapmaker/process/0.18 Standard @Snapmaker U1 (0.6 nozzle).json
+26	0	resources/profiles/Snapmaker/process/0.20 Bambu Support W @Snapmaker U1 (0.4 nozzle).json
+40	0	resources/profiles/Snapmaker/process/0.20 Standard @Snapmaker (0.4 nozzle).json
+16	0	resources/profiles/Snapmaker/process/0.20 Standard @Snapmaker Artisan (0.4 nozzle).json
+19	0	resources/profiles/Snapmaker/process/0.20 Standard @Snapmaker J1 (0.4 nozzle).json
+39	0	resources/profiles/Snapmaker/process/0.20 Standard @Snapmaker U1 (0.4 nozzle).json
+41	0	resources/profiles/Snapmaker/process/0.20 Strength @Snapmaker (0.4 nozzle).json
+15	0	resources/profiles/Snapmaker/process/0.20 Strength @Snapmaker Artisan (0.4 nozzle).json
+15	0	resources/profiles/Snapmaker/process/0.20 Strength @Snapmaker J1 (0.4 nozzle).json
+32	0	resources/profiles/Snapmaker/process/0.20 Strength @Snapmaker U1 (0.4 nozzle).json
+27	0	resources/profiles/Snapmaker/process/0.20 Support @Snapmaker U1 (0.4 nozzle).json
+26	0	resources/profiles/Snapmaker/process/0.20 Support W @Snapmaker U1 (0.4 nozzle).json
+43	0	resources/profiles/Snapmaker/process/0.24 Draft @Snapmaker (0.4 nozzle).json
+18	0	resources/profiles/Snapmaker/process/0.24 Draft @Snapmaker Artisan (0.4 nozzle).json
+18	0	resources/profiles/Snapmaker/process/0.24 Draft @Snapmaker J1 (0.4 nozzle).json
+29	0	resources/profiles/Snapmaker/process/0.24 Draft @Snapmaker U1 (0.4 nozzle).json
+48	0	resources/profiles/Snapmaker/process/0.24 Standard @Snapmaker (0.6 nozzle).json
+50	0	resources/profiles/Snapmaker/process/0.24 Standard @Snapmaker (0.8 nozzle).json
+22	0	resources/profiles/Snapmaker/process/0.24 Standard @Snapmaker Artisan (0.6 nozzle).json
+23	0	resources/profiles/Snapmaker/process/0.24 Standard @Snapmaker Artisan (0.8 nozzle).json
+22	0	resources/profiles/Snapmaker/process/0.24 Standard @Snapmaker J1 (0.6 nozzle).json
+23	0	resources/profiles/Snapmaker/process/0.24 Standard @Snapmaker J1 (0.8 nozzle).json
+32	0	resources/profiles/Snapmaker/process/0.24 Standard @Snapmaker U1 (0.6 nozzle).json
+32	0	resources/profiles/Snapmaker/process/0.24 Standard @Snapmaker U1 (0.8 nozzle).json
+60	0	resources/profiles/Snapmaker/process/0.25 Benchy @Snapmaker Artisan (0.4 nozzle).json
+60	0	resources/profiles/Snapmaker/process/0.25 Benchy @Snapmaker J1 (0.4 nozzle).json
+60	0	resources/profiles/Snapmaker/process/0.25 Benchy @Snapmaker U1 (0.4 nozzle).json
+45	0	resources/profiles/Snapmaker/process/0.28 Extra Draft @Snapmaker (0.4 nozzle).json
+19	0	resources/profiles/Snapmaker/process/0.28 Extra Draft @Snapmaker Artisan (0.4 nozzle).json
+19	0	resources/profiles/Snapmaker/process/0.28 Extra Draft @Snapmaker J1 (0.4 nozzle).json
+29	0	resources/profiles/Snapmaker/process/0.28 Extra Draft @Snapmaker U1 (0.4 nozzle).json
+50	0	resources/profiles/Snapmaker/process/0.30 Standard @Snapmaker (0.6 nozzle).json
+25	0	resources/profiles/Snapmaker/process/0.30 Standard @Snapmaker Artisan (0.6 nozzle).json
+25	0	resources/profiles/Snapmaker/process/0.30 Standard @Snapmaker J1 (0.6 nozzle).json
+31	0	resources/profiles/Snapmaker/process/0.30 Standard @Snapmaker U1 (0.6 nozzle).json
+51	0	resources/profiles/Snapmaker/process/0.30 Strength @Snapmaker (0.6 nozzle).json
+26	0	resources/profiles/Snapmaker/process/0.30 Strength @Snapmaker Artisan (0.6 nozzle).json
+26	0	resources/profiles/Snapmaker/process/0.30 Strength @Snapmaker J1 (0.6 nozzle).json
+33	0	resources/profiles/Snapmaker/process/0.30 Strength @Snapmaker U1 (0.6 nozzle).json
+52	0	resources/profiles/Snapmaker/process/0.32 Standard @Snapmaker (0.8 nozzle).json
+25	0	resources/profiles/Snapmaker/process/0.32 Standard @Snapmaker Artisan (0.8 nozzle).json
+25	0	resources/profiles/Snapmaker/process/0.32 Standard @Snapmaker J1 (0.8 nozzle).json
+34	0	resources/profiles/Snapmaker/process/0.32 Standard @Snapmaker U1 (0.8 nozzle).json
+51	0	resources/profiles/Snapmaker/process/0.34 Standard @Snapmaker (0.6 nozzle).json
+25	0	resources/profiles/Snapmaker/process/0.34 Standard @Snapmaker Artisan (0.6 nozzle).json
+25	0	resources/profiles/Snapmaker/process/0.34 Standard @Snapmaker J1 (0.6 nozzle).json
+52	0	resources/profiles/Snapmaker/process/0.36 Standard @Snapmaker (0.8 nozzle).json
+25	0	resources/profiles/Snapmaker/process/0.36 Standard @Snapmaker Artisan (0.8 nozzle).json
+25	0	resources/profiles/Snapmaker/process/0.36 Standard @Snapmaker J1 (0.8 nozzle).json
+32	0	resources/profiles/Snapmaker/process/0.36 Standard @Snapmaker U1 (0.6 nozzle).json
+50	0	resources/profiles/Snapmaker/process/0.38 Standard @Snapmaker (0.6 nozzle).json
+25	0	resources/profiles/Snapmaker/process/0.38 Standard @Snapmaker Artisan (0.6 nozzle).json
+25	0	resources/profiles/Snapmaker/process/0.38 Standard @Snapmaker J1 (0.6 nozzle).json
+52	0	resources/profiles/Snapmaker/process/0.40 Standard @Snapmaker (0.8 nozzle).json
+25	0	resources/profiles/Snapmaker/process/0.40 Standard @Snapmaker Artisan (0.8 nozzle).json
+25	0	resources/profiles/Snapmaker/process/0.40 Standard @Snapmaker J1 (0.8 nozzle).json
+35	0	resources/profiles/Snapmaker/process/0.40 Standard @Snapmaker U1 (0.8 nozzle).json
+50	0	resources/profiles/Snapmaker/process/0.42 Draft @Snapmaker (0.6 nozzle).json
+25	0	resources/profiles/Snapmaker/process/0.42 Draft @Snapmaker Artisan (0.6 nozzle).json
+25	0	resources/profiles/Snapmaker/process/0.42 Draft @Snapmaker J1 (0.6 nozzle).json
+32	0	resources/profiles/Snapmaker/process/0.42 Standard @Snapmaker U1 (0.6 nozzle).json
+53	0	resources/profiles/Snapmaker/process/0.48 Draft @Snapmaker (0.8 nozzle).json
+26	0	resources/profiles/Snapmaker/process/0.48 Draft @Snapmaker Artisan (0.8 nozzle).json
+26	0	resources/profiles/Snapmaker/process/0.48 Draft @Snapmaker J1 (0.8 nozzle).json
+32	0	resources/profiles/Snapmaker/process/0.48 Standard @Snapmaker U1 (0.8 nozzle).json
+31	0	resources/profiles/Snapmaker/process/0.56 Standard @Snapmaker U1 (0.8 nozzle).json
+73	0	resources/profiles/Snapmaker/process/fdm_process_U1.json
+27	0	resources/profiles/Snapmaker/process/fdm_process_U1_0.06_nozzle_0.2.json
+26	0	resources/profiles/Snapmaker/process/fdm_process_U1_0.08.json
+27	0	resources/profiles/Snapmaker/process/fdm_process_U1_0.08_nozzle_0.2.json
+27	0	resources/profiles/Snapmaker/process/fdm_process_U1_0.10_nozzle_0.2.json
+26	0	resources/profiles/Snapmaker/process/fdm_process_U1_0.12.json
+27	0	resources/profiles/Snapmaker/process/fdm_process_U1_0.12_nozzle_0.2.json
+27	0	resources/profiles/Snapmaker/process/fdm_process_U1_0.14_nozzle_0.2.json
+26	0	resources/profiles/Snapmaker/process/fdm_process_U1_0.16.json
+26	0	resources/profiles/Snapmaker/process/fdm_process_U1_0.18_nozzle_0.6.json
+18	0	resources/profiles/Snapmaker/process/fdm_process_U1_0.20.json
+21	0	resources/profiles/Snapmaker/process/fdm_process_U1_0.24.json
+24	0	resources/profiles/Snapmaker/process/fdm_process_U1_0.24_nozzle_0.6.json
+26	0	resources/profiles/Snapmaker/process/fdm_process_U1_0.24_nozzle_0.8.json
+21	0	resources/profiles/Snapmaker/process/fdm_process_U1_0.28.json
+24	0	resources/profiles/Snapmaker/process/fdm_process_U1_0.30_nozzle_0.6.json
+26	0	resources/profiles/Snapmaker/process/fdm_process_U1_0.32_nozzle_0.8.json
+24	0	resources/profiles/Snapmaker/process/fdm_process_U1_0.36_nozzle_0.6.json
+26	0	resources/profiles/Snapmaker/process/fdm_process_U1_0.40_nozzle_0.8.json
+24	0	resources/profiles/Snapmaker/process/fdm_process_U1_0.42_nozzle_0.6.json
+26	0	resources/profiles/Snapmaker/process/fdm_process_U1_0.48_nozzle_0.8.json
+26	0	resources/profiles/Snapmaker/process/fdm_process_U1_0.56_nozzle_0.8.json
+73	0	resources/profiles/Snapmaker/process/fdm_process_U1_common.json
+59	0	resources/profiles/Snapmaker/process/fdm_process_a400.json
+192	0	resources/profiles/Snapmaker/process/fdm_process_common.json
+71	0	resources/profiles/Snapmaker/process/fdm_process_idex.json
+2	1	resources/shaders/110/background.vs
+2	5	resources/shaders/110/flat_texture.vs
+89	3	resources/shaders/110/gouraud.fs
+0	37	resources/shaders/110/selection_area_downsample.fs
+0	32	resources/shaders/110/selection_composite.fs
+0	19	resources/shaders/110/selection_edge.fs
+0	32	resources/shaders/110/selection_gaussian.fs
+0	8	resources/shaders/110/selection_mask.fs
+2	1	resources/shaders/140/background.vs
+2	5	resources/shaders/140/flat_texture.vs
+89	3	resources/shaders/140/gouraud.fs
+0	133	resources/shaders/140/gpu_path.fs
+0	121	resources/shaders/140/gpu_path.vs
+0	65	resources/shaders/140/gpu_path_marker.fs
+0	50	resources/shaders/140/gpu_path_marker.vs
+0	38	resources/shaders/140/selection_area_downsample.fs
+0	32	resources/shaders/140/selection_composite.fs
+0	20	resources/shaders/140/selection_edge.fs
+0	33	resources/shaders/140/selection_gaussian.fs
+0	10	resources/shaders/140/selection_mask.fs
+1	1	resources/web/flutter_web/.last_build_id
+1	1	resources/web/flutter_web/assets/AssetManifest.bin
+1	1	resources/web/flutter_web/assets/AssetManifest.bin.json
+1	0	resources/web/flutter_web/assets/AssetManifest.json
+1	1	resources/web/flutter_web/assets/FontManifest.json
+30395	26611	resources/web/flutter_web/assets/NOTICES
+0	15	resources/web/flutter_web/assets/assets/config/feature_flags.json
+-	-	resources/web/flutter_web/assets/assets/fonts/HarmonyOS_Sans_SC_Regular.ttf
+-	-	resources/web/flutter_web/assets/assets/fonts/NotoSansSC-Regular.ttf
+-	-	resources/web/flutter_web/assets/assets/fonts/Roboto-Regular.ttf
+7	298	resources/web/flutter_web/assets/assets/i10n/en.json
+10	296	resources/web/flutter_web/assets/assets/i10n/zh-CN.json
+-	-	resources/web/flutter_web/assets/assets/images/{ipInputGuide.webp => IpInputGuide.webp}
+-	-	resources/web/flutter_web/assets/assets/images/snapmakerU1Cover.png
+0	3	resources/web/flutter_web/assets/assets/svgs/device/iconArrowRight.svg
+0	4	resources/web/flutter_web/assets/assets/svgs/device/iconHintWarning.svg
+0	30	resources/web/flutter_web/assets/assets/svgs/device/iconMismatchFlowType.svg
+0	20	resources/web/flutter_web/assets/assets/svgs/device/iconMismatchFlowTypeSmall.svg
+0	20	resources/web/flutter_web/assets/assets/svgs/device/iconMismatchMaterial.svg
+0	37	resources/web/flutter_web/assets/assets/svgs/device/iconMismatchNozzleDiameter.svg
+0	7	resources/web/flutter_web/assets/assets/svgs/device/iconTopCover.svg
+0	14	resources/web/flutter_web/assets/assets/svgs/device/iconTopCoverInner.svg
+0	7	resources/web/flutter_web/assets/assets/svgs/device/iconTopCoverOff.svg
+0	7	resources/web/flutter_web/assets/assets/svgs/device/iconTopCoverOn.svg
+0	13	resources/web/flutter_web/assets/assets/svgs/device/iconTopCoverOuter.svg
+0	3	resources/web/flutter_web/assets/assets/svgs/iconChevronRightThin.svg
+0	4	resources/web/flutter_web/assets/assets/svgs/iconDownloadCount.svg
+0	5	resources/web/flutter_web/assets/assets/svgs/iconEllipsis.svg
+0	3	resources/web/flutter_web/assets/assets/svgs/iconFavourite.svg
+0	3	resources/web/flutter_web/assets/assets/svgs/iconFavourited.svg
+0	6	resources/web/flutter_web/assets/assets/svgs/iconGcode%20copy.svg
+0	3	resources/web/flutter_web/assets/assets/svgs/iconLikeCheck.svg
+0	3	resources/web/flutter_web/assets/assets/svgs/iconLikeLSizeCheck.svg
+0	3	resources/web/flutter_web/assets/assets/svgs/iconLikeLSizeUnchecked.svg
+0	3	resources/web/flutter_web/assets/assets/svgs/iconLikeUncheck.svg
+0	3	resources/web/flutter_web/assets/assets/svgs/iconMenuStart.svg
+0	5	resources/web/flutter_web/assets/assets/svgs/iconNozzle%20copy.svg
+0	3	resources/web/flutter_web/assets/assets/svgs/iconPlate%20copy.svg
+0	4	resources/web/flutter_web/assets/assets/svgs/iconPrintCount.svg
+0	3	resources/web/flutter_web/assets/assets/svgs/iconStarCheck.svg
+0	3	resources/web/flutter_web/assets/assets/svgs/iconStarLSizeCheck.svg
+0	3	resources/web/flutter_web/assets/assets/svgs/iconStarLSizeUnchecked.svg
+0	3	resources/web/flutter_web/assets/assets/svgs/iconStarUncheck.svg
+0	11	resources/web/flutter_web/assets/assets/svgs/iconTime%20copy.svg
+0	3	resources/web/flutter_web/assets/assets/svgs/iconTranslate.svg
+0	6	resources/web/flutter_web/assets/assets/svgs/iconWeight%20copy.svg
+0	5	resources/web/flutter_web/assets/assets/svgs/printPreferenceArrow.svg
+-	-	resources/web/flutter_web/assets/fonts/MaterialIcons-Regular.otf
+-	-	resources/web/flutter_web/assets/packages/cupertino_icons/assets/CupertinoIcons.ttf
+14	0	resources/web/flutter_web/assets/packages/fluttertoast/assets/toastify.css
+14	0	resources/web/flutter_web/assets/packages/fluttertoast/assets/toastify.js
+0	8	resources/web/flutter_web/assets/packages/lava_device_control/assets/files/filament.json
+-	-	resources/web/flutter_web/assets/{ => packages/lava_model_station}/assets/404.png
+-	-	resources/web/flutter_web/assets/{ => packages/lava_model_station}/assets/empty-box.png
+-	-	resources/web/flutter_web/assets/{ => packages/lava_model_station}/assets/placehoder-image.png
+0	0	resources/web/flutter_web/assets/{ => packages/lava_model_station}/assets/svgs/iconGcode.svg
+0	0	resources/web/flutter_web/assets/{ => packages/lava_model_station}/assets/svgs/iconNozzle.svg
+0	0	resources/web/flutter_web/assets/{ => packages/lava_model_station}/assets/svgs/iconPlate.svg
+0	0	resources/web/flutter_web/assets/{ => packages/lava_model_station}/assets/svgs/iconTime.svg
+0	0	resources/web/flutter_web/assets/{ => packages/lava_model_station}/assets/svgs/iconWeight.svg
+0	1	resources/web/flutter_web/assets/shaders/ink_sparkle.frag
+0	64	resources/web/flutter_web/assets/shaders/stretch_effect.frag
+206	182	resources/web/flutter_web/canvaskit/canvaskit.js
+11936	12130	resources/web/flutter_web/canvaskit/canvaskit.js.symbols
+-	-	resources/web/flutter_web/canvaskit/canvaskit.wasm
+205	182	resources/web/flutter_web/canvaskit/chromium/canvaskit.js
+10890	11080	resources/web/flutter_web/canvaskit/chromium/canvaskit.js.symbols
+-	-	resources/web/flutter_web/canvaskit/chromium/canvaskit.wasm
+162	136	resources/web/flutter_web/canvaskit/skwasm.js
+12027	12824	resources/web/flutter_web/canvaskit/skwasm.js.symbols
+-	-	resources/web/flutter_web/canvaskit/skwasm.wasm
+1	0	resources/web/flutter_web/canvaskit/skwasm.worker.js
+0	146	resources/web/flutter_web/canvaskit/skwasm_heavy.js
+0	14454	resources/web/flutter_web/canvaskit/skwasm_heavy.js.symbols
+-	-	resources/web/flutter_web/canvaskit/skwasm_heavy.wasm
+0	136	resources/web/flutter_web/canvaskit/wimp.js
+0	11313	resources/web/flutter_web/canvaskit/wimp.js.symbols
+-	-	resources/web/flutter_web/canvaskit/wimp.wasm
+4	30	resources/web/flutter_web/flutter.js
+0	379	resources/web/flutter_web/flutter_bootstrap.6816d840c75f4de9.js
+16	0	resources/web/flutter_web/flutter_bootstrap.js
+0	51	resources/web/flutter_web/flutter_overlay.e82843210477bf96.js
+328	22	resources/web/flutter_web/flutter_service_worker.js
+87	6	resources/web/flutter_web/index.html
+0	195525	resources/web/flutter_web/main.b347974c91352c2f.js
+173772	0	resources/web/flutter_web/main.dart.js
+0	1	resources/web/flutter_web/posthog-array.0930d984aecf936d75a80e534e55d1eb.js
+9	6	resources/web/flutter_web/version.changelog
+1	1	resources/web/flutter_web/version.json
+-	-	resources/web/image/logo.png
+-	-	resources/web/image/logo2.png
+3	12	scripts/Dockerfile
+0	75	scripts/appimage_lib_policy.sh
+0	124	scripts/build_tbb_clang.sh
+0	99	scripts/check_appimage_libs.sh
+1	52	scripts/flatpak/entrypoint
+0	371	scripts/flatpak/io.github.Snapmaker.Snapmaker_Orca.gitlab.yml
+2	2	scripts/flatpak/io.github.Snapmaker.Snapmaker_Orca.metainfo.xml
+12	48	scripts/flatpak/io.github.Snapmaker.Snapmaker_Orca.yml
+1	1	scripts/flatpak/setup_env_ubuntu24.04.sh
+0	648	scripts/gitlab_sign_and_package.sh
+0	236	scripts/junit-to-html.js
+5	4	scripts/linux.d/debian
+0	254	scripts/packaging/stage_connect_bundle.py
+0	79	scripts/regen_app_icons.sh
+13	1	scripts/run_gettext.sh
+0	64	scripts/run_release_tests.bat
+0	136	scripts/run_tests.py
+169	241	scripts/sign_and_package.sh
+36	321	src/CMakeLists.txt
+-	-	src/FOrcaSlicer.ico
+17	129	src/Snapmaker_Orca.cpp
+16	72	src/Snapmaker_Orca_app_msvc.cpp
+0	0	src/{app_common => bury_cfg}/bury_point.cpp
+4	9	src/{app_common => bury_cfg}/bury_point.hpp
+54	28	src/common_func/common_func.cpp
+12	6	src/common_func/common_func.hpp
+0	0	src/{app_common => dev-utils}/BaseException.cpp
+1	1	src/{app_common => dev-utils}/BaseException.h
+0	0	src/{app_common => dev-utils}/StackWalker.cpp
+0	0	src/{app_common => dev-utils}/StackWalker.h
+3	3	src/dev-utils/platform/msw/Snapmaker_Orca.rc.in
+0	2	src/dev-utils/platform/osx/Info.plist.in
+15	35	src/dev-utils/platform/unix/build_appimage.sh.in
+38	376	src/dev-utils/platform/unix/build_linux_image.sh.in
+0	181	src/libslic3r/AllowlistManager.cpp
+0	49	src/libslic3r/AllowlistManager.hpp
+133	36	src/libslic3r/AppConfig.cpp
+51	16	src/libslic3r/AppConfig.hpp
+99	5	src/libslic3r/Arrange.cpp
+7	0	src/libslic3r/Arrange.hpp
+0	2	src/libslic3r/BoundingBox.hpp
+1	19	src/libslic3r/Brim.cpp
+39	43	src/libslic3r/CMakeLists.txt
+0	1	src/libslic3r/Color.hpp
+146	0	src/libslic3r/ColorDepthProcessor.cpp
+85	0	src/libslic3r/ColorDepthProcessor.hpp
+26	115	src/libslic3r/Config.cpp
+5	25	src/libslic3r/Config.hpp
+5	6	src/libslic3r/CustomGCode.cpp
+3	4	src/libslic3r/CustomGCode.hpp
+6	24	src/libslic3r/EdgeGrid.hpp
+5	7	src/libslic3r/ElephantFootCompensation.cpp
+0	73	src/libslic3r/ExPolygon.cpp
+0	10	src/libslic3r/ExPolygon.hpp
+4	4	src/libslic3r/Extruder.cpp
+16	77	src/libslic3r/ExtrusionEntity.hpp
+0	1	src/libslic3r/Feature/FuzzySkin/FuzzySkin.cpp
+0	2	src/libslic3r/Feature/Interlocking/InterlockingGenerator.cpp
+0	682	src/libslic3r/FilamentColorLibrary.cpp
+0	126	src/libslic3r/FilamentColorLibrary.hpp
+11	17	src/libslic3r/Fill/Fill.cpp
+0	4	src/libslic3r/Fill/FillBase.hpp
+2	45	src/libslic3r/Fill/FillRectilinear.cpp
+87	13	src/libslic3r/Flow.cpp
+21	0	src/libslic3r/Flow.hpp
+56	200	src/libslic3r/Format/bbs_3mf.cpp
+0	2	src/libslic3r/Format/svg.cpp
+235	0	src/libslic3r/FosFilamentArrangement.cpp
+105	0	src/libslic3r/FosFilamentArrangement.hpp
+482	2987	src/libslic3r/GCode.cpp
+7	60	src/libslic3r/GCode.hpp
+4	5	src/libslic3r/GCode/AdaptivePAProcessor.cpp
+10	1	src/libslic3r/GCode/ConflictChecker.cpp
+4	4	src/libslic3r/GCode/CoolingBuffer.cpp
+15	18	src/libslic3r/GCode/GCodeProcessor.cpp
+5	9	src/libslic3r/GCode/PressureEqualizer.cpp
+260	463	src/libslic3r/GCode/ToolOrdering.cpp
+7	46	src/libslic3r/GCode/ToolOrdering.hpp
+4	4	src/libslic3r/GCode/WipeTower.cpp
+0	14	src/libslic3r/GCode/WipeTower.hpp
+510	2478	src/libslic3r/GCode/WipeTower2.cpp
+60	161	src/libslic3r/GCode/WipeTower2.hpp
+0	174	src/libslic3r/GCode/WipeTowerHelper.cpp
+0	28	src/libslic3r/GCode/WipeTowerHelper.hpp
+2	28	src/libslic3r/GCodeReader.cpp
+6	9	src/libslic3r/GCodeReader.hpp
+24	31	src/libslic3r/GCodeWriter.cpp
+1	5	src/libslic3r/GCodeWriter.hpp
+10	53	src/libslic3r/Layer.cpp
+10	3	src/libslic3r/Layer.hpp
+28	121	src/libslic3r/LayerRegion.cpp
+0	72	src/libslic3r/LocalZOrderOptimizer.hpp
+0	3	src/libslic3r/LocalesUtils.cpp
+0	1	src/libslic3r/MacUtils.hpp
+0	12	src/libslic3r/MacUtils.mm
+0	3040	src/libslic3r/MixedFilament.cpp
+0	530	src/libslic3r/MixedFilament.hpp
+0	95	src/libslic3r/MixedFilamentConfigRemap.hpp
+27	348	src/libslic3r/Model.cpp
+6	48	src/libslic3r/Model.hpp
+6	9	src/libslic3r/ModelArrange.cpp
+20	49	src/libslic3r/MultiMaterialSegmentation.cpp
+352	0	src/libslic3r/NozzleLayerPlanner.cpp
+178	0	src/libslic3r/NozzleLayerPlanner.hpp
+194	65	src/libslic3r/PerimeterGenerator.cpp
+20	0	src/libslic3r/PerimeterGenerator.hpp
+1	1	src/libslic3r/PlaceholderParser.cpp
+0	8	src/libslic3r/Point.hpp
+0	83	src/libslic3r/Polygon.cpp
+0	3	src/libslic3r/Polygon.hpp
+1	1	src/libslic3r/Polyline.hpp
+76	389	src/libslic3r/Preset.cpp
+0	9	src/libslic3r/Preset.hpp
+414	892	src/libslic3r/PresetBundle.cpp
+33	134	src/libslic3r/PresetBundle.hpp
+0	32	src/libslic3r/PresetFlowVariant.cpp
+0	21	src/libslic3r/PresetFlowVariant.hpp
+532	786	src/libslic3r/Print.cpp
+88	102	src/libslic3r/Print.hpp
+42	370	src/libslic3r/PrintApply.cpp
+3	87	src/libslic3r/PrintBase.hpp
+550	880	src/libslic3r/PrintConfig.cpp
+188	155	src/libslic3r/PrintConfig.hpp
+192	689	src/libslic3r/PrintObject.cpp
+404	4363	src/libslic3r/PrintObjectSlice.cpp
+72	22	src/libslic3r/PrintRegion.cpp
+0	33	src/libslic3r/ProjectSchemaVersion.cpp
+0	24	src/libslic3r/ProjectSchemaVersion.hpp
+0	200	src/libslic3r/SSWCPProtocol.cpp
+0	81	src/libslic3r/SSWCPProtocol.hpp
+2	29	src/libslic3r/ShortestPath.cpp
+11	16	src/libslic3r/Slicing.cpp
+41	141	src/libslic3r/Support/SupportCommon.cpp
+1	55	src/libslic3r/Support/SupportCommon.hpp
+0	2	src/libslic3r/Support/SupportLayer.hpp
+0	10	src/libslic3r/Support/SupportMaterial.cpp
+28	54	src/libslic3r/Support/SupportParameters.hpp
+0	32	src/libslic3r/Support/SupportTransitionLayer.hpp
+174	675	src/libslic3r/Support/TreeSupport.cpp
+4	100	src/libslic3r/Support/TreeSupport.hpp
+26	96	src/libslic3r/Support/TreeSupport3D.cpp
+7	32	src/libslic3r/Support/TreeSupportCommon.hpp
+19	52	src/libslic3r/TriangleSelector.cpp
+4	6	src/libslic3r/TriangleSelector.hpp
+3	31	src/libslic3r/Utils.hpp
+2	139	src/libslic3r/VariableWidth.cpp
+5	14	src/libslic3r/calib.cpp
+5	7	src/libslic3r/calib.hpp
+0	81	src/libslic3r/filament_mixer.cpp
+0	23	src/libslic3r/filament_mixer.h
+0	819	src/libslic3r/filament_mixer_model.h
+4	4	src/libslic3r/libslic3r.h
+34	229	src/libslic3r/utils.cpp
+2	13	src/mqtt/CMakeLists.txt
+3	3	src/mqtt/cmake/CMakeLists.txt
+2	2	src/mqtt/cmake/CPackDebConfig.cmake
+1	9	src/mqtt/cmake/PahoMqttCppConfig.cmake.in
+104	128	src/mqtt/externals/paho-mqtt-c/CMakeLists.txt
+0	63	src/mqtt/externals/paho-mqtt-c/CONTRIBUTING.md
+0	358	src/mqtt/externals/paho-mqtt-c/README.md
+0	227	src/mqtt/externals/paho-mqtt-c/cmake/modules/FindLibreSSL.cmake
+0	15	src/mqtt/externals/paho-mqtt-c/edl-v10
+0	277	src/mqtt/externals/paho-mqtt-c/epl-v20
+0	108	src/mqtt/externals/paho-mqtt-c/notice.html
+320	373	src/mqtt/externals/paho-mqtt-c/src/CMakeLists.txt
+2	4	src/mqtt/externals/paho-mqtt-c/src/Clients.h
+5	13	src/mqtt/externals/paho-mqtt-c/src/Heap.c
+23	5	src/mqtt/externals/paho-mqtt-c/src/Log.c
+11	50	src/mqtt/externals/paho-mqtt-c/src/MQTTAsync.c
+13	34	src/mqtt/externals/paho-mqtt-c/src/MQTTAsync.h
+36	109	src/mqtt/externals/paho-mqtt-c/src/MQTTAsyncUtils.c
+2	3	src/mqtt/externals/paho-mqtt-c/src/MQTTAsyncUtils.h
+12	49	src/mqtt/externals/paho-mqtt-c/src/MQTTClient.c
+7	31	src/mqtt/externals/paho-mqtt-c/src/MQTTClient.h
+7	59	src/mqtt/externals/paho-mqtt-c/src/MQTTPacket.c
+18	19	src/mqtt/externals/paho-mqtt-c/src/MQTTPacket.h
+9	12	src/mqtt/externals/paho-mqtt-c/src/MQTTPacketOut.c
+2	1	src/mqtt/externals/paho-mqtt-c/src/MQTTPersistence.c
+4	4	src/mqtt/externals/paho-mqtt-c/src/MQTTPersistenceDefault.c
+18	44	src/mqtt/externals/paho-mqtt-c/src/MQTTProperties.c
+9	12	src/mqtt/externals/paho-mqtt-c/src/MQTTProperties.h
+3	16	src/mqtt/externals/paho-mqtt-c/src/MQTTProtocolClient.c
+140	143	src/mqtt/externals/paho-mqtt-c/src/MQTTProtocolOut.c
+4	4	src/mqtt/externals/paho-mqtt-c/src/MQTTProtocolOut.h
+1	200	src/mqtt/externals/paho-mqtt-c/src/Proxy.c
+2	6	src/mqtt/externals/paho-mqtt-c/src/Proxy.h
+7	7	src/mqtt/externals/paho-mqtt-c/src/SHA1.c
+6	6	src/mqtt/externals/paho-mqtt-c/src/SHA1.h
+2	21	src/mqtt/externals/paho-mqtt-c/src/SSLSocket.c
+24	158	src/mqtt/externals/paho-mqtt-c/src/Socket.c
+0	1	src/mqtt/externals/paho-mqtt-c/src/Socket.h
+1	13	src/mqtt/externals/paho-mqtt-c/src/SocketBuffer.c
+1	11	src/mqtt/externals/paho-mqtt-c/src/VersionInfo.h.in
+30	93	src/mqtt/externals/paho-mqtt-c/src/WebSocket.c
+12	0	src/mqtt/externals/paho-mqtt-c/test_package/CMakeLists.txt
+26	0	src/mqtt/externals/paho-mqtt-c/test_package/conanfile.py
+58	0	src/mqtt/externals/paho-mqtt-c/test_package/test_package.c
+1	1	src/mqtt/externals/paho-mqtt-c/version.patch
+2	4	src/mqtt/include/mqtt/CMakeLists.txt
+719	934	src/mqtt/include/mqtt/async_client.h
+211	216	src/mqtt/include/mqtt/buffer_ref.h
+67	66	src/mqtt/include/mqtt/buffer_view.h
+34	33	src/mqtt/include/mqtt/callback.h
+390	403	src/mqtt/include/mqtt/client.h
+874	860	src/mqtt/include/mqtt/connect_options.h
+211	364	src/mqtt/include/mqtt/create_options.h
+80	80	src/mqtt/include/mqtt/delivery_token.h
+218	215	src/mqtt/include/mqtt/disconnect_options.h
+0	272	src/mqtt/include/mqtt/event.h
+161	161	src/mqtt/include/mqtt/exception.h
+14	13	src/mqtt/include/mqtt/export.h
+24	22	src/mqtt/include/mqtt/iaction_listener.h
+402	465	src/mqtt/include/mqtt/iasync_client.h
+77	76	src/mqtt/include/mqtt/iclient_persistence.h
+395	408	src/mqtt/include/mqtt/message.h
+1	0	src/mqtt/include/mqtt/platform.h
+274	376	src/mqtt/include/mqtt/properties.h
+0	110	src/mqtt/include/mqtt/reason_code.h
+176	235	src/mqtt/include/mqtt/response_options.h
+148	139	src/mqtt/include/mqtt/server_response.h
+435	435	src/mqtt/include/mqtt/ssl_options.h
+279	269	src/mqtt/include/mqtt/string_collection.h
+121	138	src/mqtt/include/mqtt/subscribe_options.h
+242	327	src/mqtt/include/mqtt/thread_queue.h
+453	450	src/mqtt/include/mqtt/token.h
+164	181	src/mqtt/include/mqtt/topic.h
+55	23	src/mqtt/include/mqtt/topic_matcher.h
+70	12	src/mqtt/include/mqtt/types.h
+208	208	src/mqtt/include/mqtt/will_options.h
+29	54	src/mqtt/src/CMakeLists.txt
+612	651	src/mqtt/src/async_client.cpp
+93	104	src/mqtt/src/client.cpp
+269	235	src/mqtt/src/connect_options.cpp
+17	28	src/mqtt/src/create_options.cpp
+71	38	src/mqtt/src/disconnect_options.cpp
+107	116	src/mqtt/src/iclient_persistence.cpp
+70	66	src/mqtt/src/message.cpp
+121	194	src/mqtt/src/properties.cpp
+57	80	src/mqtt/src/response_options.cpp
+0	90	src/mqtt/src/server_response.cpp
+225	218	src/mqtt/src/ssl_options.cpp
+44	30	src/mqtt/src/string_collection.cpp
+10	13	src/mqtt/src/{reason_code.cpp => subscribe_options.cpp}
+166	197	src/mqtt/src/token.cpp
+59	69	src/mqtt/src/topic.cpp
+72	67	src/mqtt/src/will_options.cpp
+25	14	src/{app_common => sentry_wrapper}/SentryWrapper.cpp
+1	1	src/{app_common => sentry_wrapper}/SentryWrapper.hpp
+12	106	src/slic3r/CMakeLists.txt
+193	498	src/slic3r/GUI/3DScene.cpp
+24	57	src/slic3r/GUI/3DScene.hpp
+14	6	src/slic3r/GUI/AboutDialog.cpp
+1	0	src/slic3r/GUI/BitmapCache.cpp
+0	80	src/slic3r/GUI/BufferTexture.cpp
+0	55	src/slic3r/GUI/BufferTexture.hpp
+7	49	src/slic3r/GUI/CalibrationWizard.cpp
+2	8	src/slic3r/GUI/CalibrationWizardPresetPage.cpp
+0	57	src/slic3r/GUI/Camera.cpp
+1	13	src/slic3r/GUI/Camera.hpp
+85	120	src/slic3r/GUI/ConfigManipulation.cpp
+2	2	src/slic3r/GUI/ConfigManipulation.hpp
+3	5	src/slic3r/GUI/DailyTips.cpp
+0	6	src/slic3r/GUI/DeviceManager.cpp
+18	123	src/slic3r/GUI/DownloadManager.cpp
+7	38	src/slic3r/GUI/DownloadManager.hpp
+14	60	src/slic3r/GUI/Downloader.cpp
+1	2	src/slic3r/GUI/Downloader.hpp
+79	46	src/slic3r/GUI/DownloaderFileGet.cpp
+8	8	src/slic3r/GUI/ExtraRenderers.cpp
+3	11	src/slic3r/GUI/ExtrusionCalibration.cpp
+15	50	src/slic3r/GUI/Field.cpp
+1	1	src/slic3r/GUI/Field.hpp
+0	912	src/slic3r/GUI/FilamentColorDialog.cpp
+0	69	src/slic3r/GUI/FilamentColorDialog.hpp
+0	172	src/slic3r/GUI/FilamentColorUtils.cpp
+0	50	src/slic3r/GUI/FilamentColorUtils.hpp
+0	1176	src/slic3r/GUI/FilamentDropDown.cpp
+0	321	src/slic3r/GUI/FilamentDropDown.hpp
+0	527	src/slic3r/GUI/FilamentGroupDialog.cpp
+0	67	src/slic3r/GUI/FilamentGroupDialog.hpp
+1431	0	src/slic3r/GUI/FilamentNozzleMapDialog.cpp
+198	0	src/slic3r/GUI/FilamentNozzleMapDialog.hpp
+0	261	src/slic3r/GUI/FilamentSort.cpp
+0	125	src/slic3r/GUI/FilamentSort.hpp
+0	206	src/slic3r/GUI/FlowTypeHelper.cpp
+0	77	src/slic3r/GUI/FlowTypeHelper.hpp
+209	0	src/slic3r/GUI/FosColourDialog.cpp
+56	0	src/slic3r/GUI/FosColourDialog.hpp
+351	627	src/slic3r/GUI/GCodeViewer.cpp
+30	37	src/slic3r/GUI/GCodeViewer.hpp
+187	1600	src/slic3r/GUI/GLCanvas3D.cpp
+9	148	src/slic3r/GUI/GLCanvas3D.hpp
+3	148	src/slic3r/GUI/GLModel.cpp
+0	11	src/slic3r/GUI/GLModel.hpp
+0	13	src/slic3r/GUI/GLShader.cpp
+0	13	src/slic3r/GUI/GLShader.hpp
+0	30	src/slic3r/GUI/GLShadersManager.cpp
+0	344	src/slic3r/GUI/GLSubTextureBindRenderer.cpp
+0	58	src/slic3r/GUI/GLSubTextureBindRenderer.hpp
+28	156	src/slic3r/GUI/GLTexture.cpp
+1	9	src/slic3r/GUI/GLTexture.hpp
+9	204	src/slic3r/GUI/GLToolbar.cpp
+0	29	src/slic3r/GUI/GLToolbar.hpp
+0	52	src/slic3r/GUI/GLToolbarBackgroundTextureCache.cpp
+0	31	src/slic3r/GUI/GLToolbarBackgroundTextureCache.hpp
+14	53	src/slic3r/GUI/GUI.cpp
+2	3	src/slic3r/GUI/GUI.hpp
+586	1498	src/slic3r/GUI/GUI_App.cpp
+110	117	src/slic3r/GUI/GUI_App.hpp
+128	173	src/slic3r/GUI/GUI_Factories.cpp
+2	0	src/slic3r/GUI/GUI_Factories.hpp
+0	34	src/slic3r/GUI/GUI_Init.cpp
+116	153	src/slic3r/GUI/GUI_ObjectList.cpp
+2	1	src/slic3r/GUI/GUI_ObjectList.hpp
+1	2	src/slic3r/GUI/GUI_ObjectSettings.cpp
+97	42	src/slic3r/GUI/GUI_ObjectTable.cpp
+0	26	src/slic3r/GUI/GUI_ObjectTable.hpp
+2	6	src/slic3r/GUI/GUI_Preview.cpp
+0	5	src/slic3r/GUI/GUI_Preview.hpp
+0	19	src/slic3r/GUI/GUI_Utils.cpp
+0	5	src/slic3r/GUI/GUI_Utils.hpp
+4	22	src/slic3r/GUI/Gizmos/GLGizmoEmboss.cpp
+0	2	src/slic3r/GUI/Gizmos/GLGizmoEmboss.hpp
+6	6	src/slic3r/GUI/Gizmos/GLGizmoMeshBoolean.cpp
+265	311	src/slic3r/GUI/Gizmos/GLGizmoMmuSegmentation.cpp
+12	18	src/slic3r/GUI/Gizmos/GLGizmoMmuSegmentation.hpp
+1	7	src/slic3r/GUI/Gizmos/GLGizmoPainterBase.cpp
+7	75	src/slic3r/GUI/Gizmos/GLGizmosManager.cpp
+2	7	src/slic3r/GUI/Gizmos/GLGizmosManager.hpp
+0	110	src/slic3r/GUI/HighFlowCompat.cpp
+0	30	src/slic3r/GUI/HighFlowCompat.hpp
+0	6	src/slic3r/GUI/HintNotification.cpp
+240	380	src/slic3r/GUI/HttpServer.cpp
+23	38	src/slic3r/GUI/HttpServer.hpp
+0	1	src/slic3r/GUI/IMSlider.cpp
+7	14	src/slic3r/GUI/ImGuiWrapper.cpp
+7	21	src/slic3r/GUI/InstanceCheck.cpp
+643	14	src/slic3r/GUI/Jobs/ArrangeJob.cpp
+9	1	src/slic3r/GUI/Jobs/ArrangeJob.hpp
+0	1	src/slic3r/GUI/Jobs/EmbossJob.cpp
+4	11	src/slic3r/GUI/Jobs/FillBedJob.cpp
+0	1	src/slic3r/GUI/KBShortcutsDialog.cpp
+261	305	src/slic3r/GUI/MainFrame.cpp
+22	24	src/slic3r/GUI/MainFrame.hpp
+1	1	src/slic3r/GUI/MarkdownTip.cpp
+6	6	src/slic3r/GUI/MediaPlayCtrl.h
+0	2093	src/slic3r/GUI/MixedColorMatchHelpers.cpp
+0	288	src/slic3r/GUI/MixedColorMatchHelpers.hpp
+0	633	src/slic3r/GUI/MixedColorMatchPanel.cpp
+0	108	src/slic3r/GUI/MixedColorMatchPanel.hpp
+0	508	src/slic3r/GUI/MixedFilamentBadge.cpp
+0	85	src/slic3r/GUI/MixedFilamentBadge.hpp
+0	2982	src/slic3r/GUI/MixedFilamentBatchDialog.cpp
+0	300	src/slic3r/GUI/MixedFilamentBatchDialog.hpp
+0	694	src/slic3r/GUI/MixedFilamentColorMapPanel.cpp
+0	121	src/slic3r/GUI/MixedFilamentColorMapPanel.hpp
+0	3456	src/slic3r/GUI/MixedFilamentDialog.cpp
+0	193	src/slic3r/GUI/MixedFilamentDialog.hpp
+0	198	src/slic3r/GUI/MixedGradientSelector.cpp
+0	103	src/slic3r/GUI/MixedGradientSelector.hpp
+0	1	src/slic3r/GUI/Monitor.cpp
+0	15	src/slic3r/GUI/MsgDialog.cpp
+72	76	src/slic3r/GUI/NetworkTestDialog.cpp
+0	3	src/slic3r/GUI/NetworkTestDialog.hpp
+7	108	src/slic3r/GUI/NotificationManager.cpp
+2	31	src/slic3r/GUI/NotificationManager.hpp
+137	0	src/slic3r/GUI/NozzleVerifyDialog.cpp
+55	0	src/slic3r/GUI/NozzleVerifyDialog.hpp
+22	34	src/slic3r/GUI/OG_CustomCtrl.cpp
+60	201	src/slic3r/GUI/ObjColorDialog.cpp
+7	11	src/slic3r/GUI/ObjColorDialog.hpp
+14	12	src/slic3r/GUI/ObjectDataViewModel.cpp
+0	12	src/slic3r/GUI/OpenGLManager.cpp
+0	8	src/slic3r/GUI/OpenGLManager.hpp
+85	414	src/slic3r/GUI/OptionsGroup.cpp
+8	8	src/slic3r/GUI/OptionsGroup.hpp
+350	27	src/slic3r/GUI/ParamsPanel.cpp
+16	5	src/slic3r/GUI/ParamsPanel.hpp
+239	799	src/slic3r/GUI/PartPlate.cpp
+4	90	src/slic3r/GUI/PartPlate.hpp
+0	790	src/slic3r/GUI/PathData.cpp
+0	299	src/slic3r/GUI/PathData.hpp
+0	475	src/slic3r/GUI/PathRenderer.cpp
+0	135	src/slic3r/GUI/PathRenderer.hpp
+11691	19372	src/slic3r/GUI/Plater.cpp
+39	206	src/slic3r/GUI/Plater.hpp
+0	751	src/slic3r/GUI/PlaterFilamentComboBox.cpp
+0	106	src/slic3r/GUI/PlaterFilamentComboBox.hpp
+108	87	src/slic3r/GUI/Preferences.cpp
+1	6	src/slic3r/GUI/Preferences.hpp
+239	368	src/slic3r/GUI/PresetComboBoxes.cpp
+8	7	src/slic3r/GUI/PresetComboBoxes.hpp
+16	16	src/slic3r/GUI/PresetHints.cpp
+1	1	src/slic3r/GUI/PrintHostDialogs.cpp
+24	80	src/slic3r/GUI/PrinterWebView.cpp
+1	1	src/slic3r/GUI/PrinterWebView.hpp
+0	53	src/slic3r/GUI/ProfileLoadUtil.hpp
+24	24	src/slic3r/GUI/ReleaseNote.cpp
+1	0	src/slic3r/GUI/ReleaseNote.hpp
+64	3	src/slic3r/GUI/SMPhysicalPrinterDialog.cpp
+2932	2301	src/slic3r/GUI/SSWCP.cpp
+164	85	src/slic3r/GUI/SSWCP.hpp
+203	18	src/slic3r/GUI/Selection.cpp
+13	1	src/slic3r/GUI/Selection.hpp
+0	224	src/slic3r/GUI/SliceModePopup.cpp
+0	58	src/slic3r/GUI/SliceModePopup.hpp
+13	27	src/slic3r/GUI/StatusPanel.cpp
+2165	830	src/slic3r/GUI/Tab.cpp
+167	48	src/slic3r/GUI/Tab.hpp
+0	34	src/slic3r/GUI/ThumbnailView.hpp
+0	891	src/slic3r/GUI/Timelapse/TimelapseDownloadPopup.cpp
+0	169	src/slic3r/GUI/Timelapse/TimelapseDownloadPopup.hpp
+77	214	src/slic3r/GUI/UnsavedChangesDialog.cpp
+13	14	src/slic3r/GUI/WebDeviceDialog.cpp
+146	210	src/slic3r/GUI/WebGuideDialog.cpp
+2	3	src/slic3r/GUI/WebGuideDialog.hpp
+20	48	src/slic3r/GUI/WebPreprintDialog.cpp
+1	7	src/slic3r/GUI/WebPreprintDialog.hpp
+233	275	src/slic3r/GUI/WebPresetDialog.cpp
+3	11	src/slic3r/GUI/WebPresetDialog.hpp
+429	0	src/slic3r/GUI/WebSMUserLoginDialog.cpp
+97	0	src/slic3r/GUI/WebSMUserLoginDialog.hpp
+1	1	src/slic3r/GUI/WebUrlDialog.cpp
+1	1	src/slic3r/GUI/WebUserLoginDialog.cpp
+10	6	src/slic3r/GUI/WebViewDialog.cpp
+0	705	src/slic3r/GUI/WidgetInspector.cpp
+0	76	src/slic3r/GUI/WidgetInspector.hpp
+0	2	src/slic3r/GUI/Widgets/Button.cpp
+317	0	src/slic3r/GUI/Widgets/CustomNotebook.hpp
+3	49	src/slic3r/GUI/Widgets/DropDown.cpp
+0	2	src/slic3r/GUI/Widgets/DropDown.hpp
+2	5	src/slic3r/GUI/Widgets/Label.cpp
+1	3	src/slic3r/GUI/Widgets/ScrolledWindow.cpp
+0	170	src/slic3r/GUI/Widgets/SegmentedToggle.cpp
+0	55	src/slic3r/GUI/Widgets/SegmentedToggle.hpp
+0	2	src/slic3r/GUI/Widgets/SideTools.cpp
+2	5	src/slic3r/GUI/Widgets/SpinInput.cpp
+0	21	src/slic3r/GUI/Widgets/StateColor.cpp
+0	3	src/slic3r/GUI/Widgets/StaticBox.hpp
+1	5	src/slic3r/GUI/Widgets/TextInput.cpp
+8	194	src/slic3r/GUI/Widgets/WebView.cpp
+0	310	src/slic3r/GUI/filamentsync/FilamentColorMapBox.cpp
+0	54	src/slic3r/GUI/filamentsync/FilamentColorMapBox.hpp
+0	305	src/slic3r/GUI/filamentsync/FilamentColorMapBoxGroup.cpp
+0	71	src/slic3r/GUI/filamentsync/FilamentColorMapBoxGroup.hpp
+0	75	src/slic3r/GUI/filamentsync/FilamentData.hpp
+0	206	src/slic3r/GUI/filamentsync/FilamentScrollBar.cpp
+0	53	src/slic3r/GUI/filamentsync/FilamentScrollBar.hpp
+0	182	src/slic3r/GUI/filamentsync/FilamentSyncAlgorithm.cpp
+0	32	src/slic3r/GUI/filamentsync/FilamentSyncAlgorithm.hpp
+0	373	src/slic3r/GUI/filamentsync/MachineFilamentPicker.cpp
+0	46	src/slic3r/GUI/filamentsync/MachineFilamentPicker.hpp
+0	399	src/slic3r/GUI/filamentsync/PlaterPreview.cpp
+0	64	src/slic3r/GUI/filamentsync/PlaterPreview.hpp
+0	28	src/slic3r/GUI/filamentsync/SyncConfirmDialog.cpp
+0	28	src/slic3r/GUI/filamentsync/SyncConfirmDialog.hpp
+0	900	src/slic3r/GUI/filamentsync/SyncFilamentColorDialog.cpp
+0	110	src/slic3r/GUI/filamentsync/SyncFilamentColorDialog.hpp
+52	73	src/slic3r/GUI/wxExtensions.cpp
+3	0	src/slic3r/GUI/wxExtensions.hpp
+4	0	src/slic3r/GUI/wxMediaCtrl2.cpp
+4	1	src/slic3r/GUI/wxMediaCtrl2.h
+0	2	src/slic3r/GUI/wxMediaCtrl2.mm
+14	34	src/slic3r/Utils/CalibUtils.cpp
+0	594	src/slic3r/Utils/ConnectionProcessManager.cpp
+0	97	src/slic3r/Utils/ConnectionProcessManager.hpp
+0	85	src/slic3r/Utils/CpuMemory.cpp
+0	18	src/slic3r/Utils/CpuMemory.hpp
+1	5	src/slic3r/Utils/ElegooLink.cpp
+3	13	src/slic3r/Utils/EmbossStyleManager.cpp
+0	146	src/slic3r/Utils/FileDecrypt.cpp
+0	31	src/slic3r/Utils/FileDecrypt.hpp
+0	176	src/slic3r/Utils/Frustum.cpp
+0	75	src/slic3r/Utils/Frustum.hpp
+0	97	src/slic3r/Utils/GatewayAccount.cpp
+0	36	src/slic3r/Utils/GatewayAccount.hpp
+0	323	src/slic3r/Utils/GatewayDevice.cpp
+0	39	src/slic3r/Utils/GatewayDevice.hpp
+0	230	src/slic3r/Utils/GatewayProtocol.cpp
+0	120	src/slic3r/Utils/GatewayProtocol.hpp
+0	1106	src/slic3r/Utils/GatewayService.cpp
+0	213	src/slic3r/Utils/GatewayService.hpp
+5	7	src/slic3r/Utils/Http.cpp
+250	282	src/slic3r/Utils/MQTT.cpp
+12	46	src/slic3r/Utils/MQTT.hpp
+1194	953	src/slic3r/Utils/MoonRaker.cpp
+25	46	src/slic3r/Utils/MoonRaker.hpp
+231	0	src/slic3r/Utils/MultiACE.cpp
+78	0	src/slic3r/Utils/MultiACE.hpp
+592	235	src/slic3r/Utils/PresetUpdater.cpp
+7	0	src/slic3r/Utils/PresetUpdater.hpp
+2	0	src/slic3r/Utils/PrintHost.cpp
+15	8	src/slic3r/Utils/PrintHost.hpp
+0	2852	src/slic3r/Utils/SnapLogClient.cpp
+0	721	src/slic3r/Utils/SnapLogClient.hpp
+0	1	submodules/Profiles
+20	18	tests/CLAUDE.md
+13	82	tests/CMakeLists.txt
+23	0	tests/catch2/LICENSE.txt
+2	0	tests/catch2/VERSION.txt
+17937	0	tests/catch2/catch.hpp
+62	0	tests/catch2/catch_reporter_automake.hpp
+253	0	tests/catch2/catch_reporter_tap.hpp
+220	0	tests/catch2/catch_reporter_teamcity.hpp
+42	88	tests/catch_main.hpp
+5	34	tests/fff_print/CMakeLists.txt
+5	11	tests/fff_print/fff_print_tests.cpp
+0	225	tests/fff_print/test_adaptive_pa.cpp
+0	120	tests/fff_print/test_bed_temperature.cpp
+0	166	tests/fff_print/test_cooling_buffer.cpp
+10	22	tests/fff_print/test_data.cpp
+2	4	tests/fff_print/test_data.hpp
+1	78	tests/fff_print/test_extrusion_entity.cpp
+0	247	tests/fff_print/test_fanmover.cpp
+3	3	tests/fff_print/test_fill.cpp
+22	273	tests/fff_print/test_flow.cpp
+1	1	tests/fff_print/test_gcode.cpp
+0	118	tests/fff_print/test_gcode_processor.cpp
+12	286	tests/fff_print/test_gcodewriter.cpp
+9	10	tests/fff_print/test_model.cpp
+0	612	tests/fff_print/test_pressure_equalizer.cpp
+19	22	tests/fff_print/test_print.cpp
+50	51	tests/fff_print/test_printgcode.cpp
+11	12	tests/fff_print/test_printobject.cpp
+43	47	tests/fff_print/test_skirt_brim.cpp
+0	137	tests/fff_print/test_small_area_infill_flow_compensator.cpp
+0	340	tests/fff_print/test_spiral_vase.cpp
+11	12	tests/fff_print/test_support_material.cpp
+0	109	tests/fff_print/test_tree_support_bridge.cpp
+3	3	tests/fff_print/test_trianglemesh.cpp
+0	165	tests/fff_print/test_wipe_tower.cpp
+2	15	tests/libnest2d/CMakeLists.txt
+28	27	tests/libnest2d/libnest2d_tests_main.cpp
+5	32	tests/libslic3r/CMakeLists.txt
+0	137	tests/libslic3r/TestMD5.cpp
+4	45	tests/libslic3r/libslic3r_tests.cpp
+9	7	tests/libslic3r/test_3mf.cpp
+12	12	tests/libslic3r/test_aabbindirect.cpp
+11	12	tests/libslic3r/test_clipper_offset.cpp
+11	124	tests/libslic3r/test_clipper_utils.cpp
+32	81	tests/libslic3r/test_config.cpp
+0	28	tests/libslic3r/test_custom_gcode.cpp
+1	1	tests/libslic3r/test_elephant_foot_compensation.cpp
+0	122	tests/libslic3r/test_extrusion_entity.cpp
+0	181	tests/libslic3r/test_flush_vol_calc.cpp
+2	2	tests/libslic3r/test_geometry.cpp
+1	1	tests/libslic3r/test_hollowing.cpp
+0	85	tests/libslic3r/test_icns.cpp
+1	2	tests/libslic3r/test_indexed_triangle_set.cpp
+0	29	tests/libslic3r/test_local_z_order_optimizer.cpp
+8	8	tests/libslic3r/test_marchingsquares.cpp
+2	2	tests/libslic3r/test_meshboolean.cpp
+0	6192	tests/libslic3r/test_mixed_filament.cpp
+0	38	tests/libslic3r/test_mixed_filament_color_golden.cpp
+1	1	tests/libslic3r/test_mutable_polygon.cpp
+1	3	tests/libslic3r/test_mutable_priority_queue.cpp
+1	1	tests/libslic3r/test_optimizers.cpp
+35	30	tests/libslic3r/test_placeholder_parser.cpp
+3	3	tests/libslic3r/test_png_io.cpp
+1	1	tests/libslic3r/test_polygon.cpp
+0	147	tests/libslic3r/test_profile_load_util.cpp
+0	112	tests/libslic3r/test_sswcp_protocol.cpp
+1	1	tests/libslic3r/test_stl.cpp
+1	1	tests/libslic3r/test_timeutils.cpp
+0	41	tests/libslic3r/test_tree_support_wall.cpp
+0	39	tests/libslic3r/test_triangle_selector.cpp
+3	4	tests/libslic3r/test_voronoi.cpp
+0	10	tests/nanosvg_impl.cpp
+0	50	tests/packaging/test_stage_connect_bundle.py
+3	30	tests/sla_print/CMakeLists.txt
+7	7	tests/sla_print/sla_print_tests.cpp
+0	5	tests/sla_print/sla_print_tests_main.cpp
+7	8	tests/sla_print/sla_raycast_tests.cpp
+1	1	tests/sla_print/sla_supptgen_tests.cpp
+8	8	tests/sla_print/sla_test_utils.cpp
+3	4	tests/sla_print/sla_test_utils.hpp
+6	106	tests/slic3rutils/CMakeLists.txt
+0	103	tests/slic3rutils/ConnectionProcessManager_test.cpp
+0	185	tests/slic3rutils/FilamentDropDown_test.cpp
+0	315	tests/slic3rutils/FilamentSort_test.cpp
+0	139	tests/slic3rutils/GatewayAccount_test.cpp
+0	419	tests/slic3rutils/GatewayDevice_test.cpp
+0	32	tests/slic3rutils/GatewayFlutterResources_test.cpp
+0	175	tests/slic3rutils/GatewayProtocol_test.cpp
+0	597	tests/slic3rutils/GatewayService_test.cpp
+0	3266	tests/slic3rutils/SnapLogClient_test.cpp
+0	1	tests/slic3rutils/gateway_tests_main.cpp
+3	3	tests/slic3rutils/slic3rutils_tests_main.cpp
+3	3	version.inc

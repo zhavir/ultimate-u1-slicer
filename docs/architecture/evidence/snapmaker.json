@@ -1,0 +1,587 @@
+{
+  "repository": "Snapmaker/OrcaSlicer",
+  "default_branch": "main",
+  "sha": "f5fd7289ea067997181ee6c2cf15a98f58faba43",
+  "branches": [
+    {
+      "name": "2.3.2",
+      "commit": {
+        "sha": "2ecbcf1f8d05db153cb1d0b906cd5b9dc6d3dc61",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/2ecbcf1f8d05db153cb1d0b906cd5b9dc6d3dc61"
+      },
+      "protected": false
+    },
+    {
+      "name": "bugfix_for_pack_dmg",
+      "commit": {
+        "sha": "2b293889932a9eaa95d83e2dcdb3922b407b7be6",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/2b293889932a9eaa95d83e2dcdb3922b407b7be6"
+      },
+      "protected": false
+    },
+    {
+      "name": "bugfix_login",
+      "commit": {
+        "sha": "04413f53c313268b4891f5a7ae9149bd3a83f0b9",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/04413f53c313268b4891f5a7ae9149bd3a83f0b9"
+      },
+      "protected": false
+    },
+    {
+      "name": "bugfix_tree_support_zero_gap_bridges",
+      "commit": {
+        "sha": "adac2c34cec29bdfe4099e7134934d93954d7726",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/adac2c34cec29bdfe4099e7134934d93954d7726"
+      },
+      "protected": false
+    },
+    {
+      "name": "bugfix_user_validation",
+      "commit": {
+        "sha": "f718993b577ac22981aa90d5270e41a00933d28e",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/f718993b577ac22981aa90d5270e41a00933d28e"
+      },
+      "protected": false
+    },
+    {
+      "name": "build_geomesh",
+      "commit": {
+        "sha": "53b23e0e0e8eb63cc794c4cc1fa7c2ad5b9c5f6a",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/53b23e0e0e8eb63cc794c4cc1fa7c2ad5b9c5f6a"
+      },
+      "protected": false
+    },
+    {
+      "name": "build_platform_engineering",
+      "commit": {
+        "sha": "157d4c1b70e32d72cb29b2c8dddcd8bc6d13a798",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/157d4c1b70e32d72cb29b2c8dddcd8bc6d13a798"
+      },
+      "protected": false
+    },
+    {
+      "name": "build_project_1012",
+      "commit": {
+        "sha": "96ba91232f508ae32d53ef265e5f216f270311c4",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/96ba91232f508ae32d53ef265e5f216f270311c4"
+      },
+      "protected": false
+    },
+    {
+      "name": "build_render_engine",
+      "commit": {
+        "sha": "e8cc366c7528f454ca545c48927917db0656a150",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/e8cc366c7528f454ca545c48927917db0656a150"
+      },
+      "protected": false
+    },
+    {
+      "name": "build_render_20260921",
+      "commit": {
+        "sha": "1742ba113816c0f67d773a7b08364413901aa339",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/1742ba113816c0f67d773a7b08364413901aa339"
+      },
+      "protected": false
+    },
+    {
+      "name": "build_slicing_algorithm",
+      "commit": {
+        "sha": "d6002c3758ab7a5ca072eb9b180dd333f555b8e8",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/d6002c3758ab7a5ca072eb9b180dd333f555b8e8"
+      },
+      "protected": false
+    },
+    {
+      "name": "build_2026_0921",
+      "commit": {
+        "sha": "a78cdd7a9c9c3a40b46d75639032a8eaf5ee03b8",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/a78cdd7a9c9c3a40b46d75639032a8eaf5ee03b8"
+      },
+      "protected": false
+    },
+    {
+      "name": "codex/connect-cli-v1.8.5",
+      "commit": {
+        "sha": "a4bb5bfb45882c06a0917807066bdf24673c1c27",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/a4bb5bfb45882c06a0917807066bdf24673c1c27"
+      },
+      "protected": false
+    },
+    {
+      "name": "codex/first-layer-reference-2.4.1",
+      "commit": {
+        "sha": "de5ac10e79e443d4306ea32efcf88ed0c54e6c08",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/de5ac10e79e443d4306ea32efcf88ed0c54e6c08"
+      },
+      "protected": false
+    },
+    {
+      "name": "codex/gateway-websocket-close-2.4.1",
+      "commit": {
+        "sha": "5fb28ad0511ff936bf231f2b3c8dcd2b946312cb",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/5fb28ad0511ff936bf231f2b3c8dcd2b946312cb"
+      },
+      "protected": false
+    },
+    {
+      "name": "codex/gui-picking-and-assembly-blank-latest",
+      "commit": {
+        "sha": "35c28e55f741dbee62620b81ebf1fc2a7bd87247",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/35c28e55f741dbee62620b81ebf1fc2a7bd87247"
+      },
+      "protected": false
+    },
+    {
+      "name": "codex/merge-main-into-build-platform-engineering",
+      "commit": {
+        "sha": "a62410610890695c59204da4936a4d766b248460",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/a62410610890695c59204da4936a4d766b248460"
+      },
+      "protected": false
+    },
+    {
+      "name": "engine-boundary-gate-pr",
+      "commit": {
+        "sha": "91488ceef6e6de95fb4402a89d2774ec38878d59",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/91488ceef6e6de95fb4402a89d2774ec38878d59"
+      },
+      "protected": false
+    },
+    {
+      "name": "feat/gcode-preview-gpu-toggle",
+      "commit": {
+        "sha": "25c9b38c83160d77de8dd4571ac123fa26003509",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/25c9b38c83160d77de8dd4571ac123fa26003509"
+      },
+      "protected": false
+    },
+    {
+      "name": "feat/gpu-slider-endpoint-parity",
+      "commit": {
+        "sha": "b2e04051b5335e5f1bc084b63e4b24e1b2919c43",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/b2e04051b5335e5f1bc084b63e4b24e1b2919c43"
+      },
+      "protected": false
+    },
+    {
+      "name": "feat/gpu-toggle-release",
+      "commit": {
+        "sha": "75eaa2a2300b2653885d6aa5f04097c25b81faf0",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/75eaa2a2300b2653885d6aa5f04097c25b81faf0"
+      },
+      "protected": false
+    },
+    {
+      "name": "feature_Encoding_format",
+      "commit": {
+        "sha": "f15adfc900ddebc429178c5492cbdb929edf3046",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/f15adfc900ddebc429178c5492cbdb929edf3046"
+      },
+      "protected": false
+    },
+    {
+      "name": "feature_dartCli",
+      "commit": {
+        "sha": "19d1fd38787c36efd70d07259c6dc40525e63349",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/19d1fd38787c36efd70d07259c6dc40525e63349"
+      },
+      "protected": false
+    },
+    {
+      "name": "feature_filament_1015",
+      "commit": {
+        "sha": "88e004b9826b3fcd7ca0fe88933bc3c1650a293b",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/88e004b9826b3fcd7ca0fe88933bc3c1650a293b"
+      },
+      "protected": false
+    },
+    {
+      "name": "feature_flutter_engine_compile",
+      "commit": {
+        "sha": "05a66203b14c7c9643a1a04bdd20ae52d3145951",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/05a66203b14c7c9643a1a04bdd20ae52d3145951"
+      },
+      "protected": false
+    },
+    {
+      "name": "feature_for_gitlab",
+      "commit": {
+        "sha": "107d04e16912f8d024c2f469148edaeb6361b052",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/107d04e16912f8d024c2f469148edaeb6361b052"
+      },
+      "protected": false
+    },
+    {
+      "name": "feature_gpu_pick_defer",
+      "commit": {
+        "sha": "d86f715a90aea9003d5e366878a36e42b791a353",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/d86f715a90aea9003d5e366878a36e42b791a353"
+      },
+      "protected": false
+    },
+    {
+      "name": "feature_mac_uninstaller",
+      "commit": {
+        "sha": "206aa6c2492ae040cfafeefff10203c6a1d5dea0",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/206aa6c2492ae040cfafeefff10203c6a1d5dea0"
+      },
+      "protected": false
+    },
+    {
+      "name": "feature_model_station",
+      "commit": {
+        "sha": "59a1c40b3364fabcf0cc1a10d683f336252d88be",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/59a1c40b3364fabcf0cc1a10d683f336252d88be"
+      },
+      "protected": false
+    },
+    {
+      "name": "feature_multi_extruders_dev",
+      "commit": {
+        "sha": "fc6c8287977e90c88ea6f53453883511fe1b2cfc",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/fc6c8287977e90c88ea6f53453883511fe1b2cfc"
+      },
+      "protected": false
+    },
+    {
+      "name": "feature_profile_subfunc",
+      "commit": {
+        "sha": "4aacbb22c739ed9bebc5c30537991a59228bcc06",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/4aacbb22c739ed9bebc5c30537991a59228bcc06"
+      },
+      "protected": false
+    },
+    {
+      "name": "feature_remove_penetration_validations",
+      "commit": {
+        "sha": "24614f5a4cc07aa108bbb66d26305a5f775305b5",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/24614f5a4cc07aa108bbb66d26305a5f775305b5"
+      },
+      "protected": false
+    },
+    {
+      "name": "feature_sentry_crash_fix",
+      "commit": {
+        "sha": "6faa813a3c16d37a663f88f0f8cf523500395b38",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/6faa813a3c16d37a663f88f0f8cf523500395b38"
+      },
+      "protected": false
+    },
+    {
+      "name": "feature_snapLog",
+      "commit": {
+        "sha": "95de748c9af374bae0be4f1d6a241235c179ce0c",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/95de748c9af374bae0be4f1d6a241235c179ce0c"
+      },
+      "protected": false
+    },
+    {
+      "name": "feature_submodule_integration",
+      "commit": {
+        "sha": "c58fbd26780f61c9734e9b0e09ccb7b478e44ebf",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/c58fbd26780f61c9734e9b0e09ccb7b478e44ebf"
+      },
+      "protected": false
+    },
+    {
+      "name": "feature_sync_gitlab",
+      "commit": {
+        "sha": "43c38c5a893784414ce6e70f7e5e4ef521d62e23",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/43c38c5a893784414ce6e70f7e5e4ef521d62e23"
+      },
+      "protected": false
+    },
+    {
+      "name": "feature_tpu_wipe_shield_spike",
+      "commit": {
+        "sha": "bdf842ce0defb4404cde14c800b398d27ced5911",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/bdf842ce0defb4404cde14c800b398d27ced5911"
+      },
+      "protected": false
+    },
+    {
+      "name": "feature_windows_installer",
+      "commit": {
+        "sha": "e6d8e1d2d105216888c256053e922928b5948bcc",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/e6d8e1d2d105216888c256053e922928b5948bcc"
+      },
+      "protected": false
+    },
+    {
+      "name": "feature_0924_X",
+      "commit": {
+        "sha": "f3b381a8e9784372d2d002f614909ecae28fab34",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/f3b381a8e9784372d2d002f614909ecae28fab34"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/adjust_highlight_effect",
+      "commit": {
+        "sha": "9969e27fa641c32c2c658585bbb0727b424636f6",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/9969e27fa641c32c2c658585bbb0727b424636f6"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/calibration-config-type-mismatch",
+      "commit": {
+        "sha": "01a13bf97a6d9f9c7d42d9dacf381344364bfdba",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/01a13bf97a6d9f9c7d42d9dacf381344364bfdba"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/color-hpp-cassert",
+      "commit": {
+        "sha": "25d3ed40541aac4c8fd21b04f60931939d2e5db8",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/25d3ed40541aac4c8fd21b04f60931939d2e5db8"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix_gcode_20261009",
+      "commit": {
+        "sha": "04e91699240c90671a6250bbbf4b7961967ee537",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/04e91699240c90671a6250bbbf4b7961967ee537"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/gpu-sequential-view-state",
+      "commit": {
+        "sha": "ba990677a91c4751d337c90f627ee79b5a5e8a07",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/ba990677a91c4751d337c90f627ee79b5a5e8a07"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/gpu-toggle-copy",
+      "commit": {
+        "sha": "1aa60a70491c8c0dfaf42bfa4a46009d74917535",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/1aa60a70491c8c0dfaf42bfa4a46009d74917535"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/linux-language-switch",
+      "commit": {
+        "sha": "f21a7e2fc4d06355c635884f07b55a28b6fee2ab",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/f21a7e2fc4d06355c635884f07b55a28b6fee2ab"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix_lod_shell_dangling_volume",
+      "commit": {
+        "sha": "0e23513abefa39501bda4abebd5fbf6683ce133d",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/0e23513abefa39501bda4abebd5fbf6683ce133d"
+      },
+      "protected": false
+    },
+    {
+      "name": "hotfix/gtk-z-shortcut-and-size-clamps",
+      "commit": {
+        "sha": "f53be6842839794f15eb5fdd8849c38360f34fe5",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/f53be6842839794f15eb5fdd8849c38360f34fe5"
+      },
+      "protected": false
+    },
+    {
+      "name": "hotfix/win-disable-gpu-popup",
+      "commit": {
+        "sha": "392ce836e7a3316153a2b7146543d42fe8f29fcd",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/392ce836e7a3316153a2b7146543d42fe8f29fcd"
+      },
+      "protected": false
+    },
+    {
+      "name": "hotfix/win-gpu-clean",
+      "commit": {
+        "sha": "c5e5977d4188a882460fdb3caf791c6e3d811bb7",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/c5e5977d4188a882460fdb3caf791c6e3d811bb7"
+      },
+      "protected": false
+    },
+    {
+      "name": "main",
+      "commit": {
+        "sha": "f5fd7289ea067997181ee6c2cf15a98f58faba43",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/f5fd7289ea067997181ee6c2cf15a98f58faba43"
+      },
+      "protected": true
+    },
+    {
+      "name": "orca_debuger_6016",
+      "commit": {
+        "sha": "5f11eb91da039814d0ba712efe756c56be61990e",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/5f11eb91da039814d0ba712efe756c56be61990e"
+      },
+      "protected": false
+    },
+    {
+      "name": "orca_engine",
+      "commit": {
+        "sha": "1345ad02b57dde58a6f1788292581f1370f4f1ec",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/1345ad02b57dde58a6f1788292581f1370f4f1ec"
+      },
+      "protected": false
+    },
+    {
+      "name": "port/main-20261026",
+      "commit": {
+        "sha": "edea85e24002d6f4e4cf31d0aaac9db8fb479539",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/edea85e24002d6f4e4cf31d0aaac9db8fb479539"
+      },
+      "protected": false
+    },
+    {
+      "name": "release_2.4.1",
+      "commit": {
+        "sha": "fb7c0b71b8912d460200ef7ecf4e9d72d45f3c8b",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/fb7c0b71b8912d460200ef7ecf4e9d72d45f3c8b"
+      },
+      "protected": false
+    },
+    {
+      "name": "render_engine_build_temp",
+      "commit": {
+        "sha": "a0cdc7c7e2cb8f809a62c5280a377d278f0d32ab",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/a0cdc7c7e2cb8f809a62c5280a377d278f0d32ab"
+      },
+      "protected": false
+    },
+    {
+      "name": "render_engine_build_2.4.1",
+      "commit": {
+        "sha": "4dc8bad82c0b96860a70682157c7e2c89b227ef7",
+        "url": "https://api.github.com/repos/Snapmaker/OrcaSlicer/commits/4dc8bad82c0b96860a70682157c7e2c89b227ef7"
+      },
+      "protected": false
+    }
+  ],
+  "releases": [
+    {
+      "tag": "v2.4.1",
+      "published_at": "2026-10-28T03:07:37Z",
+      "url": "https://github.com/Snapmaker/OrcaSlicer/releases/tag/v2.4.1",
+      "prerelease": false
+    },
+    {
+      "tag": "v2.4.1-beta",
+      "published_at": "2026-10-23T08:12:17Z",
+      "url": "https://github.com/Snapmaker/OrcaSlicer/releases/tag/v2.4.1-beta",
+      "prerelease": true
+    },
+    {
+      "tag": "v2.4.1-alpha",
+      "published_at": "2026-10-15T07:51:40Z",
+      "url": "https://github.com/Snapmaker/OrcaSlicer/releases/tag/v2.4.1-alpha",
+      "prerelease": true
+    },
+    {
+      "tag": "v2.4.0",
+      "published_at": "2026-09-21T03:05:59Z",
+      "url": "https://github.com/Snapmaker/OrcaSlicer/releases/tag/v2.4.0",
+      "prerelease": false
+    },
+    {
+      "tag": "v2.4.0-beta",
+      "published_at": "2026-09-17T10:14:33Z",
+      "url": "https://github.com/Snapmaker/OrcaSlicer/releases/tag/v2.4.0-beta",
+      "prerelease": true
+    }
+  ],
+  "open_issue_sample": [
+    {
+      "number": 1143,
+      "title": "U1 default start G-code `G0 X85 Y1 Z2 F18000` gave \"Move out of range on Y axis\" on toolheads 1, 3, 4 (we may be wrong, sharing what we found)",
+      "url": "https://github.com/Snapmaker/OrcaSlicer/issues/1143",
+      "pull_request": false
+    },
+    {
+      "number": 1142,
+      "title": "fix(cli): load a 3mf without project settings as geometry only",
+      "url": "https://github.com/Snapmaker/OrcaSlicer/pull/1142",
+      "pull_request": true
+    },
+    {
+      "number": 1141,
+      "title": "fix(cli): warn when configuration values are substituted on load",
+      "url": "https://github.com/Snapmaker/OrcaSlicer/pull/1141",
+      "pull_request": true
+    },
+    {
+      "number": 1140,
+      "title": "fix: write per-filament values for flow-variant keys in the G-code config block",
+      "url": "https://github.com/Snapmaker/OrcaSlicer/pull/1140",
+      "pull_request": true
+    },
+    {
+      "number": 1139,
+      "title": "fix: size wipe tower filament categories to the filament count",
+      "url": "https://github.com/Snapmaker/OrcaSlicer/pull/1139",
+      "pull_request": true
+    },
+    {
+      "number": 1138,
+      "title": "ADD: CMYK palette conversion (\"Convert to CMYK\")",
+      "url": "https://github.com/Snapmaker/OrcaSlicer/pull/1138",
+      "pull_request": true
+    },
+    {
+      "number": 1135,
+      "title": "chore(profiles): bump Profiles submodule to 02.03.06.00",
+      "url": "https://github.com/Snapmaker/OrcaSlicer/pull/1135",
+      "pull_request": true
+    },
+    {
+      "number": 1134,
+      "title": "Incorrect Part Hierarchy and Slicing in Snapmaker Slicer 2.4.1",
+      "url": "https://github.com/Snapmaker/OrcaSlicer/issues/1134",
+      "pull_request": false
+    },
+    {
+      "number": 1132,
+      "title": "Home page context menu doesn't work",
+      "url": "https://github.com/Snapmaker/OrcaSlicer/issues/1132",
+      "pull_request": false
+    },
+    {
+      "number": 1131,
+      "title": "On snapmaker orca  white screen on screen processing on nvidia linux driver appimage",
+      "url": "https://github.com/Snapmaker/OrcaSlicer/issues/1131",
+      "pull_request": false
+    },
+    {
+      "number": 1130,
+      "title": "CLI: multi-color plate with prime tower crashes (0xC0000005) on 2.4.1-alpha and loses extruder assignment on 2.4.1",
+      "url": "https://github.com/Snapmaker/OrcaSlicer/issues/1130",
+      "pull_request": false
+    },
+    {
+      "number": 1129,
+      "title": "[2.4.1] U1 requires manual connection via Device tab on every Snorca launch",
+      "url": "https://github.com/Snapmaker/OrcaSlicer/issues/1129",
+      "pull_request": false
+    },
+    {
+      "number": 1127,
+      "title": "Option to disable automatic drop to plate behavior",
+      "url": "https://github.com/Snapmaker/OrcaSlicer/issues/1127",
+      "pull_request": false
+    },
+    {
+      "number": 1125,
+      "title": "Feature model station bpe",
+      "url": "https://github.com/Snapmaker/OrcaSlicer/pull/1125",
+      "pull_request": true
+    },
+    {
+      "number": 1124,
+      "title": "[2.4.1 regression] Prime tower silently drops tool changes with presets missing per-filament filament_adhesiveness_category",
+      "url": "https://github.com/Snapmaker/OrcaSlicer/issues/1124",
+      "pull_request": false
+    }
+  ]
+}

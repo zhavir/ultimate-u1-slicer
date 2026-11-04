@@ -1,0 +1,163 @@
+{
+  "repository": "jiyang1018/FOrcaSlicer",
+  "default_branch": "main",
+  "sha": "0b1f80cd22793785d8ae5c4296d2fe4a9248bd21",
+  "branches": [
+    {
+      "name": "clean-main",
+      "commit": {
+        "sha": "7f2a3dd07f8ce0d5f416039dbcfe18df16699893",
+        "url": "https://api.github.com/repos/jiyang1018/FOrcaSlicer/commits/7f2a3dd07f8ce0d5f416039dbcfe18df16699893"
+      },
+      "protected": false
+    },
+    {
+      "name": "dependabot/github_actions/actions/checkout-7",
+      "commit": {
+        "sha": "7a14af84b62afc892406adc05d8ab0b18786126f",
+        "url": "https://api.github.com/repos/jiyang1018/FOrcaSlicer/commits/7a14af84b62afc892406adc05d8ab0b18786126f"
+      },
+      "protected": false
+    },
+    {
+      "name": "fos-8.2",
+      "commit": {
+        "sha": "39551f6baad380a786c239d1e2c161d771791d52",
+        "url": "https://api.github.com/repos/jiyang1018/FOrcaSlicer/commits/39551f6baad380a786c239d1e2c161d771791d52"
+      },
+      "protected": false
+    },
+    {
+      "name": "fos-8.3",
+      "commit": {
+        "sha": "387b0b5eb7b7f2e13a3a81ab6f6ec04411339696",
+        "url": "https://api.github.com/repos/jiyang1018/FOrcaSlicer/commits/387b0b5eb7b7f2e13a3a81ab6f6ec04411339696"
+      },
+      "protected": false
+    },
+    {
+      "name": "fos-8.4",
+      "commit": {
+        "sha": "6026a48f5241cc98502733edce2668f40f4f1b77",
+        "url": "https://api.github.com/repos/jiyang1018/FOrcaSlicer/commits/6026a48f5241cc98502733edce2668f40f4f1b77"
+      },
+      "protected": false
+    },
+    {
+      "name": "fos-8.5",
+      "commit": {
+        "sha": "a55ecd934fef6d76f8c189f49f69deb7e4f10371",
+        "url": "https://api.github.com/repos/jiyang1018/FOrcaSlicer/commits/a55ecd934fef6d76f8c189f49f69deb7e4f10371"
+      },
+      "protected": false
+    },
+    {
+      "name": "fos-8.5.7-hotfix",
+      "commit": {
+        "sha": "eacc7e7ff7fcaa428803246e7009950089021787",
+        "url": "https://api.github.com/repos/jiyang1018/FOrcaSlicer/commits/eacc7e7ff7fcaa428803246e7009950089021787"
+      },
+      "protected": false
+    },
+    {
+      "name": "fos-8.6-dev",
+      "commit": {
+        "sha": "0b1f80cd22793785d8ae5c4296d2fe4a9248bd21",
+        "url": "https://api.github.com/repos/jiyang1018/FOrcaSlicer/commits/0b1f80cd22793785d8ae5c4296d2fe4a9248bd21"
+      },
+      "protected": false
+    },
+    {
+      "name": "gh-pages",
+      "commit": {
+        "sha": "e9843ed139d567a5a1f75998ffdf1791ceef0f56",
+        "url": "https://api.github.com/repos/jiyang1018/FOrcaSlicer/commits/e9843ed139d567a5a1f75998ffdf1791ceef0f56"
+      },
+      "protected": false
+    },
+    {
+      "name": "main",
+      "commit": {
+        "sha": "0b1f80cd22793785d8ae5c4296d2fe4a9248bd21",
+        "url": "https://api.github.com/repos/jiyang1018/FOrcaSlicer/commits/0b1f80cd22793785d8ae5c4296d2fe4a9248bd21"
+      },
+      "protected": false
+    }
+  ],
+  "releases": [
+    {
+      "tag": "v2.3.2-fos.8.6.8",
+      "published_at": "2026-10-16T17:16:19Z",
+      "url": "https://github.com/jiyang1018/FOrcaSlicer/releases/tag/v2.3.2-fos.8.6.8",
+      "prerelease": false
+    },
+    {
+      "tag": "v2.3.2-fos.8.6.7",
+      "published_at": "2026-09-29T04:30:50Z",
+      "url": "https://github.com/jiyang1018/FOrcaSlicer/releases/tag/v2.3.2-fos.8.6.7",
+      "prerelease": false
+    },
+    {
+      "tag": "v2.3.2-fos.8.6.6",
+      "published_at": "2026-09-24T04:03:28Z",
+      "url": "https://github.com/jiyang1018/FOrcaSlicer/releases/tag/v2.3.2-fos.8.6.6",
+      "prerelease": false
+    },
+    {
+      "tag": "v2.3.2-fos.8.6.4",
+      "published_at": "2026-09-04T08:56:59Z",
+      "url": "https://github.com/jiyang1018/FOrcaSlicer/releases/tag/v2.3.2-fos.8.6.4",
+      "prerelease": false
+    },
+    {
+      "tag": "v2.3.2-fos.8.6.3",
+      "published_at": "2026-09-03T01:36:59Z",
+      "url": "https://github.com/jiyang1018/FOrcaSlicer/releases/tag/v2.3.2-fos.8.6.3",
+      "prerelease": false
+    }
+  ],
+  "open_issue_sample": [
+    {
+      "number": 15,
+      "title": "Color Patch incorrect",
+      "url": "https://github.com/jiyang1018/FOrcaSlicer/issues/15",
+      "pull_request": false
+    },
+    {
+      "number": 14,
+      "title": "Login window opens temporarily, then closes. Preventing login",
+      "url": "https://github.com/jiyang1018/FOrcaSlicer/issues/14",
+      "pull_request": false
+    },
+    {
+      "number": 13,
+      "title": "Upgrade to snorca 2.4 for high flow nozzle configuration.",
+      "url": "https://github.com/jiyang1018/FOrcaSlicer/issues/13",
+      "pull_request": false
+    },
+    {
+      "number": 12,
+      "title": "Unknown Filament Type(s)",
+      "url": "https://github.com/jiyang1018/FOrcaSlicer/issues/12",
+      "pull_request": false
+    },
+    {
+      "number": 11,
+      "title": "How Snapmaker Studio describes FOrcaSlicer (correction welcome)",
+      "url": "https://github.com/jiyang1018/FOrcaSlicer/issues/11",
+      "pull_request": false
+    },
+    {
+      "number": 8,
+      "title": "Rebase onto Snapmaker Orca 2.3.5 base \u2014 on the roadmap?",
+      "url": "https://github.com/jiyang1018/FOrcaSlicer/issues/8",
+      "pull_request": false
+    },
+    {
+      "number": 7,
+      "title": "Bump actions/checkout from 4 to 7",
+      "url": "https://github.com/jiyang1018/FOrcaSlicer/pull/7",
+      "pull_request": true
+    }
+  ]
+}
