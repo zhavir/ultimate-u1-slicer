@@ -109,7 +109,7 @@ fs::path default_datadir()
 #elif defined(_WIN32)
     wchar_t exe[MAX_PATH] = {0};
     GetModuleFileNameW(nullptr, exe, MAX_PATH);
-    const fs::path portable = fs::path(exe).parent_path() / "data_dir";
+    const fs::path portable = fs::path(exe).parent_path() / "ultimate_u1_data_dir";
     if (fs::exists(portable))
         return portable;
     const char* appdata = boost::nowide::getenv("APPDATA");
@@ -118,7 +118,7 @@ fs::path default_datadir()
     char     exe[4096] = {0};
     uint32_t size      = sizeof(exe);
     if (_NSGetExecutablePath(exe, &size) == 0) {
-        const fs::path portable = fs::path(exe).parent_path().parent_path().parent_path().parent_path() / "data_dir";
+        const fs::path portable = fs::path(exe).parent_path().parent_path().parent_path().parent_path() / "ultimate_u1_data_dir";
         if (fs::exists(portable))
             return portable;
     }

@@ -16,7 +16,23 @@ concurrency:
   group: u1-windows-portable-${{ github.ref }}
   cancel-in-progress: false
 jobs:
+  checks:
+    uses: ./.github/workflows/u1-component-tests.yml
+  preflight:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          sparse-checkout: tools/u1/windows
+      - name: Parse the native portable verification script
+        shell: pwsh
+        run: |
+          $tokens = $null
+          $errors = $null
+          [System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path tools/u1/windows/verify-portable.ps1).Path, [ref]$tokens, [ref]$errors) | Out-Null
+          if ($errors.Count) { throw ($errors | Out-String) }
   build:
+    needs: [checks, preflight]
     uses: ./.github/workflows/build_check_cache.yml
     with:
       os: windows-latest
@@ -47,9 +63,16 @@ jobs:
             portable-evidence/verification.json
           if-no-files-found: error
           retention-days: 30
+  unit-tests:
+    needs: build
+    uses: ./.github/workflows/unit_tests.yml
+    with:
+      os: windows-latest
+      artifact: ${{ github.sha }}-tests-windows-x64
+      test-dir: build/tests
   publish:
     if: github.event_name == 'workflow_dispatch' && inputs.publish
-    needs: verify
+    needs: [verify, unit-tests]
     runs-on: ubuntu-24.04
     permissions:
       contents: write
@@ -69,7 +92,7 @@ jobs:
           cat > "$RUNNER_TEMP/u1-release-notes.md" <<'BODY'
           Experimental Windows x64 portable build of Ultimate U1 Slicer. Extract the ZIP into a writable folder and start orca-slicer.exe. Keep ultimate_u1_data_dir beside the executable; settings remain there. No installer is required.
 
-          Native Windows launch, bearer-authenticated MCP initialization and portable data isolation passed in CI. These checks do not establish complete U1 project compatibility, full FOrca feature parity or physical printer safety. See docs/roadmap.md and docs/testing/local-validation.md in this source revision. Do not treat this prerelease as a stable U1 release.
+          Native Windows GUI startup, bearer-authenticated MCP initialization, portable stdio discovery and portable data/registry isolation passed in CI. These checks do not establish complete U1 project compatibility, full FOrca feature parity or physical printer safety. See docs/roadmap.md and docs/testing/local-validation.md in this source revision. Do not treat this prerelease as a stable U1 release.
           BODY
           printf '\nSource: %s\n' "$SOURCE_SHA" >> "$RUNNER_TEMP/u1-release-notes.md"
           archive=$(find verified -name 'Ultimate-U1-Slicer-Windows-x64-portable.zip' -type f)

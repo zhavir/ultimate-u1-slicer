@@ -9284,7 +9284,9 @@ void GUI_App::open_preferences(PreferencesTab tab, const std::string& highlight_
 #endif // ENABLE_GCODE_LINES_ID_IN_H_SLIDER
                 this->plater_->reload_print();
 #ifdef _WIN32
-            if (is_editor()) {
+            // Checkbox/link handlers already apply explicit association changes. Merely
+            // closing another Preferences tab must not register a portable application.
+            if (!m_portable_mode && is_editor()) {
                 if (app_config->get("associate_3mf") == "true")
                     associate_files(L"3mf");
                 if (app_config->get("associate_stl") == "true")
@@ -9295,7 +9297,7 @@ void GUI_App::open_preferences(PreferencesTab tab, const std::string& highlight_
                 }
                 associate_url(L"ultimate-u1-slicer");
             }
-            else {
+            else if (!m_portable_mode) {
                 if (app_config->get("associate_gcode") == "true")
                     associate_files(L"gcode");
             }
