@@ -596,7 +596,7 @@ void register_view_tools(McpService& service)
                                                                  "yaw to its right and pitch up (negative looks from lower), after "
                                                                  "camera. The same on every install, unlike a mouse drag.")},
                        {"layer", {{"type", "integer"}, {"minimum", 1}, {"description", "Preview: show layers up to this one (1-based)."}}},
-                       {"layer_range", array_prop({{"type", "integer"}}, "Preview: [first, last] layers, 1-based.")},
+                       {"layer_range", array_prop({{"type", "integer"}, {"minimum", 1}}, "Preview: [first, last] layers, 1-based.")},
                        {"layer_z", {{"type", "number"}, {"minimum", 0}, {"description", "Preview: show layers up to the first whose top is at or above this height (mm), as the slider places a custom G-code."}}},
                        {"view_type", enum_prop(view_types, "Preview color scheme.")},
                        {"legend", {{"type", "object"}, {"additionalProperties", {{"type", "boolean"}}},
@@ -621,7 +621,7 @@ void register_view_tools(McpService& service)
                         throw ToolFailure("window_size must be [width, height]");
                     if (frame->IsMaximized())
                         frame->Maximize(false);
-                    frame->SetSize(wxSize(s[0].get<int>(), s[1].get<int>()));
+                    frame->SetSize(wxSize(checked_int_value(s[0], "width"), checked_int_value(s[1], "height")));
                     done["window_size"] = {frame->GetSize().x, frame->GetSize().y};
                 }
                 if (args.contains("tab")) {
@@ -703,13 +703,13 @@ void register_view_tools(McpService& service)
                         const int max = layers->GetMaxValue();
                         int       lo = 0, hi = max;
                         if (args.contains("layer"))
-                            hi = std::clamp(args["layer"].get<int>() - 1, 0, max);
+                            hi = std::clamp(checked_int_value(args["layer"], "layer") - 1, 0, max);
                         if (args.contains("layer_range")) {
                             const json& r = args["layer_range"];
                             if (!r.is_array() || r.size() != 2)
                                 throw ToolFailure("layer_range must be [first, last]");
-                            lo = std::clamp(r[0].get<int>() - 1, 0, max);
-                            hi = std::clamp(r[1].get<int>() - 1, lo, max);
+                            lo = std::clamp(checked_int_value(r[0], "first layer") - 1, 0, max);
+                            hi = std::clamp(checked_int_value(r[1], "last layer") - 1, lo, max);
                         }
                         if (args.contains("layer_z")) {
                             // The slider's own rule for a height, which set_layer_gcode's z follows too.

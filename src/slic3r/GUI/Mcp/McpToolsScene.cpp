@@ -445,7 +445,7 @@ ArrangeStart start_arrange(Plater& plater, const json& args)
         else if (p != "all")
             throw ToolFailure("plates is \"all\", \"current\" or a plate index");
     } else {
-        plate = p.get<int>();
+        plate = checked_int_value(p, "plate");
         if (plate < 0 || plate >= plates.get_plate_count())
             throw ToolFailure("plate " + std::to_string(plate) + " does not exist; there are " + std::to_string(plates.get_plate_count()));
     }
@@ -970,7 +970,7 @@ void register_scene_tools(McpService& service)
                 // An instance or part an object no longer has would select nothing, as quietly as a stale
                 // index from before a merge or a delete.
                 auto check_in = [&](const json& p, bool instance) {
-                    const int o = p.at(0).get<int>(), i = p.at(1).get<int>();
+                    const int o = checked_int_value(p.at(0), "object"), i = checked_int_value(p.at(1), "instance or volume");
                     check_obj(o);
                     const ModelObject& object = *plater.model().objects[size_t(o)];
                     if (i < 0 || size_t(i) >= (instance ? object.instances.size() : object.volumes.size()))
@@ -979,22 +979,29 @@ void register_scene_tools(McpService& service)
                 };
                 // Expected ids are checked for every entry before the selection changes.
                 const json objects = args.value("objects", json::array()), volumes = args.value("volumes", json::array());
+                const json instances = args.value("instances", json::array());
+                // Validate the complete selection before applying any part of it.
+                for (const json& object : objects)
+                    check_obj(checked_int_value(object, "object"));
+                for (const json& instance : instances)
+                    check_in(instance, true);
+                for (const json& volume : volumes)
+                    check_in(volume, false);
                 if (args.contains("object_ids")) {
                     if (args["object_ids"].size() != objects.size())
                         throw ToolFailure("object_ids takes one id per entry of objects");
                     for (std::size_t k = 0; k < objects.size(); ++k) {
-                        check_obj(objects[k].get<int>());
-                        check_expected_ids(*plater.model().objects[size_t(objects[k].get<int>())], nullptr,
+                        check_obj(checked_int_value(objects[k], "object"));
+                        check_expected_ids(*plater.model().objects[size_t(checked_int_value(objects[k], "object"))], nullptr,
                                            json{{"object_id", args["object_ids"][k]}});
                     }
                 }
-                const json instances = args.value("instances", json::array());
                 if (args.contains("instance_object_ids")) {
                     if (args["instance_object_ids"].size() != instances.size())
                         throw ToolFailure("instance_object_ids takes one id per entry of instances");
                     for (std::size_t k = 0; k < instances.size(); ++k) {
                         check_in(instances[k], true);
-                        check_expected_ids(*plater.model().objects[size_t(instances[k].at(0).get<int>())], nullptr,
+                        check_expected_ids(*plater.model().objects[size_t(checked_int_value(instances[k].at(0), "object"))], nullptr,
                                            json{{"object_id", args["instance_object_ids"][k]}});
                     }
                 }
@@ -1003,24 +1010,24 @@ void register_scene_tools(McpService& service)
                         throw ToolFailure("volume_ids takes one id per entry of volumes");
                     for (std::size_t k = 0; k < volumes.size(); ++k) {
                         check_in(volumes[k], false);
-                        const ModelObject& object = *plater.model().objects[size_t(volumes[k].at(0).get<int>())];
-                        check_expected_ids(object, object.volumes[size_t(volumes[k].at(1).get<int>())],
+                        const ModelObject& object = *plater.model().objects[size_t(checked_int_value(volumes[k].at(0), "object"))];
+                        check_expected_ids(object, object.volumes[size_t(checked_int_value(volumes[k].at(1), "volume"))],
                                            json{{"volume_id", args["volume_ids"][k]}});
                     }
                 }
                 for (const json& o : objects) {
-                    check_obj(o.get<int>());
-                    sel.add_object(unsigned(o.get<int>()), first);
+                    check_obj(checked_int_value(o, "object"));
+                    sel.add_object(unsigned(checked_int_value(o, "object")), first);
                     first = false;
                 }
                 for (const json& p : args.value("instances", json::array())) {
                     check_in(p, true);
-                    sel.add_instance(unsigned(p.at(0).get<int>()), unsigned(p.at(1).get<int>()), first);
+                    sel.add_instance(unsigned(checked_int_value(p.at(0), "object")), unsigned(checked_int_value(p.at(1), "instance or volume")), first);
                     first = false;
                 }
                 for (const json& p : args.value("volumes", json::array())) {
                     check_in(p, false);
-                    sel.add_volume(unsigned(p.at(0).get<int>()), unsigned(p.at(1).get<int>()), 0, first);
+                    sel.add_volume(unsigned(checked_int_value(p.at(0), "object")), unsigned(checked_int_value(p.at(1), "instance or volume")), 0, first);
                     first = false;
                 }
                 wxGetApp().obj_list()->update_selections();
@@ -1189,7 +1196,7 @@ void register_scene_tools(McpService& service)
                     for (int i = 0; i < list.get_plate_count(); ++i)
                         ticket->plates.push_back(i);
                 } else if (plates_arg.is_number_integer()) {
-                    const int index = plates_arg.get<int>();
+                    const int index = checked_int_value(plates_arg, "plate");
                     if (index < 0 || index >= list.get_plate_count())
                         throw ToolFailure("plate index out of range");
                     ticket->plates.push_back(index);
