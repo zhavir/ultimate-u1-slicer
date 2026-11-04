@@ -232,7 +232,7 @@ std::string arg_string(const json& args, const char* key, const std::string& fal
 int arg_int(const json& args, const char* key, int fallback)
 {
     auto it = args.find(key);
-    return it != args.end() && it->is_number() ? it->get<int>() : fallback;
+    return it != args.end() && it->is_number() ? checked_int_value(*it, key) : fallback;
 }
 
 double arg_double(const json& args, const char* key, double fallback)

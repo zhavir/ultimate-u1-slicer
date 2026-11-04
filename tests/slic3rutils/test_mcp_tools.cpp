@@ -32,6 +32,12 @@
 #include <vector>
 
 using namespace Slic3r::GUI::Mcp;
+
+TEST_CASE("MCP GUI object indices cannot wrap to a different object", "[McpTools][U1McpProtocol][Regression]")
+{
+    CHECK_THROWS_AS(arg_int(nlohmann::json{{"object", 4294967296ULL}}, "object", -1), ToolFailure);
+    CHECK(arg_int(nlohmann::json::object(), "object", -1) == -1);
+}
 using nlohmann::json;
 
 TEST_CASE("setting values serialize the way their options read them back", "[Mcp]")

@@ -8,6 +8,7 @@
 #include <cmath>
 #include <exception>
 #include <memory>
+#include <limits>
 #include <set>
 #include <string>
 #include <utility>
@@ -16,6 +17,16 @@
 namespace Slic3r { namespace GUI { namespace Mcp {
 
 using nlohmann::json;
+
+int checked_int_value(const json& value, const std::string& name)
+{
+    if (!value.is_number())
+        throw ToolFailure(name + " must be numeric");
+    const double number = value.get<double>();
+    if (!std::isfinite(number) || number < std::numeric_limits<int>::min() || number > std::numeric_limits<int>::max())
+        throw ToolFailure(name + " is outside the supported integer range");
+    return value.get<int>();
+}
 
 namespace {
 

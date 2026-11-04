@@ -3,9 +3,22 @@
 #include "slic3r/GUI/Mcp/McpTypes.hpp"
 
 #include <string>
+#include <cstdint>
+#include <limits>
 
 using namespace Slic3r::GUI::Mcp;
 using nlohmann::json;
+
+TEST_CASE("GUI integer arguments cannot wrap onto a different object", "[U1McpProtocol]")
+{
+    CHECK(checked_int_value(std::numeric_limits<int>::max(), "object") == std::numeric_limits<int>::max());
+    CHECK(checked_int_value(std::numeric_limits<int>::min(), "object") == std::numeric_limits<int>::min());
+    CHECK(checked_int_value(1.5, "pixel") == 1); // Preserve the existing in-range numeric UI conversion.
+    CHECK_THROWS_AS(checked_int_value(std::uint64_t{4294967296ULL}, "object"), ToolFailure);
+    CHECK_THROWS_AS(checked_int_value(std::numeric_limits<std::uint64_t>::max(), "object"), ToolFailure);
+    CHECK_THROWS_AS(checked_int_value(1e300, "object"), ToolFailure);
+    CHECK_THROWS_AS(checked_int_value(std::numeric_limits<double>::infinity(), "object"), ToolFailure);
+}
 
 namespace {
 class RejectCaller final : public ToolCaller

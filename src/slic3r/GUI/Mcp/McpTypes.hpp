@@ -202,6 +202,10 @@ public:
 // string when valid, else a message naming the offending property.
 std::string validate_arguments(const nlohmann::json& schema, const nlohmann::json& args);
 
+// The GUI's int-valued arguments must not wrap a large unsigned JSON value onto another object.
+// Preserves the existing truncation of finite, in-range floating inputs used by numeric UI fields.
+int checked_int_value(const nlohmann::json& value, const std::string& name);
+
 // Rewrites, before validation, what agents often send in place of what the schema asks for: an
 // argument under a name the tool does not take but that stands for one it does, which the call leaves
 // out and the value fits (ref for target, key for keys, text for value, action for id or button, object for objects,

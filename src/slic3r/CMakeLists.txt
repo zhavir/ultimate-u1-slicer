@@ -178,6 +178,8 @@ set(SLIC3R_GUI_SOURCES
     GUI/Mcp/McpToken.hpp
     GUI/Mcp/McpTools.hpp
     GUI/Mcp/McpPaths.cpp
+    GUI/Mcp/McpFilePolicy.hpp
+    GUI/Mcp/McpU1Policy.hpp
     GUI/Mcp/McpPaths.hpp
     GUI/Mcp/McpPluginCaller.cpp
     GUI/Mcp/McpToolsActions.cpp

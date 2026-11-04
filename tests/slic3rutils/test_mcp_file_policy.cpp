@@ -57,3 +57,14 @@ TEST_CASE("MCP file authorization refuses symlinks that escape a root", "[McpFil
     CHECK_FALSE(policy.permits(sandbox.root / "allowed" / "escape" / "secret.txt", error));
     CHECK_FALSE(policy.permits(sandbox.root / "allowed" / "escape" / "new.gcode", error));
 }
+
+TEST_CASE("MCP file authorization accepts Unicode names inside an authorized root", "[McpFilePolicy]")
+{
+    Sandbox sandbox;
+    const fs::path directory = sandbox.root / "allowed" / fs::u8path(u8"material-\u6750\u6599");
+    fs::create_directory(directory);
+    FileAccessPolicy policy({sandbox.root / "allowed"});
+    std::string error;
+    CHECK(policy.permits(directory / fs::u8path(u8"filam\u00e9nt.3mf"), error));
+    CHECK(error.empty());
+}
