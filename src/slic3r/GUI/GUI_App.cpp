@@ -2749,6 +2749,7 @@ void GUI_App::init_app_config()
         boost::filesystem::path app_data_dir_path = _app_folder / "ultimate_u1_data_dir";
         if (boost::filesystem::exists(app_data_dir_path)) {
             set_data_dir(app_data_dir_path.string());
+            m_portable_mode = true;
         }
         else{
             std::string data_dir = wxStandardPaths::Get().GetUserDataDir().ToUTF8().data();
@@ -3480,18 +3481,22 @@ bool GUI_App::on_init_inner()
 
     if (is_editor()) {
 #ifdef __WXMSW__
-        if (app_config->get("associate_3mf") == "true")
-            associate_files(L"3mf");
-        if (app_config->get("associate_stl") == "true")
-            associate_files(L"stl");
-        if (app_config->get("associate_step") == "true") {
-            associate_files(L"step");
-            associate_files(L"stp");
-        }
-        associate_url(L"ultimate-u1-slicer");
+        // A portable launch must not register the executable or take over file associations.
+        // Explicit association changes in Preferences remain a separate user action.
+        if (!m_portable_mode) {
+            if (app_config->get("associate_3mf") == "true")
+                associate_files(L"3mf");
+            if (app_config->get("associate_stl") == "true")
+                associate_files(L"stl");
+            if (app_config->get("associate_step") == "true") {
+                associate_files(L"step");
+                associate_files(L"stp");
+            }
+            associate_url(L"ultimate-u1-slicer");
 
-        if (app_config->get("associate_gcode") == "true")
-            associate_files(L"gcode");
+            if (app_config->get("associate_gcode") == "true")
+                associate_files(L"gcode");
+        }
 #endif // __WXMSW__
 
         preset_updater = new PresetUpdater();
@@ -3589,7 +3594,7 @@ bool GUI_App::on_init_inner()
     }
     else {
 #ifdef __WXMSW__
-        if (app_config->get("associate_gcode") == "true")
+        if (!m_portable_mode && app_config->get("associate_gcode") == "true")
             associate_files(L"gcode");
 #endif // __WXMSW__
     }
