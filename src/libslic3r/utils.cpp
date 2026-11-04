@@ -405,7 +405,7 @@ std::string default_data_dir()
 {
     // Runs before any error handling is in place, so a lookup that fails only means no portable dir.
     boost::system::error_code ec;
-    const boost::filesystem::path portable = boost::dll::program_location(ec).parent_path() / "data_dir";
+    const boost::filesystem::path portable = boost::dll::program_location(ec).parent_path() / "ultimate_u1_data_dir";
     if (!ec && boost::filesystem::exists(portable, ec))
         return portable.string();
     return xdg_config_dir(SLIC3R_APP_KEY);

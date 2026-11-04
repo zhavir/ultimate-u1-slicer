@@ -50,6 +50,7 @@ void register_app_tools(McpService& service);
 void register_action_tools(McpService& service);
 void register_project_tools(McpService& service);
 void register_config_tools(McpService& service);
+void register_u1_tools(McpService& service);
 void register_scene_tools(McpService& service);
 void register_view_tools(McpService& service);
 void register_ui_tools(McpService& service);

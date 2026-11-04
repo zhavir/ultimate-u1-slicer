@@ -56,3 +56,13 @@ __pycache__/
 docs/superpowers/
 ctest_results.xml
 .superpowers/
+
+/.venv-build/
+
+/profile-catalog/
+
+/build/u1-*/
+
+**/graphify-out/
+
+__pycache__/

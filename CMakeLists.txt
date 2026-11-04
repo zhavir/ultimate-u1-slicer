@@ -130,7 +130,7 @@ set(ORCA_BUNDLED_UV_EXECUTABLE "" CACHE FILEPATH "Path to a uv executable to bun
 # be reproducible and the download verified. To upgrade, bump ORCA_UV_VERSION
 # and refresh every hash below from the release's .sha256 assets, e.g.:
 #   curl -sL https://github.com/astral-sh/uv/releases/download/<ver>/uv-<triple>.tar.gz.sha256
-# The Flatpak copy in scripts/flatpak/com.orcaslicer.OrcaSlicer.yml pins the
+# The Flatpak copy in scripts/flatpak/org.ultimateu1.UltimateU1Slicer.yml pins the
 # same version and hashes and must be bumped with them.
 set(ORCA_UV_VERSION "0.11.21")
 set(ORCA_UV_SHA256_aarch64-apple-darwin      "1f921d491ba5ffeea774eb04d6681ecee379101341cbb1500394993b541bf3f4")
@@ -155,7 +155,7 @@ if(ORCA_BUNDLED_UV_EXECUTABLE MATCHES "/\\.uv/")
 endif()
 
 # A Flatpak build has no network and cannot download below: the orca_deps module
-# in scripts/flatpak/com.orcaslicer.OrcaSlicer.yml fetches the same pinned uv and
+# in scripts/flatpak/org.ultimateu1.UltimateU1Slicer.yml fetches the same pinned uv and
 # installs it into the app resources, where the runtime looks for it.
 set(ORCA_UV_FLATPAK_BINARY "${CMAKE_INSTALL_FULL_DATAROOTDIR}/OrcaSlicer/tools/uv/uv")
 if(FLATPAK AND NOT ORCA_BUNDLED_UV_EXECUTABLE AND EXISTS "${ORCA_UV_FLATPAK_BINARY}")
@@ -290,7 +290,7 @@ if (APPLE)
     if (CMAKE_MACOSX_BUNDLE)
         set(CMAKE_INSTALL_RPATH @executable_path/../Frameworks)
     endif()
-    SET(CMAKE_XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER "com.orcaslicer.OrcaSlicer")
+    SET(CMAKE_XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER "org.ultimateu1.UltimateU1Slicer")
 
     # The macOS CI jobs build with Ninja (build_release_macos.sh -x), so the Xcode generator
     # is not covered. Xcode adds -Wshorten-64-to-32 by default ("Implicit Conversion to 32 Bit
@@ -1318,7 +1318,7 @@ elseif (SLIC3R_FHS)
             install(PROGRAMS "${ORCA_BUNDLED_UV_EXECUTABLE}" DESTINATION "${SLIC3R_FHS_RESOURCES}/tools/uv" RENAME "${ORCA_BUNDLED_UV_FILENAME}")
         endif()
     endif()
-    install(FILES src/dev-utils/platform/unix/com.orcaslicer.OrcaSlicer.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications)
+    install(FILES src/dev-utils/platform/unix/org.ultimateu1.UltimateU1Slicer.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications)
     foreach(SIZE 32 128 192)
         install(FILES ${SLIC3R_RESOURCES_DIR}/images/OrcaSlicer_${SIZE}px.png
             DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/${SIZE}x${SIZE}/apps RENAME OrcaSlicer.png
@@ -1330,7 +1330,7 @@ elseif (CMAKE_MACOSX_BUNDLE)
         install(PROGRAMS "${ORCA_BUNDLED_UV_EXECUTABLE}" DESTINATION "${CMAKE_INSTALL_PREFIX}/OrcaSlicer.app/Contents/Resources/tools/uv" RENAME "${ORCA_BUNDLED_UV_FILENAME}")
     endif()
 else ()
-    install(FILES src/dev-utils/platform/unix/com.orcaslicer.OrcaSlicer.desktop DESTINATION ${CMAKE_INSTALL_PREFIX}/resources/applications)
+    install(FILES src/dev-utils/platform/unix/org.ultimateu1.UltimateU1Slicer.desktop DESTINATION ${CMAKE_INSTALL_PREFIX}/resources/applications)
     install(DIRECTORY "${SLIC3R_RESOURCES_DIR}/" DESTINATION "${CMAKE_INSTALL_PREFIX}/resources")
     if(ORCA_BUNDLED_UV_EXECUTABLE)
         install(PROGRAMS "${ORCA_BUNDLED_UV_EXECUTABLE}" DESTINATION "${CMAKE_INSTALL_PREFIX}/resources/tools/uv" RENAME "${ORCA_BUNDLED_UV_FILENAME}")

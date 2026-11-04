@@ -1,4 +1,5 @@
 #include "McpPaths.hpp"
+#include "McpFilePolicy.hpp"
 #include "McpToken.hpp"
 
 #include "libslic3r/Utils.hpp"
@@ -11,6 +12,8 @@
 
 #include <algorithm>
 #include <cstddef>
+#include <cstdlib>
+#include <filesystem>
 #include <ctime>
 #include <optional>
 #include <string>
@@ -103,6 +106,31 @@ std::optional<fs::path> absolute(const std::string& path, std::string& err)
         err = "path must be absolute: " + path;
         return std::nullopt;
     }
+    // This is an operator setting, never supplied or changed by an MCP request. A JSON array
+    // avoids platform-dependent separators and permits Unicode Windows drive paths.
+    std::vector<std::filesystem::path> roots;
+    roots.push_back(std::filesystem::u8path(path_to_utf8(output_dir())));
+    if (const char* configured = std::getenv("U1_MCP_ALLOWED_ROOTS")) {
+        const auto values = nlohmann::json::parse(configured, nullptr, false);
+        if (!values.is_array()) {
+            err = "U1_MCP_ALLOWED_ROOTS must be a JSON array of absolute directories";
+            return std::nullopt;
+        }
+        for (const auto& value : values) {
+            if (!value.is_string()) {
+                err = "U1_MCP_ALLOWED_ROOTS entries must be absolute directory strings";
+                return std::nullopt;
+            }
+            const auto root = std::filesystem::u8path(value.get<std::string>());
+            if (!root.is_absolute()) {
+                err = "U1_MCP_ALLOWED_ROOTS entries must be absolute directories";
+                return std::nullopt;
+            }
+            roots.push_back(root);
+        }
+    }
+    if (!FileAccessPolicy(std::move(roots)).permits(std::filesystem::u8path(path), err))
+        return std::nullopt;
     return p.lexically_normal();
 }
 

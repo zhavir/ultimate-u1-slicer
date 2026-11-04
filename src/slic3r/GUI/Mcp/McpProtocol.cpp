@@ -1,9 +1,11 @@
 #include "McpProtocol.hpp"
 #include "McpTypes.hpp"
+#include "McpU1Policy.hpp"
 
 #include <algorithm>
 #include <cstddef>
 #include <cstdint>
+#include <cmath>
 #include <exception>
 #include <memory>
 #include <set>
@@ -100,9 +102,16 @@ bool type_matches(const json& value, const json& type)
     const std::string t = type.get<std::string>();
     if (t == "number")
         return value.is_number();
-    if (t == "integer")
-        return value.is_number_integer() || value.is_number_unsigned() ||
-               (value.is_number_float() && value.get<double>() == double(int64_t(value.get<double>())));
+    if (t == "integer") {
+        if (value.is_number_integer() || value.is_number_unsigned())
+            return true;
+        if (!value.is_number_float())
+            return false;
+        const double number = value.get<double>();
+        // Do not cast an untrusted float to int64_t before checking its range (undefined behavior).
+        const double limit = std::ldexp(1.0, 63);
+        return std::isfinite(number) && number >= -limit && number < limit && std::trunc(number) == number;
+    }
     return json_type_name(value) == t;
 }
 
@@ -401,7 +410,7 @@ json McpProtocol::tools_list() const
     json tools = json::array();
     for (const ToolLane lane : {ToolLane::Core, ToolLane::Api, ToolLane::Ui})
         for (const ToolDef& def : m_registry.tools())
-            if (def.lane == lane)
+            if (def.lane == lane && (!m_info.slicer_only || u1_slicer_tool_allowed(def.name)))
                 tools.push_back(tool_to_json(def));
     return tools;
 }
@@ -410,6 +419,8 @@ json McpProtocol::call_tool(const json& params, bool& unknown_tool, std::string&
 {
     unknown_tool          = false;
     const std::string              name = params.value("name", "");
+    if (m_info.slicer_only && !u1_slicer_tool_allowed(name))
+        return result_to_json(ToolResult::error("This tool requires an operator approval adapter that is not available in Ultimate U1 yet"));
     std::shared_ptr<const ToolDef> def  = m_registry.lookup(name);
     if (def == nullptr) {
         unknown_tool = true;
@@ -424,6 +435,8 @@ json McpProtocol::call_tool(const json& params, bool& unknown_tool, std::string&
         return result_to_json(ToolResult::error("Invalid arguments: " + err));
     if (std::string err = resolve_api_call(m_registry, def, args); !err.empty())
         return result_to_json(ToolResult::error(err));
+    if (m_info.slicer_only && !u1_slicer_tool_allowed(def->name))
+        return result_to_json(ToolResult::error("Tool blocked by Ultimate U1 slicer-only policy"));
     try {
         return result_to_json(m_caller.call(*def, args));
     } catch (const ToolFailure& f) {
@@ -440,7 +453,7 @@ PostReply McpProtocol::handle_post(const PostRequest& request)
         return reply(400, error_body(nullptr, kParseError, "Parse error"));
     if (msg.is_array())
         return reply(400, error_body(nullptr, kInvalidRequest, "Batches are not supported"));
-    if (!msg.is_object() || msg.value("jsonrpc", "") != "2.0")
+    if (!msg.is_object() || !msg.contains("jsonrpc") || !msg["jsonrpc"].is_string() || msg["jsonrpc"] != "2.0")
         return reply(400, error_body(nullptr, kInvalidRequest, "Not a JSON-RPC 2.0 message"));
 
     // Responses (to requests this server never sends) and notifications are accepted silently.

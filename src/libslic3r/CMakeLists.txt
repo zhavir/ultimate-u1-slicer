@@ -432,6 +432,10 @@ set(lisbslic3r_sources
     PrintBase.hpp
     MaterialType.cpp
     MaterialType.hpp
+    FosFilamentArrangement.cpp
+    FosFilamentArrangement.hpp
+    U1FilamentPlan.cpp
+    U1FilamentPlan.hpp
     PrintConfig.cpp
     PrintConfig.hpp
     Print.cpp

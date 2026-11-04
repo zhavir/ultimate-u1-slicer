@@ -251,9 +251,9 @@ namespace instance_check_internal
 			DBusError 		err;
 			dbus_uint32_t 	serial = 0;
 			const char* sigval = message_text.c_str();
-			std::string		interface_name = "com.orcaslicer.OrcaSlicer.InstanceCheck.Object" + version;
+			std::string		interface_name = "org.ultimateu1.UltimateU1Slicer.InstanceCheck.Object" + version;
 			std::string   	method_name = "AnotherInstance";
-			std::string		object_name = "/com/orcaslicer/OrcaSlicer/InstanceCheck/Object" + version;
+			std::string		object_name = "/org/ultimateu1/UltimateU1Slicer/InstanceCheck/Object" + version;
 
 
 			// initialise the error value
@@ -514,7 +514,7 @@ void OtherInstanceMessageHandler::handle_message(const std::string& message)
 
 	std::vector<boost::filesystem::path> paths;
 	std::vector<std::string> downloads;
-	boost::regex re(R"(^(orcaslicer|prusaslicer|cura|bambustudio):\/\/open[\/]?\?file=)", boost::regbase::icase);
+	boost::regex re(R"(^(ultimate-u1-slicer|orcaslicer|prusaslicer|cura|bambustudio):\/\/open[\/]?\?file=)", boost::regbase::icase);
 	boost::regex re2(R"(^(bambustudioopen):\/\/)", boost::regex::icase);
 	boost::smatch results;
 
@@ -564,7 +564,7 @@ namespace MessageHandlerDBusInternal
 	        "       <arg name=\"data\" direction=\"out\" type=\"s\" />"
 	        "     </method>"
 	        "   </interface>"
-	        "   <interface name=\"com.orcaslicer.OrcaSlicer.InstanceCheck\">"
+	        "   <interface name=\"org.ultimateu1.UltimateU1Slicer.InstanceCheck\">"
 	        "     <method name=\"AnotherInstance\">"
 	        "       <arg name=\"data\" direction=\"in\" type=\"s\" />"
 	        "     </method>"
@@ -602,7 +602,7 @@ namespace MessageHandlerDBusInternal
 	{
 		const char* interface_name = dbus_message_get_interface(message);
 	    const char* member_name    = dbus_message_get_member(message);
-	    std::string our_interface  = "com.orcaslicer.OrcaSlicer.InstanceCheck.Object" + wxGetApp().get_instance_hash_string();
+	    std::string our_interface  = "org.ultimateu1.UltimateU1Slicer.InstanceCheck.Object" + wxGetApp().get_instance_hash_string();
 	    BOOST_LOG_TRIVIAL(trace) << "DBus message received: interface: " << interface_name << ", member: " << member_name;
 	    if (0 == strcmp("org.freedesktop.DBus.Introspectable", interface_name) && 0 == strcmp("Introspect", member_name)) {		
 	        respond_to_introspect(connection, message);
@@ -622,8 +622,8 @@ void OtherInstanceMessageHandler::listen()
     int 				 name_req_val;
     DBusObjectPathVTable vtable;
     std::string 		 instance_hash  = wxGetApp().get_instance_hash_string();
-	std::string			 interface_name = "com.orcaslicer.OrcaSlicer.InstanceCheck.Object" + instance_hash;
-	std::string			 object_name 	= "/com/orcaslicer/OrcaSlicer/InstanceCheck/Object" + instance_hash;
+	std::string			 interface_name = "org.ultimateu1.UltimateU1Slicer.InstanceCheck.Object" + instance_hash;
+	std::string			 object_name 	= "/org/ultimateu1/UltimateU1Slicer/InstanceCheck/Object" + instance_hash;
 
     //BOOST_LOG_TRIVIAL(debug) << "init dbus listen " << interface_name << " " << object_name;
     dbus_error_init(&err);

@@ -155,6 +155,7 @@ src/slic3r/GUI/Mcp/McpToolsApi.cpp
 src/slic3r/GUI/Mcp/McpToolsApp.cpp
 src/slic3r/GUI/Mcp/McpToolsCad.cpp
 src/slic3r/GUI/Mcp/McpToolsConfig.cpp
+src/slic3r/GUI/Mcp/McpToolsU1.cpp
 src/slic3r/GUI/Mcp/McpToolsLayers.cpp
 src/slic3r/GUI/Mcp/McpToolsProject.cpp
 src/slic3r/GUI/Mcp/McpToolsPython.cpp

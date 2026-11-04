@@ -594,37 +594,6 @@ private:
 };
 
 #ifdef __linux__
-static void migrate_flatpak_legacy_datadir(const boost::filesystem::path &data_dir_path)
-{
-    if(!boost::filesystem::exists("/.flatpak-info"))
-        return; // Not running as a Flatpak, nothing to migrate.
-    
-    namespace fs = boost::filesystem;
-
-    if (fs::exists(data_dir_path)){
-        std::cerr << "New Flatpak data dir: " << data_dir_path << std::endl;
-        return;
-    }
-    std::cerr << "Migrating Flatpak data dir: " << data_dir_path << std::endl;
-
-    std::string legacy_data_dir_str = data_dir_path.string();
-    boost::replace_first(legacy_data_dir_str, "com.orcaslicer.OrcaSlicer", "io.github.softfever.OrcaSlicer");
-    const fs::path legacy_data_dir(legacy_data_dir_str);
-
-    std::cerr << "Legacy Flatpak data dir: " << legacy_data_dir << std::endl;
-
-    if ( ! fs::exists(legacy_data_dir) || ! fs::is_directory(legacy_data_dir))
-        return;
-    std::cerr << "Legacy Flatpak data dir exists: " << legacy_data_dir << std::endl;
-
-    try {
-        std::cerr << "Migrating Flatpak data dir from " << legacy_data_dir << " to " << data_dir_path << std::endl;
-        copy_directory_recursively(legacy_data_dir, data_dir_path);
-    } catch (const std::exception &ex) {
-        std::cerr << "Failed to migrate Flatpak data dir from " << legacy_data_dir << " to " << data_dir_path << ": " << ex.what() << std::endl;
-    }
-}
-
 bool static check_old_linux_datadir(const wxString& app_name) {
     // If we are on Linux and the datadir does not exist yet, look into the old
     // location where the datadir was before version 2.3. If we find it there,
@@ -2761,7 +2730,7 @@ void GUI_App::init_app_config()
 #ifdef __linux__
         // The same lookup the start-up code performs before GUI_App exists, so both read one file.
         const boost::filesystem::path data_dir_path(default_data_dir());
-        migrate_flatpak_legacy_datadir(data_dir_path);
+        // A fork must not automatically migrate another slicer's user configuration.
         set_data_dir(data_dir_path.string());
         if (!boost::filesystem::exists(data_dir_path))
             boost::filesystem::create_directory(data_dir_path);
@@ -2777,7 +2746,7 @@ void GUI_App::init_app_config()
         // On macOS, the executable is inside the .app bundle.
         _app_folder = _app_folder.parent_path().parent_path().parent_path();
 #endif
-        boost::filesystem::path app_data_dir_path = _app_folder / "data_dir";
+        boost::filesystem::path app_data_dir_path = _app_folder / "ultimate_u1_data_dir";
         if (boost::filesystem::exists(app_data_dir_path)) {
             set_data_dir(app_data_dir_path.string());
         }
@@ -3519,7 +3488,7 @@ bool GUI_App::on_init_inner()
             associate_files(L"step");
             associate_files(L"stp");
         }
-        associate_url(L"orcaslicer");
+        associate_url(L"ultimate-u1-slicer");
 
         if (app_config->get("associate_gcode") == "true")
             associate_files(L"gcode");
@@ -8709,7 +8678,7 @@ bool GUI_App::load_language(wxString language, bool initial)
                     // There seems to be a support for that on Windows and OSX, while on Linuxes the code just returns wxLocale::GetSystemLanguage().
                     // The last parameter gets added to the list of detected dictionaries. This is a workaround
                     // for not having the English dictionary. Let's hope wxWidgets of various versions process this call the same way.
-                    wxString best_language = wxTranslations::Get()->GetBestTranslation(SLIC3R_APP_KEY, wxLANGUAGE_ENGLISH);
+                    wxString best_language = wxTranslations::Get()->GetBestTranslation("OrcaSlicer", wxLANGUAGE_ENGLISH);
                     if (!best_language.IsEmpty()) {
                         m_language_info_best = wxLocale::FindLanguageInfo(best_language);
                         BOOST_LOG_TRIVIAL(info) << boost::format("Best translation language detected (may be different from user locales): %1%") %
@@ -8878,7 +8847,8 @@ bool GUI_App::load_language(wxString language, bool initial)
     // Override language at the active wxTranslations class (which is stored in the active m_wxLocale)
     // to load possibly different dictionary, for example, load Czech dictionary for Slovak language.
     wxTranslations::Get()->SetLanguage(language_dict);
-    m_wxLocale->AddCatalog(SLIC3R_APP_KEY);
+    // User data is fork-specific; the inherited translation catalogs retain their name.
+    m_wxLocale->AddCatalog("OrcaSlicer");
     m_active_language_code = requested_language_code;
     m_imgui->set_language(into_u8(requested_language_code));
 
@@ -9318,7 +9288,7 @@ void GUI_App::open_preferences(PreferencesTab tab, const std::string& highlight_
                     associate_files(L"step");
                     associate_files(L"stp");
                 }
-                associate_url(L"orcaslicer");
+                associate_url(L"ultimate-u1-slicer");
             }
             else {
                 if (app_config->get("associate_gcode") == "true")

@@ -281,6 +281,9 @@ bool McpService::start(const McpLaunchOptions& options, bool serve, std::string&
     m_token = token;
 
     ServerInfo info;
+    info.name         = "ultimate-u1-slicer";
+    info.title        = "Ultimate U1 Slicer";
+    info.slicer_only  = true;
     info.version      = SLIC3R_VERSION;
     info.instructions = kInstructions;
     // Request threads of an endpoint closed earlier may still be using the protocol object.
@@ -660,6 +663,7 @@ void McpService::register_tools()
     register_action_tools(*this);
     register_project_tools(*this);
     register_config_tools(*this);
+    register_u1_tools(*this);
     register_scene_tools(*this);
     register_layer_tools(*this);
     register_view_tools(*this);

@@ -24,6 +24,9 @@ struct ServerInfo
     std::string title = "OrcaSlicer";
     std::string version;
     std::string instructions;
+    // Ultimate U1 keeps unreviewed escape hatches out of remote automation. Upstream tests and
+    // embedders retain the original catalog unless the application opts into this policy.
+    bool slicer_only = false;
 };
 
 // One POSTed message and the transport headers the protocol checks. Header values are empty when
