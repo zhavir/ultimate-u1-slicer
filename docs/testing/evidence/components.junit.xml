@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="u1_component_tests" errors="0" failures="0" skipped="0" tests="68" hostname="tbd" time="0.014" timestamp="2026-11-04T14:29:33Z">
+    <properties>
+      <property name="random-seed" value="1813926433"/>
+    </properties>
+    <testcase classname="u1_component_tests.global" name="MCP file authorization accepts Unicode names inside an authorized root" time="0.005" status="run"/>
+    <testcase classname="u1_component_tests.global" name="Integer schema validation handles extreme floating point values" time="0.001" status="run"/>
+    <testcase classname="u1_component_tests.global" name="U1 planning bounds the combinatorial search" time="0.003" status="run"/>
+    <testcase classname="u1_component_tests.global" name="A tied-cost diameter change still requires reslicing" time="0.000" status="run"/>
+    <testcase classname="u1_component_tests.global" name="U1 MCP blocks action and plugin escape hatches even when annotated read only" time="0.001" status="run"/>
+    <testcase classname="u1_component_tests.global" name="U1 planning rejects invalid nozzle and filament mappings before search" time="0.000" status="run"/>
+    <testcase classname="u1_component_tests.global" name="GUI integer arguments cannot wrap onto a different object" time="0.000" status="run"/>
+    <testcase classname="u1_component_tests.global" name="Malformed RPC field types are refused without throwing" time="0.000" status="run"/>
+    <testcase classname="u1_component_tests.global" name="MCP file authorization refuses symlinks that escape a root" time="0.002" status="run"/>
+    <testcase classname="u1_component_tests.global" name="MCP file authorization uses path components and denies by default" time="0.001" status="run"/>
+    <testcase classname="u1_component_tests.global" name="The official protocol negotiates legacy clients and serves the current revision" time="0.000" status="run"/>
+    <testcase classname="u1_component_tests.global" name="U1 planning preserves a feasible four-head partition without printer side effects" time="0.000" status="run"/>
+    <system-out/>
+    <system-err/>
+  </testsuite>
+</testsuites>

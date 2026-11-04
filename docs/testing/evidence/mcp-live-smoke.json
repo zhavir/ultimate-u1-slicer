@@ -1,0 +1,28 @@
+{
+  "authentication_required": true,
+  "protocol": "2026-07-28",
+  "legacy_handshake": "2025-11-25",
+  "server": "ultimate-u1-slicer",
+  "tools": [
+    "arrange",
+    "cancel",
+    "get_preview",
+    "get_state",
+    "list_objects",
+    "list_plates",
+    "list_presets",
+    "select",
+    "slice",
+    "transform",
+    "u1_plan_filament_partition",
+    "wait"
+  ],
+  "read_only_calls_passed": [
+    "get_state",
+    "list_objects",
+    "u1_plan_filament_partition"
+  ],
+  "project_mutated": false,
+  "printer_contacted": false,
+  "codex_or_claude_client_verified": false
+}

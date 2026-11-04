@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="u1_mcp_http_tests" errors="0" failures="0" skipped="0" tests="43" hostname="tbd" time="3.615" timestamp="2026-11-04T14:33:17Z">
+    <properties>
+      <property name="random-seed" value="4009994745"/>
+    </properties>
+    <testcase classname="u1_mcp_http_tests.global" name="a handler blocked on one connection does not delay a request on another" time="1.503" status="run"/>
+    <testcase classname="u1_mcp_http_tests.global" name="the server rejects requests that break the endpoint rules" time="0.002" status="run"/>
+    <testcase classname="u1_mcp_http_tests.global" name="validate_request applies the endpoint rules" time="0.000" status="run"/>
+    <testcase classname="u1_mcp_http_tests.global" name="an incomplete request is closed after the read timeout" time="0.301" status="run"/>
+    <testcase classname="u1_mcp_http_tests.global" name="an authorized POST reaches the handler and gets 200 JSON" time="0.001" status="run"/>
+    <testcase classname="u1_mcp_http_tests.global" name="at the connection cap a new connection evicts one waiting on its client" time="0.102" status="run"/>
+    <testcase classname="u1_mcp_http_tests.global" name="stop() returns promptly with idle keep-alive connections and releases the port" time="0.001" status="run"/>
+    <testcase classname="u1_mcp_http_tests.global" name="with every connection dispatched a new connection takes an overflow place, and beyond it is closed" time="1.703" status="run"/>
+    <system-out/>
+    <system-err/>
+  </testsuite>
+</testsuites>
