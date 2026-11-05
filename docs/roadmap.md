@@ -42,3 +42,7 @@ The source-level migration investigation is recorded in [support expansion migra
 ## Windows portable checkpoint — 2026-11-05
 
 The experimental portable artifact is compiled and verified: all 3,462 configured Windows unit tests pass, alongside GUI/MCP HTTP/stdio and storage/registry-isolation checks. See [download and evidence](testing/windows-portable.md). Linux full FFF tests and five targeted GUI cases also pass. This completes the current Windows portable packaging milestone, not the stable release definition. Next remain original Snapmaker project/support semantics, reviewed native MCP file/project adapters, full FOrca advanced-nozzle migration, current Snapmaker connectivity parity and native macOS ARM64 application validation.
+
+## Expanded functional-parity gate
+
+The 71-group source-backed audit separates exact Snapmaker v2.4.1, later Snapmaker main, official MCP base and FOrca. See architecture/functional-parity-audit.md and the dependency-aware implementation backlog. Missing names include aliases and actual missing consumers; counts are not a hardware certification. The next portable candidate includes opt-in plugin discovery and signing gates, with signed publication blocked until a real identity is configured.

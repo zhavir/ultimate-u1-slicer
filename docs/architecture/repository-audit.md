@@ -1,3 +1,7 @@
+# Current audit update — 2026-11-05
+
+The exact Snapmaker v2.4.1 tag resolves to `bac6fd5c1e1c23ddf057cf6471ba4ed7ed621c4c`; the older audit below inspected later main `f5fd7289...`, which differs in 66 source paths. Both are now separate references in [the full parity audit](functional-parity-audit.md). Read that audit, the current matrix and validation reports before relying on the historical statements below. The application has since built and passed Windows tests, but no stable/physical compatibility is claimed.
+
 # Repository audit — 2026-11-04
 
 This is a source audit and initial integration checkpoint, not certification of a working slicer. No GUI build, U1 slicing run or physical print has passed yet. Read [feature matrix](feature-matrix.md), [decision](architecture-decision.md), and [roadmap](../roadmap.md) together.

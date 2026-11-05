@@ -1,0 +1,1206 @@
+{
+  "schema": 1,
+  "statuses": [
+    "Verified",
+    "Implemented but untested",
+    "Partial",
+    "Missing",
+    "Incompatible",
+    "Unknown"
+  ],
+  "features": [
+    {
+      "id": "tower-grouping",
+      "category": "Prime tower",
+      "title": "Material compatibility grouping",
+      "configuration_pattern": "filament_grouping_mode|filament_is_high_temperature|filament_type",
+      "source_file_fragments": [
+        "WipeTower",
+        "Print.cpp",
+        "FilamentArrangement"
+      ],
+      "status": "Partial",
+      "priority": "P0",
+      "dependencies": [],
+      "migration_boundary": "Generic grouping and an advisory FOrca planner exist; neither proves Snapmaker material-grouping parity."
+    },
+    {
+      "id": "tower-preextrusion",
+      "category": "Prime tower",
+      "title": "Interface pre-extrusion distance and length",
+      "configuration_pattern": "filament_tower_interface_pre_extrusion_(dist|length)",
+      "source_file_fragments": [
+        "WipeTower",
+        "GCode.cpp"
+      ],
+      "status": "Implemented but untested",
+      "priority": "P0",
+      "dependencies": [
+        "tower-grouping"
+      ],
+      "migration_boundary": "Compare actual four-tool paths and interface extrusion using stock U1 macros."
+    },
+    {
+      "id": "tower-temperature",
+      "category": "Prime tower",
+      "title": "Interface temperature and tool-change thermal waits",
+      "configuration_pattern": "filament_tower_interface_print_temp|tool_change_temprature_wait|delta_temperature",
+      "source_file_fragments": [
+        "WipeTower",
+        "GCode.cpp"
+      ],
+      "status": "Partial",
+      "priority": "P0",
+      "dependencies": [
+        "tower-grouping"
+      ],
+      "migration_boundary": "A matching temperature key does not prove matching waits, standby or reheating behavior."
+    },
+    {
+      "id": "tower-cooling",
+      "category": "Prime tower",
+      "title": "Cooling before tower and during interfaces",
+      "configuration_pattern": "filament_cooling_before_tower|enable_tower_interface_cooldown_during_tower",
+      "source_file_fragments": [
+        "WipeTower",
+        "GCode.cpp",
+        "CoolingBuffer"
+      ],
+      "status": "Implemented but untested",
+      "priority": "P0",
+      "dependencies": [
+        "tower-temperature"
+      ],
+      "migration_boundary": "Validate cooling commands and ordering in generated U1 G-code; no heater/fan hardware tests."
+    },
+    {
+      "id": "tower-ribs",
+      "category": "Prime tower",
+      "title": "Tower ribs, wall gap, brim and chamfer",
+      "configuration_pattern": "wipe_tower_rib_width|wipe_tower_wall_gap|prime_tower_brim_chamfer.*|prime_tower_width",
+      "source_file_fragments": [
+        "WipeTower"
+      ],
+      "status": "Partial",
+      "priority": "P1",
+      "dependencies": [
+        "tower-grouping"
+      ],
+      "migration_boundary": "Some options are shared; fork-only geometry keys need coupled geometry tests, not inert schema entries."
+    },
+    {
+      "id": "tower-toolpaths",
+      "category": "Prime tower",
+      "title": "Special U1 tool-change and docking paths",
+      "configuration_pattern": "z_hop_when_prime|enable_change_pressure_when_wiping|ramming_.*|change_filament_gcode",
+      "source_file_fragments": [
+        "WipeTower",
+        "GCode.cpp",
+        "ToolOrdering"
+      ],
+      "status": "Partial",
+      "priority": "P0",
+      "dependencies": [
+        "tower-temperature",
+        "profile-macros"
+      ],
+      "migration_boundary": "Retained machine macros are not proof of optimized Snapmaker tower/tool-change path equivalence."
+    },
+    {
+      "id": "tower-accounting",
+      "category": "Prime tower",
+      "title": "Non-Bambu Type 1 tower material accounting",
+      "configuration_pattern": "prime_tower.*",
+      "source_file_fragments": [
+        "Print.cpp",
+        "GCode.cpp",
+        "WipeTower"
+      ],
+      "status": "Verified",
+      "priority": "P1",
+      "dependencies": [],
+      "migration_boundary": "Verified only for the adopted upstream engine regression and full FFF suite, not physical U1 material usage."
+    },
+    {
+      "id": "support-transitions",
+      "category": "Supports",
+      "title": "Transition layers, speed, flow and perimeters",
+      "configuration_pattern": "tree_support_transition_layers|support_transition_.*",
+      "source_file_fragments": [
+        "SupportTransitionLayer",
+        "TreeSupport",
+        "SupportMaterial"
+      ],
+      "status": "Missing",
+      "priority": "P0",
+      "dependencies": [
+        "project-migration"
+      ],
+      "migration_boundary": "Snapmaker transition schema/consumer path is absent; import its coupled generator and tests."
+    },
+    {
+      "id": "support-contact",
+      "category": "Supports",
+      "title": "Minimum support-interface contact-area threshold",
+      "configuration_pattern": "support_interface_min_area",
+      "source_file_fragments": [
+        "TreeSupport",
+        "SupportMaterial",
+        "SupportCommon"
+      ],
+      "status": "Missing",
+      "priority": "P0",
+      "dependencies": [
+        "support-transitions"
+      ],
+      "migration_boundary": "Do not substitute ordinary interface spacing or generic support style for this threshold."
+    },
+    {
+      "id": "support-adaptive",
+      "category": "Supports",
+      "title": "Snapmaker adaptive tree support layers",
+      "configuration_pattern": "tree_support_adaptive_layer_height",
+      "source_file_fragments": [
+        "TreeSupport",
+        "SupportCommon"
+      ],
+      "status": "Missing",
+      "priority": "P1",
+      "dependencies": [
+        "support-transitions"
+      ],
+      "migration_boundary": "Ordinary adaptive model layers do not establish this support-specific algorithm."
+    },
+    {
+      "id": "painting-depth",
+      "category": "Supports",
+      "title": "Top and bottom painting penetration controls",
+      "configuration_pattern": "(top|bottom)_color_penetration_layers",
+      "source_file_fragments": [
+        "MultiMaterialSegmentation",
+        "PrintObject.cpp",
+        "GizmoMmuSegmentation"
+      ],
+      "status": "Implemented but untested",
+      "priority": "P1",
+      "dependencies": [
+        "project-migration"
+      ],
+      "migration_boundary": "Compare segmented geometry and boundaries; source presence is not U1 painting parity."
+    },
+    {
+      "id": "support-auto",
+      "category": "Supports",
+      "title": "Automatic negative raft/support expansion",
+      "configuration_pattern": "raft_first_layer_expansion",
+      "source_file_fragments": [
+        "TreeSupport",
+        "SupportCommon"
+      ],
+      "status": "Incompatible",
+      "priority": "P0",
+      "dependencies": [],
+      "migration_boundary": "Released Snapmaker v2.4.1 and audited main accept -1; selected official engine minimum is zero. Preserve path-specific semantics, never silently clamp."
+    },
+    {
+      "id": "spectrum-ratio",
+      "category": "Full Spectrum",
+      "title": "Ratio mixing",
+      "configuration_pattern": "filament_mixed_components|filament_mixed_sublayer_ratios|mixed_filament_definitions",
+      "source_file_fragments": [
+        "MixedFilament",
+        "FilamentMix",
+        "PrintRegion",
+        "ToolOrdering"
+      ],
+      "status": "Partial",
+      "priority": "P1",
+      "dependencies": [
+        "project-migration"
+      ],
+      "migration_boundary": "Official and Snapmaker mixed-filament metadata differ; compare recipes and resulting extrusion."
+    },
+    {
+      "id": "spectrum-cycle",
+      "category": "Full Spectrum",
+      "title": "Cycle and interleaved-layer mixing",
+      "configuration_pattern": ".*(mixed|mixing|dithering).*(cycle|layer|step).*|filament_mixed_sublayer_ratios",
+      "source_file_fragments": [
+        "MixedFilament",
+        "MultiMaterial",
+        "ToolOrdering"
+      ],
+      "status": "Partial",
+      "priority": "P1",
+      "dependencies": [
+        "spectrum-ratio"
+      ],
+      "migration_boundary": "Do not label ordinary multi-material painting as cycle mixing."
+    },
+    {
+      "id": "spectrum-match",
+      "category": "Full Spectrum",
+      "title": "Color Match and matching algorithms",
+      "configuration_pattern": ".*(mixed|mixing|color).*(match|bias).*",
+      "source_file_fragments": [
+        "MixedFilament",
+        "ColorDecompose",
+        "FilamentBitmapUtils"
+      ],
+      "status": "Partial",
+      "priority": "P1",
+      "dependencies": [
+        "spectrum-ratio"
+      ],
+      "migration_boundary": "Identify algorithm/color-space and recipe constraints, then compare known target colors."
+    },
+    {
+      "id": "spectrum-gradient",
+      "category": "Full Spectrum",
+      "title": "Gradient curves and ranges",
+      "configuration_pattern": ".*(mixed|mixing).*gradient.*",
+      "source_file_fragments": [
+        "MixedFilament",
+        "GradientCurve"
+      ],
+      "status": "Partial",
+      "priority": "P1",
+      "dependencies": [
+        "spectrum-ratio"
+      ],
+      "migration_boundary": "Similar controls use different serialization; verify curve/range round trips and generated layers."
+    },
+    {
+      "id": "spectrum-decompose",
+      "category": "Full Spectrum",
+      "title": "Color decomposition and component selection",
+      "configuration_pattern": ".*(mixed|mixing).*component.*|filament_mixed_components",
+      "source_file_fragments": [
+        "ColorDecompose",
+        "MixedFilament"
+      ],
+      "status": "Implemented but untested",
+      "priority": "P1",
+      "dependencies": [
+        "spectrum-match"
+      ],
+      "migration_boundary": "Native decomposition implementation retained; U1 material/recipe/color reproduction remains unverified."
+    },
+    {
+      "id": "spectrum-subdivision",
+      "category": "Full Spectrum",
+      "title": "Geometry subdivision and textured segmentation",
+      "configuration_pattern": ".*(mixed|mixing|dithering).*",
+      "source_file_fragments": [
+        "TextureBakeSubdivide",
+        "TextureDisplacement",
+        "MultiMaterialSegmentation"
+      ],
+      "status": "Implemented but untested",
+      "priority": "P1",
+      "dependencies": [
+        "spectrum-decompose"
+      ],
+      "migration_boundary": "Retained subdivision must be checked for mesh validity, paint fidelity and slicing effects."
+    },
+    {
+      "id": "spectrum-advanced",
+      "category": "Full Spectrum",
+      "title": "Advanced dithering, pointillism and local-Z modes",
+      "configuration_pattern": "dithering_.*|mixed_filament_(advanced_dithering|pointillism_.*|surface_indentation|region_collapse)",
+      "source_file_fragments": [
+        "MultiMaterial",
+        "MixedFilament",
+        "GCode.cpp"
+      ],
+      "status": "Partial",
+      "priority": "P1",
+      "dependencies": [
+        "spectrum-cycle",
+        "spectrum-subdivision"
+      ],
+      "migration_boundary": "Multiple Snapmaker-specific keys are absent; do not equate generic mixed layers with the advanced modes."
+    },
+    {
+      "id": "fos-color-patch",
+      "category": "FOrca",
+      "title": "Color Patch shell/core geometry and loops",
+      "configuration_pattern": "color_patch_(enabled|loops)|filament_color_depth",
+      "source_file_fragments": [
+        "PrintObject.cpp",
+        "PerimeterGenerator",
+        "PrintRegion"
+      ],
+      "status": "Missing",
+      "priority": "P1",
+      "dependencies": [
+        "fos-nozzles",
+        "fos-widths",
+        "project-fos"
+      ],
+      "migration_boundary": "Distinct FOrca feature; ordinary painting and Full Spectrum are not equivalents."
+    },
+    {
+      "id": "fos-nozzles",
+      "category": "FOrca",
+      "title": "Independent mixed nozzle configuration and mapping",
+      "configuration_pattern": "fos_filament_nozzle|has_mixed_nozzle_sizes|nozzle_diameter",
+      "source_file_fragments": [
+        "PrintConfig",
+        "PrintRegion",
+        "PrintObject.cpp"
+      ],
+      "status": "Partial",
+      "priority": "P0",
+      "dependencies": [
+        "project-fos"
+      ],
+      "migration_boundary": "Generic mixed 0.4/0.6 paths were tested; complete FOrca mapping and imported projects are not verified."
+    },
+    {
+      "id": "fos-widths",
+      "category": "FOrca",
+      "title": "Per-nozzle wall, infill, support and tower widths",
+      "configuration_pattern": "fos_nozzle_.*(width|line).*|tower_line_width",
+      "source_file_fragments": [
+        "PrintConfig",
+        "PrintObject.cpp",
+        "GCode.cpp"
+      ],
+      "status": "Partial",
+      "priority": "P1",
+      "dependencies": [
+        "fos-nozzles"
+      ],
+      "migration_boundary": "Generic percentage widths are not the complete FOrca per-nozzle arrays and precedence."
+    },
+    {
+      "id": "fos-speeds",
+      "category": "FOrca",
+      "title": "Per-nozzle feature speeds and thermal constraints",
+      "configuration_pattern": "fos_nozzle_.*(speed|flow|temperature).*|fos_nozzle_desync",
+      "source_file_fragments": [
+        "PrintConfig",
+        "PrintObject.cpp",
+        "GCode.cpp"
+      ],
+      "status": "Missing",
+      "priority": "P1",
+      "dependencies": [
+        "fos-nozzles"
+      ],
+      "migration_boundary": "Port definitions and every consumer together with migration and safety tests."
+    },
+    {
+      "id": "fos-roles",
+      "category": "FOrca",
+      "title": "Outer/inner wall and sparse/solid infill tool assignments",
+      "configuration_pattern": "(outer_wall|inner_wall|sparse_infill|internal_solid|top_surface|bottom_surface)_filament_id|fos_.*filament.*|wall_filament|solid_infill_filament|sparse_infill_filament",
+      "source_file_fragments": [
+        "PrintRegion",
+        "ToolOrdering",
+        "Plater.cpp"
+      ],
+      "status": "Partial",
+      "priority": "P0",
+      "dependencies": [
+        "project-fos"
+      ],
+      "migration_boundary": "Native role assignments exist. FOrca names, array semantics and imported project equivalence need adapters."
+    },
+    {
+      "id": "fos-support-tower",
+      "category": "FOrca",
+      "title": "Support/interface/prime-tower filament selection",
+      "configuration_pattern": "support_filament|support_interface_filament|prime_tower_filament",
+      "source_file_fragments": [
+        "PrintConfig",
+        "Print.cpp",
+        "ToolOrdering"
+      ],
+      "status": "Implemented but untested",
+      "priority": "P1",
+      "dependencies": [
+        "fos-roles"
+      ],
+      "migration_boundary": "Retained generic selectors require FOrca/U1-specific generated path validation."
+    },
+    {
+      "id": "fos-object-overrides",
+      "category": "FOrca",
+      "title": "Per-object and per-filament overrides",
+      "configuration_pattern": "fos_.*|filament_settings_id",
+      "source_file_fragments": [
+        "Model.cpp",
+        "PrintConfig",
+        "bbs_3mf"
+      ],
+      "status": "Partial",
+      "priority": "P1",
+      "dependencies": [
+        "project-fos"
+      ],
+      "migration_boundary": "Generic overrides remain; fork-specific schema and precedence are not losslessly migrated."
+    },
+    {
+      "id": "fos-nozzle-safety",
+      "category": "FOrca",
+      "title": "Nozzle verification and incompatibility checks",
+      "configuration_pattern": "fos_nozzle_.*|nozzle_type|nozzle_volume_type|filament_volume_type",
+      "source_file_fragments": [
+        "PrintConfig",
+        "Nozzle",
+        "HighFlow"
+      ],
+      "status": "Partial",
+      "priority": "P0",
+      "dependencies": [
+        "high-flow",
+        "fos-nozzles"
+      ],
+      "migration_boundary": "Do not substitute planner success for nozzle/material safety."
+    },
+    {
+      "id": "filament-planner",
+      "category": "FOrca",
+      "title": "Advisory filament/nozzle partition planner",
+      "configuration_pattern": "fos_filament_nozzle",
+      "source_file_fragments": [
+        "U1FilamentPlan",
+        "FosFilamentArrangement",
+        "McpToolsU1"
+      ],
+      "status": "Verified",
+      "priority": "P1",
+      "dependencies": [],
+      "migration_boundary": "Verified native planner/protocol tests; advisory only and does not check physical material compatibility."
+    },
+    {
+      "id": "u1-lan",
+      "category": "Connectivity",
+      "title": "U1 LAN discovery and network submission",
+      "configuration_pattern": "host_type|print_host|printhost_.*",
+      "source_file_fragments": [
+        "SnapmakerPrinterAgent",
+        "MoonrakerPrinterAgent",
+        "GatewayDevice",
+        "SSWCP",
+        "MoonRaker"
+      ],
+      "status": "Partial",
+      "priority": "P0",
+      "dependencies": [
+        "firmware-capabilities"
+      ],
+      "migration_boundary": "Generic Moonraker/Snapmaker agent source is retained, but full stock/gateway parity is not verified."
+    },
+    {
+      "id": "u1-gateway",
+      "category": "Connectivity",
+      "title": "Snapmaker gateway transport and device protocol",
+      "configuration_pattern": "",
+      "source_file_fragments": [
+        "GatewayService",
+        "GatewayProtocol",
+        "GatewayDevice",
+        "ConnectionProcessManager",
+        "SSWCP",
+        "MoonRaker"
+      ],
+      "status": "Missing",
+      "priority": "P0",
+      "dependencies": [],
+      "migration_boundary": "Current gateway adapter and its companion/service packaging are missing; audit dependencies and licensing before import."
+    },
+    {
+      "id": "u1-cloud",
+      "category": "Connectivity",
+      "title": "Snapmaker cloud account, pairing and authorization",
+      "configuration_pattern": "",
+      "source_file_fragments": [
+        "GatewayAccount",
+        "GatewayDevice",
+        "GatewayProtocol",
+        "SSWCP",
+        "MoonRaker"
+      ],
+      "status": "Missing",
+      "priority": "P0",
+      "dependencies": [
+        "u1-gateway"
+      ],
+      "migration_boundary": "Orca cloud or Bambu login is not Snapmaker pairing. Credentials/services required for live verification."
+    },
+    {
+      "id": "u1-status",
+      "category": "Connectivity",
+      "title": "Device status, job, progress and temperatures",
+      "configuration_pattern": "",
+      "source_file_fragments": [
+        "SnapmakerPrinterAgent",
+        "MoonrakerPrinterAgent",
+        "GatewayDevice",
+        "SSWCP",
+        "MoonRaker"
+      ],
+      "status": "Partial",
+      "priority": "P0",
+      "dependencies": [
+        "u1-lan"
+      ],
+      "migration_boundary": "Source paths exist; use recorded stock/Extended fixtures before live read-only confirmation."
+    },
+    {
+      "id": "u1-camera",
+      "category": "Connectivity",
+      "title": "U1 camera, authentication and streaming",
+      "configuration_pattern": "",
+      "source_file_fragments": [
+        "MediaPlayCtrl",
+        "CameraPopup",
+        "WebRtcMediaController",
+        "ICameraSignalingChannel",
+        "GatewayDevice",
+        "GatewayProtocol",
+        "SnapmakerPrinterAgent",
+        "SSWCP",
+        "MoonRaker"
+      ],
+      "status": "Missing",
+      "priority": "P0",
+      "dependencies": [
+        "u1-gateway",
+        "firmware-capabilities"
+      ],
+      "migration_boundary": "Generic printer-video infrastructure exists, but no validated U1-specific camera transport/authentication integration is present. GUI/Camera.cpp is the 3D viewport camera and is not evidence of printer streaming. Snapmaker routes camera start/timelapse through SSWCP and its MoonRaker host/Flutter device bridge; these are not present as an equivalent U1 integration."
+    },
+    {
+      "id": "u1-rfid",
+      "category": "Connectivity",
+      "title": "U1 RFID/NFC filament metadata and refresh",
+      "configuration_pattern": "",
+      "source_file_fragments": [
+        "SnapmakerPrinterAgent",
+        "GatewayDevice",
+        "FilamentSync",
+        "MoonRaker",
+        "SSWCP",
+        "MoonRaker"
+      ],
+      "status": "Partial",
+      "priority": "P0",
+      "dependencies": [
+        "u1-gateway",
+        "firmware-capabilities"
+      ],
+      "migration_boundary": "Current NFC metadata reader is bounded evidence only; generic Bambu RFID controls are not U1 parity. No UID fabrication/writing."
+    },
+    {
+      "id": "u1-filaments",
+      "category": "Connectivity",
+      "title": "Filament inventory, assignments and synchronization",
+      "configuration_pattern": "filament_settings_id|filament_type|filament_colour",
+      "source_file_fragments": [
+        "SnapmakerPrinterAgent",
+        "filamentsync",
+        "GatewayDevice",
+        "SSWCP"
+      ],
+      "status": "Partial",
+      "priority": "P0",
+      "dependencies": [
+        "u1-rfid",
+        "high-flow"
+      ],
+      "migration_boundary": "Local assignment exists; current Snapmaker inventory/mapping synchronization remains incomplete."
+    },
+    {
+      "id": "u1-feeder",
+      "category": "Connectivity",
+      "title": "Automatic feeding and unloading",
+      "configuration_pattern": "",
+      "source_file_fragments": [
+        "GatewayDevice",
+        "MoonRaker",
+        "SnapmakerPrinterAgent",
+        "SSWCP",
+        "MoonRaker"
+      ],
+      "status": "Unknown",
+      "priority": "P0",
+      "dependencies": [
+        "u1-gateway",
+        "firmware-capabilities"
+      ],
+      "migration_boundary": "Need exact stock feeder API/state machine and offline fixtures. Do not execute hardware commands during this work."
+    },
+    {
+      "id": "u1-multiace",
+      "category": "Connectivity",
+      "title": "MultiACE device integration",
+      "configuration_pattern": "fos_filament_mms_slot|fos_.*",
+      "source_file_fragments": [
+        "MultiACE",
+        "MultiAce",
+        "Fos",
+        "MoonRaker",
+        "SSWCP",
+        "MoonRaker"
+      ],
+      "status": "Missing",
+      "priority": "P1",
+      "dependencies": [
+        "u1-feeder",
+        "fos-nozzles"
+      ],
+      "migration_boundary": "Firmware-/device-dependent FOrca integration is not imported or hardware-verified."
+    },
+    {
+      "id": "u1-cover",
+      "category": "Connectivity",
+      "title": "Top cover/door/enclosure capability and status",
+      "configuration_pattern": "chamber_temperature|chamber_.*|support_chamber_.*",
+      "source_file_fragments": [
+        "GatewayDevice",
+        "SnapmakerPrinterAgent",
+        "DeviceManager",
+        "SSWCP",
+        "MoonRaker"
+      ],
+      "status": "Unknown",
+      "priority": "P0",
+      "dependencies": [
+        "firmware-capabilities"
+      ],
+      "migration_boundary": "Exact stock sensor/API and third-party cover variant must be identified. A printer cover thumbnail or chamber setting is not sensor integration."
+    },
+    {
+      "id": "high-flow",
+      "category": "Nozzles/profiles",
+      "title": "High-flow hotend detection and compatibility",
+      "configuration_pattern": "printer_flow_support|process_flow_support|filament_flow_support|filament_volume_type|nozzle_volume_type",
+      "source_file_fragments": [
+        "HighFlowCompat",
+        "FlowType",
+        "SSWCPProtocol",
+        "GatewayDevice",
+        "PrintConfig",
+        "SSWCP",
+        "MoonRaker"
+      ],
+      "status": "Partial",
+      "priority": "P0",
+      "dependencies": [
+        "u1-gateway",
+        "project-migration"
+      ],
+      "migration_boundary": "Snapmaker flow-variant schema, SSWCP payload and profile selection are coupled and not fully ported."
+    },
+    {
+      "id": "nozzle-02",
+      "category": "Nozzles/profiles",
+      "title": "Uniform 0.2 mm U1 profile",
+      "configuration_pattern": "nozzle_diameter",
+      "source_file_fragments": [
+        "PrintConfig"
+      ],
+      "status": "Implemented but untested",
+      "priority": "P1",
+      "dependencies": [
+        "profile-visibility"
+      ],
+      "migration_boundary": "Preset is present; no claim of physical calibration or supported material combinations."
+    },
+    {
+      "id": "nozzle-04",
+      "category": "Nozzles/profiles",
+      "title": "Uniform 0.4 mm U1 profile",
+      "configuration_pattern": "nozzle_diameter",
+      "source_file_fragments": [
+        "PrintConfig"
+      ],
+      "status": "Verified",
+      "priority": "P0",
+      "dependencies": [
+        "profile-visibility"
+      ],
+      "migration_boundary": "A retained-profile cube sliced/exported in Linux; physical printing and every process/material remain unverified."
+    },
+    {
+      "id": "nozzle-06",
+      "category": "Nozzles/profiles",
+      "title": "Uniform 0.6 mm U1 profile",
+      "configuration_pattern": "nozzle_diameter",
+      "source_file_fragments": [
+        "PrintConfig"
+      ],
+      "status": "Implemented but untested",
+      "priority": "P1",
+      "dependencies": [
+        "profile-visibility"
+      ],
+      "migration_boundary": "Preset is present; complete material/process and physical validation is missing."
+    },
+    {
+      "id": "nozzle-08",
+      "category": "Nozzles/profiles",
+      "title": "Uniform 0.8 mm U1 profile",
+      "configuration_pattern": "nozzle_diameter",
+      "source_file_fragments": [
+        "PrintConfig"
+      ],
+      "status": "Implemented but untested",
+      "priority": "P1",
+      "dependencies": [
+        "profile-visibility"
+      ],
+      "migration_boundary": "Preset is present; complete material/process and physical validation is missing."
+    },
+    {
+      "id": "nozzle-mixed",
+      "category": "Nozzles/profiles",
+      "title": "Mixed 0.4+0.6 U1 profile and arbitrary head combinations",
+      "configuration_pattern": "nozzle_diameter",
+      "source_file_fragments": [
+        "PrintConfig",
+        "PrintRegion"
+      ],
+      "status": "Partial",
+      "priority": "P0",
+      "dependencies": [
+        "fos-nozzles"
+      ],
+      "migration_boundary": "0.4/0.6 synthetic engine paths verified. One visible preset is not a FOrca-only hardware limit."
+    },
+    {
+      "id": "profile-visibility",
+      "category": "Nozzles/profiles",
+      "title": "Printer wizard and selected-preset visibility",
+      "configuration_pattern": "",
+      "source_file_fragments": [
+        "ConfigWizard",
+        "PresetBundle",
+        "PresetComboBoxes"
+      ],
+      "status": "Partial",
+      "priority": "P0",
+      "dependencies": [],
+      "migration_boundary": "All five diameter variants exist in the system catalog; inspect selection visibility without changing existing user configurations."
+    },
+    {
+      "id": "profile-macros",
+      "category": "Nozzles/profiles",
+      "title": "U1 machine start/end/tool-change macro preservation",
+      "configuration_pattern": "machine_start_gcode|machine_end_gcode|change_filament_gcode",
+      "source_file_fragments": [
+        "PrintConfig",
+        "GCode.cpp"
+      ],
+      "status": "Partial",
+      "priority": "P0",
+      "dependencies": [
+        "project-migration"
+      ],
+      "migration_boundary": "Do not replace stock docking/feeding/temperature macros with generic commands; generated outputs require semantic comparison."
+    },
+    {
+      "id": "profile-sync",
+      "category": "Nozzles/profiles",
+      "title": "Attribution, inheritance, collisions and user overrides",
+      "configuration_pattern": "compatible_printers|inherits",
+      "source_file_fragments": [
+        "PresetBundle",
+        "Preset.cpp"
+      ],
+      "status": "Partial",
+      "priority": "P1",
+      "dependencies": [],
+      "migration_boundary": "Immutable review catalogs are tested; unvalidated/calibration and separate-profile redistribution gates remain."
+    },
+    {
+      "id": "project-migration",
+      "category": "Projects",
+      "title": "Original Snapmaker 3MF import and configuration migration",
+      "configuration_pattern": "raft_first_layer_expansion|printer_flow_support|mixed_filament_definitions",
+      "source_file_fragments": [
+        "bbs_3mf",
+        "PrintConfig",
+        "PresetBundle"
+      ],
+      "status": "Incompatible",
+      "priority": "P0",
+      "dependencies": [
+        "support-auto"
+      ],
+      "migration_boundary": "Original Snapmaker reference imports fail on -1. Unknown/renamed settings and array semantics need explicit migration."
+    },
+    {
+      "id": "project-export",
+      "category": "Projects",
+      "title": "3MF save/export and metadata fidelity",
+      "configuration_pattern": "",
+      "source_file_fragments": [
+        "bbs_3mf",
+        "Model.cpp"
+      ],
+      "status": "Partial",
+      "priority": "P0",
+      "dependencies": [
+        "project-migration"
+      ],
+      "migration_boundary": "Own-project export passed. Vendor round-trip preservation and fork-specific metadata are not proven."
+    },
+    {
+      "id": "project-fos",
+      "category": "Projects",
+      "title": "FOrca schema and object/filament metadata migration",
+      "configuration_pattern": "fos_.*|color_patch_.*|has_mixed_nozzle_sizes",
+      "source_file_fragments": [
+        "bbs_3mf",
+        "PrintConfig",
+        "PrintRegion"
+      ],
+      "status": "Missing",
+      "priority": "P0",
+      "dependencies": [],
+      "migration_boundary": "A known set of FOrca keys has no native equivalent/schema consumer. Never drop them silently."
+    },
+    {
+      "id": "mcp-core",
+      "category": "MCP",
+      "title": "Native protocol, authentication and stdio",
+      "configuration_pattern": "",
+      "source_file_fragments": [
+        "McpProtocol",
+        "McpHttp",
+        "McpStdio"
+      ],
+      "status": "Verified",
+      "priority": "P0",
+      "dependencies": [],
+      "migration_boundary": "Native component/transport and real GUI HTTP/stdio smoke passed; this is not full client or printer verification."
+    },
+    {
+      "id": "mcp-transform",
+      "category": "MCP",
+      "title": "Move, rotate, scale, arrange and inspect",
+      "configuration_pattern": "",
+      "source_file_fragments": [
+        "McpToolsScene",
+        "McpToolsPlate",
+        "McpToolsTransform"
+      ],
+      "status": "Partial",
+      "priority": "P1",
+      "dependencies": [
+        "mcp-core"
+      ],
+      "migration_boundary": "Typed handlers are retained; allowed subset and actual runtime tests differ by operation."
+    },
+    {
+      "id": "mcp-slicing",
+      "category": "MCP",
+      "title": "Slicing, estimates, consumption, warnings and export",
+      "configuration_pattern": "",
+      "source_file_fragments": [
+        "McpToolsProject",
+        "McpToolsView",
+        "McpToolsProject"
+      ],
+      "status": "Partial",
+      "priority": "P0",
+      "dependencies": [
+        "mcp-core",
+        "project-migration"
+      ],
+      "migration_boundary": "Native STL/cube slicing passed; project/file export handlers remain gated pending review."
+    },
+    {
+      "id": "mcp-project-files",
+      "category": "MCP",
+      "title": "Open/import/create/save/export projects and files",
+      "configuration_pattern": "",
+      "source_file_fragments": [
+        "McpToolsProject",
+        "McpPaths",
+        "McpU1Policy"
+      ],
+      "status": "Partial",
+      "priority": "P0",
+      "dependencies": [
+        "mcp-core",
+        "project-migration"
+      ],
+      "migration_boundary": "Upstream handlers exist but U1 policy denies them. Authorized roots do not by themselves authorize destructive overwrite."
+    },
+    {
+      "id": "mcp-settings",
+      "category": "MCP",
+      "title": "Object/material/support/profile authoring",
+      "configuration_pattern": "",
+      "source_file_fragments": [
+        "McpToolsConfig",
+        "McpToolsConfig",
+        "McpU1Policy"
+      ],
+      "status": "Partial",
+      "priority": "P1",
+      "dependencies": [
+        "mcp-core",
+        "project-fos"
+      ],
+      "migration_boundary": "Most configuration mutation is intentionally gated until argument/credential/approval review."
+    },
+    {
+      "id": "mcp-destruction",
+      "category": "MCP",
+      "title": "Duplicate/delete and destructive operation approval",
+      "configuration_pattern": "",
+      "source_file_fragments": [
+        "McpToolsScene",
+        "McpU1Policy"
+      ],
+      "status": "Partial",
+      "priority": "P0",
+      "dependencies": [
+        "mcp-core"
+      ],
+      "migration_boundary": "Source is not equivalent to exposed tools; destructive operations need operator-bound confirmation."
+    },
+    {
+      "id": "mcp-printer",
+      "category": "MCP",
+      "title": "Authorized printer state, submission and controls",
+      "configuration_pattern": "",
+      "source_file_fragments": [
+        "McpU1Policy",
+        "McpToolsU1",
+        "PrinterAgent"
+      ],
+      "status": "Missing",
+      "priority": "P0",
+      "dependencies": [
+        "u1-gateway",
+        "firmware-capabilities"
+      ],
+      "migration_boundary": "No reviewed operator-bound printer-control adapter. Generic UI/script/plugin bridges remain blocked."
+    },
+    {
+      "id": "firmware-stock",
+      "category": "Firmware",
+      "title": "Stock U1 firmware API and G-code behavior",
+      "configuration_pattern": "gcode_flavor",
+      "source_file_fragments": [
+        "SnapmakerPrinterAgent",
+        "MoonrakerPrinterAgent",
+        "GCode.cpp"
+      ],
+      "status": "Partial",
+      "priority": "P0",
+      "dependencies": [
+        "u1-gateway",
+        "profile-macros"
+      ],
+      "migration_boundary": "Must compare actual stock API fixtures, command vocabulary and tool mapping; hardware remains untested."
+    },
+    {
+      "id": "firmware-extended",
+      "category": "Firmware",
+      "title": "Extended Firmware 2.1 and optional services",
+      "configuration_pattern": "",
+      "source_file_fragments": [
+        "SnapmakerPrinterAgent",
+        "MoonrakerPrinterAgent"
+      ],
+      "status": "Partial",
+      "priority": "P0",
+      "dependencies": [
+        "firmware-capabilities"
+      ],
+      "migration_boundary": "Do not infer all installations expose identical Moonraker, camera, NFC or macro services."
+    },
+    {
+      "id": "firmware-capabilities",
+      "category": "Firmware",
+      "title": "Dynamic capability detection and explicit unknowns",
+      "configuration_pattern": "",
+      "source_file_fragments": [
+        "SnapmakerPrinterAgent",
+        "MoonrakerPrinterAgent",
+        "GatewayDevice"
+      ],
+      "status": "Partial",
+      "priority": "P0",
+      "dependencies": [],
+      "migration_boundary": "Need unified per-service/version capability negotiation and recorded fixtures, not hardcoded version assumptions."
+    },
+    {
+      "id": "plugins-discovery",
+      "category": "Plugins",
+      "title": "Bundled plugin discovery, consent and installation",
+      "configuration_pattern": "",
+      "source_file_fragments": [
+        "PluginLoader",
+        "PluginManager"
+      ],
+      "status": "Partial",
+      "priority": "P0",
+      "dependencies": [],
+      "migration_boundary": "Native installation/load and disabled staging tests pass; Windows GUI catalog verification belongs to the next candidate build."
+    },
+    {
+      "id": "plugin-studio",
+      "category": "Plugins",
+      "title": "Studio read-only project inspection and preflight",
+      "configuration_pattern": "",
+      "source_file_fragments": [
+        "PluginLoader"
+      ],
+      "status": "Verified",
+      "priority": "P1",
+      "dependencies": [
+        "plugins-discovery"
+      ],
+      "migration_boundary": "Actual pinned core inspection and no-mutation checks passed. Conversion/clamping/printer controls are not exposed."
+    },
+    {
+      "id": "plugin-converter",
+      "category": "Plugins",
+      "title": "External converter connector and project-copy workflow",
+      "configuration_pattern": "",
+      "source_file_fragments": [
+        "PluginLoader"
+      ],
+      "status": "Verified",
+      "priority": "P1",
+      "dependencies": [
+        "plugins-discovery"
+      ],
+      "migration_boundary": "Actual loopback service round trip passed and preserved input hash. Noncommercial implementation is not distributed."
+    },
+    {
+      "id": "windows-signing",
+      "category": "Release",
+      "title": "Windows-trusted Authenticode signatures",
+      "configuration_pattern": "",
+      "source_file_fragments": [
+        "sign-portable.ps1",
+        "verify-portable.ps1"
+      ],
+      "status": "Partial",
+      "priority": "P0",
+      "dependencies": [],
+      "migration_boundary": "Signing/verification pipeline prepared; no signing identity is configured. Self-signing is not Windows-trusted signing."
+    },
+    {
+      "id": "macos-build",
+      "category": "Release",
+      "title": "Native macOS ARM64 application and packaging",
+      "configuration_pattern": "",
+      "source_file_fragments": [],
+      "status": "Unknown",
+      "priority": "P0",
+      "dependencies": [],
+      "migration_boundary": "Component checks are not a full macOS application build; stable release gate remains."
+    },
+    {
+      "id": "hardware-print",
+      "category": "Release",
+      "title": "Physical single/four-tool/mixed-nozzle validation",
+      "configuration_pattern": "",
+      "source_file_fragments": [],
+      "status": "Unknown",
+      "priority": "P0",
+      "dependencies": [
+        "project-migration",
+        "u1-gateway",
+        "fos-nozzles",
+        "profile-macros"
+      ],
+      "migration_boundary": "No physical U1 prints are authorized or performed. 100% physical compatibility cannot be certified offline."
+    },
+    {
+      "id": "orca-engine",
+      "category": "Official Orca",
+      "title": "Retained walls, infill, cooling, seams and G-code engine",
+      "configuration_pattern": "wall_generator|sparse_infill_pattern|seam_.*|ironing.*|fuzzy_.*",
+      "source_file_fragments": [
+        "PerimeterGenerator",
+        "Fill",
+        "Seam",
+        "CoolingBuffer"
+      ],
+      "status": "Partial",
+      "priority": "P1",
+      "dependencies": [],
+      "migration_boundary": "Full FFF suite passed for its scope; it does not prove every retained feature with every U1 profile."
+    },
+    {
+      "id": "orca-geometry",
+      "category": "Official Orca",
+      "title": "STL/STEP/3MF, modeling, painting and CAD",
+      "configuration_pattern": "",
+      "source_file_fragments": [
+        "STEP.cpp",
+        "bbs_3mf",
+        "CAD/",
+        "Gizmo"
+      ],
+      "status": "Implemented but untested",
+      "priority": "P1",
+      "dependencies": [],
+      "migration_boundary": "Native implementations retained. Complete U1 workflows and full source-to-reference comparison are not executed."
+    },
+    {
+      "id": "orca-calibration",
+      "category": "Official Orca",
+      "title": "Calibration and process workflows",
+      "configuration_pattern": "",
+      "source_file_fragments": [
+        "Calibration",
+        "ExtrusionCalibration"
+      ],
+      "status": "Implemented but untested",
+      "priority": "P1",
+      "dependencies": [
+        "profile-macros"
+      ],
+      "migration_boundary": "Audit printer-specific calibration commands before claiming U1 safety; no hardware tests run."
+    },
+    {
+      "id": "orca-gates",
+      "category": "Official Orca",
+      "title": "Integration changes, disabled features and default policies",
+      "configuration_pattern": "",
+      "source_file_fragments": [
+        "McpU1Policy",
+        "PluginManager",
+        "GUI_App.cpp"
+      ],
+      "status": "Partial",
+      "priority": "P0",
+      "dependencies": [],
+      "migration_boundary": "Whole-source diff against MCP base is recorded. MCP restrictions and isolated identity are intentional changes, not full exposed upstream parity."
+    },
+    {
+      "id": "high-flow-detection",
+      "category": "Nozzles/profiles",
+      "title": "Detect and reconcile reported U1 high-flow hotends",
+      "configuration_pattern": "printer_flow_support|process_flow_support|filament_flow_support|filament_volume_type|nozzle_volume_type",
+      "source_file_fragments": [
+        "HighFlowCompat",
+        "FlowType",
+        "SSWCPProtocol",
+        "GatewayDevice",
+        "PrintConfig"
+      ],
+      "status": "Missing",
+      "priority": "P0",
+      "dependencies": [
+        "u1-gateway",
+        "high-flow"
+      ],
+      "migration_boundary": "A generic nozzle-volume setting does not detect installed U1 high-flow hardware. Port reported per-head flow state and conflict checks using documented firmware/gateway fixtures."
+    }
+  ]
+}

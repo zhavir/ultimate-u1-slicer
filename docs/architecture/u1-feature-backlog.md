@@ -1,3 +1,30 @@
+# Current parity implementation backlog
+
+Use [functional-parity-audit.md](functional-parity-audit.md) and its exact-source JSON as the detailed feature inventory. The original narrower checkpoint follows below for history; it is not a claim of full parity.
+
+## Priority and dependencies
+
+| Priority | Implementation package | Dependencies | Acceptance |
+|---|---|---|---|
+| P0 | Finish bundled plugin discovery, explicit disabled installation and native UI catalog verification | Existing plugin host; deterministic wheels | Both packages visible, no auto-load, user content preserved; native Windows check |
+| P0 | Original Snapmaker 3MF and automatic support geometry | Exact v2.4.1 support implementation; schema migration | Load/save/slice original single/four-tool projects; automatic/explicit support footprint comparisons |
+| P0 | Unified stock/Extended capability model and recorded fixtures | Documented per-service APIs | Unknown remains unknown; API/service differences and installed nozzle state preserved |
+| P0 | Snapmaker gateway, pairing and native device model | Capability model; companion/runtime/license audit | Offline protocol tests, then separately authorized read-only live verification |
+| P0 | Camera, RFID, filament inventory, automatic feeder and cover status | Validated gateway/firmware interfaces; exact cover variant | Native UI state/transport tests; no generic Bambu or Moonraker substitution claims |
+| P0 | High-flow schema, SSWCP mapping and nozzle/profile selection | Device model; migration | Per-head flow variants, compatible materials and round-trip projects; no invented calibration |
+| P0 | Complete typed MCP project/file controls and operator-bound approval adapters | Migration; native lifecycle; authorized roots | No generic script/UI bypass, no token exposure, new-file safety and reviewed destructive confirmation |
+| P0 | FOrca schema/mapping and native role assignment adapters | Project migration; head/flow model | All widths/speeds/assignments preserved; unsupported keys never silently discarded |
+| P0 | Signed Windows release and native macOS ARM64 bundle | Real signing identity; all applicable tests | Trusted timestamped signatures and full native build results |
+| P1 | Complete prime-tower and support-transition parity | Material groups, thermal state, support schema | Semantic path/temperature/interface/consumption comparisons against reference slicers |
+| P1 | Full Spectrum recipe/mode/decomposition/subdivision migration | Mixed-filament serialization; geometry tests | Ratio/Cycle/Match/Gradient and advanced modes verified individually |
+| P1 | FOrca Color Patch and per-nozzle engine consumers | FOrca schema, nozzle mapping and role assignment | Shell/core geometry, tool-specific paths and material checks; ordinary painting is not equivalence |
+| P1 | Material/profile synchronization and override import | Schema validation; attribution/licensing | Preserve user overrides/inheritance and flag uncalibrated imports |
+| Gate | Supervised hardware validation | Every software gate above | No unattended heating, homing, printing, macros or firmware changes |
+
+Coupled generator/schema/protocol ports must stay reviewable. Do not add inert settings, clamp incompatible values or mark a plugin substitute as a kernel implementation. No production or physical compatibility claim is possible from offline tests alone.
+
+---
+
 # Whole-application U1 feature integration
 
 The scope is the complete slicer. Preserve and integrate every compatible Orca/FOrca capability that benefits U1: slicing algorithms, process controls, modeling/painting, calibration, project formats, UI, diagnostics, connectivity and native AI automation. Profiles are one subsystem. Reuse the full official implementation already in this application; do not rewrite a feature merely because a fork uses different names.
