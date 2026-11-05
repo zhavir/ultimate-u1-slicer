@@ -74,9 +74,9 @@ public:
         if (this->hOpenGL) {
             BOOL released = FreeLibrary(this->hOpenGL);
             if (released)
-                printf("System OpenGL library released\n");
+                fprintf(stderr, "System OpenGL library released\n");
             else
-                printf("System OpenGL library NOT released\n");
+                fprintf(stderr, "System OpenGL library NOT released\n");
             this->hOpenGL = nullptr;
         }
     }
@@ -114,7 +114,7 @@ protected:
     {
         hOpenGL = LoadLibraryExW(L"opengl32.dll", nullptr, 0);
         if (hOpenGL == nullptr) {
-            printf("Failed loading the system opengl32.dll\n");
+            fprintf(stderr, "Failed loading the system opengl32.dll\n");
             return;
         }
 
@@ -129,7 +129,7 @@ protected:
         Func_glGetString 		glGetString 	 = (Func_glGetString)	  GetProcAddress(hOpenGL, "glGetString");
 
         if (wglCreateContext == nullptr || wglMakeCurrent == nullptr || wglDeleteContext == nullptr || glGetString == nullptr) {
-            printf("Failed loading the system opengl32.dll: The library is invalid.\n");
+            fprintf(stderr, "Failed loading the system opengl32.dll: The library is invalid.\n");
             return;
         }
 
@@ -282,12 +282,12 @@ int wmain(int argc, wchar_t **argv)
         wchar_t path_to_mesa[MAX_PATH + 1] = { 0 };
         wcscpy(path_to_mesa, path_to_exe);
         wcscat(path_to_mesa, L"mesa\\opengl32.dll");
-        printf("Loading MESA OpenGL library: %S\n", path_to_mesa);
+        fprintf(stderr, "Loading MESA OpenGL library: %S\n", path_to_mesa);
         HINSTANCE hInstance_OpenGL = LoadLibraryExW(path_to_mesa, nullptr, 0);
         if (hInstance_OpenGL == nullptr) {
-            printf("MESA OpenGL library was not loaded\n");
+            fprintf(stderr, "MESA OpenGL library was not loaded\n");
         } else
-            printf("MESA OpenGL library was loaded successfully\n");
+            fprintf(stderr, "MESA OpenGL library was loaded successfully\n");
     }
 #endif /* SLIC3R_GUI */
 
@@ -298,7 +298,7 @@ int wmain(int argc, wchar_t **argv)
 //	printf("Loading Slic3r library: %S\n", path_to_slic3r);
     HINSTANCE hInstance_Slic3r = LoadLibraryExW(path_to_slic3r, nullptr, 0);
     if (hInstance_Slic3r == nullptr) {
-        printf("OrcaSlicer.dll was not loaded, error=%lu\n", GetLastError());
+        fprintf(stderr, "OrcaSlicer.dll was not loaded, error=%lu\n", GetLastError());
         return -1;
     }
 
@@ -312,7 +312,7 @@ int wmain(int argc, wchar_t **argv)
 #endif
         );
     if (orcaslicer_main == nullptr) {
-        printf("could not locate the function orcaslicer_main in OrcaSlicer.dll\n");
+        fprintf(stderr, "could not locate the function orcaslicer_main in OrcaSlicer.dll\n");
         return -1;
     }
     // argc minus the trailing nullptr of the argv
