@@ -1,6 +1,7 @@
 param(
     [Parameter(Mandatory=$true)][string]$Archive,
-    [Parameter(Mandatory=$true)][string]$OutputDirectory
+    [Parameter(Mandatory=$true)][string]$OutputDirectory,
+    [switch]$RequireSignature
 )
 $ErrorActionPreference = 'Stop'
 $archivePath = (Resolve-Path $Archive).Path
@@ -10,11 +11,21 @@ Expand-Archive -LiteralPath $archivePath -DestinationPath $work
 $executables = @(Get-ChildItem $work -Recurse -Filter orca-slicer.exe)
 if ($executables.Count -ne 1) { throw 'Expected exactly one portable slicer executable' }
 $exe = $executables[0]
+$signature = Get-AuthenticodeSignature -LiteralPath $exe.FullName
+$signatureValid = $signature.Status -eq 'Valid' -and $null -ne $signature.TimeStamperCertificate
+if ($RequireSignature -and -not $signatureValid) { throw 'Publication requires a valid Windows-trusted timestamped code signature' }
 $data = Join-Path $exe.DirectoryName 'ultimate_u1_data_dir'
 if (-not (Test-Path (Join-Path $data 'portable-mode.txt'))) { throw 'Portable data directory marker missing' }
 if (@(Get-ChildItem $data -Recurse -File).Count -ne 1) { throw 'Archive contains unexpected portable user data' }
 if (Get-ChildItem $work -Recurse -File | Where-Object { $_.Name -in @('token', 'server.json') }) {
     throw 'Archive contains MCP authentication state'
+}
+$plugins = Join-Path $exe.DirectoryName 'resources/u1_plugins'
+$manifest = Get-Content (Join-Path $plugins 'plugins.json') -Raw | ConvertFrom-Json
+if ($manifest.plugins.Count -ne 2) { throw 'Expected both optional integration wheels' }
+foreach ($plugin in $manifest.plugins) {
+    $wheel = Join-Path $plugins $plugin.file
+    if ((Get-FileHash $wheel -Algorithm SHA256).Hash.ToLowerInvariant() -ne $plugin.sha256) { throw 'Plugin wheel hash mismatch' }
 }
 $appData = Join-Path $env:APPDATA 'UltimateU1Slicer'
 if (Test-Path $appData) { throw 'Verification requires a clean runner profile' }
@@ -45,6 +56,12 @@ try {
     if ($readyReply.result.isError) { throw 'Native GUI readiness check failed' }
     $ready = $readyReply.result.content[0].text | ConvertFrom-Json
     if (-not $ready.satisfied) { throw 'Native GUI did not finish startup' }
+    $stagedPlugins = @(Get-ChildItem (Join-Path $data 'orca_plugins') -Recurse -Filter '.install_state.json')
+    if ($stagedPlugins.Count -ne 2) { throw 'Bundled plugins did not become discoverable in the private portable profile' }
+    foreach ($stateFile in $stagedPlugins) {
+        $state = Get-Content $stateFile.FullName -Raw | ConvertFrom-Json
+        if ($state.enabled) { throw 'A bundled plugin was enabled without user consent' }
+    }
     if ((Test-Path $appData) -or (Test-Path $urlRegistration)) { throw 'Portable startup wrote roaming settings or registered a URL handler' }
     # Exercise the shipped bridge without --datadir or a token override: it must find the
     # same portable discovery file as the GUI, rather than another slicer's profile.
@@ -71,7 +88,7 @@ try {
         $bridge.Dispose()
     }
     if ((Test-Path $appData) -or (Test-Path $urlRegistration)) { throw 'Stdio startup escaped portable storage' }
-    $report = @{platform='Windows x64'; portable_directory_detected=$true; roaming_directory_untouched=$true; url_registration_untouched=$true; native_gui_ready=$true; native_help_passed=$true; authenticated_mcp_initialize_passed=$true; portable_stdio_initialize_passed=$true; printer_contacted=$false; hardware_verified=$false; stable_release=$false; source_commit=$env:GITHUB_SHA}
+    $report = @{authenticode_valid=[bool]$signatureValid; authenticode_status=[string]$signature.Status; optional_plugin_wheels_verified=2; bundled_plugins_discoverable=2; bundled_plugins_default_disabled=$true; platform='Windows x64'; portable_directory_detected=$true; roaming_directory_untouched=$true; url_registration_untouched=$true; native_gui_ready=$true; native_help_passed=$true; authenticated_mcp_initialize_passed=$true; portable_stdio_initialize_passed=$true; printer_contacted=$false; hardware_verified=$false; stable_release=$false; source_commit=$env:GITHUB_SHA}
     $report | ConvertTo-Json | Set-Content (Join-Path $output 'verification.json')
     $hash = (Get-FileHash $archivePath -Algorithm SHA256).Hash.ToLowerInvariant()
     "$hash  $([IO.Path]::GetFileName($archivePath))" | Set-Content (Join-Path $output 'SHA256SUMS')

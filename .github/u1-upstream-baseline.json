@@ -1072,6 +1072,232 @@
       "head": "727005d55885dedddb67e69cb7881b0a8dfd0544",
       "releases": {},
       "tags": {}
+    },
+    "snapmaker-studio": {
+      "repository": "DVOpenLabs/snapmaker-studio",
+      "branch": "main",
+      "head": "6d2e7f0485bfb7fa24caa9a58a4bd5fd37431222",
+      "releases": {
+        "423538993": {
+          "tag": "v1.7.0",
+          "updated_at": "2026-10-25T17:04:30Z",
+          "url": "https://github.com/DVOpenLabs/snapmaker-studio/releases/tag/v1.7.0",
+          "prerelease": false
+        },
+        "419971477": {
+          "tag": "v1.6.0",
+          "updated_at": "2026-10-21T19:30:55Z",
+          "url": "https://github.com/DVOpenLabs/snapmaker-studio/releases/tag/v1.6.0",
+          "prerelease": false
+        },
+        "405212509": {
+          "tag": "v1.5.0",
+          "updated_at": "2026-10-06T23:17:10Z",
+          "url": "https://github.com/DVOpenLabs/snapmaker-studio/releases/tag/v1.5.0",
+          "prerelease": false
+        },
+        "404633461": {
+          "tag": "v1.4.1",
+          "updated_at": "2026-10-06T11:32:04Z",
+          "url": "https://github.com/DVOpenLabs/snapmaker-studio/releases/tag/v1.4.1",
+          "prerelease": false
+        },
+        "404243828": {
+          "tag": "v1.4.0",
+          "updated_at": "2026-10-06T02:20:30Z",
+          "url": "https://github.com/DVOpenLabs/snapmaker-studio/releases/tag/v1.4.0",
+          "prerelease": false
+        },
+        "403109662": {
+          "tag": "v1.3.1",
+          "updated_at": "2026-10-04T19:05:10Z",
+          "url": "https://github.com/DVOpenLabs/snapmaker-studio/releases/tag/v1.3.1",
+          "prerelease": false
+        },
+        "402642929": {
+          "tag": "v1.3.0",
+          "updated_at": "2026-10-03T18:41:37Z",
+          "url": "https://github.com/DVOpenLabs/snapmaker-studio/releases/tag/v1.3.0",
+          "prerelease": false
+        },
+        "398140475": {
+          "tag": "v1.2.0",
+          "updated_at": "2026-09-28T10:18:26Z",
+          "url": "https://github.com/DVOpenLabs/snapmaker-studio/releases/tag/v1.2.0",
+          "prerelease": false
+        },
+        "397452480": {
+          "tag": "v1.1.0",
+          "updated_at": "2026-09-27T01:49:11Z",
+          "url": "https://github.com/DVOpenLabs/snapmaker-studio/releases/tag/v1.1.0",
+          "prerelease": false
+        },
+        "397045200": {
+          "tag": "v1.0.0",
+          "updated_at": "2026-09-26T02:44:08Z",
+          "url": "https://github.com/DVOpenLabs/snapmaker-studio/releases/tag/v1.0.0",
+          "prerelease": false
+        },
+        "379378763": {
+          "tag": "v0.9.0",
+          "updated_at": "2026-08-30T19:21:48Z",
+          "url": "https://github.com/DVOpenLabs/snapmaker-studio/releases/tag/v0.9.0",
+          "prerelease": false
+        },
+        "376616349": {
+          "tag": "v0.8.0",
+          "updated_at": "2026-08-25T18:21:55Z",
+          "url": "https://github.com/DVOpenLabs/snapmaker-studio/releases/tag/v0.8.0",
+          "prerelease": false
+        },
+        "376115054": {
+          "tag": "v0.7.2",
+          "updated_at": "2026-08-25T02:49:50Z",
+          "url": "https://github.com/DVOpenLabs/snapmaker-studio/releases/tag/v0.7.2",
+          "prerelease": false
+        },
+        "376090279": {
+          "tag": "v0.7.1",
+          "updated_at": "2026-08-25T01:26:25Z",
+          "url": "https://github.com/DVOpenLabs/snapmaker-studio/releases/tag/v0.7.1",
+          "prerelease": false
+        },
+        "376057920": {
+          "tag": "v0.7.0",
+          "updated_at": "2026-08-25T00:03:03Z",
+          "url": "https://github.com/DVOpenLabs/snapmaker-studio/releases/tag/v0.7.0",
+          "prerelease": false
+        },
+        "375733821": {
+          "tag": "v0.6.2",
+          "updated_at": "2026-08-24T13:52:04Z",
+          "url": "https://github.com/DVOpenLabs/snapmaker-studio/releases/tag/v0.6.2",
+          "prerelease": false
+        },
+        "375457263": {
+          "tag": "v0.6.1",
+          "updated_at": "2026-08-24T05:02:44Z",
+          "url": "https://github.com/DVOpenLabs/snapmaker-studio/releases/tag/v0.6.1",
+          "prerelease": false
+        },
+        "375365525": {
+          "tag": "v0.6.0",
+          "updated_at": "2026-08-24T00:01:04Z",
+          "url": "https://github.com/DVOpenLabs/snapmaker-studio/releases/tag/v0.6.0",
+          "prerelease": false
+        },
+        "375345577": {
+          "tag": "v0.5.0",
+          "updated_at": "2026-08-23T22:40:11Z",
+          "url": "https://github.com/DVOpenLabs/snapmaker-studio/releases/tag/v0.5.0",
+          "prerelease": false
+        },
+        "375322331": {
+          "tag": "v0.4.0",
+          "updated_at": "2026-08-23T20:49:36Z",
+          "url": "https://github.com/DVOpenLabs/snapmaker-studio/releases/tag/v0.4.0",
+          "prerelease": false
+        },
+        "375236959": {
+          "tag": "v0.4.0-beta.24",
+          "updated_at": "2026-08-23T14:39:49Z",
+          "url": "https://github.com/DVOpenLabs/snapmaker-studio/releases/tag/v0.4.0-beta.24",
+          "prerelease": true
+        },
+        "375119714": {
+          "tag": "v0.4.0-beta.23",
+          "updated_at": "2026-08-23T05:04:26Z",
+          "url": "https://github.com/DVOpenLabs/snapmaker-studio/releases/tag/v0.4.0-beta.23",
+          "prerelease": true
+        },
+        "375104960": {
+          "tag": "v0.4.0-beta.22",
+          "updated_at": "2026-08-23T03:30:13Z",
+          "url": "https://github.com/DVOpenLabs/snapmaker-studio/releases/tag/v0.4.0-beta.22",
+          "prerelease": true
+        },
+        "356175250": {
+          "tag": "v0.4.0-beta.21.3",
+          "updated_at": "2026-07-18T19:16:21Z",
+          "url": "https://github.com/DVOpenLabs/snapmaker-studio/releases/tag/v0.4.0-beta.21.3",
+          "prerelease": true
+        },
+        "356137485": {
+          "tag": "v0.4.0-beta.21.2",
+          "updated_at": "2026-07-18T15:57:00Z",
+          "url": "https://github.com/DVOpenLabs/snapmaker-studio/releases/tag/v0.4.0-beta.21.2",
+          "prerelease": true
+        },
+        "347793614": {
+          "tag": "v0.4.0-beta.20.4",
+          "updated_at": "2026-07-02T14:14:09Z",
+          "url": "https://github.com/DVOpenLabs/snapmaker-studio/releases/tag/v0.4.0-beta.20.4",
+          "prerelease": false
+        },
+        "348176113": {
+          "tag": "v0.4.0-beta.21.1",
+          "updated_at": "2026-07-02T16:51:18Z",
+          "url": "https://github.com/DVOpenLabs/snapmaker-studio/releases/tag/v0.4.0-beta.21.1",
+          "prerelease": true
+        },
+        "348011687": {
+          "tag": "v0.4.0-beta.21",
+          "updated_at": "2026-07-02T14:14:08Z",
+          "url": "https://github.com/DVOpenLabs/snapmaker-studio/releases/tag/v0.4.0-beta.21",
+          "prerelease": true
+        },
+        "346383450": {
+          "tag": "v0.4.0-beta.20.3",
+          "updated_at": "2026-07-02T14:14:07Z",
+          "url": "https://github.com/DVOpenLabs/snapmaker-studio/releases/tag/v0.4.0-beta.20.3",
+          "prerelease": true
+        },
+        "346014425": {
+          "tag": "v0.4.0-beta.20.2",
+          "updated_at": "2026-07-02T14:14:06Z",
+          "url": "https://github.com/DVOpenLabs/snapmaker-studio/releases/tag/v0.4.0-beta.20.2",
+          "prerelease": true
+        }
+      },
+      "tags": {
+        "v1.7.0": "a98af8472c70b842d8c94309ca05c2d690b55973",
+        "v1.6.0": "dd14a3c7dc6ae6aa14bef54da16327e5276bd267",
+        "v1.5.0": "5dd1d479118dd98f1f4ee2253a10aaeccc395c88",
+        "v1.4.1": "eb33ac82195d432eba0bec444d623cd08aaabbd1",
+        "v1.4.0": "130d4c7cdfc4c7d752fa79e55b55c23c035c2610",
+        "v1.3.1": "b29332bb351819db1d5a317f1ec867541b9b6784",
+        "v1.3.0": "1b5338b6407d99abda80f6bf8c1d0b74e045073f",
+        "v1.2.0": "16d4f5ad84845144bfd1b62aeb7f67f5dada40d0",
+        "v1.1.0": "870048266b0dc221f165bd521ceda7a7a9e0cf38",
+        "v1.0.0": "3493b281f16d2ca742ed88db42542791176133b2",
+        "v0.9.0": "a8832a03ecca718ccc95dd7a85070b9d56244ed7",
+        "v0.8.0": "e12bc594927fd5a4f5131400dc5e0cabfcb388a8",
+        "v0.7.2": "fddbc2a8f23832019cf3d47e2fe81322998f6d41",
+        "v0.7.1": "26330e606a169c4d8d909f9c7adef71cbc6b6450",
+        "v0.7.0": "97ee78681c834dd8330ff6c89090a6808fd6230b",
+        "v0.6.2": "077bfa239661547da0876f91fbfd6fe42863cc7e",
+        "v0.6.1": "02268b45b30096585499b13df378e4c13fd1c3a2",
+        "v0.6.0": "6dc0ac53e4c27a4442b73b9ce2126153bb56609c",
+        "v0.5.0": "1d7906511715262817c3742a56b7940912276a1b",
+        "v0.4.0": "12d3f3197b524f0e854adea9cca6dd3c73558aff",
+        "v0.4.0-beta.24": "935d271e862e898ad7ed589f173dd5082466d31d",
+        "v0.4.0-beta.23": "f8268efdee314b8d3b38a39e1243831df3787e1f",
+        "v0.4.0-beta.22": "bf1b1e5a47eea167637669e12db21820a695e9e7",
+        "v0.4.0-beta.21.3": "7b2d775f330b34c3640df2d02192daa33496f8b3",
+        "v0.4.0-beta.21.2": "061abdc3b5577c545ab4af5df37623e83b7f8286",
+        "v0.4.0-beta.21.1": "179ac6181d99c3ca928fae00b7b474f7eff8f79a",
+        "v0.4.0-beta.21": "7b825908d0ce771dfd6c901c750702e94e9da789",
+        "v0.4.0-beta.20.4": "fa9d3f186cb0031fa8e0e274bc0348ae530536ea",
+        "v0.4.0-beta.20.3": "896c9b4a9422d992541e4f821f04892de722f96e",
+        "v0.4.0-beta.20.2": "0e2d8d0f89a67894411b20c996154463bf97938c"
+      }
+    },
+    "bambu-converter": {
+      "repository": "thadius83/bambu-to-snapmaker-u1",
+      "branch": "main",
+      "head": "630bc8a92eb128464be14cc5a94838e4e2d2a101",
+      "releases": {},
+      "tags": {}
     }
   }
 }

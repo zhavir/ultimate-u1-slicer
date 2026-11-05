@@ -2,13 +2,17 @@ name: Ultimate U1 Windows portable
 on:
   push:
     branches: [main]
-    paths: ['src/**', 'deps/**', 'deps_src/**', 'cmake/**', 'resources/**', 'tests/**', '**/CMakeLists.txt', 'version.inc', 'build_win.bat', '.github/workflows/build_*.yml', '.github/workflows/u1-windows-portable.yml', 'tools/u1/windows/**']
+    paths: ['src/**', 'plugins/**', 'third_party/**', 'tools/u1/build_plugins.py', 'deps/**', 'deps_src/**', 'cmake/**', 'resources/**', 'tests/**', '**/CMakeLists.txt', 'version.inc', 'build_win.bat', '.github/workflows/build_*.yml', '.github/workflows/u1-windows-portable.yml', 'tools/u1/windows/**']
   workflow_dispatch:
     inputs:
       publish:
         description: Publish the verified ZIP as an experimental prerelease
         type: boolean
         default: false
+      require_signature:
+        description: Require a Windows-trusted code signature before verification/publication
+        type: boolean
+        default: true
 permissions:
   contents: read
   actions: write
@@ -31,8 +35,10 @@ jobs:
         run: |
           $tokens = $null
           $errors = $null
-          [System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path tools/u1/windows/verify-portable.ps1).Path, [ref]$tokens, [ref]$errors) | Out-Null
-          if ($errors.Count) { throw ($errors | Out-String) }
+          foreach ($script in @('verify-portable.ps1','sign-portable.ps1')) {
+            [System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path (Join-Path tools/u1/windows $script)).Path, [ref]$tokens, [ref]$errors) | Out-Null
+            if ($errors.Count) { throw ($errors | Out-String) }
+          }
   build:
     needs: [checks, preflight]
     uses: ./.github/workflows/build_check_cache.yml
@@ -55,7 +61,9 @@ jobs:
           path: portable-artifact
       - name: Verify ZIP, native launch and portable data isolation
         shell: pwsh
-        run: ./tools/u1/windows/verify-portable.ps1 -Archive portable-artifact/Ultimate-U1-Slicer-Windows-x64-portable.zip -OutputDirectory portable-evidence
+        env:
+          U1_REQUIRE_SIGNATURE: ${{ github.event_name == 'workflow_dispatch' && inputs.require_signature }}
+        run: ./tools/u1/windows/verify-portable.ps1 -Archive portable-artifact/Ultimate-U1-Slicer-Windows-x64-portable.zip -OutputDirectory portable-evidence -RequireSignature:($env:U1_REQUIRE_SIGNATURE -eq 'true')
       - uses: actions/upload-artifact@v7
         with:
           name: Ultimate-U1-Windows-x64-portable-verified-${{ github.sha }}

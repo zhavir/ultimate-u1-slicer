@@ -46,6 +46,14 @@ jobs:
         with:
           lfs: 'false'
 
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.14"
+
+      - name: Build audited optional U1 plugin wheels
+        shell: bash
+        run: python tools/u1/build_plugins.py
+
       - name: load cached deps
         if: ${{ !(runner.os == 'macOS' && inputs.macos-combine-only) }}
         uses: actions/cache@v6
@@ -519,6 +527,14 @@ jobs:
         working-directory: ${{ github.workspace }}/${{ env.BUILD_DIR }}
         run: |
           cpack -G NSIS
+
+      - name: Sign and verify Ultimate U1 portable application when identity is configured
+        if: runner.os == 'Windows' && inputs.portable-only
+        shell: pwsh
+        env:
+          U1_WINDOWS_SIGNING_CERT_BASE64: ${{ secrets.U1_WINDOWS_SIGNING_CERT_BASE64 }}
+          U1_WINDOWS_SIGNING_CERT_PASSWORD: ${{ secrets.U1_WINDOWS_SIGNING_CERT_PASSWORD }}
+        run: ./tools/u1/windows/sign-portable.ps1 -Payload "$env:BUILD_DIR/OrcaSlicer"
 
       - name: Pack app
         if: runner.os == 'Windows'

@@ -1,5 +1,5 @@
 {
-  "audit_date": "2026-11-04",
+  "audit_date": "2026-11-05",
   "sources": {
     "snapmaker": {
       "url": "https://github.com/Snapmaker/OrcaSlicer.git",
@@ -74,6 +74,34 @@
       ],
       "url": "https://github.com/Snapmaker/u1-fluidd.git",
       "license": "GPL-3.0"
+    },
+    "snapmaker-studio": {
+      "url": "https://github.com/DVOpenLabs/snapmaker-studio.git",
+      "default_branch": "main",
+      "sha": "6d2e7f0485bfb7fa24caa9a58a4bd5fd37431222",
+      "license": "MIT",
+      "integration": "Pinned core snapshot; read-only inspection and preflight plugin. No printer control or conversion rules exposed."
+    },
+    "bambu-converter": {
+      "url": "https://github.com/thadius83/bambu-to-snapmaker-u1.git",
+      "default_branch": "main",
+      "sha": "630bc8a92eb128464be14cc5a94838e4e2d2a101",
+      "license": "PolyForm-Noncommercial-1.0.0",
+      "integration": "Independent loopback connector only. No upstream source, profiles, rules or binaries distributed."
     }
-  }
+  },
+  "selected_integrations": [
+    {
+      "source": "orca",
+      "upstream_sha": "d607d7f4ad2723693c8a7ae6607a1dea319efcdd",
+      "local_sha": "2be65a8228",
+      "purpose": "Correct gap-fill tool selection with Classic walls"
+    },
+    {
+      "source": "orca",
+      "upstream_sha": "3bda653448cf14faa52b44b3b556a461796d1c22",
+      "local_sha": "549d104f10",
+      "purpose": "Correct non-Bambu Type 1 wipe-tower material accounting"
+    }
+  ]
 }

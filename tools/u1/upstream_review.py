@@ -12,7 +12,12 @@ def git(root, *args):
 
 
 def subsystem(path):
-    for prefix, category in [("src/slic3r/GUI/Mcp/", "mcp"),
+    for prefix, category in [("backend/snapstudio_core/", "project-preflight-conversion"),
+                             ("backend/snapstudio_api/", "companion-api"),
+                             ("backend/", "project-conversion"),
+                             ("plugins/", "plugin-integrations"),
+                             ("src/slic3r/plugin/", "plugin-runtime"),
+                             ("src/slic3r/GUI/Mcp/", "mcp"),
                              ("src/slic3r/GUI/Calibration", "calibration"),
                              ("src/slic3r/GUI/ExtrusionCalibration", "calibration"),
                              ("src/slic3r/GUI/Gizmos/", "model-painting-supports"),
