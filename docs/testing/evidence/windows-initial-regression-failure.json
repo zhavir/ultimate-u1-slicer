@@ -1,0 +1,65 @@
+{
+  "run_url": "https://github.com/zhavir/ultimate-u1-slicer/actions/runs/41923614157",
+  "source_sha": "8c0fb8eed90b7857be32e1b1683133f9e5478fc6",
+  "native_compilation": "passed",
+  "portable_verification": "failed: launcher diagnostic contaminated stdio JSON; candidate fix 01990ce9e0",
+  "ctest_summary": {
+    "name": "(empty)",
+    "tests": "3461",
+    "failures": "9",
+    "disabled": "0",
+    "skipped": "0",
+    "hostname": "",
+    "time": "340",
+    "timestamp": "2026-11-05T00:44:30"
+  },
+  "ctest_report_sha256": "5672712e9761bc4b48d443381dc4a278e2f7d8fbb6dd14282b5a3abe9c0208bd",
+  "failures": [
+    {
+      "name": "An empty choice list in a G-code's settings keeps the value it had before the file was read",
+      "candidate_fix": "f4fdcca73d",
+      "revalidation": "pending corrected native Windows run"
+    },
+    {
+      "name": "Start Recording's parameter overrides the settings, a preset before the fields",
+      "candidate_fix": "db02c636f1",
+      "revalidation": "pending corrected native Windows run"
+    },
+    {
+      "name": "a helper a plugin also loaded keeps its atexit functions for the process",
+      "candidate_fix": "bc7f7cfea9",
+      "revalidation": "pending corrected native Windows run"
+    },
+    {
+      "name": "Plugin audit denies host-managed filenames anywhere",
+      "candidate_fix": "b4cade2106",
+      "revalidation": "pending corrected native Windows run"
+    },
+    {
+      "name": "a helper a plugin also loaded stays imported after the run",
+      "candidate_fix": "bc7f7cfea9",
+      "revalidation": "pending corrected native Windows run"
+    },
+    {
+      "name": "a folder's teardown waits for a plugin import in progress, at the end and at the next entry",
+      "candidate_fix": "bc7f7cfea9",
+      "revalidation": "pending corrected native Windows run"
+    },
+    {
+      "name": "A loaded G-code's belt settings and bed replace the selected printer's in the preview",
+      "candidate_fix": "f4fdcca73d",
+      "revalidation": "pending corrected native Windows run"
+    },
+    {
+      "name": "Loaded manual tool change comments switch subsequent moves when enabled",
+      "candidate_fix": "f4fdcca73d",
+      "revalidation": "pending corrected native Windows run"
+    },
+    {
+      "name": "G-code preview retains the bed area alongside collision volumes",
+      "candidate_fix": "f4fdcca73d",
+      "revalidation": "pending corrected native Windows run"
+    }
+  ],
+  "publication": "blocked; no verified prerelease"
+}
