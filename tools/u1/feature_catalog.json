@@ -1201,6 +1201,25 @@
         "high-flow"
       ],
       "migration_boundary": "A generic nozzle-volume setting does not detect installed U1 high-flow hardware. Port reported per-head flow state and conflict checks using documented firmware/gateway fixtures."
+    },
+    {
+      "id": "snapmaker-tip-cooling-motion",
+      "category": "Upstream development",
+      "title": "Snapmaker development cooling, infill margin and short-travel changes",
+      "configuration_pattern": "cooling_perimeter_transition_distance|cooling_slowdown_logic|external_infill_margin|overhang_threshold_participating_cooling|overhang_totally_speed|travel_short_distance_acceleration",
+      "source_file_fragments": [
+        "CoolingBuffer",
+        "GCode.cpp",
+        "PrintObject.cpp",
+        "LayerRegion.cpp",
+        "Fill.cpp"
+      ],
+      "status": "Unknown",
+      "priority": "P1",
+      "dependencies": [
+        "project-migration"
+      ],
+      "migration_boundary": "Six additional schema names at Snapmaker b070bcf, beyond exact v2.4.1, are absent here. Inspect consumers and possible renamed equivalents before deciding whether to port cooling transitions/slowdown, external infill margin and short-travel acceleration. Add source-attributed behavior and G-code comparisons; no inert settings or automatic profile substitution."
     }
   ]
 }

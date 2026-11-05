@@ -2,7 +2,7 @@
 
 Bounded source-backed feature inventory, not certification. Read code/test evidence and dependencies; key overlap does not prove semantic parity.
 
-Exact reference source revisions: `snapmaker-v241` `bac6fd5c1e1c23ddf057cf6471ba4ed7ed621c4c`, `snapmaker-main` `f5fd7289ea067997181ee6c2cf15a98f58faba43`, `orca-mcp-base` `17a745e30c248cf3acb4c429b650b22d106fd19a`, `forca` `0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`.
+Exact reference source revisions: `snapmaker-v241` `bac6fd5c1e1c23ddf057cf6471ba4ed7ed621c4c`, `snapmaker-main` `f5fd7289ea067997181ee6c2cf15a98f58faba43`, `orca-mcp-base` `17a745e30c248cf3acb4c429b650b22d106fd19a`, `forca` `0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`, `orca-main-tip` `f96bbe8db13f603c767f0a21fce80da85c6a09f4`, `orca-mcp-tip` `56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`, `snapmaker-tip` `b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`.
 
 **There is no 100% U1 compatibility or stable-release claim.** The exact v2.4.1 release and post-release Snapmaker main are separate evidence columns.
 
@@ -15,7 +15,7 @@ Exact reference source revisions: `snapmaker-v241` `bac6fd5c1e1c23ddf057cf6471ba
 | Partial | 36 |
 | Missing | 12 |
 | Incompatible | 2 |
-| Unknown | 4 |
+| Unknown | 5 |
 
 ## Feature matrix
 
@@ -92,6 +92,7 @@ Exact reference source revisions: `snapmaker-v241` `bac6fd5c1e1c23ddf057cf6471ba
 | [orca-calibration](#orca-calibration) | Calibration and process workflows | Implemented but untested | P1 | profile-macros |
 | [orca-gates](#orca-gates) | Integration changes, disabled features and default policies | Partial | P0 | — |
 | [high-flow-detection](#high-flow-detection) | Detect and reconcile reported U1 high-flow hotends | Missing | P0 | u1-gateway, high-flow |
+| [snapmaker-tip-cooling-motion](#snapmaker-tip-cooling-motion) | Snapmaker development cooling, infill margin and short-travel changes | Unknown | P1 | project-migration |
 
 The detailed JSON contains exact source file hashes, configuration definitions, line numbers, symbols, schema differences and the complete integration source-path diff. Source hits are evidence for inspection, not an automatic equivalence verdict.
 
@@ -110,6 +111,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`, `src/libslic3r/GCode/WipeTower2.hpp`, `src/libslic3r/GCode/WipeTowerEstimate.cpp`, `src/libslic3r/GCode/WipeTowerEstimate.hpp`. Keys: `filament_type`.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/FosFilamentArrangement.cpp`, `src/libslic3r/FosFilamentArrangement.hpp`, `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`, `src/libslic3r/GCode/WipeTower2.hpp`. Keys: `filament_is_high_temperature`, `filament_type`.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/FosFilamentArrangement.cpp`, `src/libslic3r/FosFilamentArrangement.hpp`, `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`, `src/libslic3r/GCode/WipeTower2.hpp`. Keys: `filament_type`.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`, `src/libslic3r/GCode/WipeTower2.hpp`, `src/libslic3r/GCode/WipeTowerEstimate.cpp`, `src/libslic3r/GCode/WipeTowerEstimate.hpp`. Keys: `filament_type`.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`, `src/libslic3r/GCode/WipeTower2.hpp`, `src/libslic3r/GCode/WipeTowerEstimate.cpp`, `src/libslic3r/GCode/WipeTowerEstimate.hpp`. Keys: `filament_type`.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`, `src/libslic3r/GCode/WipeTower2.hpp`, `src/libslic3r/GCode/WipeTowerHelper.cpp`, `src/libslic3r/GCode/WipeTowerHelper.hpp`. Keys: `filament_grouping_mode`, `filament_is_high_temperature`, `filament_type`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `tests/fff_print/test_wipe_tower.cpp`; `tests/fff_print/test_multifilament.cpp`; `tests/fff_print/test_u1_four_tool_gcode.cpp`.
 
@@ -128,6 +132,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`. Keys: `filament_tower_interface_pre_extrusion_dist`, `filament_tower_interface_pre_extrusion_length`.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`, `src/libslic3r/GCode/WipeTower2.hpp`. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`. Keys: `filament_tower_interface_pre_extrusion_dist`, `filament_tower_interface_pre_extrusion_length`.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`. Keys: `filament_tower_interface_pre_extrusion_dist`, `filament_tower_interface_pre_extrusion_length`.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`. Keys: `filament_tower_interface_pre_extrusion_dist`, `filament_tower_interface_pre_extrusion_length`.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`, `src/libslic3r/GCode/WipeTower2.hpp`. Keys: `filament_tower_interface_pre_extrusion_dist`, `filament_tower_interface_pre_extrusion_length`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `tests/fff_print/test_wipe_tower.cpp`; `tests/fff_print/test_multifilament.cpp`; `tests/fff_print/test_u1_four_tool_gcode.cpp`.
 
@@ -146,6 +153,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`. Keys: `filament_tower_interface_print_temp`.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`, `src/libslic3r/GCode/WipeTower2.hpp`. Keys: `delta_temperature`, `tool_change_temprature_wait`.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`. Keys: `filament_tower_interface_print_temp`.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`. Keys: `filament_tower_interface_print_temp`.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`. Keys: `filament_tower_interface_print_temp`.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`, `src/libslic3r/GCode/WipeTower2.hpp`. Keys: `delta_temperature`, `filament_tower_interface_print_temp`, `tool_change_temprature_wait`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `tests/fff_print/test_wipe_tower.cpp`; `tests/fff_print/test_multifilament.cpp`; `tests/fff_print/test_u1_four_tool_gcode.cpp`.
 
@@ -164,6 +174,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/CoolingBuffer.cpp`, `src/libslic3r/GCode/CoolingBuffer.hpp`, `src/libslic3r/GCode/WipeTower.cpp`. Keys: `enable_tower_interface_cooldown_during_tower`, `filament_cooling_before_tower`.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/CoolingBuffer.cpp`, `src/libslic3r/GCode/CoolingBuffer.hpp`, `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/CoolingBuffer.cpp`, `src/libslic3r/GCode/CoolingBuffer.hpp`, `src/libslic3r/GCode/WipeTower.cpp`. Keys: `enable_tower_interface_cooldown_during_tower`, `filament_cooling_before_tower`.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/CoolingBuffer.cpp`, `src/libslic3r/GCode/CoolingBuffer.hpp`, `src/libslic3r/GCode/WipeTower.cpp`. Keys: `enable_tower_interface_cooldown_during_tower`, `filament_cooling_before_tower`.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/CoolingBuffer.cpp`, `src/libslic3r/GCode/CoolingBuffer.hpp`, `src/libslic3r/GCode/WipeTower.cpp`. Keys: `enable_tower_interface_cooldown_during_tower`, `filament_cooling_before_tower`.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/CoolingBuffer.cpp`, `src/libslic3r/GCode/CoolingBuffer.hpp`, `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`. Keys: `enable_tower_interface_cooldown_during_tower`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `tests/fff_print/test_wipe_tower.cpp`; `tests/fff_print/test_multifilament.cpp`; `tests/fff_print/test_u1_four_tool_gcode.cpp`.
 
@@ -182,6 +195,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`, `src/libslic3r/GCode/WipeTower2.hpp`, `src/libslic3r/GCode/WipeTowerEstimate.cpp`, `src/libslic3r/GCode/WipeTowerEstimate.hpp`. Keys: `prime_tower_width`, `wipe_tower_rib_width`.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`, `src/libslic3r/GCode/WipeTower2.hpp`, `src/slic3r/GUI/WipeTowerDialog.cpp`, `src/slic3r/GUI/WipeTowerDialog.hpp`. Keys: `prime_tower_brim_chamfer`, `prime_tower_brim_chamfer_max_width`, `prime_tower_width`, `wipe_tower_rib_width`.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`, `src/libslic3r/GCode/WipeTower2.hpp`, `src/libslic3r/GCode/WipeTowerEstimate.cpp`, `src/libslic3r/GCode/WipeTowerEstimate.hpp`. Keys: `prime_tower_width`, `wipe_tower_rib_width`.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`, `src/libslic3r/GCode/WipeTower2.hpp`, `src/libslic3r/GCode/WipeTowerEstimate.cpp`, `src/libslic3r/GCode/WipeTowerEstimate.hpp`. Keys: `prime_tower_width`, `wipe_tower_rib_width`.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`, `src/libslic3r/GCode/WipeTower2.hpp`, `src/libslic3r/GCode/WipeTowerEstimate.cpp`, `src/libslic3r/GCode/WipeTowerEstimate.hpp`. Keys: `prime_tower_width`, `wipe_tower_rib_width`.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`, `src/libslic3r/GCode/WipeTower2.hpp`, `src/libslic3r/GCode/WipeTowerHelper.cpp`, `src/libslic3r/GCode/WipeTowerHelper.hpp`. Keys: `prime_tower_brim_chamfer`, `prime_tower_brim_chamfer_max_width`, `prime_tower_width`, `wipe_tower_rib_width`, `wipe_tower_wall_gap`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `tests/fff_print/test_wipe_tower.cpp`; `tests/fff_print/test_multifilament.cpp`; `tests/fff_print/test_u1_four_tool_gcode.cpp`.
 
@@ -200,6 +216,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/ToolOrdering.cpp`, `src/libslic3r/GCode/ToolOrdering.hpp`, `src/libslic3r/GCode/WipeTower.cpp`. Keys: `change_filament_gcode`.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/ToolOrdering.cpp`, `src/libslic3r/GCode/ToolOrdering.hpp`, `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`. Keys: `change_filament_gcode`, `enable_change_pressure_when_wiping`, `ramming_line_width_ratio`, `ramming_pressure_advance_value`, `z_hop_when_prime`.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/ToolOrdering.cpp`, `src/libslic3r/GCode/ToolOrdering.hpp`, `src/libslic3r/GCode/WipeTower.cpp`. Keys: `change_filament_gcode`.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/ToolOrdering.cpp`, `src/libslic3r/GCode/ToolOrdering.hpp`, `src/libslic3r/GCode/WipeTower.cpp`. Keys: `change_filament_gcode`.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/ToolOrdering.cpp`, `src/libslic3r/GCode/ToolOrdering.hpp`, `src/libslic3r/GCode/WipeTower.cpp`. Keys: `change_filament_gcode`.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/ToolOrdering.cpp`, `src/libslic3r/GCode/ToolOrdering.hpp`, `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`. Keys: `change_filament_gcode`, `enable_change_pressure_when_wiping`, `ramming_line_width_ratio`, `ramming_pressure_advance_value`, `z_hop_when_prime`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `tests/fff_print/test_wipe_tower.cpp`; `tests/fff_print/test_multifilament.cpp`; `tests/fff_print/test_u1_four_tool_gcode.cpp`.
 
@@ -218,6 +237,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`. Keys: `prime_tower_brim_width`, `prime_tower_enable_framework`, `prime_tower_flat_ironing`, `prime_tower_infill_gap`, `prime_tower_skip_points`, `prime_tower_width`.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`, `src/libslic3r/GCode/WipeTower2.hpp`. Keys: `prime_tower_brim_chamfer`, `prime_tower_brim_chamfer_max_width`, `prime_tower_brim_width`, `prime_tower_width`.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`. Keys: `prime_tower_brim_width`, `prime_tower_enable_framework`, `prime_tower_flat_ironing`, `prime_tower_infill_gap`, `prime_tower_skip_points`, `prime_tower_width`.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`. Keys: `prime_tower_brim_width`, `prime_tower_enable_framework`, `prime_tower_flat_ironing`, `prime_tower_infill_gap`, `prime_tower_skip_points`, `prime_tower_width`.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`. Keys: `prime_tower_brim_width`, `prime_tower_enable_framework`, `prime_tower_flat_ironing`, `prime_tower_infill_gap`, `prime_tower_skip_points`, `prime_tower_width`.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`, `src/libslic3r/GCode/WipeTower2.hpp`. Keys: `prime_tower_brim_chamfer`, `prime_tower_brim_chamfer_max_width`, `prime_tower_brim_width`, `prime_tower_enable_framework`, `prime_tower_width`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `tests/fff_print/test_wipe_tower.cpp`; `tests/fff_print/test_multifilament.cpp`; `tests/fff_print/test_u1_four_tool_gcode.cpp`.
 
@@ -236,6 +258,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/Support/SupportMaterial.cpp`, `src/libslic3r/Support/SupportMaterial.hpp`, `src/libslic3r/Support/TreeSupport.cpp`, `src/libslic3r/Support/TreeSupport.hpp`, `src/libslic3r/Support/TreeSupport3D.cpp`, `src/libslic3r/Support/TreeSupport3D.hpp`. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/Support/SupportMaterial.cpp`, `src/libslic3r/Support/SupportMaterial.hpp`, `src/libslic3r/Support/TreeSupport.cpp`, `src/libslic3r/Support/TreeSupport.hpp`, `src/libslic3r/Support/TreeSupport3D.cpp`, `src/libslic3r/Support/TreeSupport3D.hpp`. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/Support/SupportMaterial.cpp`, `src/libslic3r/Support/SupportMaterial.hpp`, `src/libslic3r/Support/TreeSupport.cpp`, `src/libslic3r/Support/TreeSupport.hpp`, `src/libslic3r/Support/TreeSupport3D.cpp`, `src/libslic3r/Support/TreeSupport3D.hpp`. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/Support/SupportMaterial.cpp`, `src/libslic3r/Support/SupportMaterial.hpp`, `src/libslic3r/Support/TreeSupport.cpp`, `src/libslic3r/Support/TreeSupport.hpp`, `src/libslic3r/Support/TreeSupport3D.cpp`, `src/libslic3r/Support/TreeSupport3D.hpp`. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/Support/SupportMaterial.cpp`, `src/libslic3r/Support/SupportMaterial.hpp`, `src/libslic3r/Support/TreeSupport.cpp`, `src/libslic3r/Support/TreeSupport.hpp`, `src/libslic3r/Support/TreeSupport3D.cpp`, `src/libslic3r/Support/TreeSupport3D.hpp`. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/Support/SupportMaterial.cpp`, `src/libslic3r/Support/SupportMaterial.hpp`, `src/libslic3r/Support/SupportTransitionLayer.hpp`, `src/libslic3r/Support/TreeSupport.cpp`, `src/libslic3r/Support/TreeSupport.hpp`, `src/libslic3r/Support/TreeSupport3D.cpp`. Keys: `support_transition_flow_ratio`, `support_transition_perimeter`, `support_transition_speed`, `tree_support_transition_layers`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`.
 
@@ -254,6 +279,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/Support/SupportCommon.cpp`, `src/libslic3r/Support/SupportCommon.hpp`, `src/libslic3r/Support/SupportMaterial.cpp`, `src/libslic3r/Support/SupportMaterial.hpp`, `src/libslic3r/Support/TreeSupport.cpp`, `src/libslic3r/Support/TreeSupport.hpp`. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/Support/SupportCommon.cpp`, `src/libslic3r/Support/SupportCommon.hpp`, `src/libslic3r/Support/SupportMaterial.cpp`, `src/libslic3r/Support/SupportMaterial.hpp`, `src/libslic3r/Support/TreeSupport.cpp`, `src/libslic3r/Support/TreeSupport.hpp`. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/Support/SupportCommon.cpp`, `src/libslic3r/Support/SupportCommon.hpp`, `src/libslic3r/Support/SupportMaterial.cpp`, `src/libslic3r/Support/SupportMaterial.hpp`, `src/libslic3r/Support/TreeSupport.cpp`, `src/libslic3r/Support/TreeSupport.hpp`. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/Support/SupportCommon.cpp`, `src/libslic3r/Support/SupportCommon.hpp`, `src/libslic3r/Support/SupportMaterial.cpp`, `src/libslic3r/Support/SupportMaterial.hpp`, `src/libslic3r/Support/TreeSupport.cpp`, `src/libslic3r/Support/TreeSupport.hpp`. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/Support/SupportCommon.cpp`, `src/libslic3r/Support/SupportCommon.hpp`, `src/libslic3r/Support/SupportMaterial.cpp`, `src/libslic3r/Support/SupportMaterial.hpp`, `src/libslic3r/Support/TreeSupport.cpp`, `src/libslic3r/Support/TreeSupport.hpp`. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/Support/SupportCommon.cpp`, `src/libslic3r/Support/SupportCommon.hpp`, `src/libslic3r/Support/SupportMaterial.cpp`, `src/libslic3r/Support/SupportMaterial.hpp`, `src/libslic3r/Support/TreeSupport.cpp`, `src/libslic3r/Support/TreeSupport.hpp`. Keys: `support_interface_min_area`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`.
 
@@ -272,6 +300,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/Support/SupportCommon.cpp`, `src/libslic3r/Support/SupportCommon.hpp`, `src/libslic3r/Support/TreeSupport.cpp`, `src/libslic3r/Support/TreeSupport.hpp`, `src/libslic3r/Support/TreeSupport3D.cpp`, `src/libslic3r/Support/TreeSupport3D.hpp`. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/Support/SupportCommon.cpp`, `src/libslic3r/Support/SupportCommon.hpp`, `src/libslic3r/Support/TreeSupport.cpp`, `src/libslic3r/Support/TreeSupport.hpp`, `src/libslic3r/Support/TreeSupport3D.cpp`, `src/libslic3r/Support/TreeSupport3D.hpp`. Keys: `tree_support_adaptive_layer_height`.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/Support/SupportCommon.cpp`, `src/libslic3r/Support/SupportCommon.hpp`, `src/libslic3r/Support/TreeSupport.cpp`, `src/libslic3r/Support/TreeSupport.hpp`, `src/libslic3r/Support/TreeSupport3D.cpp`, `src/libslic3r/Support/TreeSupport3D.hpp`. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/Support/SupportCommon.cpp`, `src/libslic3r/Support/SupportCommon.hpp`, `src/libslic3r/Support/TreeSupport.cpp`, `src/libslic3r/Support/TreeSupport.hpp`, `src/libslic3r/Support/TreeSupport3D.cpp`, `src/libslic3r/Support/TreeSupport3D.hpp`. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/Support/SupportCommon.cpp`, `src/libslic3r/Support/SupportCommon.hpp`, `src/libslic3r/Support/TreeSupport.cpp`, `src/libslic3r/Support/TreeSupport.hpp`, `src/libslic3r/Support/TreeSupport3D.cpp`, `src/libslic3r/Support/TreeSupport3D.hpp`. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/Support/SupportCommon.cpp`, `src/libslic3r/Support/SupportCommon.hpp`, `src/libslic3r/Support/TreeSupport.cpp`, `src/libslic3r/Support/TreeSupport.hpp`, `src/libslic3r/Support/TreeSupport3D.cpp`, `src/libslic3r/Support/TreeSupport3D.hpp`. Keys: `tree_support_adaptive_layer_height`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`.
 
@@ -290,6 +321,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/MultiMaterialSegmentation.cpp`, `src/libslic3r/MultiMaterialSegmentation.hpp`, `src/libslic3r/PrintObject.cpp`, `src/slic3r/GUI/Gizmos/GLGizmoMmuSegmentation.cpp`, `src/slic3r/GUI/Gizmos/GLGizmoMmuSegmentation.hpp`. Keys: `bottom_color_penetration_layers`, `top_color_penetration_layers`.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/MultiMaterialSegmentation.cpp`, `src/libslic3r/MultiMaterialSegmentation.hpp`, `src/libslic3r/PrintObject.cpp`, `src/slic3r/GUI/Gizmos/GLGizmoMmuSegmentation.cpp`, `src/slic3r/GUI/Gizmos/GLGizmoMmuSegmentation.hpp`. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/MultiMaterialSegmentation.cpp`, `src/libslic3r/MultiMaterialSegmentation.hpp`, `src/libslic3r/PrintObject.cpp`, `src/slic3r/GUI/Gizmos/GLGizmoMmuSegmentation.cpp`, `src/slic3r/GUI/Gizmos/GLGizmoMmuSegmentation.hpp`. Keys: `bottom_color_penetration_layers`, `top_color_penetration_layers`.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/MultiMaterialSegmentation.cpp`, `src/libslic3r/MultiMaterialSegmentation.hpp`, `src/libslic3r/PrintObject.cpp`, `src/slic3r/GUI/Gizmos/GLGizmoMmuSegmentation.cpp`, `src/slic3r/GUI/Gizmos/GLGizmoMmuSegmentation.hpp`. Keys: `bottom_color_penetration_layers`, `top_color_penetration_layers`.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/MultiMaterialSegmentation.cpp`, `src/libslic3r/MultiMaterialSegmentation.hpp`, `src/libslic3r/PrintObject.cpp`, `src/slic3r/GUI/Gizmos/GLGizmoMmuSegmentation.cpp`, `src/slic3r/GUI/Gizmos/GLGizmoMmuSegmentation.hpp`. Keys: `bottom_color_penetration_layers`, `top_color_penetration_layers`.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/MultiMaterialSegmentation.cpp`, `src/libslic3r/MultiMaterialSegmentation.hpp`, `src/libslic3r/PrintObject.cpp`, `src/slic3r/GUI/Gizmos/GLGizmoMmuSegmentation.cpp`, `src/slic3r/GUI/Gizmos/GLGizmoMmuSegmentation.hpp`. Keys: `bottom_color_penetration_layers`, `top_color_penetration_layers`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`.
 
@@ -308,6 +342,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/Support/SupportCommon.cpp`, `src/libslic3r/Support/SupportCommon.hpp`, `src/libslic3r/Support/TreeSupport.cpp`, `src/libslic3r/Support/TreeSupport.hpp`, `src/libslic3r/Support/TreeSupport3D.cpp`, `src/libslic3r/Support/TreeSupport3D.hpp`. Keys: `raft_first_layer_expansion`.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/Support/SupportCommon.cpp`, `src/libslic3r/Support/SupportCommon.hpp`, `src/libslic3r/Support/TreeSupport.cpp`, `src/libslic3r/Support/TreeSupport.hpp`, `src/libslic3r/Support/TreeSupport3D.cpp`, `src/libslic3r/Support/TreeSupport3D.hpp`. Keys: `raft_first_layer_expansion`.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/Support/SupportCommon.cpp`, `src/libslic3r/Support/SupportCommon.hpp`, `src/libslic3r/Support/TreeSupport.cpp`, `src/libslic3r/Support/TreeSupport.hpp`, `src/libslic3r/Support/TreeSupport3D.cpp`, `src/libslic3r/Support/TreeSupport3D.hpp`. Keys: `raft_first_layer_expansion`.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/Support/SupportCommon.cpp`, `src/libslic3r/Support/SupportCommon.hpp`, `src/libslic3r/Support/TreeSupport.cpp`, `src/libslic3r/Support/TreeSupport.hpp`, `src/libslic3r/Support/TreeSupport3D.cpp`, `src/libslic3r/Support/TreeSupport3D.hpp`. Keys: `raft_first_layer_expansion`.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/Support/SupportCommon.cpp`, `src/libslic3r/Support/SupportCommon.hpp`, `src/libslic3r/Support/TreeSupport.cpp`, `src/libslic3r/Support/TreeSupport.hpp`, `src/libslic3r/Support/TreeSupport3D.cpp`, `src/libslic3r/Support/TreeSupport3D.hpp`. Keys: `raft_first_layer_expansion`.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/Support/SupportCommon.cpp`, `src/libslic3r/Support/SupportCommon.hpp`, `src/libslic3r/Support/TreeSupport.cpp`, `src/libslic3r/Support/TreeSupport.hpp`, `src/libslic3r/Support/TreeSupport3D.cpp`, `src/libslic3r/Support/TreeSupport3D.hpp`. Keys: `raft_first_layer_expansion`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `docs/testing/reference-slicing.md`; `docs/architecture/support-expansion-migration.md`.
 
@@ -326,6 +363,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/FilamentMixer.cpp`, `src/libslic3r/FilamentMixer.hpp`, `src/libslic3r/FilamentMixerModel.hpp`, `src/libslic3r/GCode/ToolOrdering.cpp`, `src/libslic3r/GCode/ToolOrdering.hpp`, `src/libslic3r/PrintRegion.cpp`. Keys: `filament_mixed_components`, `filament_mixed_sublayer_ratios`.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/GCode/ToolOrdering.cpp`, `src/libslic3r/GCode/ToolOrdering.hpp`, `src/libslic3r/PrintRegion.cpp`. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/FilamentMixer.cpp`, `src/libslic3r/FilamentMixer.hpp`, `src/libslic3r/FilamentMixerModel.hpp`, `src/libslic3r/GCode/ToolOrdering.cpp`, `src/libslic3r/GCode/ToolOrdering.hpp`, `src/libslic3r/PrintRegion.cpp`. Keys: `filament_mixed_components`, `filament_mixed_sublayer_ratios`.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/FilamentMixer.cpp`, `src/libslic3r/FilamentMixer.hpp`, `src/libslic3r/FilamentMixerModel.hpp`, `src/libslic3r/GCode/ToolOrdering.cpp`, `src/libslic3r/GCode/ToolOrdering.hpp`, `src/libslic3r/PrintRegion.cpp`. Keys: `filament_mixed_components`, `filament_mixed_sublayer_ratios`.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/FilamentMixer.cpp`, `src/libslic3r/FilamentMixer.hpp`, `src/libslic3r/FilamentMixerModel.hpp`, `src/libslic3r/GCode/ToolOrdering.cpp`, `src/libslic3r/GCode/ToolOrdering.hpp`, `src/libslic3r/PrintRegion.cpp`. Keys: `filament_mixed_components`, `filament_mixed_sublayer_ratios`.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/GCode/ToolOrdering.cpp`, `src/libslic3r/GCode/ToolOrdering.hpp`, `src/libslic3r/MixedFilament.cpp`, `src/libslic3r/MixedFilament.hpp`, `src/libslic3r/MixedFilamentConfigRemap.hpp`, `src/libslic3r/PrintRegion.cpp`. Keys: `mixed_filament_definitions`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`.
 
@@ -344,6 +384,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/GCode/ToolOrdering.cpp`, `src/libslic3r/GCode/ToolOrdering.hpp`, `src/libslic3r/MultiMaterialSegmentation.cpp`, `src/libslic3r/MultiMaterialSegmentation.hpp`, `src/slic3r/GUI/MixedFilamentDialog.cpp`, `src/slic3r/GUI/MixedFilamentDialog.hpp`. Keys: `enable_mixed_color_sublayer`, `filament_mixed_sublayer_ratios`.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/GCode/ToolOrdering.cpp`, `src/libslic3r/GCode/ToolOrdering.hpp`, `src/libslic3r/MultiMaterialSegmentation.cpp`, `src/libslic3r/MultiMaterialSegmentation.hpp`. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/GCode/ToolOrdering.cpp`, `src/libslic3r/GCode/ToolOrdering.hpp`, `src/libslic3r/MultiMaterialSegmentation.cpp`, `src/libslic3r/MultiMaterialSegmentation.hpp`, `src/slic3r/GUI/MixedFilamentDialog.cpp`, `src/slic3r/GUI/MixedFilamentDialog.hpp`. Keys: `enable_mixed_color_sublayer`, `filament_mixed_sublayer_ratios`.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/GCode/ToolOrdering.cpp`, `src/libslic3r/GCode/ToolOrdering.hpp`, `src/libslic3r/MultiMaterialSegmentation.cpp`, `src/libslic3r/MultiMaterialSegmentation.hpp`, `src/slic3r/GUI/MixedFilamentDialog.cpp`, `src/slic3r/GUI/MixedFilamentDialog.hpp`. Keys: `enable_mixed_color_sublayer`, `filament_mixed_sublayer_ratios`.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/GCode/ToolOrdering.cpp`, `src/libslic3r/GCode/ToolOrdering.hpp`, `src/libslic3r/MultiMaterialSegmentation.cpp`, `src/libslic3r/MultiMaterialSegmentation.hpp`, `src/slic3r/GUI/MixedFilamentDialog.cpp`, `src/slic3r/GUI/MixedFilamentDialog.hpp`. Keys: `enable_mixed_color_sublayer`, `filament_mixed_sublayer_ratios`.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/GCode/ToolOrdering.cpp`, `src/libslic3r/GCode/ToolOrdering.hpp`, `src/libslic3r/MixedFilament.cpp`, `src/libslic3r/MixedFilament.hpp`, `src/libslic3r/MixedFilamentConfigRemap.hpp`, `src/libslic3r/MultiMaterialSegmentation.cpp`. Keys: `dithering_step_painted_zones_only`, `dithering_z_step_size`, `mixed_color_layer_height_a`, `mixed_color_layer_height_b`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`.
 
@@ -362,6 +405,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/ColorDecomposeRecipe.cpp`, `src/libslic3r/ColorDecomposeRecipe.hpp`, `src/slic3r/GUI/ColorDecomposeDialog.cpp`, `src/slic3r/GUI/ColorDecomposeDialog.hpp`, `src/slic3r/GUI/ColorDecomposeSupport.cpp`, `src/slic3r/GUI/ColorDecomposeSupport.hpp`. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): No matching component in the inspected source scope. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/ColorDecomposeRecipe.cpp`, `src/libslic3r/ColorDecomposeRecipe.hpp`, `src/slic3r/GUI/ColorDecomposeDialog.cpp`, `src/slic3r/GUI/ColorDecomposeDialog.hpp`, `src/slic3r/GUI/ColorDecomposeSupport.cpp`, `src/slic3r/GUI/ColorDecomposeSupport.hpp`. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/ColorDecomposeRecipe.cpp`, `src/libslic3r/ColorDecomposeRecipe.hpp`, `src/slic3r/GUI/ColorDecomposeDialog.cpp`, `src/slic3r/GUI/ColorDecomposeDialog.hpp`, `src/slic3r/GUI/ColorDecomposeSupport.cpp`, `src/slic3r/GUI/ColorDecomposeSupport.hpp`. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/ColorDecomposeRecipe.cpp`, `src/libslic3r/ColorDecomposeRecipe.hpp`, `src/slic3r/GUI/ColorDecomposeDialog.cpp`, `src/slic3r/GUI/ColorDecomposeDialog.hpp`, `src/slic3r/GUI/ColorDecomposeSupport.cpp`, `src/slic3r/GUI/ColorDecomposeSupport.hpp`. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/MixedFilament.cpp`, `src/libslic3r/MixedFilament.hpp`, `src/libslic3r/MixedFilamentConfigRemap.hpp`, `src/slic3r/GUI/MixedFilamentBadge.cpp`, `src/slic3r/GUI/MixedFilamentBadge.hpp`, `src/slic3r/GUI/MixedFilamentBatchDialog.cpp`. Keys: `mixed_filament_component_bias_enabled`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`.
 
@@ -380,6 +426,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/slic3r/GUI/GradientCurveEditor.cpp`, `src/slic3r/GUI/GradientCurveEditor.hpp`, `src/slic3r/GUI/MixedFilamentDialog.cpp`, `src/slic3r/GUI/MixedFilamentDialog.hpp`. Keys: `filament_mixed_gradient`, `filament_mixed_gradient_curve`, `filament_mixed_gradient_per_part`, `filament_mixed_gradient_range`.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): No matching component in the inspected source scope. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/slic3r/GUI/GradientCurveEditor.cpp`, `src/slic3r/GUI/GradientCurveEditor.hpp`, `src/slic3r/GUI/MixedFilamentDialog.cpp`, `src/slic3r/GUI/MixedFilamentDialog.hpp`. Keys: `filament_mixed_gradient`, `filament_mixed_gradient_curve`, `filament_mixed_gradient_per_part`, `filament_mixed_gradient_range`.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/slic3r/GUI/GradientCurveEditor.cpp`, `src/slic3r/GUI/GradientCurveEditor.hpp`, `src/slic3r/GUI/MixedFilamentDialog.cpp`, `src/slic3r/GUI/MixedFilamentDialog.hpp`. Keys: `filament_mixed_gradient`, `filament_mixed_gradient_curve`, `filament_mixed_gradient_per_part`, `filament_mixed_gradient_range`.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/slic3r/GUI/GradientCurveEditor.cpp`, `src/slic3r/GUI/GradientCurveEditor.hpp`, `src/slic3r/GUI/MixedFilamentDialog.cpp`, `src/slic3r/GUI/MixedFilamentDialog.hpp`. Keys: `filament_mixed_gradient`, `filament_mixed_gradient_curve`, `filament_mixed_gradient_per_part`, `filament_mixed_gradient_range`.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/MixedFilament.cpp`, `src/libslic3r/MixedFilament.hpp`, `src/libslic3r/MixedFilamentConfigRemap.hpp`, `src/slic3r/GUI/MixedFilamentBadge.cpp`, `src/slic3r/GUI/MixedFilamentBadge.hpp`, `src/slic3r/GUI/MixedFilamentBatchDialog.cpp`. Keys: `mixed_filament_gradient_mode`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`.
 
@@ -398,6 +447,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/ColorDecomposeRecipe.cpp`, `src/libslic3r/ColorDecomposeRecipe.hpp`, `src/slic3r/GUI/ColorDecomposeDialog.cpp`, `src/slic3r/GUI/ColorDecomposeDialog.hpp`, `src/slic3r/GUI/ColorDecomposeSupport.cpp`, `src/slic3r/GUI/ColorDecomposeSupport.hpp`. Keys: `filament_mixed_components`.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): No matching component in the inspected source scope. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/ColorDecomposeRecipe.cpp`, `src/libslic3r/ColorDecomposeRecipe.hpp`, `src/slic3r/GUI/ColorDecomposeDialog.cpp`, `src/slic3r/GUI/ColorDecomposeDialog.hpp`, `src/slic3r/GUI/ColorDecomposeSupport.cpp`, `src/slic3r/GUI/ColorDecomposeSupport.hpp`. Keys: `filament_mixed_components`.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/ColorDecomposeRecipe.cpp`, `src/libslic3r/ColorDecomposeRecipe.hpp`, `src/slic3r/GUI/ColorDecomposeDialog.cpp`, `src/slic3r/GUI/ColorDecomposeDialog.hpp`, `src/slic3r/GUI/ColorDecomposeSupport.cpp`, `src/slic3r/GUI/ColorDecomposeSupport.hpp`. Keys: `filament_mixed_components`.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/ColorDecomposeRecipe.cpp`, `src/libslic3r/ColorDecomposeRecipe.hpp`, `src/slic3r/GUI/ColorDecomposeDialog.cpp`, `src/slic3r/GUI/ColorDecomposeDialog.hpp`, `src/slic3r/GUI/ColorDecomposeSupport.cpp`, `src/slic3r/GUI/ColorDecomposeSupport.hpp`. Keys: `filament_mixed_components`.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/MixedFilament.cpp`, `src/libslic3r/MixedFilament.hpp`, `src/libslic3r/MixedFilamentConfigRemap.hpp`, `src/slic3r/GUI/MixedFilamentBadge.cpp`, `src/slic3r/GUI/MixedFilamentBadge.hpp`, `src/slic3r/GUI/MixedFilamentBatchDialog.cpp`. Keys: `mixed_filament_component_bias_enabled`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`.
 
@@ -416,6 +468,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/MultiMaterialSegmentation.cpp`, `src/libslic3r/MultiMaterialSegmentation.hpp`, `src/libslic3r/TextureBake/TextureBakeSubdivide.cpp`, `src/libslic3r/TextureBake/TextureBakeSubdivide.hpp`, `src/libslic3r/TextureDisplacement.cpp`, `src/libslic3r/TextureDisplacement.hpp`. Keys: `enable_mixed_color_sublayer`, `filament_is_mixed`, `filament_mixed_components`, `filament_mixed_gradient`, `filament_mixed_gradient_curve`, `filament_mixed_gradient_per_part`, `filament_mixed_gradient_range`, `filament_mixed_sublayer_ratios`.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/MultiMaterialSegmentation.cpp`, `src/libslic3r/MultiMaterialSegmentation.hpp`. Keys: `has_mixed_nozzle_sizes`.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/MultiMaterialSegmentation.cpp`, `src/libslic3r/MultiMaterialSegmentation.hpp`, `src/libslic3r/TextureBake/TextureBakeSubdivide.cpp`, `src/libslic3r/TextureBake/TextureBakeSubdivide.hpp`, `src/libslic3r/TextureDisplacement.cpp`, `src/libslic3r/TextureDisplacement.hpp`. Keys: `enable_mixed_color_sublayer`, `filament_is_mixed`, `filament_mixed_components`, `filament_mixed_gradient`, `filament_mixed_gradient_curve`, `filament_mixed_gradient_per_part`, `filament_mixed_gradient_range`, `filament_mixed_sublayer_ratios`.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/MultiMaterialSegmentation.cpp`, `src/libslic3r/MultiMaterialSegmentation.hpp`, `src/libslic3r/TextureBake/TextureBakeSubdivide.cpp`, `src/libslic3r/TextureBake/TextureBakeSubdivide.hpp`, `src/libslic3r/TextureDisplacement.cpp`, `src/libslic3r/TextureDisplacement.hpp`. Keys: `enable_mixed_color_sublayer`, `filament_is_mixed`, `filament_mixed_components`, `filament_mixed_gradient`, `filament_mixed_gradient_curve`, `filament_mixed_gradient_per_part`, `filament_mixed_gradient_range`, `filament_mixed_sublayer_ratios`.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/MultiMaterialSegmentation.cpp`, `src/libslic3r/MultiMaterialSegmentation.hpp`, `src/libslic3r/TextureBake/TextureBakeSubdivide.cpp`, `src/libslic3r/TextureBake/TextureBakeSubdivide.hpp`, `src/libslic3r/TextureDisplacement.cpp`, `src/libslic3r/TextureDisplacement.hpp`. Keys: `enable_mixed_color_sublayer`, `filament_is_mixed`, `filament_mixed_components`, `filament_mixed_gradient`, `filament_mixed_gradient_curve`, `filament_mixed_gradient_per_part`, `filament_mixed_gradient_range`, `filament_mixed_sublayer_ratios`.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/MultiMaterialSegmentation.cpp`, `src/libslic3r/MultiMaterialSegmentation.hpp`. Keys: `dithering_local_z_direct_multicolor`, `dithering_local_z_infill`, `dithering_local_z_mode`, `dithering_local_z_whole_objects`, `dithering_step_painted_zones_only`, `dithering_z_step_size`, `mixed_color_layer_height_a`, `mixed_color_layer_height_b`, `mixed_filament_advanced_dithering`, `mixed_filament_component_bias_enabled`, `mixed_filament_definitions`, `mixed_filament_gradient_mode`, `mixed_filament_height_lower_bound`, `mixed_filament_height_upper_bound`, `mixed_filament_pointillism_line_gap`, `mixed_filament_pointillism_pixel_size`, `mixed_filament_region_collapse`, `mixed_filament_surface_indentation`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`.
 
@@ -434,6 +489,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/MultiMaterialSegmentation.cpp`, `src/libslic3r/MultiMaterialSegmentation.hpp`, `src/slic3r/GUI/MixedFilamentDialog.cpp`. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/MultiMaterialSegmentation.cpp`, `src/libslic3r/MultiMaterialSegmentation.hpp`. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/MultiMaterialSegmentation.cpp`, `src/libslic3r/MultiMaterialSegmentation.hpp`, `src/slic3r/GUI/MixedFilamentDialog.cpp`. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/MultiMaterialSegmentation.cpp`, `src/libslic3r/MultiMaterialSegmentation.hpp`, `src/slic3r/GUI/MixedFilamentDialog.cpp`. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/MultiMaterialSegmentation.cpp`, `src/libslic3r/MultiMaterialSegmentation.hpp`, `src/slic3r/GUI/MixedFilamentDialog.cpp`. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/MixedFilament.cpp`, `src/libslic3r/MixedFilament.hpp`, `src/libslic3r/MixedFilamentConfigRemap.hpp`, `src/libslic3r/MultiMaterialSegmentation.cpp`. Keys: `dithering_local_z_direct_multicolor`, `dithering_local_z_infill`, `dithering_local_z_mode`, `dithering_local_z_whole_objects`, `dithering_step_painted_zones_only`, `dithering_z_step_size`, `mixed_filament_advanced_dithering`, `mixed_filament_pointillism_line_gap`, `mixed_filament_pointillism_pixel_size`, `mixed_filament_region_collapse`, `mixed_filament_surface_indentation`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`.
 
@@ -452,6 +510,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/PerimeterGenerator.cpp`, `src/libslic3r/PerimeterGenerator.hpp`, `src/libslic3r/PrintObject.cpp`, `src/libslic3r/PrintRegion.cpp`. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/PerimeterGenerator.cpp`, `src/libslic3r/PerimeterGenerator.hpp`, `src/libslic3r/PrintObject.cpp`, `src/libslic3r/PrintRegion.cpp`. Keys: `color_patch_enabled`, `color_patch_loops`, `filament_color_depth`.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/PerimeterGenerator.cpp`, `src/libslic3r/PerimeterGenerator.hpp`, `src/libslic3r/PrintObject.cpp`, `src/libslic3r/PrintRegion.cpp`. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/PerimeterGenerator.cpp`, `src/libslic3r/PerimeterGenerator.hpp`, `src/libslic3r/PrintObject.cpp`, `src/libslic3r/PrintRegion.cpp`. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/PerimeterGenerator.cpp`, `src/libslic3r/PerimeterGenerator.hpp`, `src/libslic3r/PrintObject.cpp`, `src/libslic3r/PrintRegion.cpp`. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/PerimeterGenerator.cpp`, `src/libslic3r/PerimeterGenerator.hpp`, `src/libslic3r/PrintObject.cpp`, `src/libslic3r/PrintRegion.cpp`. Keys: none for this bounded component.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `tests/fff_print/test_wipe_tower.cpp`; `tests/fff_print/test_multifilament.cpp`; `tests/fff_print/test_u1_four_tool_gcode.cpp`.
 
@@ -470,6 +531,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/PrintConfigConstants.hpp`, `src/libslic3r/PrintObject.cpp`, `src/libslic3r/PrintRegion.cpp`. Keys: `nozzle_diameter`.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/PrintObject.cpp`, `src/libslic3r/PrintRegion.cpp`. Keys: `fos_filament_nozzle`, `has_mixed_nozzle_sizes`, `nozzle_diameter`.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/PrintConfigConstants.hpp`, `src/libslic3r/PrintObject.cpp`, `src/libslic3r/PrintRegion.cpp`. Keys: `nozzle_diameter`.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/PrintConfigConstants.hpp`, `src/libslic3r/PrintObject.cpp`, `src/libslic3r/PrintRegion.cpp`. Keys: `nozzle_diameter`.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/PrintConfigConstants.hpp`, `src/libslic3r/PrintObject.cpp`, `src/libslic3r/PrintRegion.cpp`. Keys: `nozzle_diameter`.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/PrintObject.cpp`, `src/libslic3r/PrintRegion.cpp`. Keys: `nozzle_diameter`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `tests/fff_print/test_wipe_tower.cpp`; `tests/fff_print/test_multifilament.cpp`; `tests/fff_print/test_u1_four_tool_gcode.cpp`.
 
@@ -488,6 +552,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/PrintConfigConstants.hpp`, `src/libslic3r/PrintObject.cpp`. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/PrintObject.cpp`. Keys: `tower_line_width`.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/PrintConfigConstants.hpp`, `src/libslic3r/PrintObject.cpp`. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/PrintConfigConstants.hpp`, `src/libslic3r/PrintObject.cpp`. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/PrintConfigConstants.hpp`, `src/libslic3r/PrintObject.cpp`. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/PrintObject.cpp`. Keys: none for this bounded component.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `tests/fff_print/test_wipe_tower.cpp`; `tests/fff_print/test_multifilament.cpp`; `tests/fff_print/test_u1_four_tool_gcode.cpp`.
 
@@ -506,6 +573,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/PrintConfigConstants.hpp`, `src/libslic3r/PrintObject.cpp`. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/PrintObject.cpp`. Keys: `fos_nozzle_desync`.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/PrintConfigConstants.hpp`, `src/libslic3r/PrintObject.cpp`. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/PrintConfigConstants.hpp`, `src/libslic3r/PrintObject.cpp`. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/PrintConfigConstants.hpp`, `src/libslic3r/PrintObject.cpp`. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/PrintObject.cpp`. Keys: none for this bounded component.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `tests/fff_print/test_wipe_tower.cpp`; `tests/fff_print/test_multifilament.cpp`; `tests/fff_print/test_u1_four_tool_gcode.cpp`.
 
@@ -524,6 +594,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/GCode/ToolOrdering.cpp`, `src/libslic3r/GCode/ToolOrdering.hpp`, `src/libslic3r/PrintRegion.cpp`, `src/slic3r/GUI/Plater.cpp`. Keys: `bottom_surface_filament_id`, `inner_wall_filament_id`, `internal_solid_filament_id`, `outer_wall_filament_id`, `sparse_infill_filament_id`, `top_surface_filament_id`.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/GCode/ToolOrdering.cpp`, `src/libslic3r/GCode/ToolOrdering.hpp`, `src/libslic3r/PrintRegion.cpp`, `src/slic3r/GUI/Plater.cpp`. Keys: `fos_filament_mms_slot`, `fos_filament_nozzle`, `fos_filament_translucency`, `fos_filament_transparent`, `solid_infill_filament`, `sparse_infill_filament`, `wall_filament`.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/GCode/ToolOrdering.cpp`, `src/libslic3r/GCode/ToolOrdering.hpp`, `src/libslic3r/PrintRegion.cpp`, `src/slic3r/GUI/Plater.cpp`. Keys: `bottom_surface_filament_id`, `inner_wall_filament_id`, `internal_solid_filament_id`, `outer_wall_filament_id`, `sparse_infill_filament_id`, `top_surface_filament_id`.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/GCode/ToolOrdering.cpp`, `src/libslic3r/GCode/ToolOrdering.hpp`, `src/libslic3r/PrintRegion.cpp`, `src/slic3r/GUI/Plater.cpp`. Keys: `bottom_surface_filament_id`, `inner_wall_filament_id`, `internal_solid_filament_id`, `outer_wall_filament_id`, `sparse_infill_filament_id`, `top_surface_filament_id`.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/GCode/ToolOrdering.cpp`, `src/libslic3r/GCode/ToolOrdering.hpp`, `src/libslic3r/PrintRegion.cpp`, `src/slic3r/GUI/Plater.cpp`. Keys: `bottom_surface_filament_id`, `inner_wall_filament_id`, `internal_solid_filament_id`, `outer_wall_filament_id`, `sparse_infill_filament_id`, `top_surface_filament_id`.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/GCode/ToolOrdering.cpp`, `src/libslic3r/GCode/ToolOrdering.hpp`, `src/libslic3r/PrintRegion.cpp`, `src/slic3r/GUI/Plater.cpp`. Keys: `solid_infill_filament`, `sparse_infill_filament`, `wall_filament`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `tests/fff_print/test_wipe_tower.cpp`; `tests/fff_print/test_multifilament.cpp`; `tests/fff_print/test_u1_four_tool_gcode.cpp`.
 
@@ -542,6 +615,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/GCode/ToolOrdering.cpp`, `src/libslic3r/GCode/ToolOrdering.hpp`, `src/libslic3r/Print.cpp`, `src/libslic3r/PrintConfigConstants.hpp`, `src/libslic3r/SLAPrint.cpp`, `src/libvgcode/src/ColorPrint.cpp`. Keys: `support_filament`, `support_interface_filament`.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/GCode/ToolOrdering.cpp`, `src/libslic3r/GCode/ToolOrdering.hpp`, `src/libslic3r/Print.cpp`, `src/libslic3r/SLAPrint.cpp`, `src/slic3r/Utils/CrealityPrint.cpp`, `src/slic3r/Utils/OctoPrint.cpp`. Keys: `support_filament`, `support_interface_filament`.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/GCode/ToolOrdering.cpp`, `src/libslic3r/GCode/ToolOrdering.hpp`, `src/libslic3r/Print.cpp`, `src/libslic3r/PrintConfigConstants.hpp`, `src/libslic3r/SLAPrint.cpp`, `src/libvgcode/src/ColorPrint.cpp`. Keys: `support_filament`, `support_interface_filament`.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/GCode/ToolOrdering.cpp`, `src/libslic3r/GCode/ToolOrdering.hpp`, `src/libslic3r/Print.cpp`, `src/libslic3r/PrintConfigConstants.hpp`, `src/libslic3r/SLAPrint.cpp`, `src/libvgcode/src/ColorPrint.cpp`. Keys: `support_filament`, `support_interface_filament`.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/GCode/ToolOrdering.cpp`, `src/libslic3r/GCode/ToolOrdering.hpp`, `src/libslic3r/Print.cpp`, `src/libslic3r/PrintConfigConstants.hpp`, `src/libslic3r/SLAPrint.cpp`, `src/libvgcode/src/ColorPrint.cpp`. Keys: `support_filament`, `support_interface_filament`.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/GCode/ToolOrdering.cpp`, `src/libslic3r/GCode/ToolOrdering.hpp`, `src/libslic3r/Print.cpp`, `src/libslic3r/SLAPrint.cpp`, `src/slic3r/Utils/CrealityPrint.cpp`, `src/slic3r/Utils/OctoPrint.cpp`. Keys: `support_filament`, `support_interface_filament`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `tests/fff_print/test_wipe_tower.cpp`; `tests/fff_print/test_multifilament.cpp`; `tests/fff_print/test_u1_four_tool_gcode.cpp`.
 
@@ -560,6 +636,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/Format/bbs_3mf.cpp`, `src/libslic3r/Format/bbs_3mf.hpp`, `src/libslic3r/Model.cpp`, `src/libslic3r/PrintConfigConstants.hpp`, `src/slic3r/GUI/AuxiliaryDataViewModel.cpp`, `src/slic3r/GUI/GLModel.cpp`. Keys: `filament_settings_id`.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/Format/bbs_3mf.cpp`, `src/libslic3r/Format/bbs_3mf.hpp`, `src/libslic3r/Model.cpp`, `src/slic3r/GUI/AuxiliaryDataViewModel.cpp`, `src/slic3r/GUI/GLModel.cpp`, `src/slic3r/GUI/MultiSendMachineModel.cpp`. Keys: `filament_settings_id`, `fos_filament_mms_slot`, `fos_filament_nozzle`, `fos_filament_translucency`, `fos_filament_transparent`, `fos_mms_head_ace`, `fos_mms_topology`, `fos_mms_unit_count`, `fos_nozzle_desync`, `fos_physical_nozzle_diameter`, `fos_slot_config_serial`, `fos_support_interface_nozzle_pool`, `fos_support_nozzle_pool`, `fos_wipe_tower_nozzle_pool`.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/Format/bbs_3mf.cpp`, `src/libslic3r/Format/bbs_3mf.hpp`, `src/libslic3r/Model.cpp`, `src/libslic3r/PrintConfigConstants.hpp`, `src/slic3r/GUI/AuxiliaryDataViewModel.cpp`, `src/slic3r/GUI/GLModel.cpp`. Keys: `filament_settings_id`.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/Format/bbs_3mf.cpp`, `src/libslic3r/Format/bbs_3mf.hpp`, `src/libslic3r/Model.cpp`, `src/libslic3r/PrintConfigConstants.hpp`, `src/slic3r/GUI/AuxiliaryDataViewModel.cpp`, `src/slic3r/GUI/GLModel.cpp`. Keys: `filament_settings_id`.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/Format/bbs_3mf.cpp`, `src/libslic3r/Format/bbs_3mf.hpp`, `src/libslic3r/Model.cpp`, `src/libslic3r/PrintConfigConstants.hpp`, `src/slic3r/GUI/AuxiliaryDataViewModel.cpp`, `src/slic3r/GUI/GLModel.cpp`. Keys: `filament_settings_id`.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/Format/bbs_3mf.cpp`, `src/libslic3r/Format/bbs_3mf.hpp`, `src/libslic3r/Model.cpp`, `src/slic3r/GUI/AuxiliaryDataViewModel.cpp`, `src/slic3r/GUI/GLModel.cpp`, `src/slic3r/GUI/MultiSendMachineModel.cpp`. Keys: `filament_settings_id`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `tests/fff_print/test_wipe_tower.cpp`; `tests/fff_print/test_multifilament.cpp`; `tests/fff_print/test_u1_four_tool_gcode.cpp`.
 
@@ -578,6 +657,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/MultiNozzleUtils.cpp`, `src/libslic3r/MultiNozzleUtils.hpp`, `src/libslic3r/PrintConfigConstants.hpp`, `src/slic3r/GUI/DeviceCore/DevMappingNozzle.cpp`, `src/slic3r/GUI/DeviceCore/DevMappingNozzle.h`, `src/slic3r/GUI/DeviceCore/DevNozzleRack.cpp`. Keys: `nozzle_type`, `nozzle_volume_type`.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/FilamentHotBedNozzleRules.cpp`, `src/libslic3r/FilamentHotBedNozzleRules.hpp`, `src/libslic3r/NozzleLayerPlanner.cpp`, `src/libslic3r/NozzleLayerPlanner.hpp`, `src/slic3r/GUI/FilamentNozzleMapDialog.cpp`, `src/slic3r/GUI/FilamentNozzleMapDialog.hpp`. Keys: `fos_nozzle_desync`, `nozzle_type`.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/MultiNozzleUtils.cpp`, `src/libslic3r/MultiNozzleUtils.hpp`, `src/libslic3r/PrintConfigConstants.hpp`, `src/slic3r/GUI/DeviceCore/DevMappingNozzle.cpp`, `src/slic3r/GUI/DeviceCore/DevMappingNozzle.h`, `src/slic3r/GUI/DeviceCore/DevNozzleRack.cpp`. Keys: `nozzle_type`, `nozzle_volume_type`.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/MultiNozzleUtils.cpp`, `src/libslic3r/MultiNozzleUtils.hpp`, `src/libslic3r/PrintConfigConstants.hpp`, `src/slic3r/GUI/DeviceCore/DevMappingNozzle.cpp`, `src/slic3r/GUI/DeviceCore/DevMappingNozzle.h`, `src/slic3r/GUI/DeviceCore/DevNozzleRack.cpp`. Keys: `nozzle_type`, `nozzle_volume_type`.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/MultiNozzleUtils.cpp`, `src/libslic3r/MultiNozzleUtils.hpp`, `src/libslic3r/PrintConfigConstants.hpp`, `src/slic3r/GUI/DeviceCore/DevMappingNozzle.cpp`, `src/slic3r/GUI/DeviceCore/DevMappingNozzle.h`, `src/slic3r/GUI/DeviceCore/DevNozzleRack.cpp`. Keys: `nozzle_type`, `nozzle_volume_type`.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/FilamentHotBedNozzleRules.cpp`, `src/libslic3r/FilamentHotBedNozzleRules.hpp`, `src/slic3r/GUI/HighFlowCompat.cpp`, `src/slic3r/GUI/HighFlowCompat.hpp`. Keys: `filament_volume_type`, `nozzle_type`, `nozzle_volume_type`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `tests/fff_print/test_wipe_tower.cpp`; `tests/fff_print/test_multifilament.cpp`; `tests/fff_print/test_u1_four_tool_gcode.cpp`.
 
@@ -596,6 +678,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): No matching component in the inspected source scope. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/FosFilamentArrangement.cpp`, `src/libslic3r/FosFilamentArrangement.hpp`. Keys: `fos_filament_nozzle`.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/FosFilamentArrangement.cpp`, `src/libslic3r/FosFilamentArrangement.hpp`, `src/libslic3r/U1FilamentPlan.cpp`, `src/libslic3r/U1FilamentPlan.hpp`, `src/slic3r/GUI/Mcp/McpToolsU1.cpp`. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): No matching component in the inspected source scope. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): No matching component in the inspected source scope. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): No matching component in the inspected source scope. Keys: none for this bounded component.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `docs/testing/evidence/components.junit.xml`; `docs/testing/evidence/mcp-live-smoke.json`; `docs/testing/evidence/mcp-slice-smoke.json`.
 
@@ -614,6 +699,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/slic3r/Utils/MoonrakerPrinterAgent.cpp`, `src/slic3r/Utils/MoonrakerPrinterAgent.hpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.hpp`. Keys: `host_type`, `print_host`, `printhost_apikey`, `printhost_authorization_type`, `printhost_cafile`, `printhost_password`, `printhost_port`, `printhost_ssl_ignore_revoke`, `printhost_user`.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/slic3r/GUI/SSWCP.cpp`, `src/slic3r/GUI/SSWCP.hpp`, `src/slic3r/Utils/MoonRaker.cpp`, `src/slic3r/Utils/MoonRaker.hpp`. Keys: `host_type`, `print_host`, `printhost_apikey`, `printhost_authorization_type`, `printhost_cafile`, `printhost_password`, `printhost_port`, `printhost_ssl_ignore_revoke`, `printhost_user`.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/slic3r/Utils/MoonrakerPrinterAgent.cpp`, `src/slic3r/Utils/MoonrakerPrinterAgent.hpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.hpp`. Keys: `host_type`, `print_host`, `printhost_apikey`, `printhost_authorization_type`, `printhost_cafile`, `printhost_password`, `printhost_port`, `printhost_ssl_ignore_revoke`, `printhost_user`.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/slic3r/Utils/MoonrakerPrinterAgent.cpp`, `src/slic3r/Utils/MoonrakerPrinterAgent.hpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.hpp`. Keys: `host_type`, `print_host`, `printhost_apikey`, `printhost_authorization_type`, `printhost_cafile`, `printhost_password`, `printhost_port`, `printhost_ssl_ignore_revoke`, `printhost_user`.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/slic3r/Utils/MoonrakerPrinterAgent.cpp`, `src/slic3r/Utils/MoonrakerPrinterAgent.hpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.hpp`. Keys: `host_type`, `print_host`, `printhost_apikey`, `printhost_authorization_type`, `printhost_cafile`, `printhost_password`, `printhost_port`, `printhost_ssl_ignore_revoke`, `printhost_user`.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/SSWCPProtocol.cpp`, `src/libslic3r/SSWCPProtocol.hpp`, `src/slic3r/GUI/SSWCP.cpp`, `src/slic3r/GUI/SSWCP.hpp`, `src/slic3r/Utils/GatewayDevice.cpp`, `src/slic3r/Utils/GatewayDevice.hpp`. Keys: `host_type`, `print_host`, `printhost_apikey`, `printhost_authorization_type`, `printhost_cafile`, `printhost_password`, `printhost_port`, `printhost_ssl_ignore_revoke`, `printhost_user`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`.
 
@@ -632,6 +720,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): No matching component in the inspected source scope. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/slic3r/GUI/SSWCP.cpp`, `src/slic3r/GUI/SSWCP.hpp`, `src/slic3r/Utils/MoonRaker.cpp`, `src/slic3r/Utils/MoonRaker.hpp`. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): No matching component in the inspected source scope. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): No matching component in the inspected source scope. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): No matching component in the inspected source scope. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/SSWCPProtocol.cpp`, `src/libslic3r/SSWCPProtocol.hpp`, `src/slic3r/GUI/SSWCP.cpp`, `src/slic3r/GUI/SSWCP.hpp`, `src/slic3r/Utils/ConnectionProcessManager.cpp`, `src/slic3r/Utils/ConnectionProcessManager.hpp`. Keys: none for this bounded component.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `No feature-specific U1 runtime/hardware verification recorded; generic suite success is not parity.`.
 
@@ -650,6 +741,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): No matching component in the inspected source scope. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/slic3r/GUI/SSWCP.cpp`, `src/slic3r/GUI/SSWCP.hpp`, `src/slic3r/Utils/MoonRaker.cpp`, `src/slic3r/Utils/MoonRaker.hpp`. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): No matching component in the inspected source scope. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): No matching component in the inspected source scope. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): No matching component in the inspected source scope. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/SSWCPProtocol.cpp`, `src/libslic3r/SSWCPProtocol.hpp`, `src/slic3r/GUI/SSWCP.cpp`, `src/slic3r/GUI/SSWCP.hpp`, `src/slic3r/Utils/GatewayAccount.cpp`, `src/slic3r/Utils/GatewayAccount.hpp`. Keys: none for this bounded component.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `No feature-specific U1 runtime/hardware verification recorded; generic suite success is not parity.`.
 
@@ -668,6 +762,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/slic3r/Utils/MoonrakerPrinterAgent.cpp`, `src/slic3r/Utils/MoonrakerPrinterAgent.hpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.hpp`. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/slic3r/GUI/SSWCP.cpp`, `src/slic3r/GUI/SSWCP.hpp`, `src/slic3r/Utils/MoonRaker.cpp`, `src/slic3r/Utils/MoonRaker.hpp`. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/slic3r/Utils/MoonrakerPrinterAgent.cpp`, `src/slic3r/Utils/MoonrakerPrinterAgent.hpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.hpp`. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/slic3r/Utils/MoonrakerPrinterAgent.cpp`, `src/slic3r/Utils/MoonrakerPrinterAgent.hpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.hpp`. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/slic3r/Utils/MoonrakerPrinterAgent.cpp`, `src/slic3r/Utils/MoonrakerPrinterAgent.hpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.hpp`. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/SSWCPProtocol.cpp`, `src/libslic3r/SSWCPProtocol.hpp`, `src/slic3r/GUI/SSWCP.cpp`, `src/slic3r/GUI/SSWCP.hpp`, `src/slic3r/Utils/GatewayDevice.cpp`, `src/slic3r/Utils/GatewayDevice.hpp`. Keys: none for this bounded component.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`.
 
@@ -686,6 +783,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/slic3r/GUI/CameraPopup.cpp`, `src/slic3r/GUI/CameraPopup.hpp`, `src/slic3r/GUI/MediaPlayCtrl.cpp`, `src/slic3r/GUI/MediaPlayCtrl.h`, `src/slic3r/GUI/WebRtcMediaController.cpp`, `src/slic3r/GUI/WebRtcMediaController.hpp`. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/slic3r/GUI/CameraPopup.cpp`, `src/slic3r/GUI/CameraPopup.hpp`, `src/slic3r/GUI/MediaPlayCtrl.cpp`, `src/slic3r/GUI/MediaPlayCtrl.h`, `src/slic3r/GUI/SSWCP.cpp`, `src/slic3r/GUI/SSWCP.hpp`. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/slic3r/GUI/CameraPopup.cpp`, `src/slic3r/GUI/CameraPopup.hpp`, `src/slic3r/GUI/MediaPlayCtrl.cpp`, `src/slic3r/GUI/MediaPlayCtrl.h`, `src/slic3r/GUI/WebRtcMediaController.cpp`, `src/slic3r/GUI/WebRtcMediaController.hpp`. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/slic3r/GUI/CameraPopup.cpp`, `src/slic3r/GUI/CameraPopup.hpp`, `src/slic3r/GUI/MediaPlayCtrl.cpp`, `src/slic3r/GUI/MediaPlayCtrl.h`, `src/slic3r/GUI/WebRtcMediaController.cpp`, `src/slic3r/GUI/WebRtcMediaController.hpp`. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/slic3r/GUI/CameraPopup.cpp`, `src/slic3r/GUI/CameraPopup.hpp`, `src/slic3r/GUI/MediaPlayCtrl.cpp`, `src/slic3r/GUI/MediaPlayCtrl.h`, `src/slic3r/GUI/WebRtcMediaController.cpp`, `src/slic3r/GUI/WebRtcMediaController.hpp`. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/SSWCPProtocol.cpp`, `src/libslic3r/SSWCPProtocol.hpp`, `src/slic3r/GUI/CameraPopup.cpp`, `src/slic3r/GUI/CameraPopup.hpp`, `src/slic3r/GUI/MediaPlayCtrl.cpp`, `src/slic3r/GUI/MediaPlayCtrl.h`. Keys: none for this bounded component.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `No feature-specific U1 runtime/hardware verification recorded; generic suite success is not parity.`.
 
@@ -704,6 +804,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.hpp`. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/slic3r/GUI/SSWCP.cpp`, `src/slic3r/GUI/SSWCP.hpp`, `src/slic3r/Utils/MoonRaker.cpp`, `src/slic3r/Utils/MoonRaker.hpp`. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.hpp`. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.hpp`. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.hpp`. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/SSWCPProtocol.cpp`, `src/libslic3r/SSWCPProtocol.hpp`, `src/slic3r/GUI/SSWCP.cpp`, `src/slic3r/GUI/SSWCP.hpp`, `src/slic3r/GUI/filamentsync/FilamentSyncAlgorithm.cpp`, `src/slic3r/GUI/filamentsync/FilamentSyncAlgorithm.hpp`. Keys: none for this bounded component.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `No feature-specific U1 runtime/hardware verification recorded; generic suite success is not parity.`.
 
@@ -722,6 +825,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.hpp`. Keys: `filament_colour`, `filament_settings_id`, `filament_type`.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/slic3r/GUI/SSWCP.cpp`, `src/slic3r/GUI/SSWCP.hpp`. Keys: `filament_colour`, `filament_settings_id`, `filament_type`.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.hpp`. Keys: `filament_colour`, `filament_settings_id`, `filament_type`.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.hpp`. Keys: `filament_colour`, `filament_settings_id`, `filament_type`.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.hpp`. Keys: `filament_colour`, `filament_settings_id`, `filament_type`.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/SSWCPProtocol.cpp`, `src/libslic3r/SSWCPProtocol.hpp`, `src/slic3r/GUI/SSWCP.cpp`, `src/slic3r/GUI/SSWCP.hpp`, `src/slic3r/GUI/filamentsync/FilamentColorMapBox.cpp`, `src/slic3r/GUI/filamentsync/FilamentColorMapBox.hpp`. Keys: `filament_colour`, `filament_settings_id`, `filament_type`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`.
 
@@ -740,6 +846,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.hpp`. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/slic3r/GUI/SSWCP.cpp`, `src/slic3r/GUI/SSWCP.hpp`, `src/slic3r/Utils/MoonRaker.cpp`, `src/slic3r/Utils/MoonRaker.hpp`. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.hpp`. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.hpp`. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.hpp`. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/SSWCPProtocol.cpp`, `src/libslic3r/SSWCPProtocol.hpp`, `src/slic3r/GUI/SSWCP.cpp`, `src/slic3r/GUI/SSWCP.hpp`, `src/slic3r/Utils/GatewayDevice.cpp`, `src/slic3r/Utils/GatewayDevice.hpp`. Keys: none for this bounded component.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `No feature-specific U1 runtime/hardware verification recorded; generic suite success is not parity.`.
 
@@ -758,6 +867,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): No matching component in the inspected source scope. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/FosFilamentArrangement.cpp`, `src/libslic3r/FosFilamentArrangement.hpp`, `src/slic3r/GUI/FosColourDialog.cpp`, `src/slic3r/GUI/FosColourDialog.hpp`, `src/slic3r/GUI/SSWCP.cpp`, `src/slic3r/GUI/SSWCP.hpp`. Keys: `fos_filament_mms_slot`, `fos_filament_nozzle`, `fos_filament_translucency`, `fos_filament_transparent`, `fos_mms_head_ace`, `fos_mms_topology`, `fos_mms_unit_count`, `fos_nozzle_desync`, `fos_physical_nozzle_diameter`, `fos_slot_config_serial`, `fos_support_interface_nozzle_pool`, `fos_support_nozzle_pool`, `fos_wipe_tower_nozzle_pool`.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/FosFilamentArrangement.cpp`, `src/libslic3r/FosFilamentArrangement.hpp`. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): No matching component in the inspected source scope. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): No matching component in the inspected source scope. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/SSWCPProtocol.cpp`, `src/libslic3r/SSWCPProtocol.hpp`, `src/slic3r/GUI/SSWCP.cpp`, `src/slic3r/GUI/SSWCP.hpp`, `src/slic3r/Utils/MoonRaker.cpp`, `src/slic3r/Utils/MoonRaker.hpp`. Keys: none for this bounded component.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`.
 
@@ -776,6 +888,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/slic3r/GUI/DeviceManager.cpp`, `src/slic3r/GUI/DeviceManager.hpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.hpp`. Keys: `chamber_minimal_temperature`, `chamber_temperature`, `support_chamber_temp_control`.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/slic3r/GUI/DeviceManager.cpp`, `src/slic3r/GUI/DeviceManager.hpp`, `src/slic3r/GUI/SSWCP.cpp`, `src/slic3r/GUI/SSWCP.hpp`, `src/slic3r/Utils/MoonRaker.cpp`, `src/slic3r/Utils/MoonRaker.hpp`. Keys: `chamber_temperature`, `support_chamber_temp_control`.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/slic3r/GUI/DeviceManager.cpp`, `src/slic3r/GUI/DeviceManager.hpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.hpp`. Keys: `chamber_minimal_temperature`, `chamber_temperature`, `support_chamber_temp_control`.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/slic3r/GUI/DeviceManager.cpp`, `src/slic3r/GUI/DeviceManager.hpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.hpp`. Keys: `chamber_minimal_temperature`, `chamber_temperature`, `support_chamber_temp_control`.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/slic3r/GUI/DeviceManager.cpp`, `src/slic3r/GUI/DeviceManager.hpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.hpp`. Keys: `chamber_minimal_temperature`, `chamber_temperature`, `support_chamber_temp_control`.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/SSWCPProtocol.cpp`, `src/libslic3r/SSWCPProtocol.hpp`, `src/slic3r/GUI/DeviceManager.cpp`, `src/slic3r/GUI/DeviceManager.hpp`, `src/slic3r/GUI/SSWCP.cpp`, `src/slic3r/GUI/SSWCP.hpp`. Keys: `chamber_temperature`, `support_chamber_temp_control`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `No feature-specific U1 runtime/hardware verification recorded; generic suite success is not parity.`.
 
@@ -794,6 +909,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/PrintConfigConstants.hpp`. Keys: `nozzle_volume_type`.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/slic3r/GUI/SSWCP.cpp`, `src/slic3r/GUI/SSWCP.hpp`, `src/slic3r/Utils/MoonRaker.cpp`, `src/slic3r/Utils/MoonRaker.hpp`. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/PrintConfigConstants.hpp`. Keys: `nozzle_volume_type`.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/PrintConfigConstants.hpp`. Keys: `nozzle_volume_type`.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/PrintConfigConstants.hpp`. Keys: `nozzle_volume_type`.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/SSWCPProtocol.cpp`, `src/libslic3r/SSWCPProtocol.hpp`, `src/slic3r/GUI/FlowTypeHelper.cpp`, `src/slic3r/GUI/FlowTypeHelper.hpp`, `src/slic3r/GUI/HighFlowCompat.cpp`, `src/slic3r/GUI/HighFlowCompat.hpp`. Keys: `filament_flow_support`, `filament_volume_type`, `nozzle_volume_type`, `printer_flow_support`, `process_flow_support`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `No feature-specific U1 runtime/hardware verification recorded; generic suite success is not parity.`.
 
@@ -812,6 +930,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/PrintConfigConstants.hpp`. Keys: `nozzle_diameter`.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): No matching component in the inspected source scope. Keys: `nozzle_diameter`.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/PrintConfigConstants.hpp`. Keys: `nozzle_diameter`.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/PrintConfigConstants.hpp`. Keys: `nozzle_diameter`.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/PrintConfigConstants.hpp`. Keys: `nozzle_diameter`.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): No matching component in the inspected source scope. Keys: `nozzle_diameter`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`.
 
@@ -830,6 +951,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/PrintConfigConstants.hpp`. Keys: `nozzle_diameter`.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): No matching component in the inspected source scope. Keys: `nozzle_diameter`.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/PrintConfigConstants.hpp`. Keys: `nozzle_diameter`.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/PrintConfigConstants.hpp`. Keys: `nozzle_diameter`.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/PrintConfigConstants.hpp`. Keys: `nozzle_diameter`.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): No matching component in the inspected source scope. Keys: `nozzle_diameter`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`.
 
@@ -848,6 +972,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/PrintConfigConstants.hpp`. Keys: `nozzle_diameter`.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): No matching component in the inspected source scope. Keys: `nozzle_diameter`.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/PrintConfigConstants.hpp`. Keys: `nozzle_diameter`.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/PrintConfigConstants.hpp`. Keys: `nozzle_diameter`.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/PrintConfigConstants.hpp`. Keys: `nozzle_diameter`.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): No matching component in the inspected source scope. Keys: `nozzle_diameter`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`.
 
@@ -866,6 +993,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/PrintConfigConstants.hpp`. Keys: `nozzle_diameter`.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): No matching component in the inspected source scope. Keys: `nozzle_diameter`.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/PrintConfigConstants.hpp`. Keys: `nozzle_diameter`.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/PrintConfigConstants.hpp`. Keys: `nozzle_diameter`.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/PrintConfigConstants.hpp`. Keys: `nozzle_diameter`.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): No matching component in the inspected source scope. Keys: `nozzle_diameter`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`.
 
@@ -884,6 +1014,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/PrintConfigConstants.hpp`, `src/libslic3r/PrintRegion.cpp`. Keys: `nozzle_diameter`.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/PrintRegion.cpp`. Keys: `nozzle_diameter`.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/PrintConfigConstants.hpp`, `src/libslic3r/PrintRegion.cpp`. Keys: `nozzle_diameter`.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/PrintConfigConstants.hpp`, `src/libslic3r/PrintRegion.cpp`. Keys: `nozzle_diameter`.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/PrintConfigConstants.hpp`, `src/libslic3r/PrintRegion.cpp`. Keys: `nozzle_diameter`.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/PrintRegion.cpp`. Keys: `nozzle_diameter`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`.
 
@@ -902,6 +1035,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/PresetBundle.cpp`, `src/libslic3r/PresetBundle.hpp`, `src/slic3r/GUI/ConfigWizard.cpp`, `src/slic3r/GUI/ConfigWizard.hpp`, `src/slic3r/GUI/ConfigWizardTypes.hpp`, `src/slic3r/GUI/ConfigWizard_private.hpp`. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/PresetBundle.cpp`, `src/libslic3r/PresetBundle.hpp`, `src/slic3r/GUI/ConfigWizard.cpp`, `src/slic3r/GUI/ConfigWizard.hpp`, `src/slic3r/GUI/ConfigWizard_private.hpp`, `src/slic3r/GUI/PresetComboBoxes.cpp`. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/PresetBundle.cpp`, `src/libslic3r/PresetBundle.hpp`, `src/slic3r/GUI/ConfigWizard.cpp`, `src/slic3r/GUI/ConfigWizard.hpp`, `src/slic3r/GUI/ConfigWizardTypes.hpp`, `src/slic3r/GUI/ConfigWizard_private.hpp`. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/PresetBundle.cpp`, `src/libslic3r/PresetBundle.hpp`, `src/slic3r/GUI/ConfigWizard.cpp`, `src/slic3r/GUI/ConfigWizard.hpp`, `src/slic3r/GUI/ConfigWizardTypes.hpp`, `src/slic3r/GUI/ConfigWizard_private.hpp`. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/PresetBundle.cpp`, `src/libslic3r/PresetBundle.hpp`, `src/slic3r/GUI/ConfigWizard.cpp`, `src/slic3r/GUI/ConfigWizard.hpp`, `src/slic3r/GUI/ConfigWizardTypes.hpp`, `src/slic3r/GUI/ConfigWizard_private.hpp`. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/PresetBundle.cpp`, `src/libslic3r/PresetBundle.hpp`, `src/slic3r/GUI/ConfigWizard.cpp`, `src/slic3r/GUI/ConfigWizard.hpp`, `src/slic3r/GUI/ConfigWizard_private.hpp`, `src/slic3r/GUI/PresetComboBoxes.cpp`. Keys: none for this bounded component.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`.
 
@@ -920,6 +1056,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/PrintConfigConstants.hpp`. Keys: `change_filament_gcode`, `machine_end_gcode`, `machine_start_gcode`.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`. Keys: `change_filament_gcode`, `machine_end_gcode`, `machine_start_gcode`.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/PrintConfigConstants.hpp`. Keys: `change_filament_gcode`, `machine_end_gcode`, `machine_start_gcode`.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/PrintConfigConstants.hpp`. Keys: `change_filament_gcode`, `machine_end_gcode`, `machine_start_gcode`.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/PrintConfigConstants.hpp`. Keys: `change_filament_gcode`, `machine_end_gcode`, `machine_start_gcode`.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`. Keys: `change_filament_gcode`, `machine_end_gcode`, `machine_start_gcode`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`.
 
@@ -938,6 +1077,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/Preset.cpp`, `src/libslic3r/PresetBundle.cpp`, `src/libslic3r/PresetBundle.hpp`, `src/slic3r/GUI/ExportPresetBundleDialog.cpp`, `src/slic3r/GUI/ExportPresetBundleDialog.hpp`, `src/slic3r/GUI/PresetBundleDialog.cpp`. Keys: `compatible_printers`, `inherits`.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/Preset.cpp`, `src/libslic3r/PresetBundle.cpp`, `src/libslic3r/PresetBundle.hpp`. Keys: `compatible_printers`, `inherits`.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/Preset.cpp`, `src/libslic3r/PresetBundle.cpp`, `src/libslic3r/PresetBundle.hpp`, `src/slic3r/GUI/ExportPresetBundleDialog.cpp`, `src/slic3r/GUI/ExportPresetBundleDialog.hpp`, `src/slic3r/GUI/PresetBundleDialog.cpp`. Keys: `compatible_printers`, `inherits`.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/Preset.cpp`, `src/libslic3r/PresetBundle.cpp`, `src/libslic3r/PresetBundle.hpp`, `src/slic3r/GUI/ExportPresetBundleDialog.cpp`, `src/slic3r/GUI/ExportPresetBundleDialog.hpp`, `src/slic3r/GUI/PresetBundleDialog.cpp`. Keys: `compatible_printers`, `inherits`.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/Preset.cpp`, `src/libslic3r/PresetBundle.cpp`, `src/libslic3r/PresetBundle.hpp`, `src/slic3r/GUI/ExportPresetBundleDialog.cpp`, `src/slic3r/GUI/ExportPresetBundleDialog.hpp`, `src/slic3r/GUI/PresetBundleDialog.cpp`. Keys: `compatible_printers`, `inherits`.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/Preset.cpp`, `src/libslic3r/PresetBundle.cpp`, `src/libslic3r/PresetBundle.hpp`. Keys: `compatible_printers`, `inherits`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`.
 
@@ -956,6 +1098,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/Format/bbs_3mf.cpp`, `src/libslic3r/Format/bbs_3mf.hpp`, `src/libslic3r/PresetBundle.cpp`, `src/libslic3r/PresetBundle.hpp`, `src/libslic3r/PrintConfigConstants.hpp`, `src/slic3r/GUI/ExportPresetBundleDialog.cpp`. Keys: `raft_first_layer_expansion`.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/Format/bbs_3mf.cpp`, `src/libslic3r/Format/bbs_3mf.hpp`, `src/libslic3r/PresetBundle.cpp`, `src/libslic3r/PresetBundle.hpp`. Keys: `raft_first_layer_expansion`.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/Format/bbs_3mf.cpp`, `src/libslic3r/Format/bbs_3mf.hpp`, `src/libslic3r/PresetBundle.cpp`, `src/libslic3r/PresetBundle.hpp`, `src/libslic3r/PrintConfigConstants.hpp`, `src/slic3r/GUI/ExportPresetBundleDialog.cpp`. Keys: `raft_first_layer_expansion`.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/Format/bbs_3mf.cpp`, `src/libslic3r/Format/bbs_3mf.hpp`, `src/libslic3r/PresetBundle.cpp`, `src/libslic3r/PresetBundle.hpp`, `src/libslic3r/PrintConfigConstants.hpp`, `src/slic3r/GUI/ExportPresetBundleDialog.cpp`. Keys: `raft_first_layer_expansion`.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/Format/bbs_3mf.cpp`, `src/libslic3r/Format/bbs_3mf.hpp`, `src/libslic3r/PresetBundle.cpp`, `src/libslic3r/PresetBundle.hpp`, `src/libslic3r/PrintConfigConstants.hpp`, `src/slic3r/GUI/ExportPresetBundleDialog.cpp`. Keys: `raft_first_layer_expansion`.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/Format/bbs_3mf.cpp`, `src/libslic3r/Format/bbs_3mf.hpp`, `src/libslic3r/PresetBundle.cpp`, `src/libslic3r/PresetBundle.hpp`. Keys: `mixed_filament_definitions`, `printer_flow_support`, `raft_first_layer_expansion`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `docs/testing/reference-slicing.md`; `docs/architecture/support-expansion-migration.md`.
 
@@ -974,6 +1119,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/Format/bbs_3mf.cpp`, `src/libslic3r/Format/bbs_3mf.hpp`, `src/libslic3r/Model.cpp`, `src/slic3r/GUI/AuxiliaryDataViewModel.cpp`, `src/slic3r/GUI/GLModel.cpp`, `src/slic3r/GUI/MultiSendMachineModel.cpp`. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/Format/bbs_3mf.cpp`, `src/libslic3r/Format/bbs_3mf.hpp`, `src/libslic3r/Model.cpp`, `src/slic3r/GUI/AuxiliaryDataViewModel.cpp`, `src/slic3r/GUI/GLModel.cpp`, `src/slic3r/GUI/MultiSendMachineModel.cpp`. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/Format/bbs_3mf.cpp`, `src/libslic3r/Format/bbs_3mf.hpp`, `src/libslic3r/Model.cpp`, `src/slic3r/GUI/AuxiliaryDataViewModel.cpp`, `src/slic3r/GUI/GLModel.cpp`, `src/slic3r/GUI/MultiSendMachineModel.cpp`. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/Format/bbs_3mf.cpp`, `src/libslic3r/Format/bbs_3mf.hpp`, `src/libslic3r/Model.cpp`, `src/slic3r/GUI/AuxiliaryDataViewModel.cpp`, `src/slic3r/GUI/GLModel.cpp`, `src/slic3r/GUI/MultiSendMachineModel.cpp`. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/Format/bbs_3mf.cpp`, `src/libslic3r/Format/bbs_3mf.hpp`, `src/libslic3r/Model.cpp`, `src/slic3r/GUI/AuxiliaryDataViewModel.cpp`, `src/slic3r/GUI/GLModel.cpp`, `src/slic3r/GUI/MultiSendMachineModel.cpp`. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/Format/bbs_3mf.cpp`, `src/libslic3r/Format/bbs_3mf.hpp`, `src/libslic3r/Model.cpp`, `src/slic3r/GUI/AuxiliaryDataViewModel.cpp`, `src/slic3r/GUI/GLModel.cpp`, `src/slic3r/GUI/MultiSendMachineModel.cpp`. Keys: none for this bounded component.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`.
 
@@ -992,6 +1140,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/Format/bbs_3mf.cpp`, `src/libslic3r/Format/bbs_3mf.hpp`, `src/libslic3r/PrintConfigConstants.hpp`, `src/libslic3r/PrintRegion.cpp`. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/Format/bbs_3mf.cpp`, `src/libslic3r/Format/bbs_3mf.hpp`, `src/libslic3r/PrintRegion.cpp`. Keys: `color_patch_enabled`, `color_patch_loops`, `fos_filament_mms_slot`, `fos_filament_nozzle`, `fos_filament_translucency`, `fos_filament_transparent`, `fos_mms_head_ace`, `fos_mms_topology`, `fos_mms_unit_count`, `fos_nozzle_desync`, `fos_physical_nozzle_diameter`, `fos_slot_config_serial`, `fos_support_interface_nozzle_pool`, `fos_support_nozzle_pool`, `fos_wipe_tower_nozzle_pool`, `has_mixed_nozzle_sizes`.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/Format/bbs_3mf.cpp`, `src/libslic3r/Format/bbs_3mf.hpp`, `src/libslic3r/PrintConfigConstants.hpp`, `src/libslic3r/PrintRegion.cpp`. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/Format/bbs_3mf.cpp`, `src/libslic3r/Format/bbs_3mf.hpp`, `src/libslic3r/PrintConfigConstants.hpp`, `src/libslic3r/PrintRegion.cpp`. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/Format/bbs_3mf.cpp`, `src/libslic3r/Format/bbs_3mf.hpp`, `src/libslic3r/PrintConfigConstants.hpp`, `src/libslic3r/PrintRegion.cpp`. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/Format/bbs_3mf.cpp`, `src/libslic3r/Format/bbs_3mf.hpp`, `src/libslic3r/PrintRegion.cpp`. Keys: none for this bounded component.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`.
 
@@ -1010,6 +1161,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/slic3r/GUI/Mcp/McpHttpServer.cpp`, `src/slic3r/GUI/Mcp/McpHttpServer.hpp`, `src/slic3r/GUI/Mcp/McpProtocol.cpp`, `src/slic3r/GUI/Mcp/McpProtocol.hpp`, `src/slic3r/GUI/Mcp/McpStdioBridge.cpp`, `src/slic3r/GUI/Mcp/McpStdioBridge.hpp`. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): No matching component in the inspected source scope. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/slic3r/GUI/Mcp/McpHttpServer.cpp`, `src/slic3r/GUI/Mcp/McpHttpServer.hpp`, `src/slic3r/GUI/Mcp/McpProtocol.cpp`, `src/slic3r/GUI/Mcp/McpProtocol.hpp`, `src/slic3r/GUI/Mcp/McpStdioBridge.cpp`, `src/slic3r/GUI/Mcp/McpStdioBridge.hpp`. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): No matching component in the inspected source scope. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/slic3r/GUI/Mcp/McpHttpServer.cpp`, `src/slic3r/GUI/Mcp/McpHttpServer.hpp`, `src/slic3r/GUI/Mcp/McpProtocol.cpp`, `src/slic3r/GUI/Mcp/McpProtocol.hpp`, `src/slic3r/GUI/Mcp/McpStdioBridge.cpp`, `src/slic3r/GUI/Mcp/McpStdioBridge.hpp`. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): No matching component in the inspected source scope. Keys: none for this bounded component.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `docs/testing/evidence/components.junit.xml`; `docs/testing/evidence/mcp-live-smoke.json`; `docs/testing/evidence/mcp-slice-smoke.json`.
 
@@ -1028,6 +1182,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/slic3r/GUI/Mcp/McpToolsScene.cpp`. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): No matching component in the inspected source scope. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/slic3r/GUI/Mcp/McpToolsScene.cpp`. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): No matching component in the inspected source scope. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/slic3r/GUI/Mcp/McpToolsScene.cpp`. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): No matching component in the inspected source scope. Keys: none for this bounded component.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `docs/testing/evidence/components.junit.xml`; `docs/testing/evidence/mcp-live-smoke.json`; `docs/testing/evidence/mcp-slice-smoke.json`.
 
@@ -1046,6 +1203,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/slic3r/GUI/Mcp/McpToolsProject.cpp`, `src/slic3r/GUI/Mcp/McpToolsView.cpp`. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): No matching component in the inspected source scope. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/slic3r/GUI/Mcp/McpToolsProject.cpp`, `src/slic3r/GUI/Mcp/McpToolsView.cpp`. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): No matching component in the inspected source scope. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/slic3r/GUI/Mcp/McpToolsProject.cpp`, `src/slic3r/GUI/Mcp/McpToolsView.cpp`. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): No matching component in the inspected source scope. Keys: none for this bounded component.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `docs/testing/evidence/components.junit.xml`; `docs/testing/evidence/mcp-live-smoke.json`; `docs/testing/evidence/mcp-slice-smoke.json`.
 
@@ -1064,6 +1224,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/slic3r/GUI/Mcp/McpPaths.cpp`, `src/slic3r/GUI/Mcp/McpPaths.hpp`, `src/slic3r/GUI/Mcp/McpToolsProject.cpp`. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): No matching component in the inspected source scope. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/slic3r/GUI/Mcp/McpPaths.cpp`, `src/slic3r/GUI/Mcp/McpPaths.hpp`, `src/slic3r/GUI/Mcp/McpToolsProject.cpp`, `src/slic3r/GUI/Mcp/McpU1Policy.hpp`. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): No matching component in the inspected source scope. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/slic3r/GUI/Mcp/McpPaths.cpp`, `src/slic3r/GUI/Mcp/McpPaths.hpp`, `src/slic3r/GUI/Mcp/McpToolsProject.cpp`. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): No matching component in the inspected source scope. Keys: none for this bounded component.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `docs/testing/evidence/components.junit.xml`; `docs/testing/evidence/mcp-live-smoke.json`; `docs/testing/evidence/mcp-slice-smoke.json`.
 
@@ -1082,6 +1245,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/slic3r/GUI/Mcp/McpToolsConfig.cpp`. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): No matching component in the inspected source scope. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/slic3r/GUI/Mcp/McpToolsConfig.cpp`, `src/slic3r/GUI/Mcp/McpU1Policy.hpp`. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): No matching component in the inspected source scope. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/slic3r/GUI/Mcp/McpToolsConfig.cpp`. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): No matching component in the inspected source scope. Keys: none for this bounded component.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `docs/testing/evidence/components.junit.xml`; `docs/testing/evidence/mcp-live-smoke.json`; `docs/testing/evidence/mcp-slice-smoke.json`.
 
@@ -1100,6 +1266,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/slic3r/GUI/Mcp/McpToolsScene.cpp`. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): No matching component in the inspected source scope. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/slic3r/GUI/Mcp/McpToolsScene.cpp`, `src/slic3r/GUI/Mcp/McpU1Policy.hpp`. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): No matching component in the inspected source scope. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/slic3r/GUI/Mcp/McpToolsScene.cpp`. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): No matching component in the inspected source scope. Keys: none for this bounded component.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `docs/testing/evidence/components.junit.xml`; `docs/testing/evidence/mcp-live-smoke.json`; `docs/testing/evidence/mcp-slice-smoke.json`.
 
@@ -1118,6 +1287,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/slic3r/Utils/BBLPrinterAgent.cpp`, `src/slic3r/Utils/BBLPrinterAgent.hpp`, `src/slic3r/Utils/IPrinterAgent.hpp`, `src/slic3r/Utils/MoonrakerPrinterAgent.cpp`, `src/slic3r/Utils/MoonrakerPrinterAgent.hpp`, `src/slic3r/Utils/OrcaPrinterAgent.cpp`. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): No matching component in the inspected source scope. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/slic3r/GUI/Mcp/McpToolsU1.cpp`, `src/slic3r/GUI/Mcp/McpU1Policy.hpp`, `src/slic3r/Utils/BBLPrinterAgent.cpp`, `src/slic3r/Utils/BBLPrinterAgent.hpp`, `src/slic3r/Utils/IPrinterAgent.hpp`, `src/slic3r/Utils/MoonrakerPrinterAgent.cpp`. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/slic3r/Utils/BBLPrinterAgent.cpp`, `src/slic3r/Utils/BBLPrinterAgent.hpp`, `src/slic3r/Utils/IPrinterAgent.hpp`, `src/slic3r/Utils/MoonrakerPrinterAgent.cpp`, `src/slic3r/Utils/MoonrakerPrinterAgent.hpp`, `src/slic3r/Utils/OrcaPrinterAgent.cpp`. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/slic3r/Utils/BBLPrinterAgent.cpp`, `src/slic3r/Utils/BBLPrinterAgent.hpp`, `src/slic3r/Utils/IPrinterAgent.hpp`, `src/slic3r/Utils/MoonrakerPrinterAgent.cpp`, `src/slic3r/Utils/MoonrakerPrinterAgent.hpp`, `src/slic3r/Utils/OrcaPrinterAgent.cpp`. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): No matching component in the inspected source scope. Keys: none for this bounded component.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `docs/testing/evidence/components.junit.xml`; `docs/testing/evidence/mcp-live-smoke.json`; `docs/testing/evidence/mcp-slice-smoke.json`.
 
@@ -1136,6 +1308,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/slic3r/Utils/MoonrakerPrinterAgent.cpp`, `src/slic3r/Utils/MoonrakerPrinterAgent.hpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`. Keys: `gcode_flavor`.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`. Keys: `gcode_flavor`.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/slic3r/Utils/MoonrakerPrinterAgent.cpp`, `src/slic3r/Utils/MoonrakerPrinterAgent.hpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`. Keys: `gcode_flavor`.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/slic3r/Utils/MoonrakerPrinterAgent.cpp`, `src/slic3r/Utils/MoonrakerPrinterAgent.hpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`. Keys: `gcode_flavor`.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`, `src/slic3r/Utils/MoonrakerPrinterAgent.cpp`, `src/slic3r/Utils/MoonrakerPrinterAgent.hpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`. Keys: `gcode_flavor`.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/GCode.cpp`. Keys: `gcode_flavor`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`.
 
@@ -1154,6 +1329,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/slic3r/Utils/MoonrakerPrinterAgent.cpp`, `src/slic3r/Utils/MoonrakerPrinterAgent.hpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.hpp`. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): No matching component in the inspected source scope. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/slic3r/Utils/MoonrakerPrinterAgent.cpp`, `src/slic3r/Utils/MoonrakerPrinterAgent.hpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.hpp`. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/slic3r/Utils/MoonrakerPrinterAgent.cpp`, `src/slic3r/Utils/MoonrakerPrinterAgent.hpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.hpp`. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/slic3r/Utils/MoonrakerPrinterAgent.cpp`, `src/slic3r/Utils/MoonrakerPrinterAgent.hpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.hpp`. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): No matching component in the inspected source scope. Keys: none for this bounded component.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`.
 
@@ -1172,6 +1350,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/slic3r/Utils/MoonrakerPrinterAgent.cpp`, `src/slic3r/Utils/MoonrakerPrinterAgent.hpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.hpp`. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): No matching component in the inspected source scope. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/slic3r/Utils/MoonrakerPrinterAgent.cpp`, `src/slic3r/Utils/MoonrakerPrinterAgent.hpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.hpp`. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/slic3r/Utils/MoonrakerPrinterAgent.cpp`, `src/slic3r/Utils/MoonrakerPrinterAgent.hpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.hpp`. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/slic3r/Utils/MoonrakerPrinterAgent.cpp`, `src/slic3r/Utils/MoonrakerPrinterAgent.hpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.hpp`. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/slic3r/Utils/GatewayDevice.cpp`, `src/slic3r/Utils/GatewayDevice.hpp`. Keys: none for this bounded component.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`.
 
@@ -1190,6 +1371,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/slic3r/plugin/PluginLoader.cpp`, `src/slic3r/plugin/PluginLoader.hpp`, `src/slic3r/plugin/PluginManager.cpp`, `src/slic3r/plugin/PluginManager.hpp`. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): No matching component in the inspected source scope. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/slic3r/plugin/PluginLoader.cpp`, `src/slic3r/plugin/PluginLoader.hpp`, `src/slic3r/plugin/PluginManager.cpp`, `src/slic3r/plugin/PluginManager.hpp`. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/slic3r/plugin/PluginLoader.cpp`, `src/slic3r/plugin/PluginLoader.hpp`, `src/slic3r/plugin/PluginManager.cpp`, `src/slic3r/plugin/PluginManager.hpp`. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/slic3r/plugin/PluginLoader.cpp`, `src/slic3r/plugin/PluginLoader.hpp`, `src/slic3r/plugin/PluginManager.cpp`, `src/slic3r/plugin/PluginManager.hpp`. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): No matching component in the inspected source scope. Keys: none for this bounded component.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `tests/slic3rutils/test_u1_plugin_packages.cpp`; `tools/u1/tests/test_plugin_integrations.py`.
 
@@ -1208,6 +1392,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/slic3r/plugin/PluginLoader.cpp`, `src/slic3r/plugin/PluginLoader.hpp`. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): No matching component in the inspected source scope. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/slic3r/plugin/PluginLoader.cpp`, `src/slic3r/plugin/PluginLoader.hpp`. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/slic3r/plugin/PluginLoader.cpp`, `src/slic3r/plugin/PluginLoader.hpp`. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/slic3r/plugin/PluginLoader.cpp`, `src/slic3r/plugin/PluginLoader.hpp`. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): No matching component in the inspected source scope. Keys: none for this bounded component.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `tests/slic3rutils/test_u1_plugin_packages.cpp`; `tools/u1/tests/test_plugin_integrations.py`.
 
@@ -1226,6 +1413,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/slic3r/plugin/PluginLoader.cpp`, `src/slic3r/plugin/PluginLoader.hpp`. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): No matching component in the inspected source scope. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/slic3r/plugin/PluginLoader.cpp`, `src/slic3r/plugin/PluginLoader.hpp`. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/slic3r/plugin/PluginLoader.cpp`, `src/slic3r/plugin/PluginLoader.hpp`. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/slic3r/plugin/PluginLoader.cpp`, `src/slic3r/plugin/PluginLoader.hpp`. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): No matching component in the inspected source scope. Keys: none for this bounded component.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `tests/slic3rutils/test_u1_plugin_packages.cpp`; `tools/u1/tests/test_plugin_integrations.py`.
 
@@ -1244,6 +1434,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): No matching component in the inspected source scope. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): No matching component in the inspected source scope. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): `tools/u1/windows/sign-portable.ps1`, `tools/u1/windows/verify-portable.ps1`. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): No matching component in the inspected source scope. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): No matching component in the inspected source scope. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): No matching component in the inspected source scope. Keys: none for this bounded component.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`.
 
@@ -1262,6 +1455,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): No matching component in the inspected source scope. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): No matching component in the inspected source scope. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): No matching component in the inspected source scope. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): No matching component in the inspected source scope. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): No matching component in the inspected source scope. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): No matching component in the inspected source scope. Keys: none for this bounded component.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`.
 
@@ -1280,6 +1476,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): No matching component in the inspected source scope. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): No matching component in the inspected source scope. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): No matching component in the inspected source scope. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): No matching component in the inspected source scope. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): No matching component in the inspected source scope. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): No matching component in the inspected source scope. Keys: none for this bounded component.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `No feature-specific U1 runtime/hardware verification recorded; generic suite success is not parity.`.
 
@@ -1298,6 +1497,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/Fill/AdaptiveInfillField.cpp`, `src/libslic3r/Fill/AdaptiveInfillField.hpp`, `src/libslic3r/Fill/Fill.cpp`, `src/libslic3r/Fill/Fill.hpp`, `src/libslic3r/Fill/Fill3DHoneycomb.cpp`, `src/libslic3r/Fill/Fill3DHoneycomb.hpp`. Keys: `fuzzy_skin`, `fuzzy_skin_first_layer`, `fuzzy_skin_layers_between_ripple_offset`, `fuzzy_skin_mode`, `fuzzy_skin_noise_type`, `fuzzy_skin_octaves`, `fuzzy_skin_persistence`, `fuzzy_skin_point_distance`, `fuzzy_skin_ripple_offset`, `fuzzy_skin_ripples_per_layer`, `fuzzy_skin_scale`, `fuzzy_skin_thickness`, `ironing_angle`, `ironing_angle_fixed`, `ironing_expansion`, `ironing_fan_speed`, `ironing_flow`, `ironing_inset`.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/Fill/Fill.cpp`, `src/libslic3r/Fill/Fill.hpp`, `src/libslic3r/Fill/Fill3DHoneycomb.cpp`, `src/libslic3r/Fill/Fill3DHoneycomb.hpp`, `src/libslic3r/Fill/FillAdaptive.cpp`, `src/libslic3r/Fill/FillAdaptive.hpp`. Keys: `fuzzy_skin`, `fuzzy_skin_first_layer`, `fuzzy_skin_mode`, `fuzzy_skin_noise_type`, `fuzzy_skin_octaves`, `fuzzy_skin_persistence`, `fuzzy_skin_point_distance`, `fuzzy_skin_scale`, `fuzzy_skin_thickness`, `ironing_angle`, `ironing_fan_speed`, `ironing_flow`, `ironing_inset`, `ironing_pattern`, `ironing_spacing`, `ironing_speed`, `ironing_type`, `seam_gap`.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/Fill/AdaptiveInfillField.cpp`, `src/libslic3r/Fill/AdaptiveInfillField.hpp`, `src/libslic3r/Fill/Fill.cpp`, `src/libslic3r/Fill/Fill.hpp`, `src/libslic3r/Fill/Fill3DHoneycomb.cpp`, `src/libslic3r/Fill/Fill3DHoneycomb.hpp`. Keys: `fuzzy_skin`, `fuzzy_skin_first_layer`, `fuzzy_skin_layers_between_ripple_offset`, `fuzzy_skin_mode`, `fuzzy_skin_noise_type`, `fuzzy_skin_octaves`, `fuzzy_skin_persistence`, `fuzzy_skin_point_distance`, `fuzzy_skin_ripple_offset`, `fuzzy_skin_ripples_per_layer`, `fuzzy_skin_scale`, `fuzzy_skin_thickness`, `ironing_angle`, `ironing_angle_fixed`, `ironing_expansion`, `ironing_fan_speed`, `ironing_flow`, `ironing_inset`.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/Fill/AdaptiveInfillField.cpp`, `src/libslic3r/Fill/AdaptiveInfillField.hpp`, `src/libslic3r/Fill/Fill.cpp`, `src/libslic3r/Fill/Fill.hpp`, `src/libslic3r/Fill/Fill3DHoneycomb.cpp`, `src/libslic3r/Fill/Fill3DHoneycomb.hpp`. Keys: `fuzzy_skin`, `fuzzy_skin_first_layer`, `fuzzy_skin_layers_between_ripple_offset`, `fuzzy_skin_mode`, `fuzzy_skin_noise_type`, `fuzzy_skin_octaves`, `fuzzy_skin_persistence`, `fuzzy_skin_point_distance`, `fuzzy_skin_ripple_offset`, `fuzzy_skin_ripples_per_layer`, `fuzzy_skin_scale`, `fuzzy_skin_thickness`, `ironing_angle`, `ironing_angle_fixed`, `ironing_expansion`, `ironing_fan_speed`, `ironing_flow`, `ironing_inset`.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/Fill/AdaptiveInfillField.cpp`, `src/libslic3r/Fill/AdaptiveInfillField.hpp`, `src/libslic3r/Fill/Fill.cpp`, `src/libslic3r/Fill/Fill.hpp`, `src/libslic3r/Fill/Fill3DHoneycomb.cpp`, `src/libslic3r/Fill/Fill3DHoneycomb.hpp`. Keys: `fuzzy_skin`, `fuzzy_skin_first_layer`, `fuzzy_skin_layers_between_ripple_offset`, `fuzzy_skin_mode`, `fuzzy_skin_noise_type`, `fuzzy_skin_octaves`, `fuzzy_skin_persistence`, `fuzzy_skin_point_distance`, `fuzzy_skin_ripple_offset`, `fuzzy_skin_ripples_per_layer`, `fuzzy_skin_scale`, `fuzzy_skin_thickness`, `ironing_angle`, `ironing_angle_fixed`, `ironing_expansion`, `ironing_fan_speed`, `ironing_flow`, `ironing_inset`.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/Fill/Fill.cpp`, `src/libslic3r/Fill/Fill.hpp`, `src/libslic3r/Fill/Fill3DHoneycomb.cpp`, `src/libslic3r/Fill/Fill3DHoneycomb.hpp`, `src/libslic3r/Fill/FillAdaptive.cpp`, `src/libslic3r/Fill/FillAdaptive.hpp`. Keys: `fuzzy_skin`, `fuzzy_skin_first_layer`, `fuzzy_skin_mode`, `fuzzy_skin_noise_type`, `fuzzy_skin_octaves`, `fuzzy_skin_persistence`, `fuzzy_skin_point_distance`, `fuzzy_skin_scale`, `fuzzy_skin_thickness`, `ironing_angle`, `ironing_fan_speed`, `ironing_flow`, `ironing_inset`, `ironing_pattern`, `ironing_spacing`, `ironing_speed`, `ironing_type`, `seam_gap`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`.
 
@@ -1316,6 +1518,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/CAD/CadDocument.cpp`, `src/libslic3r/CAD/CadDocument.hpp`, `src/libslic3r/CAD/GeometryEngine.cpp`, `src/libslic3r/CAD/GeometryEngine.hpp`, `src/libslic3r/CAD/SketchConstraints.cpp`, `src/libslic3r/CAD/SketchConstraints.hpp`. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/Format/STEP.cpp`, `src/libslic3r/Format/bbs_3mf.cpp`, `src/libslic3r/Format/bbs_3mf.hpp`, `src/slic3r/GUI/Gizmos/GLGizmoAdvancedCut.cpp`, `src/slic3r/GUI/Gizmos/GLGizmoAdvancedCut.hpp`, `src/slic3r/GUI/Gizmos/GLGizmoAssembly.cpp`. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/CAD/CadDocument.cpp`, `src/libslic3r/CAD/CadDocument.hpp`, `src/libslic3r/CAD/GeometryEngine.cpp`, `src/libslic3r/CAD/GeometryEngine.hpp`, `src/libslic3r/CAD/SketchConstraints.cpp`, `src/libslic3r/CAD/SketchConstraints.hpp`. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/CAD/CadDocument.cpp`, `src/libslic3r/CAD/CadDocument.hpp`, `src/libslic3r/CAD/GeometryEngine.cpp`, `src/libslic3r/CAD/GeometryEngine.hpp`, `src/libslic3r/CAD/SketchConstraints.cpp`, `src/libslic3r/CAD/SketchConstraints.hpp`. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/CAD/CadDocument.cpp`, `src/libslic3r/CAD/CadDocument.hpp`, `src/libslic3r/CAD/GeometryEngine.cpp`, `src/libslic3r/CAD/GeometryEngine.hpp`, `src/libslic3r/CAD/SketchConstraints.cpp`, `src/libslic3r/CAD/SketchConstraints.hpp`. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/Format/STEP.cpp`, `src/libslic3r/Format/bbs_3mf.cpp`, `src/libslic3r/Format/bbs_3mf.hpp`, `src/slic3r/GUI/Gizmos/GLGizmoAdvancedCut.cpp`, `src/slic3r/GUI/Gizmos/GLGizmoAdvancedCut.hpp`, `src/slic3r/GUI/Gizmos/GLGizmoAssembly.cpp`. Keys: none for this bounded component.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`.
 
@@ -1334,6 +1539,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/slic3r/GUI/Calibration.cpp`, `src/slic3r/GUI/Calibration.hpp`, `src/slic3r/GUI/CalibrationPanel.cpp`, `src/slic3r/GUI/CalibrationPanel.hpp`, `src/slic3r/GUI/CalibrationWizard.cpp`, `src/slic3r/GUI/CalibrationWizard.hpp`. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/slic3r/GUI/Calibration.cpp`, `src/slic3r/GUI/Calibration.hpp`, `src/slic3r/GUI/CalibrationPanel.cpp`, `src/slic3r/GUI/CalibrationPanel.hpp`, `src/slic3r/GUI/CalibrationWizard.cpp`, `src/slic3r/GUI/CalibrationWizard.hpp`. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/slic3r/GUI/Calibration.cpp`, `src/slic3r/GUI/Calibration.hpp`, `src/slic3r/GUI/CalibrationPanel.cpp`, `src/slic3r/GUI/CalibrationPanel.hpp`, `src/slic3r/GUI/CalibrationWizard.cpp`, `src/slic3r/GUI/CalibrationWizard.hpp`. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/slic3r/GUI/Calibration.cpp`, `src/slic3r/GUI/Calibration.hpp`, `src/slic3r/GUI/CalibrationPanel.cpp`, `src/slic3r/GUI/CalibrationPanel.hpp`, `src/slic3r/GUI/CalibrationWizard.cpp`, `src/slic3r/GUI/CalibrationWizard.hpp`. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/slic3r/GUI/Calibration.cpp`, `src/slic3r/GUI/Calibration.hpp`, `src/slic3r/GUI/CalibrationPanel.cpp`, `src/slic3r/GUI/CalibrationPanel.hpp`, `src/slic3r/GUI/CalibrationWizard.cpp`, `src/slic3r/GUI/CalibrationWizard.hpp`. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/slic3r/GUI/Calibration.cpp`, `src/slic3r/GUI/Calibration.hpp`, `src/slic3r/GUI/CalibrationPanel.cpp`, `src/slic3r/GUI/CalibrationPanel.hpp`, `src/slic3r/GUI/CalibrationWizard.cpp`, `src/slic3r/GUI/CalibrationWizard.hpp`. Keys: none for this bounded component.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`.
 
@@ -1352,6 +1560,9 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/slic3r/GUI/GUI_App.cpp`, `src/slic3r/plugin/PluginManager.cpp`, `src/slic3r/plugin/PluginManager.hpp`. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/slic3r/GUI/GUI_App.cpp`. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/slic3r/GUI/GUI_App.cpp`, `src/slic3r/GUI/Mcp/McpU1Policy.hpp`, `src/slic3r/plugin/PluginManager.cpp`, `src/slic3r/plugin/PluginManager.hpp`. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/slic3r/GUI/GUI_App.cpp`, `src/slic3r/plugin/PluginManager.cpp`, `src/slic3r/plugin/PluginManager.hpp`. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/slic3r/GUI/GUI_App.cpp`, `src/slic3r/plugin/PluginManager.cpp`, `src/slic3r/plugin/PluginManager.hpp`. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/slic3r/GUI/GUI_App.cpp`. Keys: none for this bounded component.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`.
 
@@ -1370,5 +1581,29 @@ Reference implementation evidence:
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/PrintConfigConstants.hpp`. Keys: `nozzle_volume_type`.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): No matching component in the inspected source scope. Keys: none for this bounded component.
 - ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/PrintConfigConstants.hpp`. Keys: `nozzle_volume_type`.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/PrintConfigConstants.hpp`. Keys: `nozzle_volume_type`.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/PrintConfigConstants.hpp`. Keys: `nozzle_volume_type`.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/SSWCPProtocol.cpp`, `src/libslic3r/SSWCPProtocol.hpp`, `src/slic3r/GUI/FlowTypeHelper.cpp`, `src/slic3r/GUI/FlowTypeHelper.hpp`, `src/slic3r/GUI/HighFlowCompat.cpp`, `src/slic3r/GUI/HighFlowCompat.hpp`. Keys: `filament_flow_support`, `filament_volume_type`, `nozzle_volume_type`, `printer_flow_support`, `process_flow_support`.
+
+Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`.
+
+<a id="snapmaker-tip-cooling-motion"></a>
+## Snapmaker development cooling, infill margin and short-travel changes
+
+**Unknown; P1.** Dependencies: project-migration.
+
+Six additional schema names at Snapmaker b070bcf, beyond exact v2.4.1, are absent here. Inspect consumers and possible renamed equivalents before deciding whether to port cooling transitions/slowdown, external infill margin and short-travel acceleration. Add source-attributed behavior and G-code comparisons; no inert settings or automatic profile substitution.
+
+Plugin/agent assessment: No bundled plugin substitutes for this native compatibility/release gate.
+
+Reference implementation evidence:
+- snapmaker-v241 (`bac6fd5c1e1c23ddf057cf6471ba4ed7ed621c4c`): `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/Fill/Fill.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/CoolingBuffer.cpp`, `src/libslic3r/GCode/CoolingBuffer.hpp`, `src/libslic3r/LayerRegion.cpp`. Keys: none for this bounded component.
+- snapmaker-main (`f5fd7289ea067997181ee6c2cf15a98f58faba43`): `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/Fill/Fill.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/CoolingBuffer.cpp`, `src/libslic3r/GCode/CoolingBuffer.hpp`, `src/libslic3r/LayerRegion.cpp`. Keys: none for this bounded component.
+- orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/Fill/Fill.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/CoolingBuffer.cpp`, `src/libslic3r/GCode/CoolingBuffer.hpp`. Keys: none for this bounded component.
+- forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/Fill/Fill.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/CoolingBuffer.cpp`, `src/libslic3r/GCode/CoolingBuffer.hpp`, `src/libslic3r/LayerRegion.cpp`. Keys: none for this bounded component.
+- ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/Fill/Fill.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/CoolingBuffer.cpp`, `src/libslic3r/GCode/CoolingBuffer.hpp`. Keys: none for this bounded component.
+- orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/Fill/Fill.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/CoolingBuffer.cpp`, `src/libslic3r/GCode/CoolingBuffer.hpp`. Keys: none for this bounded component.
+- orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/BeltGCode.cpp`, `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/Fill/Fill.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/CoolingBuffer.cpp`, `src/libslic3r/GCode/CoolingBuffer.hpp`. Keys: none for this bounded component.
+- snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/CustomGCode.cpp`, `src/libslic3r/Fill/Fill.cpp`, `src/libslic3r/GCode.cpp`, `src/libslic3r/GCode/CoolingBuffer.cpp`, `src/libslic3r/GCode/CoolingBuffer.hpp`, `src/libslic3r/LayerRegion.cpp`. Keys: `cooling_perimeter_transition_distance`, `cooling_slowdown_logic`, `external_infill_margin`, `overhang_threshold_participating_cooling`, `overhang_totally_speed`, `travel_short_distance_acceleration`.
 
 Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`.

@@ -78,6 +78,8 @@ Statuses are **Verified**, **Implemented but untested**, **Partial**, **Missing*
 | [Integration changes, disabled features and default policies](functional-parity-audit.md#orca-gates) | Partial | P0 |
 | [Detect and reconcile reported U1 high-flow hotends](functional-parity-audit.md#high-flow-detection) | Missing | P0 |
 
+| [Snapmaker development cooling, infill margin and short-travel changes](functional-parity-audit.md#snapmaker-tip-cooling-motion) | Unknown | P1 |
+
 The U1 catalog already contains uniform 0.2/0.4/0.6/0.8 mm and mixed 0.4+0.6 mm profiles. Installed/selected printer variants determine dropdown visibility; these entries are not all physically calibrated here. A 0.4+0.6-only selection is not evidence of a FOrca hardware limit.
 
 No stable or 100% U1-compatible release is certified. Camera/gateway/pairing/feeding, complete FOrca/Full Spectrum migrations, original-project support semantics, native macOS packaging and physical tests remain separate gates. Windows-trusted signing additionally needs a real signing identity.

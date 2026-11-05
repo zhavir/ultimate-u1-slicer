@@ -76,3 +76,5 @@ A project-local environment pins CMake 3.31.10 and Ninja 1.13.0. Full Release co
 The separate Snapmaker profiles default-branch tip observed during cloning was 8f7ca15192d8c14bd6d932ca7171bd5792d5ff29; the integration review catalog deliberately uses the older exact gitlink 1e201f6aa8920b4878daa02a21d43073ba92c06c recorded by Snapmaker main.
 
 Additional stock firmware repositories were subsequently cloned and inspected. Exact commits, default branches and license-file names are recorded in evidence/stock-firmware-sources.json; their API contracts and physical/logical indexing distinctions are documented in ../firmware/compatibility.md. No firmware code was flashed, executed on hardware or linked into this application.
+
+The functional inventory now additionally compares seven exact source snapshots, including the fetched official main, MCP and Snapmaker development tips. Its generator validates every inspected reference C++/header/Python/PowerShell source path and Git blob against the declared commit before generating reports; altered or incomplete exports are rejected. This provenance check does not establish runtime equivalence or integration of the tips.

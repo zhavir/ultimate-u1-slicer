@@ -17,7 +17,36 @@ SOURCE_REFS = {
     'snapmaker-main': 'f5fd7289ea067997181ee6c2cf15a98f58faba43',
     'orca-mcp-base': '17a745e30c248cf3acb4c429b650b22d106fd19a',
     'forca': '0b1f80cd22793785d8ae5c4296d2fe4a9248bd21',
+    'orca-main-tip': 'f96bbe8db13f603c767f0a21fce80da85c6a09f4',
+    'orca-mcp-tip': '56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7',
+    'snapmaker-tip': 'b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb',
 }
+
+
+def validate_source_snapshot(root, ref, repository=ROOT):
+    """Reject mislabeled, changed or incomplete source exports before citing a pin."""
+    tree = subprocess.check_output(['git', 'ls-tree', '-rz', ref, '--', 'src'], cwd=repository)
+    expected = {}
+    extensions = {'.cpp', '.hpp', '.h', '.py', '.ps1'}
+    for record in tree.split(b'\0'):
+        if not record:
+            continue
+        metadata, raw_path = record.split(b'\t', 1)
+        relative = raw_path.decode('utf-8')
+        if Path(relative).suffix in extensions:
+            expected[relative] = metadata.split()[2].decode('ascii')
+    if not expected:
+        raise ValueError(f'No auditable source files at {ref}')
+    actual = {p.relative_to(root).as_posix() for p in (root / 'src').rglob('*')
+              if p.is_file() and p.suffix in extensions}
+    if actual != set(expected):
+        raise ValueError(f'Source file inventory differs from declared pin {ref}')
+    for relative, object_id in expected.items():
+        path = root / relative
+        content = path.read_bytes()
+        blob = b'blob ' + str(len(content)).encode('ascii') + b'\0' + content
+        if path.is_symlink() or hashlib.sha1(blob).hexdigest() != object_id:
+            raise ValueError(f'Source bytes differ from declared pin {ref}: {relative}')
 
 
 def config_definitions(root):
@@ -196,11 +225,17 @@ def main():
     parser.add_argument('--snapmaker-main',type=Path,default=ROOT.parent/'ultimate-u1-audit/snapmaker')
     parser.add_argument('--forca',type=Path,default=ROOT.parent/'ultimate-u1-audit/forca')
     parser.add_argument('--orca-mcp-base',type=Path,default=Path('/tmp/u1-orca-mcp-base'))
+    for name in ('orca-main-tip', 'orca-mcp-tip', 'snapmaker-tip'):
+        parser.add_argument('--'+name, type=Path, default=Path('/tmp/u1-'+name))
     args=parser.parse_args()
     roots={'snapmaker-v241':args.snapmaker_v241,'snapmaker-main':args.snapmaker_main,
            'orca-mcp-base':args.orca_mcp_base,'forca':args.forca,'ultimate':ROOT}
+    roots.update({name: getattr(args, name.replace('-', '_'))
+                  for name in ('orca-main-tip', 'orca-mcp-tip', 'snapmaker-tip')})
     if any(not (path/'src/libslic3r/PrintConfig.cpp').is_file() for path in roots.values()):
         raise SystemExit('All exact reference source trees must be available; see reference commits in this script.')
+    for name, ref in SOURCE_REFS.items():
+        validate_source_snapshot(roots[name], ref)
     result=generate(roots)
     write_report(result,ROOT/'docs/architecture')
     print(json.dumps({'features':len(result['features']),'counts':result['counts'],

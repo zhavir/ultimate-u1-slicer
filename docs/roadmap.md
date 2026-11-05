@@ -45,4 +45,4 @@ The experimental portable artifact is compiled and verified: all 3,462 configure
 
 ## Expanded functional-parity gate
 
-The 71-group source-backed audit separates exact Snapmaker v2.4.1, later Snapmaker main, official MCP base and FOrca. See architecture/functional-parity-audit.md and the dependency-aware implementation backlog. Missing names include aliases and actual missing consumers; counts are not a hardware certification. The next portable candidate includes opt-in plugin discovery and signing gates, with signed publication blocked until a real identity is configured.
+The 72-group source-backed audit separates exact Snapmaker v2.4.1, later Snapmaker main, official MCP base and FOrca. See architecture/functional-parity-audit.md and the dependency-aware implementation backlog. Missing names include aliases and actual missing consumers; counts are not a hardware certification. The next portable candidate includes opt-in plugin discovery and signing gates, with signed publication blocked until a real identity is configured.

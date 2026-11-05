@@ -63,3 +63,7 @@ These implementation locations were inspected in the selected full Orca base. �
 6. For every upstream release/feature/fix, classify the whole repository diff and record Adopt / Already present / Needs adapter / Deferred / Incompatible / Unknown with source/test evidence. Unknown is not Missing. Preserve useful unrelated-printer functionality when it does not compromise U1.
 
 The scheduled watcher reports branch/release/tag changes for all sources, with full-slicer subsystem summaries for unseen branch events. It does not automatically integrate code. A source-present feature becomes “verified” only for the actual tests that pass; hardware compatibility remains provisional until physical printing tests.
+
+## Development-tip follow-up
+
+The refreshed audit also inspects byte-validated exports of official main f96bbe8db13f603c767f0a21fce80da85c6a09f4, MCP tip 56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7 and Snapmaker tip b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb. These are comparison references, not fully integrated baselines. After project migration, review the P1 `snapmaker-tip-cooling-motion` group: six new cooling/infill/travel schema names require consumer/alias and emitted-behavior comparisons before adoption. The original exact-v2.4.1 findings remain separate.
