@@ -46,5 +46,38 @@
     "hardware_verified": false,
     "stable_release": false
   },
-  "release_url": "https://github.com/zhavir/ultimate-u1-slicer/releases/tag/experimental-windows-b3fcd387d861"
+  "release_url": "https://github.com/zhavir/ultimate-u1-slicer/releases/tag/experimental-windows-b3fcd387d861",
+  "publication": {
+    "published_at": "2026-11-05T04:14:29Z",
+    "prerelease": true,
+    "draft": false,
+    "target_commitish": "b3fcd387d8610da34b39357afc4df5e71e42dcdb",
+    "assets": [
+      {
+        "name": "SHA256SUMS",
+        "size": 111,
+        "digest": "sha256:1d6b1342d76a14607dabb1f9717a2b511ea8aa30a3b3e1b8023c4a170215c854",
+        "state": "uploaded"
+      },
+      {
+        "name": "Ultimate-U1-Slicer-Windows-x64-portable.zip",
+        "size": 224865319,
+        "digest": "sha256:7f6011530bcf46e7d2b6839249f19df1c8f8aa871671b3e8844569f7dffba010",
+        "state": "uploaded"
+      },
+      {
+        "name": "verification.json",
+        "size": 461,
+        "digest": "sha256:337aae494bff6f7b352ac577cabb8b533e79246a3332bc2b9d309b8d0aa3ff70",
+        "state": "uploaded"
+      },
+      {
+        "name": "windows-unit-tests.json",
+        "size": 757,
+        "digest": "sha256:09fbd846b01b38da432fba9c9a2f4978eae1817486bc029518e6f6c695f5f933",
+        "state": "uploaded"
+      }
+    ],
+    "remote_archive_digest_matched": true
+  }
 }
