@@ -130,6 +130,26 @@ void log_python_exception_keep(pybind11::error_already_set& err)
 
 namespace {
 
+// Public plugin paths are UTF-8, including on Windows where boost's narrow path
+// constructor and .string() otherwise use the ANSI code page.
+boost::filesystem::path plugin_path_from_utf8(const std::string& value)
+{
+#ifdef _WIN32
+    return boost::filesystem::path(boost::nowide::widen(value));
+#else
+    return boost::filesystem::path(value);
+#endif
+}
+
+std::string plugin_path_to_utf8(const boost::filesystem::path& value)
+{
+#ifdef _WIN32
+    return boost::nowide::narrow(value.wstring());
+#else
+    return value.string();
+#endif
+}
+
 std::string format_python_error(PyObject* ptype, PyObject* pvalue, PyObject* ptraceback)
 {
     std::string result;
@@ -211,7 +231,7 @@ bool add_sys_path_entry(const boost::filesystem::path& path, std::string& error,
         return false;
     }
 
-    const std::string path_str = path.string();
+    const std::string path_str = plugin_path_to_utf8(path);
     PyObjectPtr py_path(PyUnicode_DecodeFSDefault(path_str.c_str()));
     if (!py_path) {
         error = "Failed to decode path for Python sys.path: " + path_str;
@@ -841,7 +861,7 @@ bool PythonInterpreter::add_plugin_sys_path(const std::string& path, std::string
 bool PythonInterpreter::add_plugin_sys_path_locked(const std::string& path, std::string& error)
 {
     bool inserted = false;
-    if (!add_sys_path_entry(boost::filesystem::path(path), error, &inserted))
+    if (!add_sys_path_entry(plugin_path_from_utf8(path), error, &inserted))
         return false;
 
     auto users = m_plugin_path_users.find(path);
@@ -916,25 +936,30 @@ void PythonInterpreter::record_plugin_modules_locked(const std::string& module_n
         namespace fs = boost::filesystem;
 
         boost::system::error_code ec;
-        fs::path                  file_path = fs::weakly_canonical(fs::path(file), ec);
+        fs::path                  file_path = fs::weakly_canonical(plugin_path_from_utf8(file), ec);
         if (ec) {
             ec.clear();
-            file_path = fs::absolute(fs::path(file), ec);
+            file_path = fs::absolute(plugin_path_from_utf8(file), ec);
         }
         if (ec)
             return false;
 
         ec.clear();
-        fs::path root_path = fs::weakly_canonical(fs::path(root), ec);
+        fs::path root_path = fs::weakly_canonical(plugin_path_from_utf8(root), ec);
         if (ec) {
             ec.clear();
-            root_path = fs::absolute(fs::path(root), ec);
+            root_path = fs::absolute(plugin_path_from_utf8(root), ec);
         }
         if (ec)
             return false;
 
+#ifdef _WIN32
+        const std::string file_string = boost::nowide::narrow(file_path.generic_wstring());
+        std::string       root_string = boost::nowide::narrow(root_path.generic_wstring());
+#else
         const std::string file_string = file_path.generic_string();
         std::string       root_string = root_path.generic_string();
+#endif
         if (root_string.empty())
             return false;
         if (root_string.back() != '/')
@@ -1119,7 +1144,7 @@ PyObject* PythonInterpreter::load_module_from_file(const std::string&       file
     }
 
     namespace fs = boost::filesystem;
-    fs::path path(file_path);
+    fs::path path = plugin_path_from_utf8(file_path);
 
     if (!fs::exists(path)) {
         error = "File does not exist: " + file_path;
@@ -1134,9 +1159,9 @@ PyObject* PythonInterpreter::load_module_from_file(const std::string&       file
 
     // Add the directory to sys.path
     fs::path dir_path       = path.parent_path();
-    std::string module_name = path.stem().string();
+    std::string module_name = plugin_path_to_utf8(path.stem());
 
-    const std::string dir = dir_path.string();
+    const std::string dir = plugin_path_to_utf8(dir_path);
     if (!add_plugin_sys_path_locked(dir, error))
         return nullptr;
     if (plugin_paths)
@@ -1174,7 +1199,7 @@ PyObject* PythonInterpreter::load_module_from_directory(const std::string& dir_p
     }
 
     namespace fs = boost::filesystem;
-    fs::path dir(dir_path);
+    fs::path dir = plugin_path_from_utf8(dir_path);
 
     if (!fs::exists(dir) || !fs::is_directory(dir)) {
         error = "Directory does not exist: " + dir_path;
@@ -1187,7 +1212,7 @@ PyObject* PythonInterpreter::load_module_from_directory(const std::string& dir_p
         return nullptr;
     }
 
-    const std::string directory = dir.string();
+    const std::string directory = plugin_path_to_utf8(dir);
     if (!add_plugin_sys_path_locked(directory, error))
         return nullptr;
     if (plugin_paths)
@@ -1224,7 +1249,7 @@ PyObject* PythonInterpreter::load_module_from_whl(const std::string& file_path,
 
     namespace fs = boost::filesystem;
 
-    fs::path whl_path(file_path);
+    fs::path whl_path = plugin_path_from_utf8(file_path);
 
     if (!fs::exists(whl_path)) {
         error = "File does not exist: " + file_path;
@@ -1238,7 +1263,7 @@ PyObject* PythonInterpreter::load_module_from_whl(const std::string& file_path,
             return nullptr;
     }
 
-    return load_module_from_directory(extract_dir.string(), pkg_name, error, plugin_paths, plugin_modules);
+    return load_module_from_directory(plugin_path_to_utf8(extract_dir), pkg_name, error, plugin_paths, plugin_modules);
 }
 
 } // namespace Slic3r
