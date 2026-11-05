@@ -1,0 +1,36 @@
+"""Opt-in Ultimate U1 plugin; loaded through the existing native plugin manager."""
+from pathlib import Path
+import orca
+from .common import BoundaryError, launch_window, object_args
+
+MODE = "__MODE__"
+TITLE = "__TITLE__"
+
+
+def dispatch(payload):
+    object_args(payload, ("action", "args"), ("action", "args"))
+    if MODE == "studio" and payload["action"] == "inspect":
+        from .studio import inspect_project
+        return inspect_project(payload["args"])
+    if MODE == "converter":
+        from .converter import convert_project, list_profiles
+        if payload["action"] == "profiles":
+            return list_profiles(payload["args"])
+        if payload["action"] == "convert":
+            return convert_project(payload["args"])
+    raise BoundaryError("Unknown plugin action")
+
+
+class Integration(orca.script.ScriptPluginCapabilityBase):
+    def get_name(self):
+        return TITLE
+
+    def execute(self, ctx=None):
+        html = Path(__file__).with_name("ui.html").read_text(encoding="utf-8")
+        return launch_window(TITLE, html, dispatch)
+
+
+@orca.plugin
+class Package(orca.base):
+    def register_capabilities(self):
+        orca.register_capability(Integration)

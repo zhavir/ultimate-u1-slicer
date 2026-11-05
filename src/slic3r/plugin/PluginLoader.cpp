@@ -588,6 +588,40 @@ bool install_packages(const std::vector<std::string>& pkgs, std::string& error)
     }
 }
 
+std::size_t stage_bundled_plugins(const boost::filesystem::path& directory,
+                                  const std::vector<PluginDescriptor>& installed,
+                                  std::string& error)
+{
+    namespace fs = boost::filesystem;
+    error.clear();
+    if (!fs::is_directory(directory))
+        return 0;
+    std::size_t count = 0;
+    for (fs::directory_iterator it(directory); it != fs::directory_iterator(); ++it) {
+        if (!fs::is_regular_file(it->status()) || it->path().extension() != ".whl")
+            continue;
+        PluginDescriptor descriptor;
+        bool exists = false;
+        std::string detail;
+        if (!inspect_local_plugin_package(it->path(), descriptor, exists, detail)) {
+            error += detail + "\n";
+            continue;
+        }
+        if (descriptor.entry_package != "u1_studio_plugin" && descriptor.entry_package != "u1_bambu_converter_plugin")
+            continue;
+        const bool existing_version = std::any_of(installed.begin(), installed.end(), [&](const PluginDescriptor& item) {
+            return item.entry_package == descriptor.entry_package;
+        });
+        if (exists || existing_version)
+            continue;
+        if (install_plugin(it->path(), "", descriptor, detail, false))
+            ++count;
+        else
+            error += detail + "\n";
+    }
+    return count;
+}
+
 bool inspect_local_plugin_package(const boost::filesystem::path& filepath,
                                   PluginDescriptor&              plugin_descriptor,
                                   bool&                          existing_installation,
@@ -637,7 +671,7 @@ bool install_plugin(const boost::filesystem::path& filepath, const std::string& 
 bool install_plugin(const boost::filesystem::path& filepath,
                     const std::string&             cloud_user_id,
                     PluginDescriptor&              plugin_descriptor,
-                    std::string&                   error)
+                    std::string&                   error, bool enabled_on_install)
 {
     namespace fs = boost::filesystem;
 
@@ -751,7 +785,7 @@ bool install_plugin(const boost::filesystem::path& filepath,
         PluginDescriptor installed_entry = plugin_descriptor;
         if (is_cloud_install)
             installed_entry.cloud = CloudPluginState{cloud_uuid, true, false, false, plugin_descriptor.cloud->is_mine};
-        if (!write_install_state(final_dir, installed_entry)) {
+        if (!write_install_state(final_dir, installed_entry, enabled_on_install, {})) {
             // Roll back: remove new files and restore backup.
             boost::system::error_code rollback_ec;
             fs::remove_all(final_dir, rollback_ec);

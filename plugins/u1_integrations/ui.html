@@ -1,0 +1,18 @@
+<!doctype html><html><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'">
+<style>body{font:15px system-ui;margin:22px;color:#202428;background:#f4f5f6}label{display:block;margin:12px 0}input,textarea{box-sizing:border-box;width:100%;padding:8px}input[type=checkbox]{width:auto}button{padding:9px;margin:5px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:white;padding:14px}small{display:block}</style></head><body>
+<h2>__TITLE__</h2><p id="scope"></p>
+<small>Opt-in plugin. Authorize folders before launch with U1_MCP_ALLOWED_ROOTS, a JSON array of absolute directories. The plugin host may also ask for filesystem/network permission. Neither plugin prints or runs printer macros.</small>
+<label>Input STL / 3MF path<input id="path" placeholder="Absolute path to your project"></label>
+<div id="studio"><label>Optional Studio-format printer snapshot (JSON; no printer is contacted)<textarea id="snapshot" rows="3">{}</textarea></label><button onclick="run('inspect')">Inspect and preflight</button></div>
+<div id="converter"><label>Separately installed converter service<input id="endpoint" value="http://127.0.0.1:8084"></label><button onclick="run('profiles')">List service profiles</button>
+<label>Reference profile identifier<input id="reference_profile"></label><label>New output 3MF path<input id="output"></label>
+<label><input id="license_acknowledged" type="checkbox"> I have permission to use this separately installed service under its license.</label>
+<small>Converter code and profiles are not bundled. Review the returned diff and slice the new project afresh. Automatic rules, speed clamping and swap pauses are not requested.</small><button onclick="run('convert')">Convert into a new project</button></div>
+<pre id="report">Ready.</pre>
+<script>
+const mode='__MODE__';const $=id=>document.getElementById(id);
+$('studio').hidden=mode!=='studio';$('converter').hidden=mode!=='converter';
+$('scope').textContent=mode==='studio'?'Read-only Snapmaker Studio inspection. No conversion or support-expansion rewrite.':'Connector for thadius83/bambu-to-snapmaker-u1. Requires your own running local service; its noncommercial license still applies.';
+function run(action){try{const args=action==='profiles'?{endpoint:$('endpoint').value}:mode==='studio'?{path:$('path').value,printer_snapshot:JSON.parse($('snapshot').value)}:{endpoint:$('endpoint').value,path:$('path').value,output:$('output').value,reference_profile:$('reference_profile').value,license_acknowledged:$('license_acknowledged').checked};document.querySelectorAll('button').forEach(b=>b.disabled=true);$('report').textContent='Working…';window.orca.postMessage({action,args});}catch(e){$('report').textContent=String(e);document.querySelectorAll('button').forEach(b=>b.disabled=false);}}
+window.orca.onMessage(data=>{$('report').textContent=JSON.stringify(data,null,2);document.querySelectorAll('button').forEach(b=>b.disabled=false);});
+</script></body></html>

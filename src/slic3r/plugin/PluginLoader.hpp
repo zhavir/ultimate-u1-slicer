@@ -30,6 +30,12 @@ void unload(Plugin& plugin);
 
 // Install Python dependencies into the shared packages directory via the bundled uv. Blocks, with
 // a 120 s cap. Installs are serialized: plugins' loads and scripts' runs share the folder.
+// Make bundled opt-in packages visible on first use. Never replaces an installed
+// package (including another version) and never loads/enables Python capabilities.
+std::size_t stage_bundled_plugins(const boost::filesystem::path& directory,
+                                  const std::vector<PluginDescriptor>& installed,
+                                  std::string& error);
+
 bool install_packages(const std::vector<std::string>& pkgs, std::string& error);
 
 // Read a local .py/.whl package's metadata without installing it, and report whether a package is
@@ -45,7 +51,7 @@ bool inspect_local_plugin_package(const boost::filesystem::path& filepath,
 bool install_plugin(const boost::filesystem::path& filepath,
                     const std::string&             cloud_user_id,
                     PluginDescriptor&              plugin_descriptor,
-                    std::string&                   error);
+                    std::string&                   error, bool enabled_on_install = true);
 bool install_plugin(const boost::filesystem::path& filepath, const std::string& cloud_user_id, std::string& error);
 
 } // namespace Slic3r::plugin_loader

@@ -1,0 +1,89 @@
+{
+  "date": "2026-11-05",
+  "python_tests": {
+    "count": 45,
+    "status": "passed",
+    "scope": "Full configured tooling suite including real Studio inspection, deterministic wheels, authorized-path and local converter-contract tests"
+  },
+  "native_results": [
+    {
+      "scope": "Full FFF after two reviewed upstream engine fixes",
+      "summary": {
+        "name": "fff_print_tests",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "3",
+        "tests": "607143",
+        "hostname": "tbd",
+        "time": "524.386",
+        "timestamp": "2026-11-05T11:02:55Z"
+      },
+      "junit_case_records": 1233,
+      "report_sha256": "7b43f8ed5b5e8776559c37a29b65be7feebaf98f93b2e84213c2a554a71269d4"
+    },
+    {
+      "scope": "Native wheel installation and capability loading",
+      "summary": {
+        "name": "slic3rutils_tests",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "26",
+        "hostname": "tbd",
+        "time": "0.536",
+        "timestamp": "2026-11-05T10:57:03Z"
+      },
+      "junit_case_records": 1,
+      "report_sha256": "beb2f5659790703a4d21ac5e2bcd3b5b82b2c00ac0554aba74acbf68cfee3238"
+    },
+    {
+      "scope": "Bundled discovery before the explicit persisted-disabled-state refinement",
+      "summary": {
+        "name": "slic3rutils_tests",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "37",
+        "hostname": "tbd",
+        "time": "0.215",
+        "timestamp": "2026-11-05T14:45:19Z"
+      },
+      "junit_case_records": 2,
+      "report_sha256": "80e8c9fd95d8741ea9e4390931780051d107c4e85284b5ba67aae613c44fee57"
+    },
+    {
+      "scope": "Final native installation/load plus persisted disabled staging and user-content preservation",
+      "summary": {
+        "name": "slic3rutils_tests",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "41",
+        "hostname": "tbd",
+        "time": "0.194",
+        "timestamp": "2026-11-05T16:17:35Z"
+      },
+      "junit_case_records": 2,
+      "report_sha256": "107909ed5cdf1f54d3ace23ad9c685ea88b054e22b74b9ad163046a7885ae457"
+    }
+  ],
+  "actual_converter_roundtrip": {
+    "upstream_sha": "630bc8a92eb128464be14cc5a94838e4e2d2a101",
+    "service": "Real upstream FastAPI/uvicorn application, isolated loopback instance",
+    "profile_count": 10,
+    "selected_profile": "0.08-high-quality---cube",
+    "input_sha256": "ab21e54712210834aae6a8ecfca945b5a86b6d16d065548817da3994282eec6c",
+    "output_sha256": "89438e4c856e12d8f7a1225ea203a0faa66a76b64eb3254d7c29eaea1d609b4d",
+    "output_bytes": 24896,
+    "original_unchanged": true,
+    "requires_reslicing": true,
+    "printer_contacted": false,
+    "hardware_verified": false,
+    "external_code_distributed": false
+  },
+  "limits": [
+    "Windows candidate is not yet built for these changes.",
+    "No physical printer operated.",
+    "No signing identity configured."
+  ]
+}

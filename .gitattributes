@@ -16,3 +16,8 @@
 
 # Preserve the archived upstream README's intentional Markdown hard line breaks.
 docs/architecture/upstream-readme.md whitespace=-blank-at-eol
+
+# Audited plugin sources and wheel inputs must retain identical bytes on all hosts.
+third_party/snapmaker-studio/** text eol=lf
+plugins/u1_integrations/** text eol=lf
+LICENSE.txt text eol=lf

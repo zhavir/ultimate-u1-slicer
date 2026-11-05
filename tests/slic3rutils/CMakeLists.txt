@@ -54,6 +54,7 @@ add_executable(${_TEST_NAME}_tests
     test_plugin_status.cpp
     test_printer_agent.cpp
     test_qidi_printer_agent.cpp
+    test_u1_plugin_packages.cpp
     test_plugin_install.cpp
     test_plugin_lifecycle.cpp
     test_plugin_resource_texture.cpp
@@ -157,5 +158,13 @@ if (ORCA_BUNDLED_UV_EXECUTABLE)
         VERBATIM
     )
 endif()
+
+add_custom_command(TARGET ${_TEST_NAME}_tests POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        "${PROJECT_SOURCE_DIR}/resources/u1_plugins"
+        "$<TARGET_FILE_DIR:${_TEST_NAME}_tests>/u1_plugins"
+    COMMENT "Copying audited U1 plugin packages for native installation tests"
+    VERBATIM
+)
 
 orcaslicer_discover_tests(${_TEST_NAME}_tests)

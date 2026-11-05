@@ -66,3 +66,7 @@ ctest_results.xml
 **/graphify-out/
 
 __pycache__/
+
+# Reproducibly generated optional U1 plugin wheels
+/resources/u1_plugins/*.whl
+/resources/u1_plugins/plugins.json

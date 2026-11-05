@@ -302,6 +302,13 @@ void PluginManager::run_discovery_task(bool clear)
 
         const std::vector<std::string> dirs      = get_plugin_directories(cloud_user_id);
         std::vector<PluginDescriptor> discovered = discover_plugin_packages(dirs, error);
+        if (!resources_dir().empty()) {
+            std::string bundled_error;
+            if (plugin_loader::stage_bundled_plugins(boost::filesystem::path(resources_dir()) / "u1_plugins", discovered, bundled_error) > 0)
+                discovered = discover_plugin_packages(dirs, error);
+            if (!bundled_error.empty())
+                BOOST_LOG_TRIVIAL(warning) << "Bundled U1 plugin staging: " << bundled_error;
+        }
         merge_discovered_plugins(std::move(discovered), clear);
     } catch (const std::exception& ex) {
         error = std::string("Plugin discovery failed: ") + ex.what();
