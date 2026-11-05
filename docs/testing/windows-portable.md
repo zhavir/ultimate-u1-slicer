@@ -1,8 +1,12 @@
 # Experimental Windows x64 portable build
 
-## New plugin candidate — pending Windows validation
+## Verified plugin candidate — Windows x64
 
-Source `237a930cbf3308d589e009768a29a160c2f5367e` is building in [run 42093341824](https://github.com/zhavir/ultimate-u1-slicer/actions/runs/42093341824). It adds both optional plugin packages, disabled-by-default native discovery, two reviewed engine fixes and trusted-signature verification support. Windows component checks passed; the full application, portable startup checks and complete unit suite are still pending at this checkpoint. No signing identity is configured. This is not a newly published or signed release. See [plugin instructions](../plugins/integrations.md) and [signing requirements](../releasing/windows-signing.md).
+Source `237a930cbf3308d589e009768a29a160c2f5367e` passed [run 42093341824](https://github.com/zhavir/ultimate-u1-slicer/actions/runs/42093341824): all **3,467 configured Windows tests passed**, zero failures/skips, 424 seconds. The inherited `NotWorking`/`RequiresApp` exclusions remain unchanged. Native GUI startup, authenticated MCP HTTP/stdio, portable storage/registry isolation and both bundled plugin packages passed verification. Both plugins were staged **disabled** in the application's private portable profile. Their interactive WebView windows have not been manually exercised on a user Windows installation.
+
+[Download the verified Actions artifact](https://github.com/zhavir/ultimate-u1-slicer/actions/runs/42093341824/artifacts/13446953725) (GitHub login may be required; retained for 30 days). Inside, extract the portable ZIP and launch `OrcaSlicer/orca-slicer.exe` with its adjacent `ultimate_u1_data_dir`. ZIP SHA-256: `bc09cc6c657828fd52b8eb4d056243bb8612cc100a58a5a83295386a3bfb381f`; 225455513 bytes, 4090 entries. Both optional wheels match their recorded hashes and all archive CRCs pass.
+
+This candidate adds opt-in Studio inspection/preflight, a connector to the separately installed noncommercial converter, two reviewed upstream engine fixes, and trusted-signature verification support. **It is unsigned** (`NotSigned`): no signing identity is configured. Trusted signed publication remains blocked; no signature/reputation claim or stable release is made. See [structured evidence](evidence/windows-plugin-candidate.json), [plugin instructions](../plugins/integrations.md) and [signing requirements](../releasing/windows-signing.md). Original-project support migration and complete U1/FOrca parity remain open.
 
 ## Previously published candidate
 

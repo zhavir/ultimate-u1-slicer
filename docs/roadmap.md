@@ -46,3 +46,7 @@ The experimental portable artifact is compiled and verified: all 3,462 configure
 ## Expanded functional-parity gate
 
 The 72-group source-backed audit separates exact Snapmaker v2.4.1, later Snapmaker main, official MCP base and FOrca. See architecture/functional-parity-audit.md and the dependency-aware implementation backlog. Missing names include aliases and actual missing consumers; counts are not a hardware certification. The next portable candidate includes opt-in plugin discovery and signing gates, with signed publication blocked until a real identity is configured.
+
+## Verified Windows plugin checkpoint
+
+Candidate `237a930cbf3308d589e009768a29a160c2f5367e` passes native Windows startup/MCP/isolation, two bundled disabled plugins and all 3,467 configured unit tests (zero failures/skips). [Download/evidence](testing/windows-portable.md). The live notification workflow passes all 49 tooling tests and observes 11 upstream sources; new alerts are assigned to zhavir. This closes the current portable/plugin discovery verification gate, while interactive plugin window testing, a trusted signing identity, original Snapmaker 3MF/support semantics, full FOrca/Full Spectrum integration, camera/RFID/feeder/gateway parity, native macOS validation and physical printing remain open. No signed/stable release is published.

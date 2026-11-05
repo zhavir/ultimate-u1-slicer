@@ -1,0 +1,58 @@
+{
+  "run_url": "https://github.com/zhavir/ultimate-u1-slicer/actions/runs/42093341824",
+  "verified_artifact_url": "https://github.com/zhavir/ultimate-u1-slicer/actions/runs/42093341824/artifacts/13446953725",
+  "source_commit": "237a930cbf3308d589e009768a29a160c2f5367e",
+  "archive": {
+    "source": "237a930cbf3308d589e009768a29a160c2f5367e",
+    "zip_sha256": "bc09cc6c657828fd52b8eb4d056243bb8612cc100a58a5a83295386a3bfb381f",
+    "bytes": 225455513,
+    "archive_entries": 4090,
+    "crc_valid": true,
+    "plugin_wheels_verified": 2,
+    "signing": {
+      "status": "not_configured",
+      "reason": "No code-signing identity configured; this is an unsigned test candidate.",
+      "signed": false
+    },
+    "scope": "Archive inspection only; native Windows startup/unit checks are separate."
+  },
+  "native_windows_verification": {
+    "authenticated_mcp_initialize_passed": true,
+    "native_help_passed": true,
+    "authenticode_status": "NotSigned",
+    "hardware_verified": false,
+    "url_registration_untouched": true,
+    "bundled_plugins_discoverable": 2,
+    "native_gui_ready": true,
+    "authenticode_valid": false,
+    "portable_directory_detected": true,
+    "bundled_plugins_default_disabled": true,
+    "optional_plugin_wheels_verified": 2,
+    "printer_contacted": false,
+    "roaming_directory_untouched": true,
+    "platform": "Windows x64",
+    "portable_stdio_initialize_passed": true,
+    "source_commit": "237a930cbf3308d589e009768a29a160c2f5367e",
+    "stable_release": false
+  },
+  "full_windows_unit_suite": {
+    "tests": 3467,
+    "failures": 0,
+    "skipped": 0,
+    "time_seconds": 424,
+    "junit_sha256": "ebcfe992c31f75d92c11d3fa0adb7475d8c2a4463981b9fd58a27e87e3cbdaac",
+    "native_plugin_cases": [
+      "Bundled U1 plugins become discoverable without loading or replacing user packages",
+      "Packaged U1 integration wheels install and register native script capabilities"
+    ],
+    "exclusions": "Inherited NotWorking and RequiresApp labels; no new exclusions."
+  },
+  "scope_limits": [
+    "No printer operated.",
+    "Plugin windows have not been interactively exercised on a user Windows installation.",
+    "No trusted signing identity configured.",
+    "Original Snapmaker project migration and complete U1/FOrca parity remain incomplete."
+  ],
+  "workflow_conclusion": "success",
+  "release_status": "Verified experimental Actions artifact; unsigned. No signed or stable release published."
+}
