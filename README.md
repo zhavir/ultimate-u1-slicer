@@ -2,6 +2,8 @@
 
 Experimental, U1-first integration of the OrcaSlicer ecosystem. **This is not a stable release.** No macOS ARM64 application build or physical U1 print has been verified yet.
 
+An [experimental Windows x64 portable build](https://github.com/zhavir/ultimate-u1-slicer/releases/tag/experimental-windows-b3fcd387d861) is available. Extract the complete ZIP into a new writable folder, open `OrcaSlicer`, and run `orca-slicer.exe`. Keep `ultimate_u1_data_dir` beside it. Native startup/MCP isolation and all 3,462 configured Windows unit tests passed; original Snapmaker project migration and full FOrca parity remain incomplete. See [portable validation](docs/testing/windows-portable.md).
+
 The source starts from official OrcaSlicer's native MCP development branch, with an explicit Snapmaker compatibility patch queue. SnOrca is Snapmaker Orca's nickname, not a fourth independent upstream. All source pins and the base decision are documented in the [repository audit](docs/architecture/repository-audit.md) and [ADR](docs/architecture/architecture-decision.md).
 
 This is the full Orca application, not a profile collection. The integration scope includes every U1-beneficial compatible engine, calibration, model/painting, project, UI, connectivity and automation feature. [FOrcaSlicer](https://github.com/jiyang1018/FOrcaSlicer) is also a tracked Git upstream with release/tag/branch alerts. Retained implementations and remaining fork migrations are listed in the [whole-application feature backlog](docs/architecture/u1-feature-backlog.md); existing source does not by itself establish U1 verification.

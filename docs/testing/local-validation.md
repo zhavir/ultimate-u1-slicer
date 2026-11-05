@@ -1,3 +1,9 @@
+# Current validation checkpoint — 2026-11-05
+
+The [experimental Windows portable build](windows-portable.md) compiled and passed native verification plus all 3,462 configured Windows unit tests. Source `b3fcd387d8610da34b39357afc4df5e71e42dcdb`; [CI run](https://github.com/zhavir/ultimate-u1-slicer/actions/runs/41964174657). Independent archive integrity/checksum checks passed. No stable/hardware compatibility is claimed.
+
+The complete Linux FFF suite passed with zero errors/failures and two inherited skips, and all five affected recording/plugin cases passed with 69 assertions in isolated processes. The full Linux GUI test binary builds, but only the named affected GUI cases were rerun. The failed native Windows attempts and successful final report remain in evidence. The following dated checkpoints describe earlier results, not current authorization or the final Windows outcome.
+
 ## 2026-11-05 regression update
 
 The full inherited FFF suite passed after restoring Orca-family G-code header compatibility: 1,230 generated cases, 607,110 assertion records, zero errors/failures and two inherited skips (419.422 seconds). The preceding full run exposed seven branding-related errors; that failure is preserved alongside the successful rerun in [structured evidence](evidence/fff-gcode-compatibility.json). The added cross-brand regression passed 27 assertions across five producer scenarios. Maintenance tooling passed all 36 tests.

@@ -1,0 +1,89 @@
+{
+  "source_sha": "b3fcd387d8610da34b39357afc4df5e71e42dcdb",
+  "platform": "Linux x86_64, isolated Ubuntu 24.04 Docker/Xvfb, network disabled",
+  "command": "slic3rutils_tests <exact case name, escaped commas> --reporter JUnit --out /work/gui-final-N.junit.xml (separate process per case)",
+  "scope": "Five previously failing recording/plugin cases only; not the entire GUI suite",
+  "results": [
+    {
+      "name": "Start Recording's parameter overrides the settings, a preset before the fields",
+      "exit_code": 0,
+      "junit": "gui-final-0.junit.xml",
+      "junit_summary": {
+        "name": "slic3rutils_tests",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "29",
+        "hostname": "tbd",
+        "time": "0.003",
+        "timestamp": "2026-11-05T03:55:05Z"
+      },
+      "junit_sha256": "7762636fe06cd9e24e47e0b0a8202fc5dccb9d4501c9035e16d8bb9f70a24301"
+    },
+    {
+      "name": "a helper a plugin also loaded keeps its atexit functions for the process",
+      "exit_code": 0,
+      "junit": "gui-final-1.junit.xml",
+      "junit_summary": {
+        "name": "slic3rutils_tests",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "7",
+        "hostname": "tbd",
+        "time": "0.305",
+        "timestamp": "2026-11-05T03:55:06Z"
+      },
+      "junit_sha256": "a1744c4d40c541ece2698c6a4deb817e41059bec7426ec3c65a5c87c3b06904f"
+    },
+    {
+      "name": "Plugin audit denies host-managed filenames anywhere",
+      "exit_code": 0,
+      "junit": "gui-final-2.junit.xml",
+      "junit_summary": {
+        "name": "slic3rutils_tests",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "19",
+        "hostname": "tbd",
+        "time": "0.002",
+        "timestamp": "2026-11-05T03:55:06Z"
+      },
+      "junit_sha256": "5beac0ab8756014517aaa551e0193b83db67b191a06a5f30c255ba9360d9824c"
+    },
+    {
+      "name": "a helper a plugin also loaded stays imported after the run",
+      "exit_code": 0,
+      "junit": "gui-final-3.junit.xml",
+      "junit_summary": {
+        "name": "slic3rutils_tests",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "3",
+        "hostname": "tbd",
+        "time": "0.291",
+        "timestamp": "2026-11-05T03:55:06Z"
+      },
+      "junit_sha256": "7d25377366577116d0c875df240e3b4748ede134342e7a0e9ba0f59a9890ee24"
+    },
+    {
+      "name": "a folder's teardown waits for a plugin import in progress, at the end and at the next entry",
+      "exit_code": 0,
+      "junit": "gui-final-4.junit.xml",
+      "junit_summary": {
+        "name": "slic3rutils_tests",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "11",
+        "hostname": "tbd",
+        "time": "0.240",
+        "timestamp": "2026-11-05T03:55:07Z"
+      },
+      "junit_sha256": "19ce4940f890dca486c0b3a627a8ecfb114c2dfd5d4013d1dcce7c94d1603ae3"
+    }
+  ],
+  "worktree_note": "Documentation edits were uncommitted during the local build; production/test C++ matched the recorded source revision."
+}

@@ -36,3 +36,9 @@ Snapmaker v2.4.1 uses raft_first_layer_expansion=-1 with automatic semantics dif
 ## 2026-11-05 regression checkpoint
 
 Full Linux FFF tests now pass (1,230 generated cases, zero errors/failures, two inherited skips). Windows compilation succeeded, but portable verification and unit failures prevented publication; targeted fixes are committed and require native Windows rerun. The GUI/plugin suite is rebuilding locally. See testing/evidence/fff-gcode-compatibility.json. This does not resolve the existing Snapmaker 3MF auto-expansion migration or establish complete FOrca parity.
+
+The source-level migration investigation is recorded in [support expansion migration](architecture/support-expansion-migration.md). Normal support, tree raft and tree support without a raft have different Snapmaker semantics; accepting or clamping `-1` alone is insufficient.
+
+## Windows portable checkpoint — 2026-11-05
+
+The experimental portable artifact is compiled and verified: all 3,462 configured Windows unit tests pass, alongside GUI/MCP HTTP/stdio and storage/registry-isolation checks. See [download and evidence](testing/windows-portable.md). Linux full FFF tests and five targeted GUI cases also pass. This completes the current Windows portable packaging milestone, not the stable release definition. Next remain original Snapmaker project/support semantics, reviewed native MCP file/project adapters, full FOrca advanced-nozzle migration, current Snapmaker connectivity parity and native macOS ARM64 application validation.

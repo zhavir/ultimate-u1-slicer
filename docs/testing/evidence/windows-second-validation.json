@@ -1,0 +1,35 @@
+{
+  "run_url": "https://github.com/zhavir/ultimate-u1-slicer/actions/runs/41961465926",
+  "source_sha": "268900dd02ccbabbecd0afe47e8b36ed2dd42732",
+  "native_portable_verification": {
+    "source_commit": "268900dd02ccbabbecd0afe47e8b36ed2dd42732",
+    "roaming_directory_untouched": true,
+    "hardware_verified": false,
+    "native_help_passed": true,
+    "portable_stdio_initialize_passed": true,
+    "portable_directory_detected": true,
+    "authenticated_mcp_initialize_passed": true,
+    "stable_release": false,
+    "platform": "Windows x64",
+    "url_registration_untouched": true,
+    "printer_contacted": false,
+    "native_gui_ready": true
+  },
+  "ctest_summary": {
+    "name": "(empty)",
+    "tests": "3462",
+    "failures": "1",
+    "disabled": "0",
+    "skipped": "0",
+    "hostname": "",
+    "time": "397",
+    "timestamp": "2026-11-05T03:41:21"
+  },
+  "ctest_report_sha256": "78f8e5e275ef53055187defc56fc3b68c13d2b6f137d4876fc4a47845ff7e6a5",
+  "failures": [
+    "Start Recording's parameter overrides the settings, a preset before the fields"
+  ],
+  "remaining_failure": "Recording fixture authorization environment was set with Boost nowide and read through std::getenv; the Windows APIs expose different in-process environment views.",
+  "candidate_fix": "b3fcd387d8610da34b39357afc4df5e71e42dcdb",
+  "publication": "blocked by unit gate; no release of this archive"
+}

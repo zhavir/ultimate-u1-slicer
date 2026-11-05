@@ -37,3 +37,7 @@ Statuses: **Implemented and verified** means the named local test passed for tha
 Detailed source locations, known reports and pins: [repository audit](repository-audit.md). Actual executed checks and failures: [local validation](../testing/local-validation.md). A stable release requires all relevant definition-of-done gates in [roadmap](../roadmap.md), not just green component tests.
 
 The Linux application links and its CLI slices/exports a cube using retained official U1 presets. Actual Snapmaker v2.4.1 reference 3MF import remains incompatible: auto raft/support expansion -1 is rejected; the initial four-material reference also has one color entry. See ../testing/local-validation.md and ../testing/reference-slicing.md.
+
+The full Linux FFF regression suite now passes (1,230 JUnit case records, zero errors/failures, two inherited skips). Native Windows portable launch, MCP HTTP/stdio and data/registry isolation passed in run 41961465926; its full Windows unit gate is recorded separately. See [support expansion migration](support-expansion-migration.md) for the remaining original-project geometry blocker.
+
+Windows x64 portable packaging: **Implemented and verified** for native startup, MCP HTTP/stdio and storage/registry isolation; all 3,462 configured unit tests pass. See [artifact scope](../testing/windows-portable.md). This does not upgrade unknown hardware/connectivity or incomplete fork-migration rows.
