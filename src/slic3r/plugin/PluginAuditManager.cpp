@@ -594,6 +594,11 @@ std::vector<std::string> PluginAuditManager::default_denied_filenames()
     // packages load on startup and must remain host-managed. Single-sourced so install_hook() and
     // the tests seed from the same list and cannot drift apart.
     return {
+        // A fork must still protect existing upstream installations from plugins.
+        "OrcaSlicer.conf",
+        "OrcaSlicer.ini",
+        "OrcaSlicerGcodeViewer.conf",
+        "OrcaSlicerGcodeViewer.ini",
         SLIC3R_APP_KEY ".conf",
         GCODEVIEWER_APP_KEY ".conf",
         SLIC3R_APP_KEY ".ini",
