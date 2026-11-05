@@ -1259,7 +1259,9 @@ TEST_CASE("Start Recording's parameter overrides the settings, a preset before t
     CHECK_FALSE(apply_recording_overrides(s, json{{"folder", path_to_utf8(fs::temp_directory_path() / "no-such-folder-here")}}, silent).empty());
     CHECK(s == before);
 
-    CHECK(apply_recording_overrides(s, json{{"folder", path_to_utf8(fs::temp_directory_path())}}, silent).empty());
+    const std::string folder_error = apply_recording_overrides(s, json{{"folder", path_to_utf8(fs::temp_directory_path())}}, silent);
+    INFO(folder_error);
+    CHECK(folder_error.empty());
     CHECK(RecordingFiles::same_file(path_from_utf8(s.folder), fs::temp_directory_path()));
 
     const json args = encode_arguments(s, "C:/videos/a.mkv");

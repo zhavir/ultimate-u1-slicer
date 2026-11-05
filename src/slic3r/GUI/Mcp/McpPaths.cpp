@@ -7,6 +7,7 @@
 #include <boost/filesystem/operations.hpp>
 #include <boost/filesystem/path.hpp>
 #include <boost/nowide/convert.hpp>
+#include <boost/nowide/cstdlib.hpp>
 #include <boost/system/error_code.hpp>
 #include <nlohmann/json.hpp>
 
@@ -110,7 +111,7 @@ std::optional<fs::path> absolute(const std::string& path, std::string& err)
     // avoids platform-dependent separators and permits Unicode Windows drive paths.
     std::vector<std::filesystem::path> roots;
     roots.push_back(std::filesystem::u8path(path_to_utf8(output_dir())));
-    if (const char* configured = std::getenv("U1_MCP_ALLOWED_ROOTS")) {
+    if (const char* configured = boost::nowide::getenv("U1_MCP_ALLOWED_ROOTS")) {
         const auto values = nlohmann::json::parse(configured, nullptr, false);
         if (!values.is_array()) {
             err = "U1_MCP_ALLOWED_ROOTS must be a JSON array of absolute directories";
