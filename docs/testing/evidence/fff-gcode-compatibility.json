@@ -1,0 +1,60 @@
+{
+  "date_utc": "2026-11-05",
+  "platform": "Linux x86_64, isolated Ubuntu 24.04 Docker, network disabled",
+  "fix_commit": "f4fdcca73d",
+  "results": [
+    {
+      "run": "fff-full",
+      "command": "fff_print_tests --reporter JUnit --out /work/fff-full.junit.xml",
+      "report_sha256": "4c02c2386effa2850b898a8df9be35ba9f9e0e6a163e16d6d969cac25fea37f8",
+      "suite": {
+        "name": "fff_print_tests",
+        "errors": "7",
+        "failures": "0",
+        "skipped": "2",
+        "tests": "607045",
+        "hostname": "tbd",
+        "time": "590.256",
+        "timestamp": "2026-11-04T22:31:58Z"
+      },
+      "generated_testcases": 1229
+    },
+    {
+      "run": "gcode-compat",
+      "command": "fff_print_tests [U1GCodeCompatibility] --reporter JUnit --out /work/gcode-compat.junit.xml",
+      "report_sha256": "9804ea5ca8c53279abbd66880c7062229885f5e06dbf93ea8706886c85ded287",
+      "suite": {
+        "name": "fff_print_tests",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "27",
+        "hostname": "tbd",
+        "time": "0.026",
+        "timestamp": "2026-11-05T03:11:48Z"
+      },
+      "generated_testcases": 1
+    },
+    {
+      "run": "fff-after-compat",
+      "command": "fff_print_tests --reporter JUnit --out /work/fff-after-compat.junit.xml",
+      "report_sha256": "b5c5db1d751a89202cd4aa5861e7dc8bdb77763d6864e2a87a27b1b03f79539e",
+      "suite": {
+        "name": "fff_print_tests",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "2",
+        "tests": "607110",
+        "hostname": "tbd",
+        "time": "419.422",
+        "timestamp": "2026-11-05T03:23:34Z"
+      },
+      "generated_testcases": 1230
+    }
+  ],
+  "limits": [
+    "Full FFF suite only; GUI/plugin suites separate.",
+    "Does not establish Windows/macOS packaging or physical printer compatibility.",
+    "Two inherited skipped cases remain."
+  ]
+}

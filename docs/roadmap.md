@@ -32,3 +32,7 @@ The architecture audit is substantial but not exhaustive: third-party license/SB
 ## Current compatibility findings
 
 Snapmaker v2.4.1 uses raft_first_layer_expansion=-1 with automatic semantics different from the selected official engine. Do not clamp it silently: port and test those semantics before claiming existing-project compatibility. An initial four-material reference export retained one filament color and was rejected by the stricter current CLI. Regenerating it with explicit four-color metadata removed that fixture defect; the corrected project reaches the same -1 schema rejection. FOrca reference G-code generation succeeded, but its 3MF export crashed in the isolated environment.
+
+## 2026-11-05 regression checkpoint
+
+Full Linux FFF tests now pass (1,230 generated cases, zero errors/failures, two inherited skips). Windows compilation succeeded, but portable verification and unit failures prevented publication; targeted fixes are committed and require native Windows rerun. The GUI/plugin suite is rebuilding locally. See testing/evidence/fff-gcode-compatibility.json. This does not resolve the existing Snapmaker 3MF auto-expansion migration or establish complete FOrca parity.

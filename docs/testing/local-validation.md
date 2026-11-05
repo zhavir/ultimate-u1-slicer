@@ -1,3 +1,11 @@
+## 2026-11-05 regression update
+
+The full inherited FFF suite passed after restoring Orca-family G-code header compatibility: 1,230 generated cases, 607,110 assertion records, zero errors/failures and two inherited skips (419.422 seconds). The preceding full run exposed seven branding-related errors; that failure is preserved alongside the successful rerun in [structured evidence](evidence/fff-gcode-compatibility.json). The added cross-brand regression passed 27 assertions across five producer scenarios. Maintenance tooling passed all 36 tests.
+
+The native Windows application compiled in [run 41923614157](https://github.com/zhavir/ultimate-u1-slicer/actions/runs/41923614157), but verification and nine regression cases failed. Follow-up commits fix launcher diagnostics on protocol stdout, G-code branding compatibility, legacy configuration protection, Windows Unicode plugin paths and explicit recording-fixture authorization. Windows revalidation remains required; no verified portable release is claimed. Local GUI/plugin tests are rebuilding separately. Native Windows interoperability from WSL failed with `UtilBindVsockAnyPort`, so Windows validation uses GitHub native runners.
+
+User authorization now includes direct main pushes and experimental publication at `zhavir/ultimate-u1-slicer`. Earlier local-only statements below describe the earlier checkpoint, not current authorization.
+
 # Local validation checkpoint
 
 Host: Linux x86_64, 2026-11-04. The user requested local-only work. No remote workflow, publication or physical printer test was performed. Installed slicers and user preset directories were not used.
