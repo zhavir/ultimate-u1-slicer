@@ -1222,6 +1222,10 @@ TEST_CASE("remembered recording settings come back, and a bad value keeps its de
 
 TEST_CASE("Start Recording's parameter overrides the settings, a preset before the fields", "[Mcp][Recording]")
 {
+    // This fixture authorizes only its own temporary output root, just as an operator
+    // must do before a real MCP recording can write outside the default output dir.
+    ScopedEnvVar authorized_roots("U1_MCP_ALLOWED_ROOTS",
+                                 json::array({path_to_utf8(fs::temp_directory_path())}).dump());
     RecordingSettings s;
     bool              silent = false;
     const json overrides{{"encode_preset", "compatible"}, {"crf", 18}, {"quality", 60}, {"pointer", true}, {"silent", true}};
