@@ -1,5 +1,11 @@
 # Experimental Windows x64 portable build
 
+## New plugin candidate — pending Windows validation
+
+Source `237a930cbf3308d589e009768a29a160c2f5367e` is building in [run 42093341824](https://github.com/zhavir/ultimate-u1-slicer/actions/runs/42093341824). It adds both optional plugin packages, disabled-by-default native discovery, two reviewed engine fixes and trusted-signature verification support. Windows component checks passed; the full application, portable startup checks and complete unit suite are still pending at this checkpoint. No signing identity is configured. This is not a newly published or signed release. See [plugin instructions](../plugins/integrations.md) and [signing requirements](../releasing/windows-signing.md).
+
+## Previously published candidate
+
 Source: `b3fcd387d8610da34b39357afc4df5e71e42dcdb`. [Download prerelease](https://github.com/zhavir/ultimate-u1-slicer/releases/tag/experimental-windows-b3fcd387d861). [Native CI run](https://github.com/zhavir/ultimate-u1-slicer/actions/runs/41964174657). This is not a stable U1 release.
 
 Extract the complete ZIP into a new writable folder. Open its `OrcaSlicer` directory and launch `orca-slicer.exe`. Preserve the adjacent `ultimate_u1_data_dir` directory; it selects portable settings. Do not copy files into an existing slicer installation or overwrite its user configuration. No installer is needed.
