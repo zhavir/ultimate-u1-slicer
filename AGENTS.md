@@ -1,5 +1,11 @@
 # Ultimate U1 Slicer contributor instructions
 
+## U1-only product and implementation priority
+
+Snapmaker U1 is the only target printer. Snapmaker Orca is the behavioral authority for stock U1 slicing, projects, device UI, gateway, pairing, camera, RFID, filament feeding and sensors. Complete its coupled source implementations before optional Orca/FOrca additions; native MCP must not take priority over stock U1 compatibility. Preserve existing useful code rather than removing unrelated-printer support merely to narrow the product target.
+
+Hardware is a separate validation gate, not a prerequisite for source porting. Finish and offline-test every in-scope implementation first, then maintain an explicit hardware verification list. Never mark a feature implemented from a copied file alone: its consumers, UI, protocol/runtime dependencies, packaging and migration must be connected. Unknown source/dependency gaps remain open. The user will provide hardware after software implementation is complete; this statement does not authorize operating it now.
+
 Read and use the project maintenance skill at `.claude/skills/ultimate-u1-maintenance/SKILL.md` for upstream investigations, integration, builds and releases. It links the authoritative audit, feature evidence, profile/firmware boundaries and validation procedures.
 
 Maintain the complete slicer feature set, not just profiles. FOrcaSlicer (jiyang1018/FOrcaSlicer) and official Orca are both tracked sources. Review all U1-beneficial engine, calibration, geometry/painting, project, UI, diagnostics, connectivity and MCP changes. Read `docs/architecture/u1-feature-backlog.md` before duplicating an existing upstream implementation; source pins record audited snapshots and do not imply full fork parity.
