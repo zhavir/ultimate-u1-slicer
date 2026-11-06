@@ -1,0 +1,80 @@
+{
+  "schema": 1,
+  "date": "2026-11-06",
+  "status": "Offline checks passed; full U1 implementation remains Partial",
+  "hardware_contacted": false,
+  "new_full_gui_link_verified": false,
+  "new_windows_artifact_verified": false,
+  "results": {
+    "core_3mf_config": {
+      "junit_case_records": 931,
+      "assertion_records": 4643,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "report": "/tmp/u1-compat-results/u1-compat-core-final.junit.xml",
+      "report_sha256": "c3bd1f3cf20d518c9fe70b50a3d394bf2aaefe1f77f8aedb0ff421bc20e3fc9b"
+    },
+    "full_fff": {
+      "junit_case_records": 1241,
+      "assertion_records": 607221,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 3,
+      "report": "/tmp/u1-compat-results/u1-compat-fff-final.junit.xml",
+      "report_sha256": "7277e1838be87f2d3fda999ef6dabf8dc220389db53d2d433b8a94c8f4a4ff03"
+    },
+    "gateway": {
+      "junit_case_records": 38,
+      "assertion_records": 254,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "report": "/tmp/u1-compat-results/u1-gateway-final.junit.xml",
+      "report_sha256": "97c7f57d6243e8a5ad5278b62bbb45142ab2fabc63328290507ac0a92fba729b"
+    },
+    "filament_parser": {
+      "junit_case_records": 6,
+      "assertion_records": 51,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "report": "build/u1-runtime/filament-parser.junit.xml",
+      "report_sha256": "4cabbb82d1ffabf8f253c267e7c53549526dcc9c67bb6e8b62c3095ad5672fcd"
+    }
+  },
+  "commands": [
+    "cmake -S tools/u1/native-tests -B build/u1-native",
+    "cmake --build build/u1-native -j2",
+    "ctest --test-dir build/u1-native --output-on-failure",
+    "cmake -S . -B build -DU1_BUILD_GATEWAY_REGRESSIONS=ON",
+    "cmake --build build --config Release --target u1_gateway_tests -j4",
+    "build/tests/slic3rutils/Release/u1_gateway_tests --reporter JUnit --out /work/u1-gateway-final.junit.xml",
+    "build/tests/libslic3r/Release/libslic3r_tests \"[3mf],[config]\" --reporter JUnit --out /work/u1-compat-core-final.junit.xml",
+    "build/tests/fff_print/Release/fff_print_tests --reporter JUnit --out /work/u1-compat-fff-final.junit.xml",
+    "build/u1-plugin-venv/bin/python -m unittest discover -s tools/u1/tests -v",
+    "uvx --from ruff==0.14.3 ruff check tools/u1"
+  ],
+  "environment": {
+    "platform": "Linux x86_64",
+    "builder_image": "orcaslicer-linux-builder:ubuntu-24.04--cmake-3.31.10--4fc88e178d94",
+    "runtime_image": "ultimate-u1-diagnostics:20261104-locales",
+    "runtime_network": "none; loopback only for gateway test server",
+    "configuration": "Private disposable HOME and writable test-fixture copy; installed slicers untouched"
+  },
+  "other_checks": {
+    "native_component_ctest": "2/2 pass",
+    "python_tooling": "49 tests pass with project venv",
+    "ruff": "pass",
+    "production_gateway_units": "All four .cpp objects compiled in libslic3r_gui target"
+  },
+  "limits": [
+    "Three inherited locale skip records in full FFF suite",
+    "The system Python tooling run failed two Studio cases; the project venv with lxml passes all 49",
+    "Full GUI build was interrupted to prioritize targeted production compilation and focused tests; not reported as passed",
+    "Gateway device/UI/companion startup and packaging are unfinished",
+    "No hardware, live printer, signing or macOS validation"
+  ],
+  "source_commit_containing_tested_changes": "3cb33fddca9d746612ae71876f2e46d95cf180c8",
+  "build_metadata_note": "Tests were compiled from the working tree before these source changes were committed; executable metadata may retain 07755da1c5-dirty."
+}

@@ -197,10 +197,10 @@
         "TreeSupport",
         "SupportCommon"
       ],
-      "status": "Incompatible",
+      "status": "Partial",
       "priority": "P0",
       "dependencies": [],
-      "migration_boundary": "Released Snapmaker v2.4.1 and audited main accept -1; selected official engine minimum is zero. Preserve path-specific semantics, never silently clamp."
+      "migration_boundary": "Path-specific Snapmaker automatic expansion and an explicit persisted compatibility marker are implemented. Focused normal/tree/raft geometry and original single/four-tool project tests pass; broader support-transition/contact/adaptive parity and physical behavior remain open."
     },
     {
       "id": "spectrum-ratio",
@@ -507,10 +507,10 @@
         "SSWCP",
         "MoonRaker"
       ],
-      "status": "Missing",
+      "status": "Partial",
       "priority": "P0",
       "dependencies": [],
-      "migration_boundary": "Current gateway adapter and its companion/service packaging are missing; audit dependencies and licensing before import."
+      "migration_boundary": "Snapmaker account/protocol, process lifecycle and HTTP/WebSocket service are ported, compiled and pass 38 offline gateway cases. Foreign companion takeover is opt-in. Device/native UI integration, isolated companion startup and packaging are unfinished; no printer connection is verified."
     },
     {
       "id": "u1-cloud",
@@ -593,7 +593,7 @@
         "u1-gateway",
         "firmware-capabilities"
       ],
-      "migration_boundary": "Current NFC metadata reader is bounded evidence only; generic Bambu RFID controls are not U1 parity. No UID fabrication/writing."
+      "migration_boundary": "The production Snapmaker filament metadata reader validates four physical slots separately from the logical job mapping, unknown material/color values and optional NFC temperatures; offline parser tests pass. Native refresh/sync, tag/protocol variants and hardware behavior remain unfinished or unverified."
     },
     {
       "id": "u1-filaments",
@@ -827,12 +827,12 @@
         "PrintConfig",
         "PresetBundle"
       ],
-      "status": "Incompatible",
+      "status": "Partial",
       "priority": "P0",
       "dependencies": [
         "support-auto"
       ],
-      "migration_boundary": "Original Snapmaker reference imports fail on -1. Unknown/renamed settings and array semantics need explicit migration."
+      "migration_boundary": "Original Snapmaker v2.4.1 single/four-tool fixtures now import, restore embedded G-code and slice with original machine macros; compatibility marker and explicit opt-out round-trip. Complete vendor settings/metadata fidelity and all-project coverage remain open."
     },
     {
       "id": "project-export",

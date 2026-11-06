@@ -1,5 +1,9 @@
 # Current parity implementation backlog
 
+2026-11-06 user priority: U1 is the only target printer. Finish complete Snapmaker stock behavior and its native device/UI/companion integration before optional Orca/FOrca/MCP additions. Hardware availability is not a blocker to available source porting. The software gate requires connected consumers, migration, runtime dependencies, packaging and passing offline tests; then hand over the separate hardware checklist. Current source-only or partially connected ports remain Partial.
+
+Current checkpoint: original Snapmaker single/four-tool 3MF fixtures slice with the preserved machine macros; support migration and core configuration regressions pass. The imported gateway foundation passes 38 offline cases but is not connected to the device UI/isolated companion startup. Continue from that dependency boundary rather than treating gateway source import as finished camera/pairing/RFID/feeder integration.
+
 Use [functional-parity-audit.md](functional-parity-audit.md) and its exact-source JSON as the detailed feature inventory. The original narrower checkpoint follows below for history; it is not a claim of full parity.
 
 ## Priority and dependencies

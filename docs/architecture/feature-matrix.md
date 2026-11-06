@@ -17,7 +17,7 @@ Statuses are **Verified**, **Implemented but untested**, **Partial**, **Missing*
 | [Minimum support-interface contact-area threshold](functional-parity-audit.md#support-contact) | Missing | P0 |
 | [Snapmaker adaptive tree support layers](functional-parity-audit.md#support-adaptive) | Missing | P1 |
 | [Top and bottom painting penetration controls](functional-parity-audit.md#painting-depth) | Implemented but untested | P1 |
-| [Automatic negative raft/support expansion](functional-parity-audit.md#support-auto) | Incompatible | P0 |
+| [Automatic negative raft/support expansion](functional-parity-audit.md#support-auto) | Partial | P0 |
 | [Ratio mixing](functional-parity-audit.md#spectrum-ratio) | Partial | P1 |
 | [Cycle and interleaved-layer mixing](functional-parity-audit.md#spectrum-cycle) | Partial | P1 |
 | [Color Match and matching algorithms](functional-parity-audit.md#spectrum-match) | Partial | P1 |
@@ -35,7 +35,7 @@ Statuses are **Verified**, **Implemented but untested**, **Partial**, **Missing*
 | [Nozzle verification and incompatibility checks](functional-parity-audit.md#fos-nozzle-safety) | Partial | P0 |
 | [Advisory filament/nozzle partition planner](functional-parity-audit.md#filament-planner) | Verified | P1 |
 | [U1 LAN discovery and network submission](functional-parity-audit.md#u1-lan) | Partial | P0 |
-| [Snapmaker gateway transport and device protocol](functional-parity-audit.md#u1-gateway) | Missing | P0 |
+| [Snapmaker gateway transport and device protocol](functional-parity-audit.md#u1-gateway) | Partial | P0 |
 | [Snapmaker cloud account, pairing and authorization](functional-parity-audit.md#u1-cloud) | Missing | P0 |
 | [Device status, job, progress and temperatures](functional-parity-audit.md#u1-status) | Partial | P0 |
 | [U1 camera, authentication and streaming](functional-parity-audit.md#u1-camera) | Missing | P0 |
@@ -53,7 +53,7 @@ Statuses are **Verified**, **Implemented but untested**, **Partial**, **Missing*
 | [Printer wizard and selected-preset visibility](functional-parity-audit.md#profile-visibility) | Partial | P0 |
 | [U1 machine start/end/tool-change macro preservation](functional-parity-audit.md#profile-macros) | Partial | P0 |
 | [Attribution, inheritance, collisions and user overrides](functional-parity-audit.md#profile-sync) | Partial | P1 |
-| [Original Snapmaker 3MF import and configuration migration](functional-parity-audit.md#project-migration) | Incompatible | P0 |
+| [Original Snapmaker 3MF import and configuration migration](functional-parity-audit.md#project-migration) | Partial | P0 |
 | [3MF save/export and metadata fidelity](functional-parity-audit.md#project-export) | Partial | P0 |
 | [FOrca schema and object/filament metadata migration](functional-parity-audit.md#project-fos) | Missing | P0 |
 | [Native protocol, authentication and stdio](functional-parity-audit.md#mcp-core) | Verified | P0 |
@@ -83,3 +83,6 @@ Statuses are **Verified**, **Implemented but untested**, **Partial**, **Missing*
 The U1 catalog already contains uniform 0.2/0.4/0.6/0.8 mm and mixed 0.4+0.6 mm profiles. Installed/selected printer variants determine dropdown visibility; these entries are not all physically calibrated here. A 0.4+0.6-only selection is not evidence of a FOrca hardware limit.
 
 No stable or 100% U1-compatible release is certified. Camera/gateway/pairing/feeding, complete FOrca/Full Spectrum migrations, original-project support semantics, native macOS packaging and physical tests remain separate gates. Windows-trusted signing additionally needs a real signing identity.
+
+
+2026-11-06 local checkpoint: original single/four-tool Snapmaker projects and automatic support geometry pass their named offline tests; broader configuration/3MF tests pass. The imported gateway foundation passes 38 offline cases, but its native device UI and isolated companion packaging remain unfinished. These groups are **Partial**, not full U1 parity. See [current evidence](../testing/evidence/u1-compatibility-2026-11-06.json) and the [U1-only priority amendment](architecture-decision.md#2026-11-06-priority-amendment-u1-only-compatibility).

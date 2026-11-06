@@ -174,7 +174,7 @@ def generate(roots):
             profiles.append({'path': path.relative_to(ROOT).as_posix(), 'name': data.get('name'),
                              'variant': data.get('printer_variant'), 'nozzle_diameter': data.get('nozzle_diameter'),
                              'calibrated_hardware_here': False})
-    return {'schema': 1, 'audit_date': '2026-11-05', 'candidate_base': base,
+    return {'schema': 1, 'audit_date': '2026-11-06', 'candidate_base': base,
             'scope': 'Bounded source-backed feature inventory, not certification. Read code/test evidence and dependencies; key overlap does not prove semantic parity.',
             'mcp_allowed_tool_names': re.findall(r'\"([a-z_]+)\"', (ROOT/'src/slic3r/GUI/Mcp/McpU1Policy.hpp').read_text()),
             'source_refs': SOURCE_REFS, 'counts': dict(Counter(f['status'] for f in features)),
@@ -186,7 +186,11 @@ def generate(roots):
 def evidence_for(key):
     base = ['docs/testing/local-validation.md', 'docs/testing/evidence/plugin-integration-offline.json']
     if key in ('support-auto','project-migration'):
-        return base + ['docs/testing/reference-slicing.md','docs/architecture/support-expansion-migration.md']
+        return base + ['docs/testing/evidence/u1-compatibility-2026-11-06.json','tests/fff_print/test_u1_support_compatibility.cpp','tests/libslic3r/test_3mf.cpp','docs/architecture/support-expansion-migration.md']
+    if key == 'u1-gateway':
+        return base + ['docs/testing/evidence/u1-compatibility-2026-11-06.json','docs/architecture/evidence/snapmaker-gateway-port.json','tests/slic3rutils/GatewayService_test.cpp']
+    if key == 'u1-rfid':
+        return base + ['docs/testing/evidence/u1-compatibility-2026-11-06.json','tests/slic3rutils/test_snapmaker_filament_state.cpp']
     if key.startswith('mcp-') or key == 'filament-planner':
         return base + ['docs/testing/evidence/components.junit.xml','docs/testing/evidence/mcp-live-smoke.json','docs/testing/evidence/mcp-slice-smoke.json']
     if key in ('plugins-discovery','plugin-studio','plugin-converter'):

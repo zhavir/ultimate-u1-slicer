@@ -12,9 +12,9 @@ Exact reference source revisions: `snapmaker-v241` `bac6fd5c1e1c23ddf057cf6471ba
 |---|---:|
 | Verified | 6 |
 | Implemented but untested | 11 |
-| Partial | 36 |
-| Missing | 12 |
-| Incompatible | 2 |
+| Partial | 39 |
+| Missing | 11 |
+| Incompatible | 0 |
 | Unknown | 5 |
 
 ## Feature matrix
@@ -32,7 +32,7 @@ Exact reference source revisions: `snapmaker-v241` `bac6fd5c1e1c23ddf057cf6471ba
 | [support-contact](#support-contact) | Minimum support-interface contact-area threshold | Missing | P0 | support-transitions |
 | [support-adaptive](#support-adaptive) | Snapmaker adaptive tree support layers | Missing | P1 | support-transitions |
 | [painting-depth](#painting-depth) | Top and bottom painting penetration controls | Implemented but untested | P1 | project-migration |
-| [support-auto](#support-auto) | Automatic negative raft/support expansion | Incompatible | P0 | — |
+| [support-auto](#support-auto) | Automatic negative raft/support expansion | Partial | P0 | — |
 | [spectrum-ratio](#spectrum-ratio) | Ratio mixing | Partial | P1 | project-migration |
 | [spectrum-cycle](#spectrum-cycle) | Cycle and interleaved-layer mixing | Partial | P1 | spectrum-ratio |
 | [spectrum-match](#spectrum-match) | Color Match and matching algorithms | Partial | P1 | spectrum-ratio |
@@ -50,7 +50,7 @@ Exact reference source revisions: `snapmaker-v241` `bac6fd5c1e1c23ddf057cf6471ba
 | [fos-nozzle-safety](#fos-nozzle-safety) | Nozzle verification and incompatibility checks | Partial | P0 | high-flow, fos-nozzles |
 | [filament-planner](#filament-planner) | Advisory filament/nozzle partition planner | Verified | P1 | — |
 | [u1-lan](#u1-lan) | U1 LAN discovery and network submission | Partial | P0 | firmware-capabilities |
-| [u1-gateway](#u1-gateway) | Snapmaker gateway transport and device protocol | Missing | P0 | — |
+| [u1-gateway](#u1-gateway) | Snapmaker gateway transport and device protocol | Partial | P0 | — |
 | [u1-cloud](#u1-cloud) | Snapmaker cloud account, pairing and authorization | Missing | P0 | u1-gateway |
 | [u1-status](#u1-status) | Device status, job, progress and temperatures | Partial | P0 | u1-lan |
 | [u1-camera](#u1-camera) | U1 camera, authentication and streaming | Missing | P0 | u1-gateway, firmware-capabilities |
@@ -68,7 +68,7 @@ Exact reference source revisions: `snapmaker-v241` `bac6fd5c1e1c23ddf057cf6471ba
 | [profile-visibility](#profile-visibility) | Printer wizard and selected-preset visibility | Partial | P0 | — |
 | [profile-macros](#profile-macros) | U1 machine start/end/tool-change macro preservation | Partial | P0 | project-migration |
 | [profile-sync](#profile-sync) | Attribution, inheritance, collisions and user overrides | Partial | P1 | — |
-| [project-migration](#project-migration) | Original Snapmaker 3MF import and configuration migration | Incompatible | P0 | support-auto |
+| [project-migration](#project-migration) | Original Snapmaker 3MF import and configuration migration | Partial | P0 | support-auto |
 | [project-export](#project-export) | 3MF save/export and metadata fidelity | Partial | P0 | project-migration |
 | [project-fos](#project-fos) | FOrca schema and object/filament metadata migration | Missing | P0 | — |
 | [mcp-core](#mcp-core) | Native protocol, authentication and stdio | Verified | P0 | — |
@@ -110,7 +110,7 @@ Reference implementation evidence:
 - snapmaker-main (`f5fd7289ea067997181ee6c2cf15a98f58faba43`): `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`, `src/libslic3r/GCode/WipeTower2.hpp`, `src/libslic3r/GCode/WipeTowerHelper.cpp`, `src/libslic3r/GCode/WipeTowerHelper.hpp`. Keys: `filament_grouping_mode`, `filament_is_high_temperature`, `filament_type`.
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`, `src/libslic3r/GCode/WipeTower2.hpp`, `src/libslic3r/GCode/WipeTowerEstimate.cpp`, `src/libslic3r/GCode/WipeTowerEstimate.hpp`. Keys: `filament_type`.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/libslic3r/FosFilamentArrangement.cpp`, `src/libslic3r/FosFilamentArrangement.hpp`, `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`, `src/libslic3r/GCode/WipeTower2.hpp`. Keys: `filament_is_high_temperature`, `filament_type`.
-- ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/FosFilamentArrangement.cpp`, `src/libslic3r/FosFilamentArrangement.hpp`, `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`, `src/libslic3r/GCode/WipeTower2.hpp`. Keys: `filament_type`.
+- ultimate (`working tree; see candidate_base and diff digest`): `src/libslic3r/FosFilamentArrangement.cpp`, `src/libslic3r/FosFilamentArrangement.hpp`, `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`, `src/libslic3r/GCode/WipeTower2.hpp`. Keys: `filament_is_high_temperature`, `filament_type`.
 - orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`, `src/libslic3r/GCode/WipeTower2.hpp`, `src/libslic3r/GCode/WipeTowerEstimate.cpp`, `src/libslic3r/GCode/WipeTowerEstimate.hpp`. Keys: `filament_type`.
 - orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`, `src/libslic3r/GCode/WipeTower2.hpp`, `src/libslic3r/GCode/WipeTowerEstimate.cpp`, `src/libslic3r/GCode/WipeTowerEstimate.hpp`. Keys: `filament_type`.
 - snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/GCode/WipeTower.cpp`, `src/libslic3r/GCode/WipeTower.hpp`, `src/libslic3r/GCode/WipeTower2.cpp`, `src/libslic3r/GCode/WipeTower2.hpp`, `src/libslic3r/GCode/WipeTowerHelper.cpp`, `src/libslic3r/GCode/WipeTowerHelper.hpp`. Keys: `filament_grouping_mode`, `filament_is_high_temperature`, `filament_type`.
@@ -330,9 +330,9 @@ Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugi
 <a id="support-auto"></a>
 ## Automatic negative raft/support expansion
 
-**Incompatible; P0.** Dependencies: none.
+**Partial; P0.** Dependencies: none.
 
-Released Snapmaker v2.4.1 and audited main accept -1; selected official engine minimum is zero. Preserve path-specific semantics, never silently clamp.
+Path-specific Snapmaker automatic expansion and an explicit persisted compatibility marker are implemented. Focused normal/tree/raft geometry and original single/four-tool project tests pass; broader support-transition/contact/adaptive parity and physical behavior remain open.
 
 Plugin/agent assessment: The bundled plugins do not implement this slicing-kernel behavior. Prefer native upstream code and reviewed schema adapters.
 
@@ -346,7 +346,7 @@ Reference implementation evidence:
 - orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/Support/SupportCommon.cpp`, `src/libslic3r/Support/SupportCommon.hpp`, `src/libslic3r/Support/TreeSupport.cpp`, `src/libslic3r/Support/TreeSupport.hpp`, `src/libslic3r/Support/TreeSupport3D.cpp`, `src/libslic3r/Support/TreeSupport3D.hpp`. Keys: `raft_first_layer_expansion`.
 - snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/Support/SupportCommon.cpp`, `src/libslic3r/Support/SupportCommon.hpp`, `src/libslic3r/Support/TreeSupport.cpp`, `src/libslic3r/Support/TreeSupport.hpp`, `src/libslic3r/Support/TreeSupport3D.cpp`, `src/libslic3r/Support/TreeSupport3D.hpp`. Keys: `raft_first_layer_expansion`.
 
-Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `docs/testing/reference-slicing.md`; `docs/architecture/support-expansion-migration.md`.
+Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `docs/testing/evidence/u1-compatibility-2026-11-06.json`; `tests/fff_print/test_u1_support_compatibility.cpp`; `tests/libslic3r/test_3mf.cpp`; `docs/architecture/support-expansion-migration.md`.
 
 <a id="spectrum-ratio"></a>
 ## Ratio mixing
@@ -708,9 +708,9 @@ Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugi
 <a id="u1-gateway"></a>
 ## Snapmaker gateway transport and device protocol
 
-**Missing; P0.** Dependencies: none.
+**Partial; P0.** Dependencies: none.
 
-Current gateway adapter and its companion/service packaging are missing; audit dependencies and licensing before import.
+Snapmaker account/protocol, process lifecycle and HTTP/WebSocket service are ported, compiled and pass 38 offline gateway cases. Foreign companion takeover is opt-in. Device/native UI integration, isolated companion startup and packaging are unfinished; no printer connection is verified.
 
 Plugin/agent assessment: Studio may evaluate supplied facts; neither bundled plugin supplies validated Snapmaker gateway, RFID, camera or feeder control.
 
@@ -719,12 +719,12 @@ Reference implementation evidence:
 - snapmaker-main (`f5fd7289ea067997181ee6c2cf15a98f58faba43`): `src/libslic3r/SSWCPProtocol.cpp`, `src/libslic3r/SSWCPProtocol.hpp`, `src/slic3r/GUI/SSWCP.cpp`, `src/slic3r/GUI/SSWCP.hpp`, `src/slic3r/Utils/ConnectionProcessManager.cpp`, `src/slic3r/Utils/ConnectionProcessManager.hpp`. Keys: none for this bounded component.
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): No matching component in the inspected source scope. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/slic3r/GUI/SSWCP.cpp`, `src/slic3r/GUI/SSWCP.hpp`, `src/slic3r/Utils/MoonRaker.cpp`, `src/slic3r/Utils/MoonRaker.hpp`. Keys: none for this bounded component.
-- ultimate (`working tree; see candidate_base and diff digest`): No matching component in the inspected source scope. Keys: none for this bounded component.
+- ultimate (`working tree; see candidate_base and diff digest`): `src/slic3r/Utils/ConnectionProcessManager.cpp`, `src/slic3r/Utils/ConnectionProcessManager.hpp`, `src/slic3r/Utils/GatewayProtocol.cpp`, `src/slic3r/Utils/GatewayProtocol.hpp`, `src/slic3r/Utils/GatewayService.cpp`, `src/slic3r/Utils/GatewayService.hpp`. Keys: none for this bounded component.
 - orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): No matching component in the inspected source scope. Keys: none for this bounded component.
 - orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): No matching component in the inspected source scope. Keys: none for this bounded component.
 - snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/SSWCPProtocol.cpp`, `src/libslic3r/SSWCPProtocol.hpp`, `src/slic3r/GUI/SSWCP.cpp`, `src/slic3r/GUI/SSWCP.hpp`, `src/slic3r/Utils/ConnectionProcessManager.cpp`, `src/slic3r/Utils/ConnectionProcessManager.hpp`. Keys: none for this bounded component.
 
-Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `No feature-specific U1 runtime/hardware verification recorded; generic suite success is not parity.`.
+Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `docs/testing/evidence/u1-compatibility-2026-11-06.json`; `docs/architecture/evidence/snapmaker-gateway-port.json`; `tests/slic3rutils/GatewayService_test.cpp`.
 
 <a id="u1-cloud"></a>
 ## Snapmaker cloud account, pairing and authorization
@@ -740,7 +740,7 @@ Reference implementation evidence:
 - snapmaker-main (`f5fd7289ea067997181ee6c2cf15a98f58faba43`): `src/libslic3r/SSWCPProtocol.cpp`, `src/libslic3r/SSWCPProtocol.hpp`, `src/slic3r/GUI/SSWCP.cpp`, `src/slic3r/GUI/SSWCP.hpp`, `src/slic3r/Utils/GatewayAccount.cpp`, `src/slic3r/Utils/GatewayAccount.hpp`. Keys: none for this bounded component.
 - orca-mcp-base (`17a745e30c248cf3acb4c429b650b22d106fd19a`): No matching component in the inspected source scope. Keys: none for this bounded component.
 - forca (`0b1f80cd22793785d8ae5c4296d2fe4a9248bd21`): `src/slic3r/GUI/SSWCP.cpp`, `src/slic3r/GUI/SSWCP.hpp`, `src/slic3r/Utils/MoonRaker.cpp`, `src/slic3r/Utils/MoonRaker.hpp`. Keys: none for this bounded component.
-- ultimate (`working tree; see candidate_base and diff digest`): No matching component in the inspected source scope. Keys: none for this bounded component.
+- ultimate (`working tree; see candidate_base and diff digest`): `src/slic3r/Utils/GatewayAccount.cpp`, `src/slic3r/Utils/GatewayAccount.hpp`, `src/slic3r/Utils/GatewayProtocol.cpp`, `src/slic3r/Utils/GatewayProtocol.hpp`. Keys: none for this bounded component.
 - orca-main-tip (`f96bbe8db13f603c767f0a21fce80da85c6a09f4`): No matching component in the inspected source scope. Keys: none for this bounded component.
 - orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): No matching component in the inspected source scope. Keys: none for this bounded component.
 - snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/SSWCPProtocol.cpp`, `src/libslic3r/SSWCPProtocol.hpp`, `src/slic3r/GUI/SSWCP.cpp`, `src/slic3r/GUI/SSWCP.hpp`, `src/slic3r/Utils/GatewayAccount.cpp`, `src/slic3r/Utils/GatewayAccount.hpp`. Keys: none for this bounded component.
@@ -794,7 +794,7 @@ Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugi
 
 **Partial; P0.** Dependencies: u1-gateway, firmware-capabilities.
 
-Current NFC metadata reader is bounded evidence only; generic Bambu RFID controls are not U1 parity. No UID fabrication/writing.
+The production Snapmaker filament metadata reader validates four physical slots separately from the logical job mapping, unknown material/color values and optional NFC temperatures; offline parser tests pass. Native refresh/sync, tag/protocol variants and hardware behavior remain unfinished or unverified.
 
 Plugin/agent assessment: Studio may evaluate supplied facts; neither bundled plugin supplies validated Snapmaker gateway, RFID, camera or feeder control.
 
@@ -808,7 +808,7 @@ Reference implementation evidence:
 - orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/slic3r/Utils/SnapmakerPrinterAgent.cpp`, `src/slic3r/Utils/SnapmakerPrinterAgent.hpp`. Keys: none for this bounded component.
 - snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/SSWCPProtocol.cpp`, `src/libslic3r/SSWCPProtocol.hpp`, `src/slic3r/GUI/SSWCP.cpp`, `src/slic3r/GUI/SSWCP.hpp`, `src/slic3r/GUI/filamentsync/FilamentSyncAlgorithm.cpp`, `src/slic3r/GUI/filamentsync/FilamentSyncAlgorithm.hpp`. Keys: none for this bounded component.
 
-Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `No feature-specific U1 runtime/hardware verification recorded; generic suite success is not parity.`.
+Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `docs/testing/evidence/u1-compatibility-2026-11-06.json`; `tests/slic3rutils/test_snapmaker_filament_state.cpp`.
 
 <a id="u1-filaments"></a>
 ## Filament inventory, assignments and synchronization
@@ -1086,9 +1086,9 @@ Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugi
 <a id="project-migration"></a>
 ## Original Snapmaker 3MF import and configuration migration
 
-**Incompatible; P0.** Dependencies: support-auto.
+**Partial; P0.** Dependencies: support-auto.
 
-Original Snapmaker reference imports fail on -1. Unknown/renamed settings and array semantics need explicit migration.
+Original Snapmaker v2.4.1 single/four-tool fixtures now import, restore embedded G-code and slice with original machine macros; compatibility marker and explicit opt-out round-trip. Complete vendor settings/metadata fidelity and all-project coverage remain open.
 
 Plugin/agent assessment: No bundled plugin substitutes for this native compatibility/release gate.
 
@@ -1102,7 +1102,7 @@ Reference implementation evidence:
 - orca-mcp-tip (`56b03d7bdfd9fc98ebe39e416a8d4324d18a1ec7`): `src/libslic3r/Format/bbs_3mf.cpp`, `src/libslic3r/Format/bbs_3mf.hpp`, `src/libslic3r/PresetBundle.cpp`, `src/libslic3r/PresetBundle.hpp`, `src/libslic3r/PrintConfigConstants.hpp`, `src/slic3r/GUI/ExportPresetBundleDialog.cpp`. Keys: `raft_first_layer_expansion`.
 - snapmaker-tip (`b070bcfaffcf93aaa04dff8fe97da3ee8dbd68bb`): `src/libslic3r/Format/bbs_3mf.cpp`, `src/libslic3r/Format/bbs_3mf.hpp`, `src/libslic3r/PresetBundle.cpp`, `src/libslic3r/PresetBundle.hpp`. Keys: `mixed_filament_definitions`, `printer_flow_support`, `raft_first_layer_expansion`.
 
-Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `docs/testing/reference-slicing.md`; `docs/architecture/support-expansion-migration.md`.
+Tests/evidence: `docs/testing/local-validation.md`; `docs/testing/evidence/plugin-integration-offline.json`; `docs/testing/evidence/u1-compatibility-2026-11-06.json`; `tests/fff_print/test_u1_support_compatibility.cpp`; `tests/libslic3r/test_3mf.cpp`; `docs/architecture/support-expansion-migration.md`.
 
 <a id="project-export"></a>
 ## 3MF save/export and metadata fidelity

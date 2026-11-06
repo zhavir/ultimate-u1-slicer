@@ -50,3 +50,8 @@ The immutable review catalog contains 3125 presets and 821 cross-source collisio
 The upstream audit found one official commit and five profile commits beyond pins. Git merge-tree reports a clean textual merge for the official candidate despite a shared touched path. No source updates were integrated or semantically verified. See ../architecture/evidence/upstream-review-initial.json.
 
 No macOS ARM64/x86_64 or Windows build, Codex/Claude replay, complete inherited suite, full FOrca migration, stock/Extended Firmware connection or physical print has passed here. There is no stable release or macOS artifact. See [roadmap](../roadmap.md).
+
+
+## 2026-11-06 compatibility and gateway checkpoint
+
+[Recorded counts, commands and limits](evidence/u1-compatibility-2026-11-06.json): the current configuration/3MF suite passes 931 generated case records with no failures/errors/skips; full FFF passes 1,241 generated records with three inherited locale skips; gateway passes all 38 cases/254 assertion records. Native component CTest passes 2/2, and project-venv tooling passes 49 tests. The new gateway production objects and focused transport executable compile. No new full GUI link, Windows artifact, macOS application or physical U1 result is claimed. The gateway/native UI/isolated companion integration remains Partial.
