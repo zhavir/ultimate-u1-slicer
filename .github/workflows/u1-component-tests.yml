@@ -36,7 +36,14 @@ jobs:
           src/slic3r/GUI/Mcp/McpToolsU1.cpp
           tests/libslic3r/test_u1_filament_plan.cpp
           tests/slic3rutils/test_mcp_file_policy.cpp tests/slic3rutils/test_u1_mcp_protocol.cpp
-          tests/fff_print/test_u1_four_tool_gcode.cpp
+          tests/fff_print/test_u1_four_tool_gcode.cpp tests/fff_print/test_u1_support_compatibility.cpp
+          src/slic3r/Utils/SnapmakerFilamentState.hpp tests/slic3rutils/test_snapmaker_filament_state.cpp
+          src/slic3r/Utils/GatewayAccount.cpp src/slic3r/Utils/GatewayAccount.hpp
+          src/slic3r/Utils/GatewayProtocol.cpp src/slic3r/Utils/GatewayProtocol.hpp
+          src/slic3r/Utils/GatewayService.cpp src/slic3r/Utils/GatewayService.hpp
+          src/slic3r/Utils/ConnectionProcessManager.cpp src/slic3r/Utils/ConnectionProcessManager.hpp
+          tests/slic3rutils/GatewayAccount_test.cpp tests/slic3rutils/GatewayProtocol_test.cpp
+          tests/slic3rutils/GatewayService_test.cpp tests/slic3rutils/ConnectionProcessManager_test.cpp
       - name: Configure actual native source components
         run: cmake -S tools/u1/native-tests -B build/u1-native -G Ninja -DCMAKE_BUILD_TYPE=Release
       - name: Build

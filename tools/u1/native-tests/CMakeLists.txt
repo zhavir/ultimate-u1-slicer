@@ -7,6 +7,10 @@ enable_testing()
 add_subdirectory("${U1_ROOT}/tests/catch2" "${CMAKE_CURRENT_BINARY_DIR}/catch2" EXCLUDE_FROM_ALL)
 add_executable(u1_component_tests
     "${U1_ROOT}/src/slic3r/GUI/Mcp/McpProtocol.cpp"
+    "${U1_ROOT}/src/slic3r/Utils/GatewayProtocol.cpp"
+    "${U1_ROOT}/src/slic3r/Utils/GatewayAccount.cpp"
+    "${U1_ROOT}/tests/slic3rutils/GatewayProtocol_test.cpp"
+    "${U1_ROOT}/tests/slic3rutils/GatewayAccount_test.cpp"
     "${U1_ROOT}/src/libslic3r/FosFilamentArrangement.cpp"
     "${U1_ROOT}/src/libslic3r/U1FilamentPlan.cpp"
     "${U1_ROOT}/tests/slic3rutils/test_u1_mcp_protocol.cpp"

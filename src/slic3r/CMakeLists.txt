@@ -898,6 +898,14 @@ set(SLIC3R_GUI_SOURCES
     Utils/OrcaPrinterAgent.hpp
     Utils/QidiPrinterAgent.cpp
     Utils/QidiPrinterAgent.hpp
+    Utils/ConnectionProcessManager.cpp
+    Utils/ConnectionProcessManager.hpp
+    Utils/GatewayProtocol.cpp
+    Utils/GatewayProtocol.hpp
+    Utils/GatewayAccount.cpp
+    Utils/GatewayAccount.hpp
+    Utils/GatewayService.cpp
+    Utils/GatewayService.hpp
     Utils/SnapmakerPrinterAgent.cpp
     Utils/SnapmakerPrinterAgent.hpp
     Utils/MoonrakerPrinterAgent.cpp

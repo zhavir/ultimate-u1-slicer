@@ -1,0 +1,131 @@
+{
+  "schema": 1,
+  "status": "Partial",
+  "runtime_connected": false,
+  "hardware_tested": false,
+  "files": [
+    {
+      "path": "src/slic3r/Utils/ConnectionProcessManager.cpp",
+      "repository": "https://github.com/Snapmaker/OrcaSlicer",
+      "source_commit": "6dd88c98f9cbc4954e4d58b02caf26d2acc7a18c",
+      "upstream_sha256": "22fa467e9608412448755002e972b22cf94778efde01e6b55492b1432d1b9165",
+      "adaptations": [
+        "Project clang-format style"
+      ],
+      "integrated_file_sha256": "3fd3331c98db985642d89e19a209ace3c406cb6bd1a60937f5d8246b2f8c1933"
+    },
+    {
+      "path": "src/slic3r/Utils/ConnectionProcessManager.hpp",
+      "repository": "https://github.com/Snapmaker/OrcaSlicer",
+      "source_commit": "6dd88c98f9cbc4954e4d58b02caf26d2acc7a18c",
+      "upstream_sha256": "1c4892cb5bce796177a90691eeded8cfa475bdcacb0a50701258e85cf2750415",
+      "adaptations": [
+        "Project clang-format style"
+      ],
+      "integrated_file_sha256": "ae0354e4200c5a82bd665fd8da0d8eb4e58dcf15a899af7becc2e3dff1480049"
+    },
+    {
+      "path": "tests/slic3rutils/ConnectionProcessManager_test.cpp",
+      "repository": "https://github.com/Snapmaker/OrcaSlicer",
+      "source_commit": "6dd88c98f9cbc4954e4d58b02caf26d2acc7a18c",
+      "upstream_sha256": "dc7451ffd8cb45c611f9dadcdcc340d99ba79925ee3afa313ca68cbb55773a72",
+      "adaptations": [
+        "Project clang-format style"
+      ],
+      "integrated_file_sha256": "cd1839c7774a4566c77dd6a74cd4cb697ceee1f1197815772900d1d7b6a97aaf"
+    },
+    {
+      "path": "src/slic3r/Utils/GatewayProtocol.cpp",
+      "repository": "https://github.com/Snapmaker/OrcaSlicer",
+      "source_commit": "bac6fd5c1e1c23ddf057cf6471ba4ed7ed621c4c",
+      "upstream_sha256": "194f8d81eadd1fc76adb92d58fbc9c0927a338e6f9f432acb2bc123d5cc0f406",
+      "adaptations": [
+        "Project clang-format style"
+      ],
+      "integrated_file_sha256": "300fdddf75a2bcf60e6cd44b50a8fc9c58ad7a2407192970a4821253925378a9"
+    },
+    {
+      "path": "src/slic3r/Utils/GatewayProtocol.hpp",
+      "repository": "https://github.com/Snapmaker/OrcaSlicer",
+      "source_commit": "bac6fd5c1e1c23ddf057cf6471ba4ed7ed621c4c",
+      "upstream_sha256": "8a09767a9e3c968c80213afce77ebfa3afd4a4a1bb1938f216a60d6ae72c1baa",
+      "adaptations": [
+        "Project clang-format style"
+      ],
+      "integrated_file_sha256": "1769cfc86864b0b722bd45ccba7eeee61130fc9e4bb4e65dc1e4b62c475be695"
+    },
+    {
+      "path": "tests/slic3rutils/GatewayProtocol_test.cpp",
+      "repository": "https://github.com/Snapmaker/OrcaSlicer",
+      "source_commit": "bac6fd5c1e1c23ddf057cf6471ba4ed7ed621c4c",
+      "upstream_sha256": "f459cb5194dc483b16d4792481d4bd68a386c5b52ad4f83bf354dc578b33e285",
+      "adaptations": [
+        "Project clang-format style"
+      ],
+      "integrated_file_sha256": "8e551bca2ce1e82c1d92df8b7e3cfbe60613a64f70ee1c58ef9dcd3d78209880"
+    },
+    {
+      "path": "src/slic3r/Utils/GatewayAccount.cpp",
+      "repository": "https://github.com/Snapmaker/OrcaSlicer",
+      "source_commit": "bac6fd5c1e1c23ddf057cf6471ba4ed7ed621c4c",
+      "upstream_sha256": "ab552572d69755f872623de041a48e9ca7d9e749268150a49a66aa6225b8bcf3",
+      "adaptations": [
+        "Project clang-format style"
+      ],
+      "integrated_file_sha256": "ab552572d69755f872623de041a48e9ca7d9e749268150a49a66aa6225b8bcf3"
+    },
+    {
+      "path": "src/slic3r/Utils/GatewayAccount.hpp",
+      "repository": "https://github.com/Snapmaker/OrcaSlicer",
+      "source_commit": "bac6fd5c1e1c23ddf057cf6471ba4ed7ed621c4c",
+      "upstream_sha256": "86044870007987e63c52bd18a087d7a977dd72b14cbb30ac534d3cac2d1ab3be",
+      "adaptations": [
+        "Project clang-format style"
+      ],
+      "integrated_file_sha256": "c14165fdcfc2fa9edde9f503001f9e1be378146c967bfcf26095f81e04c602fd"
+    },
+    {
+      "path": "tests/slic3rutils/GatewayAccount_test.cpp",
+      "repository": "https://github.com/Snapmaker/OrcaSlicer",
+      "source_commit": "bac6fd5c1e1c23ddf057cf6471ba4ed7ed621c4c",
+      "upstream_sha256": "f2a588aead14d7e189041c5a167fd4cbe494bbfb925eaf0ed2d6f08fd06c41cf",
+      "adaptations": [
+        "Project clang-format style"
+      ],
+      "integrated_file_sha256": "0200b27152b7fef969b3d1e1bf2c39668099d1ce254d5ed754b30617a06f4039"
+    },
+    {
+      "path": "src/slic3r/Utils/GatewayService.cpp",
+      "repository": "https://github.com/Snapmaker/OrcaSlicer",
+      "source_commit": "6dd88c98f9cbc4954e4d58b02caf26d2acc7a18c",
+      "upstream_sha256": "49d9a98d6fcc17b5874de6ffc0cd8c9ce170b04a45776ed309efb72f36aefdd6",
+      "adaptations": [
+        "Project clang-format style",
+        "Foreign companion takeover is opt-in; fake lifecycle tests cover both policies"
+      ],
+      "integrated_file_sha256": "174308c5219cdf4cd50a6a9343c6082d2e05601ce66093e888d340e815d12ac5"
+    },
+    {
+      "path": "src/slic3r/Utils/GatewayService.hpp",
+      "repository": "https://github.com/Snapmaker/OrcaSlicer",
+      "source_commit": "6dd88c98f9cbc4954e4d58b02caf26d2acc7a18c",
+      "upstream_sha256": "6034b93dd448cbb14d604cb475709300719f5ffb545f848432e6393385fea912",
+      "adaptations": [
+        "Project clang-format style",
+        "Foreign companion takeover is opt-in; fake lifecycle tests cover both policies"
+      ],
+      "integrated_file_sha256": "504f5b4d9ee417b376323ab35c05b45942ce14007b10bc49ce93e5e9393f66c5"
+    },
+    {
+      "path": "tests/slic3rutils/GatewayService_test.cpp",
+      "repository": "https://github.com/Snapmaker/OrcaSlicer",
+      "source_commit": "6dd88c98f9cbc4954e4d58b02caf26d2acc7a18c",
+      "upstream_sha256": "f66a0b9c34a3ef1730592ed0bd757cc31fb7b95470c5a69f7bf925ab8be5ced9",
+      "adaptations": [
+        "Project clang-format style",
+        "Foreign companion takeover is opt-in; fake lifecycle tests cover both policies"
+      ],
+      "integrated_file_sha256": "e3f0910aad582066bc6befddd6b0d34f8f02a38343ae9f6ddf99bf70378af7ca"
+    }
+  ]
+}

@@ -55,6 +55,10 @@ add_executable(${_TEST_NAME}_tests
     test_printer_agent.cpp
     test_qidi_printer_agent.cpp
     test_u1_plugin_packages.cpp
+    ConnectionProcessManager_test.cpp
+    GatewayProtocol_test.cpp
+    GatewayAccount_test.cpp
+    GatewayService_test.cpp
     test_snapmaker_filament_state.cpp
     test_plugin_install.cpp
     test_plugin_lifecycle.cpp
@@ -169,3 +173,27 @@ add_custom_command(TARGET ${_TEST_NAME}_tests POST_BUILD
 )
 
 orcaslicer_discover_tests(${_TEST_NAME}_tests)
+
+# Exercise the actual gateway transports and upstream fakes without rebuilding
+# the GUI. The same cases remain in the full native application test suite.
+option(U1_BUILD_GATEWAY_REGRESSIONS "Build focused Snapmaker gateway regressions" OFF)
+if(U1_BUILD_GATEWAY_REGRESSIONS)
+    find_package(OpenSSL REQUIRED)
+    add_executable(u1_gateway_tests
+        GatewayAccount_test.cpp
+        GatewayProtocol_test.cpp
+        GatewayService_test.cpp
+        ConnectionProcessManager_test.cpp
+        ${PROJECT_SOURCE_DIR}/src/slic3r/Utils/GatewayAccount.cpp
+        ${PROJECT_SOURCE_DIR}/src/slic3r/Utils/GatewayProtocol.cpp
+        ${PROJECT_SOURCE_DIR}/src/slic3r/Utils/GatewayService.cpp
+        ${PROJECT_SOURCE_DIR}/src/slic3r/Utils/ConnectionProcessManager.cpp
+        ${PROJECT_SOURCE_DIR}/src/slic3r/Utils/Http.cpp)
+    target_include_directories(u1_gateway_tests PRIVATE ${PROJECT_SOURCE_DIR}/src)
+    target_link_libraries(u1_gateway_tests PRIVATE libslic3r libcurl OpenSSL::SSL OpenSSL::Crypto Catch2::Catch2WithMain)
+    if(MSVC)
+        target_link_libraries(u1_gateway_tests PRIVATE Iphlpapi.lib)
+    endif()
+    orcaslicer_copy_test_dlls(u1_gateway_tests)
+    orcaslicer_discover_tests(u1_gateway_tests)
+endif()
