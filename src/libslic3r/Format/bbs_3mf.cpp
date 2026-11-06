@@ -170,6 +170,7 @@ const unsigned int VERSION_BBS_3MF = 1;
 // Allow loading version 2 file as well.
 const unsigned int VERSION_BBS_3MF_COMPATIBLE = 2;
 const char* BBS_3MF_VERSION1 = "bamboo_slicer:Version3mf"; // definition of the metadata name saved into .model file
+const char* SNAPMAKER_3MF_VERSION = "Snapmaker_Orca:3mfVersion";
 const char* BBS_3MF_VERSION = "BambuStudio:3mfVersion"; //compatible with prusa currently
 // Painting gizmos data version numbers
 // 0 : initial version of fdm, seam, mm
@@ -1239,6 +1240,7 @@ void PlateData::parse_filament_info(GCodeProcessorResult *result)
 
         //BBS: plater related structures
         bool m_is_bbl_3mf { false };
+        bool m_is_snapmaker_3mf{false};
         bool m_parsing_slice_info { false };
         PlateDataMaps m_plater_data;
         PlateData* m_curr_plater;
@@ -2811,6 +2813,16 @@ void PlateData::parse_filament_info(GCodeProcessorResult *result)
                 add_error("Error while extract project config file to file");
                 return;
             }
+            bool source_has_expansion_marker = false;
+            if (m_is_snapmaker_3mf) {
+                boost::nowide::ifstream input(dest_file);
+                const auto settings = nlohmann::json::parse(input, nullptr, false);
+                if (!settings.is_object()) {
+                    add_error("Cannot inspect Snapmaker support compatibility metadata");
+                    return;
+                }
+                source_has_expansion_marker = settings.contains("snapmaker_support_expansion");
+            }
             std::map<std::string, std::string> key_values;
             std::string reason;
             int ret = config.load_from_json(dest_file, config_substitutions, true, key_values, reason);
@@ -2818,6 +2830,10 @@ void PlateData::parse_filament_info(GCodeProcessorResult *result)
                 add_error("Error load config from json:"+reason);
                 return;
             }
+            // Versioned geometry behavior must survive a later Ultimate U1 save.
+            // An explicit operator setting takes precedence over source detection.
+            if (m_is_snapmaker_3mf && !source_has_expansion_marker)
+                config.set_key_value("snapmaker_support_expansion", new ConfigOptionBool(true));
             BOOST_LOG_TRIVIAL(info) << __FUNCTION__ << boost::format(", load project config file successfully from %1%\n") %dest_file;
 
             // Heal any gradient-curve slots corrupted by the legacy "|" separator collision
@@ -2987,6 +3003,14 @@ void PlateData::parse_filament_info(GCodeProcessorResult *result)
             // BBS: use backup path
             //aux directory from model
             boost::filesystem::path dest_path = boost::filesystem::path(m_backup_path + "/" + src_file);
+            // A caller may supply an existing backup root. Model::get_backup_path()
+            // then does not create Metadata/, so embedded G-code/thumbnails would be lost.
+            boost::system::error_code directory_error;
+            boost::filesystem::create_directories(dest_path.parent_path(), directory_error);
+            if (directory_error) {
+                add_error("Cannot create project backup directory");
+                return;
+            }
             std::string dest_zip_file = encode_path(dest_path.string().c_str());
             mz_bool res = mz_zip_reader_extract_to_file(&archive, stat.m_file_index, dest_zip_file.c_str(), 0);
             BOOST_LOG_TRIVIAL(info) << __FUNCTION__ << boost::format(", extract  %1% from 3mf %2%, ret %3%\n") % dest_path % stat.m_filename % res;
@@ -4169,7 +4193,7 @@ void PlateData::parse_filament_info(GCodeProcessorResult *result)
 
     bool _BBS_3MF_Importer::_handle_end_metadata()
     {
-        if ((m_curr_metadata_name == BBS_3MF_VERSION)||(m_curr_metadata_name == BBS_3MF_VERSION1)) {
+        if ((m_curr_metadata_name == BBS_3MF_VERSION)||(m_curr_metadata_name == BBS_3MF_VERSION1)||(m_curr_metadata_name == SNAPMAKER_3MF_VERSION)) {
             //m_is_bbl_3mf = true;
             m_version = (unsigned int)atoi(m_curr_characters.c_str());
             /*if (m_check_version && (m_version > VERSION_BBS_3MF_COMPATIBLE)) {
@@ -4181,11 +4205,14 @@ void PlateData::parse_filament_info(GCodeProcessorResult *result)
         } else if (m_curr_metadata_name == BBL_APPLICATION_TAG) {
             // Generator application of the 3MF.
             // SLIC3R_APP_KEY - SoftFever_VERSION
-            if (boost::starts_with(m_curr_characters, "BambuStudio-")) {
+            if (boost::starts_with(m_curr_characters, "Snapmaker_Orca-")) {
+                m_is_snapmaker_3mf = true;
+                m_is_bbl_3mf = true;
+                m_bambuslicer_generator_version = Semver::parse(m_curr_characters.substr(15));
+            } else if (boost::starts_with(m_curr_characters, "BambuStudio-")) {
                 m_is_bbl_3mf = true;
                 m_bambuslicer_generator_version = Semver::parse(m_curr_characters.substr(12));
-            }
-            else if (boost::starts_with(m_curr_characters, "OrcaSlicer-")) {
+            } else if (boost::starts_with(m_curr_characters, "OrcaSlicer-")) {
                 m_is_bbl_3mf = true;
                 m_bambuslicer_generator_version = Semver::parse(m_curr_characters.substr(11));
             }
@@ -6004,7 +6031,7 @@ void PlateData::parse_filament_info(GCodeProcessorResult *result)
 
     bool _BBS_3MF_Importer::ObjectImporter::_handle_object_end_metadata()
     {
-        if ((obj_curr_metadata_name == BBS_3MF_VERSION)||(obj_curr_metadata_name == BBS_3MF_VERSION1)) {
+        if ((obj_curr_metadata_name == BBS_3MF_VERSION)||(obj_curr_metadata_name == BBS_3MF_VERSION1)||(obj_curr_metadata_name == SNAPMAKER_3MF_VERSION)) {
             is_bbl_3mf = true;
         }
         return true;

@@ -4384,6 +4384,25 @@ void GCode::_do_export(Print& print, GCodeOutputStream &file, ThumbnailsGenerato
         file.write(m_writer.set_additional_fan(0));
     }
 
+    // Snapmaker Orca bac6fd5/f5fd728: preserve the material-dependent purifier
+    // branches in original U1 machine_start_gcode. This generates G-code only.
+    // Consider every filament actually used on the plate, not just the initial tool.
+    if (m_config.filament_is_high_temperature.values.empty())
+        throw Slic3r::RuntimeError("High-temperature material flags must not be empty.");
+    int chamber_cooling_mode = 0; // Keep warm.
+    for (unsigned int filament : tool_ordering.all_extruders()) {
+        if (!m_config.filament_is_high_temperature.get_at(filament)) {
+            const int vitrification = m_config.temperature_vitrification.get_at(filament);
+            if (vitrification <= 50) {
+                chamber_cooling_mode = 2; // Strong cooling takes precedence.
+                break;
+            }
+            if (vitrification <= 70)
+                chamber_cooling_mode = 1; // Weak cooling.
+        }
+    }
+    this->placeholder_parser().set("chamber_cooling_mode", new ConfigOptionInt(chamber_cooling_mode));
+
     std::string machine_start_gcode = this->placeholder_parser_process("machine_start_gcode", print.config().machine_start_gcode.value, initial_extruder_id);
     if (print.config().gcode_flavor != gcfKlipper) {
         // Set bed temperature if the start G-code does not contain any bed temp control G-codes.

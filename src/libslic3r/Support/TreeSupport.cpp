@@ -1573,7 +1573,10 @@ void TreeSupport::generate_toolpaths()
             raft_areas.push_back(expoly);
     }
 
-    raft_areas = offset_ex(raft_areas, scale_(object_config.raft_first_layer_expansion));
+    // Snapmaker uses a fixed base footprint and the configured (possibly -1)
+    // first-layer offset. Keep official Orca's positive-value behavior unchanged.
+    const double base_expansion = uses_snapmaker_support_expansion(object_config) ? 3. : object_config.raft_first_layer_expansion.value;
+    raft_areas                  = offset_ex(raft_areas, scale_(base_expansion));
 
     size_t layer_nr = 0;
     for (; layer_nr < m_slicing_params.base_raft_layers; layer_nr++) {
@@ -2179,6 +2182,7 @@ void TreeSupport::draw_circles()
     const bool with_lightning_infill = m_support_params.base_fill_pattern == ipLightning;
     coordf_t support_extrusion_width = m_support_params.support_extrusion_width;
     const float tree_brim_width = config.tree_support_brim_width.value;
+    const bool snapmaker_expansion             = uses_snapmaker_support_expansion(config);
     // Reinforce branches moving more than half a support-line width between layers.
     // Square the threshold for comparison with the squared XY movement below.
     const double max_move_sq = sqr(double(scale_(m_object_config->support_line_width / 2)));
@@ -2301,7 +2305,7 @@ void TreeSupport::draw_circles()
                                 circle.points[i] = circle.points[i] * scale + node.position;
                             }
                         }
-                        if (obj_layer_nr == 0 && m_raft_layers == 0 && !belt_floor_active) {
+                        if (obj_layer_nr == 0 && m_raft_layers == 0 && !belt_floor_active && !snapmaker_expansion) {
                             double brim_width = !config.tree_support_auto_brim ? tree_brim_width : std::max(MIN_BRANCH_RADIUS_FIRST_LAYER, std::min(node.radius + node.dist_mm_to_top / (scale * branch_radius) * 0.5, MAX_BRANCH_RADIUS_FIRST_LAYER) - node.radius);
                             auto tmp=offset(circle, scale_(brim_width));
                             if(!tmp.empty())
@@ -2323,6 +2327,16 @@ void TreeSupport::draw_circles()
                             }
                             append(area, overhang_expanded);
                         }
+                    }
+
+                    // Snapmaker Orca f5fd728: stabilize the complete footprint after
+                    // collision/overhang construction, including hybrid polygon nodes.
+                    if (snapmaker_expansion && obj_layer_nr == 0 && m_raft_layers == 0 && !belt_floor_active) {
+                        double width = std::max(0., config.raft_first_layer_expansion.value);
+                        for (const ExPolygon& footprint : area)
+                            width = std::max(width, snapmaker_support_auto_expansion(footprint, config.get_abs_value_at("support_speed", 0),
+                                                                                     node.dist_mm_to_top));
+                        area = snapmaker_support_offset(area, scale_(width), get_collision(false), scale_(MIN_BRANCH_RADIUS * 0.5));
                     }
 
                     // Use the Pythagorean theorem to compare movement magnitude (dx² + dy²) without a square root.
@@ -2529,8 +2543,8 @@ void TreeSupport::draw_circles()
                 // part. area_poly is collected from ePolygon nodes above, which are the normal
                 // support nodes in Hybrid mode. Apply the expansion before area_groups and
                 // lslices are built so toolpaths and brim avoidance use the same footprint.
-                if (layer_nr == 0 && m_raft_layers == 0 && !belt_floor_active && m_support_params.support_style == smsTreeHybrid &&
-                    m_object_config->raft_first_layer_expansion.value > 0.f) {
+                if (layer_nr == 0 && m_raft_layers == 0 && !belt_floor_active && !snapmaker_expansion &&
+                    m_support_params.support_style == smsTreeHybrid && m_object_config->raft_first_layer_expansion.value > 0.f) {
                     ExPolygons expanded_base_areas;
                     const float inflate_factor_1st_layer = float(scale_(m_object_config->raft_first_layer_expansion.value));
                     Polygons trimming = offset(m_object->layers().front()->lslices, float(scale_(m_support_params.gap_xy_first_layer)),

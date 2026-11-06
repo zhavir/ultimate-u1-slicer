@@ -23,6 +23,7 @@ add_executable(${_TEST_NAME}_tests
 	test_model.cpp
 	test_multifilament.cpp
     test_u1_four_tool_gcode.cpp
+    test_u1_support_compatibility.cpp
 	test_multimaterial_segmentation.cpp
 	test_perimeters.cpp
 	# Seam geometry and pipeline regressions share the existing Print fixtures.
@@ -55,7 +56,8 @@ orcaslicer_discover_tests(${_TEST_NAME}_tests)
 # Uses the same fixture and production engine as the broad suite, for short U1 iteration cycles.
 option(U1_BUILD_FOCUSED_REGRESSIONS "Build the focused U1 engine regression executable" OFF)
 if (U1_BUILD_FOCUSED_REGRESSIONS)
-    add_executable(u1_fff_tests fff_print_tests.cpp test_helpers.cpp test_u1_four_tool_gcode.cpp)
+    add_executable(u1_fff_tests fff_print_tests.cpp test_helpers.cpp test_u1_four_tool_gcode.cpp
+        test_u1_support_compatibility.cpp)
     target_link_libraries(u1_fff_tests test_common libslic3r Catch2::Catch2WithMain)
     orcaslicer_discover_tests(u1_fff_tests)
 endif ()

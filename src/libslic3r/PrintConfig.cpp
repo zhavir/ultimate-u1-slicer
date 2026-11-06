@@ -3538,6 +3538,13 @@ void PrintConfigDef::init_fff_params()
     def->mode = comAdvanced;
     def->set_default_value(new ConfigOptionBools { false });
 
+    // Snapmaker Orca bac6fd5/f5fd728: consumed by the chamber-cooling G-code contract.
+    def = this->add("filament_is_high_temperature", coBools);
+    def->label = L("Is high-temperature filament");
+    def->tooltip = L("Indicates whether this is a high-temperature filament that requires elevated printing temperatures.");
+    def->mode = comSimple;
+    def->set_default_value(new ConfigOptionBools{false});
+
     // Mixed-color filament. A slot flagged here is virtual: it is not loaded into any
     // physical extruder, but resolved at slicing time into the physical filaments listed
     // in filament_mixed_components, blended either by splitting each layer into
@@ -6082,12 +6089,21 @@ void PrintConfigDef::init_fff_params()
     def = this->add("raft_first_layer_expansion", coFloat);
     def->label = L("First layer expansion");
     def->category = L("Support");
-    def->tooltip = L("This expands the first raft or support layer to improve bed adhesion.");
+    def->tooltip  = L(
+        "This expands the first raft or support layer to improve bed adhesion. A negative value selects Snapmaker automatic expansion.");
     def->sidetext = L("mm");	// millimeters, CIS languages need translation
-    def->min = 0;
+    def->min      = -1;
     def->mode = comAdvanced;
     //BBS: change from 3.0 to 2.0
     def->set_default_value(new ConfigOptionFloat(2.0));
+
+    // Project compatibility marker: retained on save, independent of printer brand.
+    // Positive expansion values have different tree-raft semantics in Snapmaker Orca.
+    def           = this->add("snapmaker_support_expansion", coBool);
+    def->label    = L("Snapmaker support expansion compatibility");
+    def->category = L("Support");
+    def->mode     = comAdvanced;
+    def->set_default_value(new ConfigOptionBool(false));
 
     def = this->add("raft_layers", coInt);
     def->label = L("Raft layers");
@@ -12415,6 +12431,8 @@ void update_static_print_config_from_dynamic(ConfigBase& config, const DynamicPr
 std::map<std::string, std::string> validate(const FullPrintConfig &cfg, bool under_cli)
 {
     std::map<std::string, std::string> error_message;
+    if (cfg.filament_is_high_temperature.values.empty())
+        error_message.emplace("filament_is_high_temperature", _u8L("High-temperature material flags must not be empty."));
     // --layer-height
     if (cfg.get_abs_value("layer_height") <= 0) {
         error_message.emplace("layer_height", _u8L("invalid value ") + std::to_string(cfg.get_abs_value("layer_height")));

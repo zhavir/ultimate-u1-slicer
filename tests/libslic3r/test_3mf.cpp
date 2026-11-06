@@ -2858,3 +2858,121 @@ SCENARIO("a rendered no-light thumbnail does not suppress the plate thumbnail", 
         }
     }
 }
+
+TEST_CASE("Snapmaker support geometry semantics survive project migration and saving", "[3mf][U1SupportCompatibility]")
+{
+    const int source_kind            = GENERATE(0, 1, 2); // Snapmaker inferred, Orca, Snapmaker explicit opt-out.
+    const double expansion           = GENERATE(-1.0, 0.0, 4.0);
+    const bool prepopulated_defaults = GENERATE(false, true);
+    const bool expected_snapmaker    = source_kind == 0;
+    ScopedTemporaryFile file(".3mf");
+    Model source;
+    ModelObject* object = source.add_object();
+    object->add_volume(make_cube(10., 10., 10.));
+    object->add_instance();
+    store_project(source, file.string(), SaveStrategy::Zip64 | SaveStrategy::Silence);
+    bool application_written = false, config_written = false;
+    REQUIRE(rewrite_3mf_entries(file.string(), [&](std::string& name, std::string& data) {
+        if (name == "3D/3dmodel.model") {
+            data                 = std::regex_replace(data, std::regex("<metadata name=\"Application\">[^<]*</metadata>"), "");
+            const auto resources = data.find("<resources");
+            REQUIRE(resources != std::string::npos);
+            data.insert(resources, std::string("<metadata name=\"Application\">") +
+                                       (source_kind == 1 ? "OrcaSlicer-2.5.0" : "Snapmaker_Orca-2.4.1") + "</metadata>\n");
+            application_written = true;
+            return true;
+        }
+        if (name == "Metadata/project_settings.config") {
+            auto settings                          = nlohmann::json::parse(data);
+            settings["raft_first_layer_expansion"] = std::to_string(expansion);
+            settings.erase("snapmaker_support_expansion");
+            if (source_kind == 2)
+                settings["snapmaker_support_expansion"] = "0";
+            data           = settings.dump();
+            config_written = true;
+            return true;
+        }
+        return false;
+    }));
+    REQUIRE(application_written);
+    REQUIRE(config_written);
+
+    auto load_config = [prepopulated_defaults](const std::string& path, DynamicPrintConfig& config) {
+        if (prepopulated_defaults)
+            config = DynamicPrintConfig::full_print_config();
+        Model model;
+        ScopedTemporaryDir backup("u1_support_reload");
+        model.set_backup_path(backup.string());
+        ConfigSubstitutionContext substitutions{ForwardCompatibilitySubstitutionRule::Enable};
+        PlateDataPtrs plates;
+        std::vector<Preset*> presets;
+        bool is_bambu = false, is_orca = false;
+        Semver version;
+        const bool loaded = load_bbs_3mf(path.c_str(), &config, &substitutions, &model, &plates, &presets, &is_bambu, &is_orca, &version,
+                                         nullptr, LoadStrategy::LoadModel | LoadStrategy::LoadConfig);
+        release_PlateData_list(plates);
+        for (Preset* preset : presets)
+            delete preset;
+        return loaded;
+    };
+    DynamicPrintConfig imported;
+    REQUIRE(load_config(file.string(), imported));
+    CHECK(imported.opt_float("raft_first_layer_expansion") == expansion);
+    const auto* marker = imported.option<ConfigOptionBool>("snapmaker_support_expansion");
+    CHECK((marker != nullptr && marker->value) == expected_snapmaker);
+
+    ScopedTemporaryFile saved(".3mf");
+    ScopedTemporaryDir backup("u1_support_save");
+    source.set_backup_path(backup.string());
+    PlateData plate;
+    plate.plate_index = 0;
+    StoreParams parameters;
+    const std::string saved_path = saved.string();
+    parameters.path              = saved_path.c_str();
+    parameters.model             = &source;
+    parameters.config            = &imported;
+    parameters.strategy          = SaveStrategy::Zip64 | SaveStrategy::Silence;
+    parameters.plate_data_list.push_back(&plate);
+    REQUIRE(store_bbs_3mf(parameters));
+    DynamicPrintConfig restored;
+    REQUIRE(load_config(saved_path, restored));
+    CHECK(restored.opt_float("raft_first_layer_expansion") == expansion);
+    marker = restored.option<ConfigOptionBool>("snapmaker_support_expansion");
+    CHECK((marker != nullptr && marker->value) == expected_snapmaker);
+}
+
+TEST_CASE("Original Snapmaker v2.4.1 single and four tool projects retain automatic support settings", "[3mf][U1SupportCompatibility]")
+{
+    const bool four_tools = GENERATE(false, true);
+    const std::string path = std::string(TEST_DATA_DIR) + "/u1/snapmaker-v2.4.1/" +
+                             (four_tools ? "four-tool.3mf" : "single-tool.3mf");
+    ScopedTemporaryDir backup("u1_original_snapmaker");
+    Model model;
+    model.set_backup_path(backup.string());
+    DynamicPrintConfig config = DynamicPrintConfig::full_print_config();
+    ConfigSubstitutionContext substitutions{ForwardCompatibilitySubstitutionRule::Enable};
+    PlateDataPtrs plates;
+    std::vector<Preset*> presets;
+    bool is_bambu = false, is_orca = false;
+    Semver version;
+    const bool loaded = load_bbs_3mf(path.c_str(), &config, &substitutions, &model, &plates,
+        &presets, &is_bambu, &is_orca, &version, nullptr,
+        LoadStrategy::LoadModel | LoadStrategy::LoadConfig);
+    release_PlateData_list(plates);
+    for (Preset* preset : presets)
+        delete preset;
+    REQUIRE(loaded);
+    CHECK(is_bambu); // Same project-format family, not a Bambu printer/cloud identity.
+    CHECK_FALSE(is_orca);
+    CHECK(version == Semver("2.4.1"));
+    const auto embedded_gcode = boost::filesystem::path(backup.string()) / "Metadata" / "plate_1.gcode";
+    REQUIRE(boost::filesystem::is_regular_file(embedded_gcode));
+    CHECK(boost::filesystem::file_size(embedded_gcode) > 0);
+    CHECK(model.objects.size() == (four_tools ? 4 : 1));
+    CHECK(config.opt_float("raft_first_layer_expansion") == -1.);
+    REQUIRE(config.option<ConfigOptionBool>("snapmaker_support_expansion"));
+    CHECK(config.option<ConfigOptionBool>("snapmaker_support_expansion")->value);
+    CHECK(config.option<ConfigOptionFloats>("nozzle_diameter")->values.size() == 4);
+    CHECK(config.option<ConfigOptionStrings>("filament_colour")->values.size() == (four_tools ? 4 : 1));
+    CHECK(config.validate().empty());
+}

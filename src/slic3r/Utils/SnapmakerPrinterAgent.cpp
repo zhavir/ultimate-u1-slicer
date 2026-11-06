@@ -1,4 +1,6 @@
 #include "SnapmakerPrinterAgent.hpp"
+#include "SnapmakerFilamentState.hpp"
+#include <limits>
 #include "Http.hpp"
 #include "MoonrakerPrinterAgent.hpp"
 #include "IPrinterAgent.hpp"
@@ -17,14 +19,7 @@ namespace Slic3r {
 
 namespace {
 
-constexpr const char* SNAPMAKER_AGENT_VERSION = "0.0.1";
-
-// Safely access a parallel array by index, returning a fallback if out of bounds.
-template<typename T>
-T safe_at(const std::vector<T>& vec, int index, const T& fallback)
-{
-    return (index >= 0 && index < static_cast<int>(vec.size())) ? vec[index] : fallback;
-}
+constexpr const char* SNAPMAKER_AGENT_VERSION = "0.0.2";
 
 std::string find_closest_color_preset_by_vendor_and_type(const PresetCollection& filaments,
                                                          const std::string&      vendor_name,
@@ -32,33 +27,26 @@ std::string find_closest_color_preset_by_vendor_and_type(const PresetCollection&
                                                          const std::string&      color_rgba)
 {
     std::string best_match_id       = "";
-    int         best_color_distance = 0xffffffff;
+    unsigned int best_color_distance = std::numeric_limits<unsigned int>::max();
+    const auto target                = SnapmakerState::rgb_value(color_rgba, true);
+    if (!target || vendor_name.empty() || filament_type.empty())
+        return {};
 
     for (const auto& p : filaments.get_presets()) {
         if (p.is_visible && p.is_compatible &&
             // Filament profile must be detached from parent to be considered for matching
             filaments.get_preset_base(p) == &p && p.config.opt_string("filament_vendor", 0u) == vendor_name &&
             p.config.opt_string("filament_type", 0u) == filament_type) {
-            // The printer returns RGBA in the format RRGGBBAA, but profiles store color as #RRGGBB,
-            // so we must remove # and ignore alpha channel for distance calculation
-            unsigned int target_color_value = std::stoul(color_rgba.substr(0, color_rgba.length() - 2), nullptr, 16);
-
-            std::string  p_color = p.config.opt_string("default_filament_colour", 0u);
-            unsigned int p_color_value;
-            if (!p_color.empty()) {
-                size_t       hash_pos = p_color.find("#");
-                p_color_value         = std::stoul(p_color.substr(hash_pos != std::string::npos ? hash_pos + 1 : 0), nullptr, 16);
-            } else {
-                // Default to black if no color specified in profile. Assume other profiles might be a closer color match.
-                // Could be a problem if the target color is also black and there exist a specific profile for that type, vendor and color
-                // combination.
-                p_color_value = 0;
-            }
+            const auto preset_color = SnapmakerState::rgb_value(p.config.opt_string("default_filament_colour", 0u), false);
+            if (!preset_color)
+                continue;
+            const unsigned int target_color_value = *target;
+            const unsigned int p_color_value      = *preset_color;
 
             // Calculate Euclidean color distance in RGB space
-            int dr = ((target_color_value & 0xff) - (p_color_value & 0xff));
-            int dg = (((target_color_value >> 8) & 0xff) - ((p_color_value >> 8) & 0xff));
-            int db = (((target_color_value >> 16) & 0xff) - ((p_color_value >> 16) & 0xff));
+            int dr                = int(target_color_value & 0xff) - int(p_color_value & 0xff);
+            int dg                = int((target_color_value >> 8) & 0xff) - int((p_color_value >> 8) & 0xff);
+            int db                = int((target_color_value >> 16) & 0xff) - int((p_color_value >> 16) & 0xff);
             unsigned int distance = dr * dr + dg * dg + db * db;
 
             if (distance < best_color_distance) {
@@ -84,8 +72,8 @@ std::string SnapmakerPrinterAgent::combine_filament_type(const std::string& type
     const std::string base = trim_and_upper(type);
     const std::string sub  = trim_and_upper(sub_type);
 
-    if (base.empty())
-        return "PLA";
+    if (base.empty() || base == "NONE")
+        return {};
 
     if (sub.empty() || sub == "NONE")
         return base;
@@ -150,37 +138,14 @@ bool SnapmakerPrinterAgent::fetch_filament_info(std::string dev_id, FilamentSync
         return false;
     }
 
-    // Navigate to result.status.print_task_config
-    if (!json.contains("result") || !json["result"].contains("status") ||
-        !json["result"]["status"].contains("print_task_config")) {
-        BOOST_LOG_TRIVIAL(warning) << "SnapmakerPrinterAgent::fetch_filament_info: Missing print_task_config in response";
+    std::array<SnapmakerState::FilamentSlot, 4> slots;
+    std::string parse_error;
+    if (!SnapmakerState::parse_stock_filament_snapshot(json, slots, parse_error)) {
+        BOOST_LOG_TRIVIAL(warning) << "Snapmaker filament sync: " << parse_error;
         return false;
     }
-
-    auto& ptc = json["result"]["status"]["print_task_config"];
-
-    // Read parallel arrays from print_task_config
-    auto filament_exist    = ptc.value("filament_exist", std::vector<bool>{});
-    auto filament_type     = ptc.value("filament_type", std::vector<std::string>{});
-    auto filament_sub_type = ptc.value("filament_sub_type", std::vector<std::string>{});
-    auto filament_color    = ptc.value("filament_color_rgba", std::vector<std::string>{});
-    auto filament_vendor   = ptc.value("filament_vendor", std::vector<std::string>{});
-
-    const int slot_count = static_cast<int>(filament_exist.size());
-    if (slot_count == 0) {
-        BOOST_LOG_TRIVIAL(info) << "SnapmakerPrinterAgent::fetch_filament_info: No filament slots reported";
-        return false;
-    }
-
-    // Read NFC filament_detect data for temperature info (optional)
-    nlohmann::json nfc_info;
-    if (json["result"]["status"].contains("filament_detect") &&
-        json["result"]["status"]["filament_detect"].contains("info")) {
-        nfc_info = json["result"]["status"]["filament_detect"]["info"];
-    }
-
-    static const std::string empty_str;
-    static const std::string default_color = "FFFFFFFF";
+    const int slot_count                   = static_cast<int>(slots.size());
+    static const std::string default_color = "FFFFFFFF"; // Neutral display color only; never used for preset matching.
 
     std::vector<AmsTrayData> trays;
     trays.reserve(slot_count);
@@ -188,20 +153,20 @@ bool SnapmakerPrinterAgent::fetch_filament_info(std::string dev_id, FilamentSync
     for (int i = 0; i < slot_count; ++i) {
         AmsTrayData tray;
         tray.slot_index   = i;
-        tray.has_filament = filament_exist[i];
+        const auto& slot  = slots[i];
+        tray.has_filament = slot.present;
 
         if (tray.has_filament) {
-            tray.tray_type     = combine_filament_type(safe_at(filament_type, i, empty_str),
-                                                       safe_at(filament_sub_type, i, empty_str));
-            tray.tray_color    = safe_at(filament_color, i, default_color);
+            tray.tray_type  = combine_filament_type(slot.material, slot.subtype);
+            tray.tray_color = slot.rgba.value_or(default_color);
 
             auto* bundle = GUI::wxGetApp().preset_bundle;
             // Try to find a matching preset for this filament based on vendor, type and color.
             // If not found, default to traditional search by type only or generic type mapping.
-            if (bundle) {
-                std::string vendor      = safe_at(filament_vendor, i, empty_str);
-                std::string filament_id = find_closest_color_preset_by_vendor_and_type(bundle->filaments, vendor, tray.tray_type,
-                                                                                       tray.tray_color);
+            if (bundle && !tray.tray_type.empty()) {
+                const std::string filament_id = slot.rgba ? find_closest_color_preset_by_vendor_and_type(bundle->filaments, slot.vendor,
+                                                                                                         tray.tray_type, *slot.rgba) :
+                                                            "";
 
                 if (!filament_id.empty()) {
                     tray.tray_info_idx = filament_id;
@@ -210,19 +175,13 @@ bool SnapmakerPrinterAgent::fetch_filament_info(std::string dev_id, FilamentSync
                 } else {
                     tray.tray_info_idx = bundle->filaments.filament_id_by_type(tray.tray_type);
                 }
-            } else {
+            } else if (!tray.tray_type.empty()) {
                 tray.tray_info_idx = map_filament_type_to_generic_id(tray.tray_type);
             }
 
-            // Extract NFC temperature data if available
-            if (nfc_info.is_array() && i < static_cast<int>(nfc_info.size()) && nfc_info[i].is_object()) {
-                auto& nfc_slot = nfc_info[i];
-                std::string vendor = nfc_slot.value("VENDOR", "NONE");
-                if (vendor != "NONE" && !vendor.empty()) {
-                    tray.bed_temp    = nfc_slot.value("BED_TEMP", 0);
-                    tray.nozzle_temp = nfc_slot.value("FIRST_LAYER_TEMP", 0);
-                }
-            }
+            // Physical-slot NFC observations remain metadata; no writes/heating.
+            tray.bed_temp    = slot.bed_temperature.value_or(0);
+            tray.nozzle_temp = slot.nozzle_temperature.value_or(0);
         }
 
         trays.emplace_back(std::move(tray));

@@ -22,6 +22,19 @@ namespace Slic3r {
 class PrintObject;
 class SupportLayer;
 
+inline bool uses_snapmaker_support_expansion(const PrintObjectConfig& config)
+{
+    return config.snapmaker_support_expansion.value || config.raft_first_layer_expansion.value < 0.;
+}
+
+double snapmaker_support_auto_expansion(const ExPolygon& footprint, double speed, double height);
+ExPolygons snapmaker_support_offset(const ExPolygons& areas,
+                                    coord_t distance,
+                                    const ExPolygons& collision,
+                                    coord_t safe_step_size,
+                                    coord_t last_step_offset_without_check = 0,
+                                    size_t min_amount_offset               = 1);
+
 // Turn some of the base layers into base interface layers.
 // For soluble interfaces with non-soluble bases, print maximum two first interface layers with the base
 // extruder to improve adhesion of the soluble filament to the base.

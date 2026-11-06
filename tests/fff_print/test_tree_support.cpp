@@ -11,6 +11,7 @@
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/catch_message.hpp>
 #include "libslic3r/Layer.hpp"
+#include "libslic3r/ClipperUtils.hpp"
 #include "libslic3r/TriangleMesh.hpp"
 
 #include "test_helpers.hpp"
@@ -197,4 +198,52 @@ TEST_CASE("Tree support toolpaths do not depend on the MST tie order", "[TreeSup
         { "tree_support_branch_angle",    40 },
         { "support_line_width",           0.4 },
     });
+}
+
+TEST_CASE("Snapmaker automatic support expansion keeps collision clearance", "[TreeSupport][U1SupportCompatibility]")
+{
+    const char* style = GENERATE("tree_slim", "tree_hybrid");
+    Slic3r::Print print;
+    slice_with_tree_support(scaled(TestMesh::overhang, 2.f), print, style, 30, 0, 0,
+                            {{"raft_first_layer_expansion", -1.0}, {"snapmaker_support_expansion", true}});
+    const PrintObject* object = print.objects().front();
+    REQUIRE_FALSE(object->support_layers().empty());
+    const SupportLayer* first = object->support_layers().front();
+    REQUIRE_FALSE(first->base_areas.empty());
+    const Polygons forbidden = offset(object->layers().front()->lslices, scale_(object->config().support_object_first_layer_gap.value));
+    CHECK(intersection_ex(first->base_areas, forbidden).empty());
+    CHECK_FALSE(first->support_fills.entities.empty());
+}
+
+TEST_CASE("Snapmaker tree raft preserves its fixed base and automatic first layer", "[TreeSupport][U1SupportCompatibility]")
+{
+    const double expansion = GENERATE(-1.0, 0.0, 4.0);
+    Slic3r::Print print;
+    slice_with_tree_support(scaled(TestMesh::overhang, 2.f), print, "tree_slim", 30, 0, 3,
+                            {{"raft_first_layer_expansion", expansion}, {"snapmaker_support_expansion", true}});
+    const PrintObject* object = print.objects().front();
+    REQUIRE(object->support_layers().size() >= 3);
+    const SupportLayer* first = object->support_layers().front();
+    CHECK_FALSE(first->support_fills.entities.empty());
+    CHECK(object->layers().front()->print_z > first->print_z);
+
+    Slic3r::Print zero_expansion;
+    slice_with_tree_support(scaled(TestMesh::overhang, 2.f), zero_expansion, "tree_slim", 30, 0, 3,
+                            {{"raft_first_layer_expansion", 0.0}, {"snapmaker_support_expansion", true}});
+    const auto& reference = zero_expansion.objects().front()->support_layers();
+    REQUIRE(reference.size() >= 3);
+    const auto bounds = [](const SupportLayer* layer) {
+        Points points;
+        layer->support_fills.collect_points(points);
+        REQUIRE_FALSE(points.empty());
+        return get_extents(points);
+    };
+    const auto first_bounds = bounds(first);
+    const auto reference_bounds = bounds(reference.front());
+    CHECK(unscale_(first_bounds.max.x() - reference_bounds.max.x()) == Catch::Approx(expansion).margin(0.03));
+    CHECK(unscale_(first_bounds.min.x() - reference_bounds.min.x()) == Catch::Approx(-expansion).margin(0.03));
+    // Configured first-layer offsets must not change the fixed 3mm raft base above it.
+    const auto base_bounds    = bounds(object->support_layers()[1]);
+    const auto reference_base = bounds(reference[1]);
+    CHECK(unscale_(base_bounds.max.x() - reference_base.max.x()) == Catch::Approx(0.).margin(0.03));
 }

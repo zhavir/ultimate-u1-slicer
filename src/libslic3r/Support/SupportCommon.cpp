@@ -7,6 +7,7 @@
 #include "../Fill/FillBase.hpp"
 #include "../MutablePolygon.hpp"
 #include "../Geometry.hpp"
+#include "../Brim.hpp"
 #include "../Point.hpp"
 
 #include <cmath>
@@ -55,6 +56,85 @@
 #include "libslic3r/MultiMaterialSegmentation.hpp"
 
 namespace Slic3r {
+
+// Adapted from Snapmaker Orca f5fd7289ea067997181ee6c2cf15a98f58faba43,
+// ExPolygon::map_moment_to_expansion; original AGPL attribution retained.
+// Empty/degenerate footprints and nonfinite inputs must not create NaN offsets.
+double snapmaker_support_auto_expansion(const ExPolygon& footprint, double speed, double height)
+{
+    if (!std::isfinite(speed) || !std::isfinite(height) || speed <= 0. || height <= 0. || footprint.contour.points.size() < 3)
+        return 0.;
+    double ixx = 0., iyy = 0.;
+    if (!compSecondMoment({footprint}, ixx, iyy))
+        return 0.;
+    ixx *= std::pow(SCALING_FACTOR, 4);
+    iyy *= std::pow(SCALING_FACTOR, 4);
+    if (!(ixx > 0.) || !(iyy > 0.) || !std::isfinite(ixx) || !std::isfinite(iyy))
+        return 0.;
+    const auto extent   = get_extents(footprint).size();
+    const double demand = std::max(height / ixx * (extent.y() * SCALING_FACTOR), height / iyy * (extent.x() * SCALING_FACTOR)) * height /
+                          1920. * speed;
+    return std::clamp(demand, 1., 10.);
+}
+
+// Adapted from the same upstream SupportCommon.hpp::safe_offset_inc.
+// Preserve collision checks at each growth step; reject zero steps before division.
+ExPolygons snapmaker_support_offset(const ExPolygons& me,
+                                    coord_t distance,
+                                    const ExPolygons& collision,
+                                    coord_t safe_step_size,
+                                    coord_t last_step_offset_without_check,
+                                    size_t min_amount_offset)
+{
+    bool do_final_difference = last_step_offset_without_check == 0;
+    ExPolygons ret           = union_ex(me); // ensure sane input
+
+    Polygons collision_trimmed_buffer;
+    auto collision_trimmed = [&collision_trimmed_buffer, &collision, &ret, distance]() -> const Polygons& {
+        if (collision_trimmed_buffer.empty() && !collision.empty())
+            collision_trimmed_buffer = ClipperUtils::clip_clipper_polygons_with_subject_bbox(collision, get_extents(ret).inflated(
+                                                                                                            std::max<coord_t>(0, distance) +
+                                                                                                            SCALED_EPSILON));
+        return collision_trimmed_buffer;
+    };
+
+    if (distance <= 0)
+        return do_final_difference ? diff_ex(ret, collision_trimmed()) : union_ex(ret);
+    if (safe_step_size <= 0 || last_step_offset_without_check < 0) {
+        return do_final_difference ? diff_ex(ret, collision_trimmed()) : union_ex(ret);
+    }
+
+    coord_t step_size = safe_step_size;
+    int steps         = distance > last_step_offset_without_check ? (distance - last_step_offset_without_check) / step_size : 0;
+    if (distance - steps * step_size > last_step_offset_without_check) {
+        if ((steps + 1) * step_size <= distance)
+            ++steps;
+        else
+            do_final_difference = true;
+    }
+    if (steps + (distance < last_step_offset_without_check || (distance % step_size) != 0) < int(min_amount_offset) &&
+        min_amount_offset > 1) {
+        step_size = std::max<coord_t>(1, distance / min_amount_offset);
+        if (step_size >= safe_step_size) {
+            step_size = safe_step_size;
+            steps     = min_amount_offset;
+        } else
+            steps = distance / step_size;
+    }
+    for (int i = 0; i < steps; ++i) {
+        ret = diff_ex(offset_ex(ret, step_size, jtRound, scaled<float>(0.01)), collision_trimmed());
+        if (i % 10 == 7)
+            ret = expolygons_simplify(ret, scaled<double>(0.015));
+    }
+    float last_offset = distance - steps * step_size;
+    if (last_offset > SCALED_EPSILON)
+        ret = offset_ex(ret, distance - steps * step_size, jtRound, scaled<float>(0.01));
+    ret = expolygons_simplify(ret, scaled<double>(0.015));
+
+    if (do_final_difference)
+        ret = diff_ex(ret, collision_trimmed());
+    return union_ex(ret);
+}
 
 namespace {
 
@@ -452,8 +532,11 @@ SupportGeneratorLayersPtr generate_raft_base(
     // puts lines in the air ahead of the belt crossing (and into the belt behind
     // it).  The belt brim takes the adhesion role instead.
     const bool  belt_floor_active        = std::abs(slicing_params.belt_floor_shear_factor) > EPSILON;
-    const float inflate_factor_1st_layer = belt_floor_active ? 0.f :
-        std::max(0.f, float(scale_(object.config().raft_first_layer_expansion)) - inflate_factor_fine);
+    // Snapmaker Orca bac6fd5/f5fd728: negative expansion is automatic for normal support.
+    const double initial_inflation       = object.config().raft_first_layer_expansion.value < 0. ?
+                                               2. :
+                                               object.config().raft_first_layer_expansion.value;
+    const float inflate_factor_1st_layer = belt_floor_active ? 0.f : std::max(0.f, float(scale_(initial_inflation)) - inflate_factor_fine);
     SupportGeneratorLayer       *contacts         = top_contacts         .empty() ? nullptr : top_contacts         .front();
     SupportGeneratorLayer       *interfaces       = interface_layers     .empty() ? nullptr : interface_layers     .front();
     SupportGeneratorLayer       *base_interfaces  = base_interface_layers.empty() ? nullptr : base_interface_layers.front();

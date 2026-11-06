@@ -16,6 +16,9 @@ class Print;
 class ExtrusionEntityCollection;
 class PrintTryCancel;
 
+// Shared polygon second moments used by brim and Snapmaker support stability.
+bool compSecondMoment(const ExPolygons& expolys, double& smExpolysX, double& smExpolysY);
+
 // Produce brim lines around those objects, that have the brim enabled.
 // Collect islands_area to be merged into the final 1st layer convex hull.
 void make_brim(const Print& print, PrintTryCancel try_cancel,

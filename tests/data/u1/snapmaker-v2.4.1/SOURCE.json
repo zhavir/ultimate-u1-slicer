@@ -1,0 +1,16 @@
+{
+  "generator": "Official Snapmaker Orca v2.4.1 Linux release CLI",
+  "source_tag_commit": "bac6fd5c1e1c23ddf057cf6471ba4ed7ed621c4c",
+  "provenance": "docs/testing/reference-slicing.md; docs/testing/evidence/reference-releases.json",
+  "geometry": "Project-owned generated cube(s), not third-party models or user configurations",
+  "fixtures": [
+    {
+      "file": "single-tool.3mf",
+      "sha256": "550b8bbf6d7fe822bbf4ad88a4dcede84993fd197106daf3364fb58121750119"
+    },
+    {
+      "file": "four-tool.3mf",
+      "sha256": "c61f71284612b782e47c876e55e75ca911629b594b6fc2b068c265b529912372"
+    }
+  ]
+}

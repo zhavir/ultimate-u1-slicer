@@ -1308,6 +1308,7 @@ PRINT_CONFIG_CLASS_DEFINE(
     ((ConfigOptionFloat,               raft_expansion))
     ((ConfigOptionPercent,             raft_first_layer_density))
     ((ConfigOptionFloat,               raft_first_layer_expansion))
+    ((ConfigOptionBool,                snapmaker_support_expansion))
     ((ConfigOptionInt,                 raft_layers))
     ((ConfigOptionEnum<SeamPosition>,  seam_position))
     ((ConfigOptionBool,                staggered_inner_seams))
@@ -1740,6 +1741,7 @@ PRINT_CONFIG_CLASS_DEFINE(
     ((ConfigOptionStrings,             filament_colour))
     ((ConfigOptionStrings,             filament_vendor))
     ((ConfigOptionBools,               filament_is_support))
+    ((ConfigOptionBools,               filament_is_high_temperature))
     // Mixed-color filament: a virtual slot realized from 2-3 physical filaments.
     ((ConfigOptionBools,               filament_is_mixed))
     ((ConfigOptionStrings,             filament_mixed_components))

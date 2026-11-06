@@ -11,7 +11,8 @@ add_executable(u1_component_tests
     "${U1_ROOT}/src/libslic3r/U1FilamentPlan.cpp"
     "${U1_ROOT}/tests/slic3rutils/test_u1_mcp_protocol.cpp"
     "${U1_ROOT}/tests/slic3rutils/test_mcp_file_policy.cpp"
-    "${U1_ROOT}/tests/libslic3r/test_u1_filament_plan.cpp")
+    "${U1_ROOT}/tests/libslic3r/test_u1_filament_plan.cpp"
+    "${U1_ROOT}/tests/slic3rutils/test_snapmaker_filament_state.cpp")
 target_include_directories(u1_component_tests PRIVATE "${U1_ROOT}/src" "${U1_ROOT}/deps_src")
 target_link_libraries(u1_component_tests PRIVATE Catch2::Catch2WithMain)
 option(U1_ENABLE_SANITIZERS "Instrument the native component target with undefined-behavior checks" OFF)

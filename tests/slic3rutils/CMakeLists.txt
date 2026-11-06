@@ -55,6 +55,7 @@ add_executable(${_TEST_NAME}_tests
     test_printer_agent.cpp
     test_qidi_printer_agent.cpp
     test_u1_plugin_packages.cpp
+    test_snapmaker_filament_state.cpp
     test_plugin_install.cpp
     test_plugin_lifecycle.cpp
     test_plugin_resource_texture.cpp

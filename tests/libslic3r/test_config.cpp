@@ -1932,3 +1932,10 @@ TEST_CASE("An empty list applied by index replaces the target list", "[Config][R
     edited.apply_only(saved, {"filament_ids#0"});
     CHECK(edited.option<ConfigOptionStrings>("filament_ids")->values.empty());
 }
+
+TEST_CASE("Empty Snapmaker high temperature flags are rejected before G-code generation", "[config][U1SupportCompatibility]")
+{
+    DynamicPrintConfig config = DynamicPrintConfig::full_print_config();
+    config.set_key_value("filament_is_high_temperature", new ConfigOptionBools());
+    CHECK(config.validate().count("filament_is_high_temperature") == 1);
+}

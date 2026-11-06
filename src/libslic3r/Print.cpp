@@ -324,6 +324,7 @@ bool Print::invalidate_state_by_config_options(const ConfigOptionResolver & /* n
         "filament_density",
         "filament_cost",
         "filament_notes",
+        "filament_is_high_temperature",
         "outer_wall_acceleration",
         "inner_wall_acceleration",
         "initial_layer_acceleration",
